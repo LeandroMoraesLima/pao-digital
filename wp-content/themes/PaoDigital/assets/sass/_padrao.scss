@@ -701,7 +701,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   height: 3px;
   background: #ffb700;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 /* Section with background
@@ -900,8 +900,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 18px;
 }
 #more-features .botao{
-  text-align: center;
-  padding-top: 40px;
+  min-width: 440px;
+  min-height: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 8px;   
+  box-shadow: none;
 }
 #more-features .ver{
   background: #ffb600;

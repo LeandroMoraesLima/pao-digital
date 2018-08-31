@@ -785,7 +785,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   height: 3px;
   background: #ffb700;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 /* Section with background
@@ -1030,11 +1030,15 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* line 902, ../sass/_padrao.scss */
 #more-features .botao {
-  text-align: center;
-  padding-top: 40px;
+  min-width: 440px;
+  min-height: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: none;
 }
 
-/* line 906, ../sass/_padrao.scss */
+/* line 910, ../sass/_padrao.scss */
 #more-features .ver {
   background: #ffb600;
   display: inline-block;
@@ -1050,7 +1054,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Contact Section
 --------------------------------*/
-/* line 922, ../sass/_padrao.scss */
+/* line 926, ../sass/_padrao.scss */
 #contact {
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
   padding: 50px 0;
@@ -1058,7 +1062,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #f4f4f4;
 }
 
-/* line 928, ../sass/_padrao.scss */
+/* line 932, ../sass/_padrao.scss */
 #contact hr {
   display: block;
   width: 60px;
@@ -1068,14 +1072,14 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 41px;
 }
 
-/* line 937, ../sass/_padrao.scss */
+/* line 941, ../sass/_padrao.scss */
 #contact .form input, #contact .form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
 }
 
-/* line 943, ../sass/_padrao.scss */
+/* line 947, ../sass/_padrao.scss */
 #contact .form button[type="submit"] {
   background: linear-gradient(45deg, #1de099, #1dc8cd);
   border: 0;
@@ -1084,18 +1088,18 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
 }
 
-/* line 951, ../sass/_padrao.scss */
+/* line 955, ../sass/_padrao.scss */
 #contact .form button[type="submit"]:hover {
   cursor: pointer;
 }
 
-/* line 956, ../sass/_padrao.scss */
+/* line 960, ../sass/_padrao.scss */
 #contact .contact {
   float: left;
   width: 49.5%;
 }
 
-/* line 961, ../sass/_padrao.scss */
+/* line 965, ../sass/_padrao.scss */
 #contact input, textarea {
   border: 1px solid #6d6964;
   width: 100%;
@@ -1107,29 +1111,29 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #f4f4f4;
 }
 
-/* line 973, ../sass/_padrao.scss */
+/* line 977, ../sass/_padrao.scss */
 #contact textarea {
   height: 223px;
   resize: none;
 }
 
-/* line 978, ../sass/_padrao.scss */
+/* line 982, ../sass/_padrao.scss */
 #contact .left {
   margin-right: .5%;
 }
 
-/* line 982, ../sass/_padrao.scss */
+/* line 986, ../sass/_padrao.scss */
 #contact .right {
   margin-left: .5%;
 }
 
-/* line 986, ../sass/_padrao.scss */
+/* line 990, ../sass/_padrao.scss */
 #contact .botao {
   text-align: center;
   padding-top: 40px;
 }
 
-/* line 990, ../sass/_padrao.scss */
+/* line 994, ../sass/_padrao.scss */
 #contact .ver {
   background: #ffb600;
   display: inline-block;
@@ -1146,7 +1150,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-/* line 1005, ../sass/_padrao.scss */
+/* line 1009, ../sass/_padrao.scss */
 #footer {
   background: #434343;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
@@ -1155,40 +1159,60 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 14px;
 }
 
-/* line 1013, ../sass/_padrao.scss */
+/* line 1017, ../sass/_padrao.scss */
 #footer .footer-links a:first-child {
   padding-left: 0;
 }
 
-/* line 1017, ../sass/_padrao.scss */
+/* line 1021, ../sass/_padrao.scss */
 #footer .footer-links a:hover {
   color: #1dc8cd;
 }
 
-/* line 1020, ../sass/_padrao.scss */
+/* line 1024, ../sass/_padrao.scss */
 #footer .footer-logo {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 1024, ../sass/_padrao.scss */
+/* line 1028, ../sass/_padrao.scss */
 #footer .footer-logo img {
   width: 39%;
   width: 65%;
 }
 
-/* line 1028, ../sass/_padrao.scss */
+/* line 1032, ../sass/_padrao.scss */
 #footer .footer-logo p {
   margin: 5px 0;
   color: #d3d3d3;
 }
 
-/* line 1032, ../sass/_padrao.scss */
+/* line 1036, ../sass/_padrao.scss */
 #footer .footer-logo a {
   color: #b8375d;
 }
 
-/* line 1035, ../sass/_padrao.scss */
+/* line 1039, ../sass/_padrao.scss */
 #footer .footer-logo span {
   color: #d3d3d3;
+}
+
+/* line 5, ../sass/app.scss */
+.lupa {
+  width: 300px;
+  margin: 0 auto;
+  min-width: 440px;
+  position: relative;
+  padding-bottom: 67px;
+}
+/* line 14, ../sass/app.scss */
+.lupa .fa {
+  position: absolute;
+  font-size: 27px;
+  top: 0px;
+  right: 0px;
+  color: #fff;
+  background-color: #c3c3c3;
+  border-radius: 0 8px 8px 0;
+  padding: 11px;
 }
