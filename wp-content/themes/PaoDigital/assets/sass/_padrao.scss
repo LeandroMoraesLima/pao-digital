@@ -677,7 +677,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #about .about-img {
   height: 435px;
   overflow: hidden;
-  margin-top: 60px;
+  margin-top: 85px;
 }
 
 #about .about-img img {
@@ -732,18 +732,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #about .menu {
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: #ffb700;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  margin-top: 60px;
+  margin-top: 85px;
+  
 }
 #about .menu h3{
   font-size: 28px;
   color: #111;
   font-weight: 400;
+  margin: 0;
 }
 #about .menu .pedir{
   background: #ffb600;
@@ -755,6 +751,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 14px;
   font-weight: 400;
   font-family: "Montserrat", sans-serif;
+}
+#about .menu .line {
+  width: 60px;
+  height: 3px;
+  background: #ffb700;
+  text-align: left;
+  margin: 15px 0;
 }
 
 /* Our Team Section
@@ -811,19 +814,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 #team .text{
   padding-left: 115px;
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: #ffb700;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  margin-top: 60px;
 }
 #team .title{
   font-size: 28px;
   color: #111;
   font-weight: 400;
-
+  margin: 0;
+}
+#team .line {
+  width: 60px;
+  height: 3px;
+  background: #ffb700;
+  text-align: left;
+  margin: 15px 0;
 }
 /* More Features Section
 --------------------------------*/

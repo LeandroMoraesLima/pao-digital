@@ -100,7 +100,7 @@ Product Featuress Section
 			</div>
 
 			<div class="col-lg-4 col-md-5 features-img">
-				<img class="wow fadeInLeft" src="<?php echo IMG; ?>/product-features1.png" >
+				<img class="wow fadeInLeft" src="<?php echo IMG; ?>/product-features.png" >
 			</div>
 
 			<div class="col-lg-8 col-md-7 ">
@@ -204,6 +204,7 @@ About Us Section
 				<div class="row">
 					<div class="menu col-lg-6 wow fadeInLeft ">
 						<h3 class="section-title">Cardápio</h3>
+						<hr class="line">
 						<span class="section-divider"></span>
 						<p class="section-description">
 							Não é todo o dia que vai tomar aquele café da manhã responsa?<br>
@@ -233,6 +234,7 @@ Our Team Section
 					</div>	
 					<div class="text col-lg-6 content wow fadeInRight">
 						<h3 class="title">Drive Thru</h3>
+						<hr class="line">
 						<span class="section-divider"></span>
 						<p class="section-description">Esta sem tempo de parar e comer na padaria que mais ama?<br>Ou então quer levar para casa aquela comidinha especial?<br>Peça agora e retire na padaria da sua preferênciq!</p>
 					</div>
@@ -251,7 +253,7 @@ More Features Section
 		<div class="section-header">
 			<h3 class="section-title">More Features</h3>
 			<span class="section-divider"></span>
-			<p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+			<p class="section-description">Encontre alguns de nossos parceiros pela cidade</p>
 		</div>
 
 		<div class="row">
@@ -259,7 +261,7 @@ More Features Section
 			<div class="col-lg-6">
 				<div class="box wow fadeInLeft">
 					<div class="icon"><i class="ion-ios-stopwatch-outline"></i></div>
-					<h4 class="title"><a href="">Lorem Ipsum</a></h4>
+					<h4 class="title"><a href="">Parceiros</a></h4>
 					<p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident etiro rabeta lingo.</p>
 				</div>
 			</div>

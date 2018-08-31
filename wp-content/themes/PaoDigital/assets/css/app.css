@@ -764,7 +764,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #about .about-img {
   height: 435px;
   overflow: hidden;
-  margin-top: 60px;
+  margin-top: 85px;
 }
 
 /* line 683, ../sass/_padrao.scss */
@@ -830,23 +830,18 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* line 734, ../sass/_padrao.scss */
 #about .menu {
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: #ffb700;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  margin-top: 60px;
+  margin-top: 85px;
 }
 
-/* line 743, ../sass/_padrao.scss */
+/* line 738, ../sass/_padrao.scss */
 #about .menu h3 {
   font-size: 28px;
   color: #111;
   font-weight: 400;
+  margin: 0;
 }
 
-/* line 748, ../sass/_padrao.scss */
+/* line 744, ../sass/_padrao.scss */
 #about .menu .pedir {
   background: #ffb600;
   display: inline-block;
@@ -859,34 +854,43 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-family: "Montserrat", sans-serif;
 }
 
+/* line 755, ../sass/_padrao.scss */
+#about .menu .line {
+  width: 60px;
+  height: 3px;
+  background: #ffb700;
+  text-align: left;
+  margin: 15px 0;
+}
+
 /* Our Team Section
 --------------------------------*/
-/* line 762, ../sass/_padrao.scss */
+/* line 765, ../sass/_padrao.scss */
 #team {
   padding: 60px 0;
   overflow: hidden;
   background: #edeef0;
 }
 
-/* line 768, ../sass/_padrao.scss */
+/* line 771, ../sass/_padrao.scss */
 #team .member {
   text-align: center;
   margin-bottom: 20px;
 }
 
-/* line 773, ../sass/_padrao.scss */
+/* line 776, ../sass/_padrao.scss */
 #team .member .pic {
   margin-bottom: 15px;
   overflow: hidden;
   height: 260px;
 }
 
-/* line 779, ../sass/_padrao.scss */
+/* line 782, ../sass/_padrao.scss */
 #team .member .pic img {
   max-width: 100%;
 }
 
-/* line 783, ../sass/_padrao.scss */
+/* line 786, ../sass/_padrao.scss */
 #team .member h3 {
   font-size: 28px;
   color: #111;
@@ -894,62 +898,65 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-weight: 400;
 }
 
-/* line 790, ../sass/_padrao.scss */
+/* line 793, ../sass/_padrao.scss */
 #team .member span {
   font-style: italic;
   display: block;
   font-size: 13px;
 }
 
-/* line 796, ../sass/_padrao.scss */
+/* line 799, ../sass/_padrao.scss */
 #team .member .social {
   margin-top: 15px;
 }
 
-/* line 800, ../sass/_padrao.scss */
+/* line 803, ../sass/_padrao.scss */
 #team .member .social a {
   color: #b3b3b3;
 }
 
-/* line 804, ../sass/_padrao.scss */
+/* line 807, ../sass/_padrao.scss */
 #team .member .social a:hover {
   color: #1dc8cd;
 }
 
-/* line 808, ../sass/_padrao.scss */
+/* line 811, ../sass/_padrao.scss */
 #team .member .social i {
   font-size: 18px;
   margin: 0 2px;
 }
 
-/* line 812, ../sass/_padrao.scss */
+/* line 815, ../sass/_padrao.scss */
 #team .text {
   padding-left: 115px;
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: #ffb700;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  margin-top: 60px;
 }
 
-/* line 822, ../sass/_padrao.scss */
+/* line 818, ../sass/_padrao.scss */
 #team .title {
   font-size: 28px;
   color: #111;
   font-weight: 400;
+  margin: 0;
+}
+
+/* line 824, ../sass/_padrao.scss */
+#team .line {
+  width: 60px;
+  height: 3px;
+  background: #ffb700;
+  text-align: left;
+  margin: 15px 0;
 }
 
 /* More Features Section
 --------------------------------*/
-/* line 830, ../sass/_padrao.scss */
+/* line 833, ../sass/_padrao.scss */
 #more-features {
   padding: 60px 0 60px 0;
   overflow: hidden;
 }
 
-/* line 835, ../sass/_padrao.scss */
+/* line 838, ../sass/_padrao.scss */
 #more-features .box {
   padding: 40px;
   margin-bottom: 30px;
@@ -958,12 +965,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   transition: 0.4s;
 }
 
-/* line 843, ../sass/_padrao.scss */
+/* line 846, ../sass/_padrao.scss */
 #more-features .icon {
   float: left;
 }
 
-/* line 847, ../sass/_padrao.scss */
+/* line 850, ../sass/_padrao.scss */
 #more-features .icon i {
   color: #666666;
   font-size: 80px;
@@ -971,7 +978,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   line-height: 0;
 }
 
-/* line 854, ../sass/_padrao.scss */
+/* line 857, ../sass/_padrao.scss */
 #more-features .icon i:before {
   background: #1dc8cd;
   background: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
@@ -980,7 +987,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   -webkit-text-fill-color: transparent;
 }
 
-/* line 862, ../sass/_padrao.scss */
+/* line 865, ../sass/_padrao.scss */
 #more-features h4 {
   margin-left: 100px;
   font-weight: 700;
@@ -988,12 +995,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 18px;
 }
 
-/* line 869, ../sass/_padrao.scss */
+/* line 872, ../sass/_padrao.scss */
 #more-features h4 a {
   color: #111;
 }
 
-/* line 873, ../sass/_padrao.scss */
+/* line 876, ../sass/_padrao.scss */
 #more-features p {
   font-size: 14px;
   margin-left: 100px;
@@ -1002,19 +1009,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 @media (max-width: 767px) {
-  /* line 881, ../sass/_padrao.scss */
+  /* line 884, ../sass/_padrao.scss */
   #more-features .box {
     margin-bottom: 20px;
   }
 
-  /* line 884, ../sass/_padrao.scss */
+  /* line 887, ../sass/_padrao.scss */
   #more-features .icon {
     float: none;
     text-align: center;
     padding-bottom: 15px;
   }
 
-  /* line 889, ../sass/_padrao.scss */
+  /* line 892, ../sass/_padrao.scss */
   #more-features h4, #more-features p {
     margin-left: 0;
     text-align: center;
@@ -1022,14 +1029,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 /* Contact Section
 --------------------------------*/
-/* line 897, ../sass/_padrao.scss */
+/* line 900, ../sass/_padrao.scss */
 #contact {
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
   padding: 60px 0;
   overflow: hidden;
 }
 
-/* line 903, ../sass/_padrao.scss */
+/* line 906, ../sass/_padrao.scss */
 #contact .contact-about h3 {
   font-size: 36px;
   margin: 0 0 10px 0;
@@ -1042,7 +1049,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #1dc8cd;
 }
 
-/* line 915, ../sass/_padrao.scss */
+/* line 918, ../sass/_padrao.scss */
 #contact .contact-about p {
   font-size: 14px;
   line-height: 24px;
@@ -1050,12 +1057,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #888;
 }
 
-/* line 922, ../sass/_padrao.scss */
+/* line 925, ../sass/_padrao.scss */
 #contact .social-links {
   padding-bottom: 20px;
 }
 
-/* line 926, ../sass/_padrao.scss */
+/* line 929, ../sass/_padrao.scss */
 #contact .social-links a {
   font-size: 18px;
   display: inline-block;
@@ -1072,18 +1079,18 @@ body.mobile-nav-active #mobile-nav-toggle {
   border: 1px solid #1dc8cd;
 }
 
-/* line 942, ../sass/_padrao.scss */
+/* line 945, ../sass/_padrao.scss */
 #contact .social-links a:hover {
   background: #1dc8cd;
   color: #fff;
 }
 
-/* line 947, ../sass/_padrao.scss */
+/* line 950, ../sass/_padrao.scss */
 #contact .info {
   color: #333333;
 }
 
-/* line 951, ../sass/_padrao.scss */
+/* line 954, ../sass/_padrao.scss */
 #contact .info i {
   font-size: 32px;
   color: #1dc8cd;
@@ -1091,14 +1098,14 @@ body.mobile-nav-active #mobile-nav-toggle {
   line-height: 1;
 }
 
-/* line 958, ../sass/_padrao.scss */
+/* line 961, ../sass/_padrao.scss */
 #contact .info p {
   padding: 0 0 10px 42px;
   line-height: 28px;
   font-size: 14px;
 }
 
-/* line 964, ../sass/_padrao.scss */
+/* line 967, ../sass/_padrao.scss */
 #contact .form #sendmessage {
   color: #1dc8cd;
   border: 1px solid #1dc8cd;
@@ -1109,7 +1116,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 15px;
 }
 
-/* line 974, ../sass/_padrao.scss */
+/* line 977, ../sass/_padrao.scss */
 #contact .form #errormessage {
   color: red;
   display: none;
@@ -1120,12 +1127,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 15px;
 }
 
-/* line 984, ../sass/_padrao.scss */
+/* line 987, ../sass/_padrao.scss */
 #contact .form #sendmessage.show, #contact .form #errormessage.show, #contact .form .show {
   display: block;
 }
 
-/* line 988, ../sass/_padrao.scss */
+/* line 991, ../sass/_padrao.scss */
 #contact .form .validation {
   color: red;
   display: none;
@@ -1134,14 +1141,14 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 13px;
 }
 
-/* line 996, ../sass/_padrao.scss */
+/* line 999, ../sass/_padrao.scss */
 #contact .form input, #contact .form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
 }
 
-/* line 1002, ../sass/_padrao.scss */
+/* line 1005, ../sass/_padrao.scss */
 #contact .form button[type="submit"] {
   background: linear-gradient(45deg, #1de099, #1dc8cd);
   border: 0;
@@ -1150,7 +1157,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
 }
 
-/* line 1010, ../sass/_padrao.scss */
+/* line 1013, ../sass/_padrao.scss */
 #contact .form button[type="submit"]:hover {
   cursor: pointer;
 }
@@ -1158,7 +1165,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-/* line 1017, ../sass/_padrao.scss */
+/* line 1020, ../sass/_padrao.scss */
 #footer {
   background: #fff;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
@@ -1167,24 +1174,24 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 14px;
 }
 
-/* line 1025, ../sass/_padrao.scss */
+/* line 1028, ../sass/_padrao.scss */
 #footer .credits {
   font-size: 13px;
   color: #888;
 }
 
-/* line 1030, ../sass/_padrao.scss */
+/* line 1033, ../sass/_padrao.scss */
 #footer .footer-links a {
   color: #666;
   padding-left: 15px;
 }
 
-/* line 1035, ../sass/_padrao.scss */
+/* line 1038, ../sass/_padrao.scss */
 #footer .footer-links a:first-child {
   padding-left: 0;
 }
 
-/* line 1039, ../sass/_padrao.scss */
+/* line 1042, ../sass/_padrao.scss */
 #footer .footer-links a:hover {
   color: #1dc8cd;
 }
