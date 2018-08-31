@@ -264,7 +264,7 @@ More Features Section
 					<h4 class="title"><a href="">Parceiros</a></h4>
 					<p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident etiro rabeta lingo.</p>
 				</div>
-			</div>
+			</div> 
 
 			<div class="col-lg-6">
 				<div class="box wow fadeInRight">
