@@ -7,8 +7,7 @@
 
 	require_once (__DIR__.'/lib/wp-database-custom.php');
 	require_once (__DIR__.'/lib/wp-posts-custom.php');
-	require_once(__DIR__.'/podsDebugger.php');
-	//add_action('init', array('podsDebugger','initialize'));
+	
 
 
 	function load_scripts()
