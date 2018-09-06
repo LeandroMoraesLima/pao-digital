@@ -182,8 +182,8 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   height: calc(50% - 60px);
-  display: flex;
-  align-items: center;
+  @include flexbox();
+  @include align-items(center);
   justify-content: center;
   text-align: center;
   flex-direction: column;
@@ -701,7 +701,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   height: 3px;
   background: #ffb700;
   margin: 0 auto;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 }
 
 /* Section with background
@@ -906,6 +906,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding-bottom: 20px;
   border-radius: 8px;   
   box-shadow: none;
+  text-align: center;
 }
 #more-features .ver{
   background: #ffb600;
