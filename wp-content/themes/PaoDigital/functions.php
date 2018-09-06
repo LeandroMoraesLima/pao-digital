@@ -5,6 +5,11 @@
 	define('LIB', get_template_directory_uri().'/assets/lib');
 	define('IMAGES', get_template_directory_uri().'/assets/images');
 
+	require_once (__DIR__.'/lib/wp-database-custom.php');
+	require_once (__DIR__.'/lib/wp-posts-custom.php');
+	require_once(__DIR__.'/podsDebugger.php');
+	//add_action('init', array('podsDebugger','initialize'));
+
 
 	function load_scripts()
 	{
@@ -60,5 +65,172 @@
 	}
 
 	add_action('wp_enqueue_scripts', 'load_scripts');
+
+
+
+	function remove_menus () 
+	{
+		global $menu;
+		if (current_user_can( 'administrator' ))
+		{
+			$restricted = array(
+				//Remova ou comente as linhas a seguir para exibir os itens.
+				__('Dashboard'),
+				__('Posts'),
+				__('Media'),
+				__('Links'),
+				__('Pages'),
+				__('Appearance'),
+				__('Tools'),
+				__('Users'),
+				__('Settings'),
+				__('Comments'),
+				__('Plugins'),
+				__('Options')
+			);
+
+		} elseif (current_user_can( 'cliente' )) {
+			$restricted = array(
+				//Remova ou comente as linhas a seguir para exibir os itens.
+				__('Dashboard'),
+				__('Posts'),
+				__('Media'),
+				__('Links'),
+				__('Pages'),
+				__('Appearance'),
+				__('Tools'),
+				__('Users'),
+				__('Settings'),
+				__('Comments'),
+				__('Plugins'),
+				__('Options')
+			);
+		} elseif (current_user_can( 'ajudante' )) {
+			$restricted = array(
+				//Remova ou comente as linhas a seguir para exibir os itens.
+				__('Dashboard'),
+				__('Posts'),
+				__('Media'),
+				__('Links'),
+				__('Pages'),
+				__('Appearance'),
+				__('Tools'),
+				__('Users'),
+				__('Settings'),
+				__('Comments'),
+				__('Plugins'),
+				__('Options')
+			);
+		} elseif (current_user_can( 'padeiro' )) {
+			$restricted = array(
+				//Remova ou comente as linhas a seguir para exibir os itens.
+				__('Dashboard'),
+				__('Posts'),
+				__('Media'),
+				__('Links'),
+				__('Pages'),
+				__('Appearance'),
+				__('Tools'),
+				__('Users'),
+				__('Settings'),
+				__('Comments'),
+				__('Plugins'),
+				__('Options')
+			);
+		}
+		
+		end ($menu);
+		while (prev($menu)){
+			$value = explode(' ',$menu[key($menu)][0]);
+			if( in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
+		}
+		remove_menu_page('edit.php?post_type=acf-field-group');
+		//die();
+	}
+	add_action('admin_menu', 'remove_menus');
+
+
+	// Disable Admin Bar for everyone
+	add_action('admin_head', 'my_custom_fonts');
+
+	function my_custom_fonts() { ?>
+	  <style>
+		#wp-admin-bar-comments, #wp-admin-bar-new-content, #wpfooter, #wp-admin-bar-wp-logo, #screen-meta-links { display: none; }
+	  </style>';
+	<?php }
+
+
+	//Add custom role
+	remove_role('contributor');
+	remove_role('subscriber');
+	remove_role('author');
+	remove_role('editor');
+	remove_role('client');
+	add_role( 
+		'cliente', 
+		__('Cliente' ),
+		array(
+			'read' => true, // true allows this capability
+			'edit_posts' => true, // Allows user to edit their own posts
+			'edit_pages' => true, // Allows user to edit pages
+			'edit_others_posts' => true, // Allows user to edit others posts not just their own
+			'create_posts' => true, // Allows user to create new posts
+			'manage_categories' => true, // Allows user to manage post categories
+			'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
+		)
+	);
+
+	add_role( 
+		'padeiro', 
+		__('Padeiro' ),
+		array(
+			'read' => true, // true allows this capability
+			'edit_posts' => true, // Allows user to edit their own posts
+			'edit_pages' => true, // Allows user to edit pages
+			'edit_others_posts' => true, // Allows user to edit others posts not just their own
+			'create_posts' => true, // Allows user to create new posts
+			'manage_categories' => true, // Allows user to manage post categories
+			'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
+		)
+	);
+
+	add_role( 
+		'ajudante', 
+		__('Ajudante' ),
+		array(
+			'read' => true, // true allows this capability
+			'edit_posts' => true, // Allows user to edit their own posts
+			'edit_pages' => true, // Allows user to edit pages
+			'edit_others_posts' => true, // Allows user to edit others posts not just their own
+			'create_posts' => true, // Allows user to create new posts
+			'manage_categories' => true, // Allows user to manage post categories
+			'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
+		)
+	);
+
+
+
+
+	//remve widgets of dashboard
+	function remove_dashboard_widgets() {
+
+		global $wp_meta_boxes;
+
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);
+
+		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+	}
+	add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
+
+
+
+
+
+
+
+
+
 
  ?>
