@@ -199,7 +199,14 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   height: calc(50% - 60px);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -785,7 +792,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   height: 3px;
   background: #ffb700;
   margin: 0 auto;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 }
 
 /* Section with background
@@ -1036,9 +1043,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding-bottom: 20px;
   border-radius: 8px;
   box-shadow: none;
+  text-align: center;
 }
 
-/* line 910, ../sass/_padrao.scss */
+/* line 911, ../sass/_padrao.scss */
 #more-features .ver {
   background: #ffb600;
   display: inline-block;
@@ -1054,7 +1062,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Contact Section
 --------------------------------*/
-/* line 926, ../sass/_padrao.scss */
+/* line 927, ../sass/_padrao.scss */
 #contact {
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
   padding: 50px 0;
@@ -1062,7 +1070,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #f4f4f4;
 }
 
-/* line 932, ../sass/_padrao.scss */
+/* line 933, ../sass/_padrao.scss */
 #contact hr {
   display: block;
   width: 60px;
@@ -1072,14 +1080,14 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 41px;
 }
 
-/* line 941, ../sass/_padrao.scss */
+/* line 942, ../sass/_padrao.scss */
 #contact .form input, #contact .form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
 }
 
-/* line 947, ../sass/_padrao.scss */
+/* line 948, ../sass/_padrao.scss */
 #contact .form button[type="submit"] {
   background: linear-gradient(45deg, #1de099, #1dc8cd);
   border: 0;
@@ -1088,18 +1096,18 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
 }
 
-/* line 955, ../sass/_padrao.scss */
+/* line 956, ../sass/_padrao.scss */
 #contact .form button[type="submit"]:hover {
   cursor: pointer;
 }
 
-/* line 960, ../sass/_padrao.scss */
+/* line 961, ../sass/_padrao.scss */
 #contact .contact {
   float: left;
   width: 49.5%;
 }
 
-/* line 965, ../sass/_padrao.scss */
+/* line 966, ../sass/_padrao.scss */
 #contact input, textarea {
   border: 1px solid #6d6964;
   width: 100%;
@@ -1111,29 +1119,29 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #f4f4f4;
 }
 
-/* line 977, ../sass/_padrao.scss */
+/* line 978, ../sass/_padrao.scss */
 #contact textarea {
   height: 223px;
   resize: none;
 }
 
-/* line 982, ../sass/_padrao.scss */
+/* line 983, ../sass/_padrao.scss */
 #contact .left {
   margin-right: .5%;
 }
 
-/* line 986, ../sass/_padrao.scss */
+/* line 987, ../sass/_padrao.scss */
 #contact .right {
   margin-left: .5%;
 }
 
-/* line 990, ../sass/_padrao.scss */
+/* line 991, ../sass/_padrao.scss */
 #contact .botao {
   text-align: center;
   padding-top: 40px;
 }
 
-/* line 994, ../sass/_padrao.scss */
+/* line 995, ../sass/_padrao.scss */
 #contact .ver {
   background: #ffb600;
   display: inline-block;
@@ -1150,7 +1158,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-/* line 1009, ../sass/_padrao.scss */
+/* line 1010, ../sass/_padrao.scss */
 #footer {
   background: #434343;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
@@ -1159,45 +1167,45 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 14px;
 }
 
-/* line 1017, ../sass/_padrao.scss */
+/* line 1018, ../sass/_padrao.scss */
 #footer .footer-links a:first-child {
   padding-left: 0;
 }
 
-/* line 1021, ../sass/_padrao.scss */
+/* line 1022, ../sass/_padrao.scss */
 #footer .footer-links a:hover {
   color: #1dc8cd;
 }
 
-/* line 1024, ../sass/_padrao.scss */
+/* line 1025, ../sass/_padrao.scss */
 #footer .footer-logo {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 1028, ../sass/_padrao.scss */
+/* line 1029, ../sass/_padrao.scss */
 #footer .footer-logo img {
   width: 39%;
   width: 65%;
 }
 
-/* line 1032, ../sass/_padrao.scss */
+/* line 1033, ../sass/_padrao.scss */
 #footer .footer-logo p {
   margin: 5px 0;
   color: #d3d3d3;
 }
 
-/* line 1036, ../sass/_padrao.scss */
+/* line 1037, ../sass/_padrao.scss */
 #footer .footer-logo a {
   color: #b8375d;
 }
 
-/* line 1039, ../sass/_padrao.scss */
+/* line 1040, ../sass/_padrao.scss */
 #footer .footer-logo span {
   color: #d3d3d3;
 }
 
-/* line 5, ../sass/app.scss */
+/* line 1, ../sass/_parceiros.scss */
 .lupa {
   width: 300px;
   margin: 0 auto;
@@ -1205,7 +1213,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   position: relative;
   padding-bottom: 67px;
 }
-/* line 14, ../sass/app.scss */
+/* line 10, ../sass/_parceiros.scss */
 .lupa .fa {
   position: absolute;
   font-size: 27px;
@@ -1215,4 +1223,265 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-color: #c3c3c3;
   border-radius: 0 8px 8px 0;
   padding: 11px;
+}
+
+/* line 8, ../sass/app.scss */
+#menu {
+  padding: 82px 0 115px 0;
+  overflow: hidden;
+}
+/* line 12, ../sass/app.scss */
+#menu .custom-select {
+  width: 150px;
+  height: 50px;
+  border-radius: 8px;
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+  font-size: 15px;
+  box-shadow: none;
+  border-color: #ced4da;
+}
+/* line 22, ../sass/app.scss */
+#menu .Prato {
+  text-align: right;
+}
+/* line 26, ../sass/app.scss */
+#menu .botao {
+  min-width: 440px;
+  min-height: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: none;
+  border-color: #ced4da;
+  position: relative;
+}
+/* line 37, ../sass/app.scss */
+#menu .fa {
+  font-size: 27px;
+  color: #fff;
+  background-color: #c3c3c3;
+  border-radius: 0 8px 8px 0;
+  padding: 10px 11px 12px;
+  margin: -58px -47px;
+  position: absolute;
+}
+/* line 48, ../sass/app.scss */
+#menu .accordion .btn {
+  color: #7b7b8b;
+  font-size: 18px;
+  font-family: Myriad Pro;
+}
+/* line 53, ../sass/app.scss */
+#menu .accordion .btn span {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 480px;
+  vertical-align: middle;
+  border-top: 10px dashed;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+/* line 66, ../sass/app.scss */
+#menu .accordion .collapse-show .card-body {
+  margin-left: 0;
+  padding-left: 0;
+}
+/* line 70, ../sass/app.scss */
+#menu .accordion .collapse-show .card-body ul {
+  list-style: none;
+  border-left: 0;
+  padding-left: 0;
+}
+/* line 76, ../sass/app.scss */
+#menu .accordion .collapse-show .card-body ul li .image-holder {
+  display: inline-block;
+  width: 65px;
+  height: 65px;
+  vertical-align: top;
+}
+/* line 82, ../sass/app.scss */
+#menu .accordion .collapse-show .card-body ul li .image-holder img {
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 80px;
+}
+/* line 88, ../sass/app.scss */
+#menu .accordion .collapse-show .card-body ul li .text-holder {
+  text-align: center;
+}
+/* line 91, ../sass/app.scss */
+#menu .accordion .collapse-show .card-body ul li .text-holder h6 {
+  color: #636363;
+  font-size: 22px;
+  font-family: Montserrat;
+}
+/* line 96, ../sass/app.scss */
+#menu .accordion .collapse-show .card-body ul li .text-holder h6 span {
+  font-size: 12px;
+  color: #a9a9a9;
+  display: block;
+  line-height: 16px;
+}
+/* line 104, ../sass/app.scss */
+#menu .accordion .collapse-show .card-body ul li .price-holder {
+  top: 80%;
+  position: absolute;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  line-height: 0;
+  display: block;
+  margin-top: -10px;
+}
+/* line 114, ../sass/app.scss */
+#menu .accordion .collapse-show .card-body ul li .price-holder .price {
+  font-size: 22px;
+  color: #636363;
+  font-family: 'Montserrat', sans-serif;
+  vertical-align: middle;
+}
+/* line 120, ../sass/app.scss */
+#menu .accordion .collapse-show .card-body ul li .price-holder a {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  text-decoration: none;
+  box-shadow: none;
+}
+/* line 133, ../sass/app.scss */
+#menu .sticky-sidebar {
+  position: relative;
+  overflow: visible;
+  box-sizing: border-box;
+  min-height: 1px;
+}
+/* line 139, ../sass/app.scss */
+#menu .sticky-sidebar .user-order {
+  border: 1px solid #d6d6d6;
+  padding: 15px 0px;
+}
+/* line 143, ../sass/app.scss */
+#menu .sticky-sidebar .user-order h6 {
+  font-family: Montserrat;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 0 20px;
+}
+/* line 149, ../sass/app.scss */
+#menu .sticky-sidebar .user-order h6 span {
+  float: right;
+  font-size: 13px;
+  font-weight: 400;
+}
+/* line 155, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .price-area {
+  margin: 0 0 12px;
+  background-color: #f2f2f3;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+/* line 160, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .price-area ul {
+  margin: 5px 0;
+  list-style: none;
+  padding: 0;
+  padding: 8px;
+}
+/* line 166, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .price-area ul li {
+  font-size: 12px;
+  line-height: normal;
+  margin: 0 0 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-family: Montserrat;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333c45;
+}
+/* line 176, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .price-area ul li .price {
+  color: #2f313a;
+  float: right;
+  font-size: 13px;
+  font-weight: 400;
+}
+/* line 184, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .price-area ul .tempo {
+  font-size: 11px;
+  font-weight: 700;
+  color: #333c45;
+  margin: 0;
+}
+/* line 190, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .price-area ul .tempo .min {
+  float: right;
+  font-size: 13px;
+  font-weight: 400;
+}
+/* line 200, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .input-group .form-control {
+  margin-left: 8px;
+  border-radius: 6px 0 0 6px;
+  font-size: 15px;
+}
+/* line 205, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .input-group .input-group-append {
+  margin-right: 8px;
+}
+/* line 208, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .input-group .input-group-append .input-group-text {
+  border-radius: 0 6px 6px 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  background-color: #c3c3c3;
+}
+/* line 218, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .input-group .atecao p {
+  font-size: 13px;
+  margin: 5px 12px;
+  font-weight: 100;
+}
+/* line 223, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .input-group .atecao p span {
+  color: #7b7b87;
+  font-size: 14px;
+  font-weight: 600;
+}
+/* line 232, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .pay-option {
+  margin: 0 0 12px;
+}
+/* line 235, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .pay-option li {
+  color: #2f313a;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0 -4px 0 0;
+  text-align: center;
+  vertical-align: middle;
+  width: 50%;
+}
+/* line 247, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .menu-order {
+  padding: 10px;
+}
+/* line 250, ../sass/app.scss */
+#menu .sticky-sidebar .user-order .menu-order .menu-order-confirm {
+  background-color: #73c501;
+  border: none;
+  display: block;
+  border-radius: 3px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 15px 0px;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+  border-radius: 8px;
 }
