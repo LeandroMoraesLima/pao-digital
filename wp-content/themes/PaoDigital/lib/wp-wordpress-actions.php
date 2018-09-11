@@ -55,4 +55,19 @@
 
 		wp_enqueue_style('boot_css', get_template_directory_uri() . '/assets/css/bootstrap.min.css' );
 		wp_enqueue_script('boot_js', get_template_directory_uri() . '/assets/js/bootstrap.min.js' );
-	 }
+	}
+
+
+
+
+	add_action( 'admin_footer', 'rv_custom_dashboard_widget' );
+	function rv_custom_dashboard_widget() {
+		// Bail if not viewing the main dashboard page
+		if ( get_current_screen()->base !== 'dashboard' ) {
+			return;
+		}
+		get_template_part('lib/template', 'widgets');
+	}
+
+
+
