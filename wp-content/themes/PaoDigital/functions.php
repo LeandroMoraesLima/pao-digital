@@ -7,6 +7,7 @@
 
 	require_once (__DIR__.'/lib/wp-database-custom.php');
 	require_once (__DIR__.'/lib/wp-posts-custom.php');
+	require_once (__DIR__.'/lib/wp-wordpress-actions.php');
 	
 
 
@@ -20,7 +21,7 @@
 		wp_register_style( 'font-awesomecss', LIB . '/font-awesome/css/font-awesome.min.css', array(), '0.0.1', false );
 		wp_register_style( 'ioniconscss', LIB . '/ionicons/css/ionicons.min.css', array(), '0.0.1', false );
 		wp_register_style( 'magnific-popupcss', LIB . '/magnific-popup/magnific-popup.css', array(), '0.0.1', false );
-		wp_register_style( 'appcss', CSS . '/app.css', array(), '0.0.1', false );
+		wp_register_style( 'appcss', CSS . '/app.css', array(), '0.0.2', false );
 
 		//wp_register_style('swipercss', CSS . '/swiper.css', array(), '0.0.1', false );
 		//wp_register_style('style_css', CSS . '/app.css', array(), '0.0.4', false );
@@ -82,7 +83,7 @@
 				__('Appearance'),
 				__('Tools'),
 				__('Users'),
-				__('Settings'),
+				//__('Settings'),
 				__('Comments'),
 				__('Plugins'),
 				__('Options')
@@ -224,7 +225,16 @@
 	add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 
 
-
+	// Verifica se não existe nenhuma função com o nome tutsup_session_start
+	if ( ! function_exists( 'tutsup_session_start' ) ) {
+		// Cria a função
+		function tutsup_session_start() {
+			// Inicia uma sessão PHP
+			if ( ! session_id() ) session_start();
+		}
+		// Executa a ação
+		add_action( 'init', 'tutsup_session_start' );
+	}
 
 
 

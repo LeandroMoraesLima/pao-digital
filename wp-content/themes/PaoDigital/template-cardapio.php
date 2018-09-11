@@ -5,6 +5,25 @@ template name: Cardápio
 
 get_header('interna');
 
+
+if( !isset( $_SESSION['paodigital']['parceiro'] ) || $_SESSION['paodigital']['parceiro'] == '' || $_SESSION['paodigital']['parceiro'] != $_POST['parceiro'] ):
+	$_SESSION['paodigital']['parceiro'] = $_POST['parceiro'];
+endif;
+
+$parceiro_prm = array(
+	'where'   => 't.id = ' . $_POST['parceiro']
+); 
+
+$cardapio_prm = array(
+	'where'   => 't.parceiro_id = ' . $_POST['parceiro']
+); 
+// Create and find in one shot 
+$parceiros = pods( 'parceiro', $parceiro_prm ); 
+
+$cardapios = pods( 'cardapio', $cardapio_prm );
+
+
+
 ?>
 
 <!--==========================
@@ -21,15 +40,7 @@ menu Section
 				<div class="row">
 					<div class="col-md-12">
 						<div class="row">
-							<div class="col-md-3">
-								<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-									<option selected>Filtrar Menu</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
-								</select>
-							</div>
-							<div class="col-md-9">
+							<div class="col-md-12">
 								<div class="Prato">
 									<input type="text" class="botao form-control mb-2" id="inlineFormInput" placeholder="Prato,ingrediente, etc...">
 									<i class="fa fa-search"></i>
@@ -43,7 +54,7 @@ menu Section
 									    <div class="card-header" id="headingOne">
 									    	<h5 class="mb-0">
 								       			<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								        		DÍDIO LANÇAMENTOS<span class="caret"></span>
+								        		<?php echo $parceiros->display('nome'); ?>
 								        		</button>
 								      		</h5>
 								    	</div>
@@ -51,9 +62,123 @@ menu Section
 								   			<div class="card-body">
 												<ul>
 													<li>
-			  		  									<div class="image-holder">
+			  		  									<div class="image-holder" style="background-image: url('<?php echo IMG; ?>/coffee.png');">
 												    		<a href="#" rel="prettyPhoto">
-												    			<img style="background-image: url('<?php echo IMG; ?>/coffee.png')">
+												    			<img src="<?php echo IMG; ?>/coffee.png" />
+												    		</a>
+												    	</div>
+														<div class="text-holder">
+															<h6>Café</h6>			 			
+													    </div>
+												    	<div class="price-holder">
+															<span class="price">
+															    R$4.50
+															</span>
+															<a href="javascript:void(0)" class="restaurant-add-menu-btn restaurant-add-menu-btn-0" data-rid="1519" data-id="0" data-cid="0">
+																<img class="john1" src="<?php echo IMG; ?>/cinal-mais.png" >
+															</a>
+													    	<span id="add-menu-loader-0"></span>
+												 	    </div>
+													</li>
+													<li>
+			  		  									<div class="image-holder" style="background-image: url('<?php echo IMG; ?>/coffee.png');">
+												    		<a href="#" rel="prettyPhoto">
+												    			<img src="<?php echo IMG; ?>/coffee.png" />
+												    		</a>
+												    	</div>
+														<div class="text-holder">
+															<h6>Café</h6>			 			
+													    </div>
+												    	<div class="price-holder">
+															<span class="price">
+															    R$4.50
+															</span>
+															<a href="javascript:void(0)" class="restaurant-add-menu-btn restaurant-add-menu-btn-0" data-rid="1519" data-id="0" data-cid="0">
+																<img class="john1" src="<?php echo IMG; ?>/cinal-mais.png" >
+															</a>
+													    	<span id="add-menu-loader-0"></span>
+												 	    </div>
+													</li>
+													<li>
+			  		  									<div class="image-holder" style="background-image: url('<?php echo IMG; ?>/coffee.png');">
+												    		<a href="#" rel="prettyPhoto">
+												    			<img src="<?php echo IMG; ?>/coffee.png" />
+												    		</a>
+												    	</div>
+														<div class="text-holder">
+															<h6>Café</h6>			 			
+													    </div>
+												    	<div class="price-holder">
+															<span class="price">
+															    R$4.50
+															</span>
+															<a href="javascript:void(0)" class="restaurant-add-menu-btn restaurant-add-menu-btn-0" data-rid="1519" data-id="0" data-cid="0">
+																<img class="john1" src="<?php echo IMG; ?>/cinal-mais.png" >
+															</a>
+													    	<span id="add-menu-loader-0"></span>
+												 	    </div>
+													</li>
+													<li>
+			  		  									<div class="image-holder" style="background-image: url('<?php echo IMG; ?>/coffee.png');">
+												    		<a href="#" rel="prettyPhoto">
+												    			<img src="<?php echo IMG; ?>/coffee.png" />
+												    		</a>
+												    	</div>
+														<div class="text-holder">
+															<h6>Café</h6>			 			
+													    </div>
+												    	<div class="price-holder">
+															<span class="price">
+															    R$4.50
+															</span>
+															<a href="javascript:void(0)" class="restaurant-add-menu-btn restaurant-add-menu-btn-0" data-rid="1519" data-id="0" data-cid="0">
+																<img class="john1" src="<?php echo IMG; ?>/cinal-mais.png" >
+															</a>
+													    	<span id="add-menu-loader-0"></span>
+												 	    </div>
+													</li>
+													<li>
+			  		  									<div class="image-holder" style="background-image: url('<?php echo IMG; ?>/coffee.png');">
+												    		<a href="#" rel="prettyPhoto">
+												    			<img src="<?php echo IMG; ?>/coffee.png" />
+												    		</a>
+												    	</div>
+														<div class="text-holder">
+															<h6>Café</h6>			 			
+													    </div>
+												    	<div class="price-holder">
+															<span class="price">
+															    R$4.50
+															</span>
+															<a href="javascript:void(0)" class="restaurant-add-menu-btn restaurant-add-menu-btn-0" data-rid="1519" data-id="0" data-cid="0">
+																<img class="john1" src="<?php echo IMG; ?>/cinal-mais.png" >
+															</a>
+													    	<span id="add-menu-loader-0"></span>
+												 	    </div>
+													</li>
+													<li>
+			  		  									<div class="image-holder" style="background-image: url('<?php echo IMG; ?>/coffee.png');">
+												    		<a href="#" rel="prettyPhoto">
+												    			<img src="<?php echo IMG; ?>/coffee.png" />
+												    		</a>
+												    	</div>
+														<div class="text-holder">
+															<h6>Café</h6>			 			
+													    </div>
+												    	<div class="price-holder">
+															<span class="price">
+															    R$4.50
+															</span>
+															<a href="javascript:void(0)" class="restaurant-add-menu-btn restaurant-add-menu-btn-0" data-rid="1519" data-id="0" data-cid="0">
+																<img class="john1" src="<?php echo IMG; ?>/cinal-mais.png" >
+															</a>
+													    	<span id="add-menu-loader-0"></span>
+												 	    </div>
+													</li>
+													<li>
+			  		  									<div class="image-holder" style="background-image: url('<?php echo IMG; ?>/coffee.png');">
+												    		<a href="#" rel="prettyPhoto">
+												    			<img src="<?php echo IMG; ?>/coffee.png" />
 												    		</a>
 												    	</div>
 														<div class="text-holder">
@@ -73,20 +198,7 @@ menu Section
 										    </div>
 										</div>
 									</div>  
-									<div class="card">
-								   		<div class="card-header" id="headingThree">
-								      		<h5 class="mb-0">
-								        		<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-								          		Collapsible Group Item #3
-								        		</button>
-								      		</h5>
-								    	</div>
-								    	<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-								     		<div class="card-body">
-								        	Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-								    		</div>
-								    	</div>
-								  	</div>
+									
 								</div>
 							</div>
 						</div>

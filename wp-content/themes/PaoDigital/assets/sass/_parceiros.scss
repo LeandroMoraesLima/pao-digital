@@ -3,7 +3,7 @@
 	margin: 0 auto;    
     min-width: 440px;
     position: relative;
-    padding-bottom: 67px;
+    padding-bottom: 25px;
 
 	.botao{
 	}
@@ -18,3 +18,24 @@
 		padding: 11px;
 	}
 } 
+
+#more-features.homepage {
+	#parceirosHere {
+		> div {
+			&:hover:before {
+				position: absolute;
+				height: 0px;
+				width: 0px;
+				content: inherit;
+				background-color: transparent;
+				border: none;
+			}
+			> div {
+				background-size: contain;
+			}
+		}
+	}
+	.botao {
+		text-align: center;
+	}
+}

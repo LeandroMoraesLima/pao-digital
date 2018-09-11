@@ -1,13 +1,17 @@
+$yellow: #ffb600;
+$white: #FFF;
+
 @import "flex";
-
 @import "padrao"; 
-
 @import "parceiros"; 
+@import "website/login";
+@import "website/cardapio";
 
 
 #menu{
 	padding: 82px 0 115px 0;
     overflow: hidden;
+    width: 100%;
 
 	.custom-select{
 		width: 150px;
@@ -20,7 +24,7 @@
 		border-color: #ced4da;
 		}
 	.Prato{
-		text-align: right;
+		text-align: right; 
 
 	}
 	.botao{
@@ -64,8 +68,8 @@
 		.collapse-show{
 
 			.card-body{
-				margin-left: 0;
-    			padding-left: 0;
+				margin: 0;
+    			padding: 0;
 
 				ul{
 					list-style: none;
@@ -73,26 +77,38 @@
    					padding-left: 0;
 
 					li{
+						border-bottom: 1px solid #e0e0e0;
+						display: inline-block;
+						width: 100%;
+						padding: 15px 0px;
 						.image-holder{
 							display: inline-block;
-						    width: 65px;
-						    height: 65px;
 						    vertical-align: top;
-							
+							float: left;
 							img{
 								background-repeat: no-repeat;
 							    background-size: contain;
-							    padding: 80px;
+							    opacity: 0;
 							}						 
 						}
 						.text-holder{
 							text-align: center;
-
+							display: inline-block;
+							padding-left: 10px;
+							width: -webkit-calc(80% - 120px);
+							width: -moz-calc(80% - 120px);
+							width: calc(80% - 120px);
+						    height: 90px;
+						    float: left;
+						    @include flexbox();
+						    @include align-items(center);
 							h6{
 								color: #636363;
 							    font-size: 22px;
 							    font-family: Montserrat;
-
+							    font-weight: 100;
+							    text-align: left;
+								margin: 0px;
 								span{
 									font-size: 12px;
 								    color: #a9a9a9;
@@ -101,16 +117,14 @@
 								}
 							}
 						}
-						.price-holder{
-							top: 80%;
-						    position: absolute;
-						    right: 0;
-						    -webkit-transform: translateY(-50%);
-						    transform: translateY(-50%);
-						    line-height: 0;
-						    display: block;
-						    margin-top: -10px;
-
+						.price-holder {
+							width: 20%;
+							float: left;
+							height: 90px;
+							@include flexbox();
+							@include align-items(center);
+							@include justify-content(flex-end);
+						    
 							.price{
 								font-size: 22px;
 							    color: #636363;

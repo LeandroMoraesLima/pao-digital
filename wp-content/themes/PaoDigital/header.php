@@ -14,6 +14,10 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
+	<script>
+		window.ajax = "/wp-admin/admin-ajax.php";
+	</script>
+
 	<?php wp_head(); ?>
 
 <!-- =======================================================
@@ -42,12 +46,14 @@ Header
 		<nav id="nav-menu-container">
 			<ul class="nav-menu">
 				<li class="menu-active"><a href="#intro">Home</a></li>
-				<li><a href="#about">Sobre Nós</a></li>
-				<li><a href="#features">Cardápio</a></li>
+				<li><a href="#">Sobre Nós</a></li>
+				<li><a href="#about">Cardápio</a></li>
 				<li><a href="#pricing">Planos</a></li>
-				<li><a href="#team">Parceiros</a></li>
+				<li><a href="#more-features">Parceiros</a></li>
 				<li><a href="#contact">Contato</a></li>
-				<li><a href="#login">Login</a></li>
+				<?php if( !is_user_logged_in() ): ?>
+					<li><a href="#login" class="lrm-login lrm-hide-if-logged-in">Login</a></li>
+				<?php endif; ?>
 			</ul>
 		</nav><!-- #nav-menu-container -->
 	</div>

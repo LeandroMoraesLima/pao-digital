@@ -15,6 +15,10 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
+	<script>
+		window.ajax = "/wp-admin/admin-ajax.php";
+	</script>
+	
 	<?php wp_head(); ?>
 
 <!-- =======================================================
