@@ -1390,13 +1390,163 @@ body button[type=submit] {
   height: 90px;
 }
 
-/* line 11, ../sass/app.scss */
+/* line 1, ../sass/website/_metodo-pagamento.scss */
+#pagamento {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+/* line 5, ../sass/website/_metodo-pagamento.scss */
+#pagamento .info {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ededed;
+  margin-bottom: 25px;
+  padding: 22px;
+}
+/* line 12, ../sass/website/_metodo-pagamento.scss */
+#pagamento .info .nomargin_top {
+  color: #333;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+/* line 24, ../sass/website/_metodo-pagamento.scss */
+#pagamento .info p {
+  font-size: 13px;
+  margin-bottom: 0px;
+  text-align: left;
+}
+/* line 30, ../sass/website/_metodo-pagamento.scss */
+#pagamento .hidden-xs {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ededed;
+  padding: 12px;
+  text-align: center;
+}
+/* line 37, ../sass/website/_metodo-pagamento.scss */
+#pagamento .hidden-xs .dashicons-editor-help {
+  font-size: 75px;
+  display: inline;
+}
+/* line 42, ../sass/website/_metodo-pagamento.scss */
+#pagamento .hidden-xs h4 {
+  color: #333;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+/* line 48, ../sass/website/_metodo-pagamento.scss */
+#pagamento .hidden-xs .phone {
+  font-size: 25px;
+  color: #85c99d;
+}
+/* line 52, ../sass/website/_metodo-pagamento.scss */
+#pagamento .hidden-xs small {
+  font-size: 11px;
+}
+/* line 56, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ededed;
+  padding: 22px;
+}
+/* line 62, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .inner {
+  background-color: #ffb600;
+  color: #fff;
+  margin: -25px -23px 25px;
+  padding: 12px 15px;
+  font-size: 22px;
+  font-weight: 600;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+/* line 73, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select {
+  background-color: #f0f0f0;
+  padding: 15px 15px 10px;
+  margin-bottom: 20px;
+}
+/* line 78, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select .payment {
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+}
+/* line 83, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select .payment .checked {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 10px 2px 0;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  background: url(grey.png) no-repeat;
+  border: none;
+  cursor: pointer;
+}
+/* line 96, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select .payment .checked .icheck {
+  position: absolute;
+  opacity: 0;
+}
+/* line 100, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select .payment .checked .iCheck-helper {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background: white;
+  border: 0px;
+  opacity: 0;
+}
+/* line 115, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select .dashicons-feedback {
+  color: #333;
+  float: right;
+  font-size: 24px;
+}
+/* line 121, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .form-group {
+  color: #333;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+/* line 129, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .form-group .form-control {
+  font-size: 13px;
+  font-weight: 400;
+}
+/* line 136, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select .payment {
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+}
+/* line 148, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select img {
+  float: right;
+}
+
+/* line 13, ../sass/app.scss */
 #menu {
   padding: 82px 0 115px 0;
   overflow: hidden;
   width: 100%;
 }
-/* line 16, ../sass/app.scss */
+/* line 18, ../sass/app.scss */
 #menu .custom-select {
   width: 150px;
   height: 50px;
@@ -1407,11 +1557,11 @@ body button[type=submit] {
   box-shadow: none;
   border-color: #ced4da;
 }
-/* line 26, ../sass/app.scss */
+/* line 28, ../sass/app.scss */
 #menu .Prato {
   text-align: right;
 }
-/* line 30, ../sass/app.scss */
+/* line 32, ../sass/app.scss */
 #menu .botao {
   min-width: 440px;
   min-height: 50px;
@@ -1422,7 +1572,7 @@ body button[type=submit] {
   border-color: #ced4da;
   position: relative;
 }
-/* line 41, ../sass/app.scss */
+/* line 43, ../sass/app.scss */
 #menu .fa {
   font-size: 27px;
   color: #fff;
@@ -1432,13 +1582,13 @@ body button[type=submit] {
   margin: -58px -47px;
   position: absolute;
 }
-/* line 52, ../sass/app.scss */
+/* line 54, ../sass/app.scss */
 #menu .accordion .btn {
   color: #7b7b8b;
   font-size: 18px;
   font-family: Myriad Pro;
 }
-/* line 57, ../sass/app.scss */
+/* line 59, ../sass/app.scss */
 #menu .accordion .btn span {
   display: inline-block;
   width: 0;
@@ -1449,37 +1599,37 @@ body button[type=submit] {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
 }
-/* line 70, ../sass/app.scss */
+/* line 72, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body {
   margin: 0;
   padding: 0;
 }
-/* line 74, ../sass/app.scss */
+/* line 76, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body ul {
   list-style: none;
   border-left: 0;
   padding-left: 0;
 }
-/* line 79, ../sass/app.scss */
+/* line 81, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body ul li {
   border-bottom: 1px solid #e0e0e0;
   display: inline-block;
   width: 100%;
   padding: 15px 0px;
 }
-/* line 84, ../sass/app.scss */
+/* line 86, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body ul li .image-holder {
   display: inline-block;
   vertical-align: top;
   float: left;
 }
-/* line 88, ../sass/app.scss */
+/* line 90, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body ul li .image-holder img {
   background-repeat: no-repeat;
   background-size: contain;
   opacity: 0;
 }
-/* line 94, ../sass/app.scss */
+/* line 96, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body ul li .text-holder {
   text-align: center;
   display: inline-block;
@@ -1499,7 +1649,7 @@ body button[type=submit] {
   -ms-align-items: center;
   align-items: center;
 }
-/* line 105, ../sass/app.scss */
+/* line 107, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body ul li .text-holder h6 {
   color: #636363;
   font-size: 22px;
@@ -1508,14 +1658,14 @@ body button[type=submit] {
   text-align: left;
   margin: 0px;
 }
-/* line 112, ../sass/app.scss */
+/* line 114, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body ul li .text-holder h6 span {
   font-size: 12px;
   color: #a9a9a9;
   display: block;
   line-height: 16px;
 }
-/* line 120, ../sass/app.scss */
+/* line 122, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body ul li .price-holder {
   width: 20%;
   float: left;
@@ -1535,14 +1685,14 @@ body button[type=submit] {
   justify-content: flex-end;
   -ms-flex-pack: flex-end;
 }
-/* line 128, ../sass/app.scss */
+/* line 130, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body ul li .price-holder .price {
   font-size: 22px;
   color: #636363;
   font-family: 'Montserrat', sans-serif;
   vertical-align: middle;
 }
-/* line 134, ../sass/app.scss */
+/* line 136, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body ul li .price-holder a {
   position: relative;
   display: inline-block;
@@ -1550,45 +1700,45 @@ body button[type=submit] {
   text-decoration: none;
   box-shadow: none;
 }
-/* line 147, ../sass/app.scss */
+/* line 149, ../sass/app.scss */
 #menu .sticky-sidebar {
   position: relative;
   overflow: visible;
   box-sizing: border-box;
   min-height: 1px;
 }
-/* line 153, ../sass/app.scss */
+/* line 155, ../sass/app.scss */
 #menu .sticky-sidebar .user-order {
   border: 1px solid #d6d6d6;
   padding: 15px 0px;
 }
-/* line 157, ../sass/app.scss */
+/* line 159, ../sass/app.scss */
 #menu .sticky-sidebar .user-order h6 {
   font-family: Montserrat;
   font-size: 13px;
   font-weight: 600;
   padding: 0 0 20px;
 }
-/* line 163, ../sass/app.scss */
+/* line 165, ../sass/app.scss */
 #menu .sticky-sidebar .user-order h6 span {
   float: right;
   font-size: 13px;
   font-weight: 400;
 }
-/* line 169, ../sass/app.scss */
+/* line 171, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .price-area {
   margin: 0 0 12px;
   background-color: #f2f2f3;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
-/* line 174, ../sass/app.scss */
+/* line 176, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .price-area ul {
   margin: 5px 0;
   list-style: none;
   padding: 0;
   padding: 8px;
 }
-/* line 180, ../sass/app.scss */
+/* line 182, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .price-area ul li {
   font-size: 12px;
   line-height: normal;
@@ -1599,37 +1749,37 @@ body button[type=submit] {
   font-weight: 600;
   color: #333c45;
 }
-/* line 190, ../sass/app.scss */
+/* line 192, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .price-area ul li .price {
   color: #2f313a;
   float: right;
   font-size: 13px;
   font-weight: 400;
 }
-/* line 198, ../sass/app.scss */
+/* line 200, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .price-area ul .tempo {
   font-size: 11px;
   font-weight: 700;
   color: #333c45;
   margin: 0;
 }
-/* line 204, ../sass/app.scss */
+/* line 206, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .price-area ul .tempo .min {
   float: right;
   font-size: 13px;
   font-weight: 400;
 }
-/* line 214, ../sass/app.scss */
+/* line 216, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .input-group .form-control {
   margin-left: 8px;
   border-radius: 6px 0 0 6px;
   font-size: 15px;
 }
-/* line 219, ../sass/app.scss */
+/* line 221, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .input-group .input-group-append {
   margin-right: 8px;
 }
-/* line 222, ../sass/app.scss */
+/* line 224, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .input-group .input-group-append .input-group-text {
   border-radius: 0 6px 6px 0;
   color: #ffffff;
@@ -1637,23 +1787,23 @@ body button[type=submit] {
   font-weight: 800;
   background-color: #c3c3c3;
 }
-/* line 232, ../sass/app.scss */
+/* line 234, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .input-group .atecao p {
   font-size: 13px;
   margin: 5px 12px;
   font-weight: 100;
 }
-/* line 237, ../sass/app.scss */
+/* line 239, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .input-group .atecao p span {
   color: #7b7b87;
   font-size: 14px;
   font-weight: 600;
 }
-/* line 246, ../sass/app.scss */
+/* line 248, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .pay-option {
   margin: 0 0 12px;
 }
-/* line 249, ../sass/app.scss */
+/* line 251, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .pay-option li {
   color: #2f313a;
   display: inline-block;
@@ -1665,11 +1815,11 @@ body button[type=submit] {
   vertical-align: middle;
   width: 50%;
 }
-/* line 261, ../sass/app.scss */
+/* line 263, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .menu-order {
   padding: 10px;
 }
-/* line 264, ../sass/app.scss */
+/* line 266, ../sass/app.scss */
 #menu .sticky-sidebar .user-order .menu-order .menu-order-confirm {
   background-color: #73c501;
   border: none;
