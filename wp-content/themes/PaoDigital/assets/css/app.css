@@ -1412,13 +1412,21 @@ body button[type=submit] {
   display: flex;
   justify-content: space-between;
 }
-/* line 24, ../sass/website/_metodo-pagamento.scss */
+/* line 20, ../sass/website/_metodo-pagamento.scss */
+#pagamento .info .nomargin_top .dashicons {
+  font-size: 150px;
+  display: initial;
+  border: 9px solid #00FF00;
+  border-radius: 90px;
+  color: #00FF00;
+}
+/* line 29, ../sass/website/_metodo-pagamento.scss */
 #pagamento .info p {
   font-size: 13px;
   margin-bottom: 0px;
   text-align: left;
 }
-/* line 30, ../sass/website/_metodo-pagamento.scss */
+/* line 35, ../sass/website/_metodo-pagamento.scss */
 #pagamento .hidden-xs {
   background: #fff;
   border-radius: 3px;
@@ -1426,35 +1434,35 @@ body button[type=submit] {
   padding: 12px;
   text-align: center;
 }
-/* line 37, ../sass/website/_metodo-pagamento.scss */
+/* line 42, ../sass/website/_metodo-pagamento.scss */
 #pagamento .hidden-xs .dashicons-editor-help {
   font-size: 75px;
   display: inline;
 }
-/* line 42, ../sass/website/_metodo-pagamento.scss */
+/* line 47, ../sass/website/_metodo-pagamento.scss */
 #pagamento .hidden-xs h4 {
   color: #333;
   font-size: 17px;
   font-weight: 600;
   margin-bottom: 10px;
 }
-/* line 48, ../sass/website/_metodo-pagamento.scss */
+/* line 53, ../sass/website/_metodo-pagamento.scss */
 #pagamento .hidden-xs .phone {
   font-size: 25px;
   color: #85c99d;
 }
-/* line 52, ../sass/website/_metodo-pagamento.scss */
+/* line 57, ../sass/website/_metodo-pagamento.scss */
 #pagamento .hidden-xs small {
   font-size: 11px;
 }
-/* line 56, ../sass/website/_metodo-pagamento.scss */
+/* line 61, ../sass/website/_metodo-pagamento.scss */
 #pagamento .box_style_2 {
   background: #fff;
   border-radius: 3px;
   border: 1px solid #ededed;
   padding: 22px;
 }
-/* line 62, ../sass/website/_metodo-pagamento.scss */
+/* line 67, ../sass/website/_metodo-pagamento.scss */
 #pagamento .box_style_2 .inner {
   background-color: #ffb600;
   color: #fff;
@@ -1465,25 +1473,25 @@ body button[type=submit] {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
-/* line 73, ../sass/website/_metodo-pagamento.scss */
+/* line 78, ../sass/website/_metodo-pagamento.scss */
 #pagamento .box_style_2 .payment_select {
   background-color: #f0f0f0;
   padding: 15px 15px 10px;
   margin-bottom: 20px;
 }
-/* line 78, ../sass/website/_metodo-pagamento.scss */
+/* line 83, ../sass/website/_metodo-pagamento.scss */
 #pagamento .box_style_2 .payment_select .payment {
   color: #333;
   font-size: 16px;
   font-weight: 700;
 }
-/* line 83, ../sass/website/_metodo-pagamento.scss */
+/* line 88, ../sass/website/_metodo-pagamento.scss */
 #pagamento .box_style_2 .payment_select .dashicons-feedback {
   color: #333;
   float: right;
   font-size: 24px;
 }
-/* line 89, ../sass/website/_metodo-pagamento.scss */
+/* line 94, ../sass/website/_metodo-pagamento.scss */
 #pagamento .box_style_2 .form-group {
   color: #333;
   max-width: 100%;
@@ -1492,18 +1500,18 @@ body button[type=submit] {
   font-weight: 700;
   margin-bottom: 20px;
 }
-/* line 97, ../sass/website/_metodo-pagamento.scss */
+/* line 102, ../sass/website/_metodo-pagamento.scss */
 #pagamento .box_style_2 .form-group .form-control {
   font-size: 13px;
   font-weight: 400;
 }
-/* line 104, ../sass/website/_metodo-pagamento.scss */
+/* line 109, ../sass/website/_metodo-pagamento.scss */
 #pagamento .box_style_2 .payment_select .payment {
   color: #333;
   font-size: 16px;
   font-weight: 700;
 }
-/* line 116, ../sass/website/_metodo-pagamento.scss */
+/* line 121, ../sass/website/_metodo-pagamento.scss */
 #pagamento .box_style_2 .payment_select img {
   float: right;
 }
@@ -1532,7 +1540,15 @@ body button[type=submit] {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
-/* line 26, ../sass/website/_confirmacao-pagamento.scss */
+/* line 22, ../sass/website/_confirmacao-pagamento.scss */
+#confirmacao .box_style_2 .dashicons {
+  font-size: 150px;
+  display: initial;
+  border: 9px solid #00FF00;
+  border-radius: 90px;
+  color: #00FF00;
+}
+/* line 32, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 .confirm h3 {
   color: #333;
   font-size: 24px;
@@ -1540,19 +1556,19 @@ body button[type=submit] {
   margin-top: 25px;
   margin-bottom: 10px;
 }
-/* line 34, ../sass/website/_confirmacao-pagamento.scss */
+/* line 40, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 .confirm p {
   font-size: 13px;
   color: #555;
 }
-/* line 39, ../sass/website/_confirmacao-pagamento.scss */
+/* line 45, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 h4 {
   color: #333;
   font-size: 18px;
   font-weight: 500;
   float: left;
 }
-/* line 45, ../sass/website/_confirmacao-pagamento.scss */
+/* line 51, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 .table {
   text-align: left;
 }
