@@ -1,0 +1,36 @@
+#pedido{
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    .box_style_2{
+        background: #fff;
+        border-radius: 3px;
+        border: 1px solid #ededed;
+        padding: 22px;
+
+        .inner{
+            background-color: #ffb600;
+            color: #fff;
+            margin: -25px -23px 35px;
+            padding: 15px 15px;
+            font-size: 22px;
+            font-weight: 600;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+        .form-group{
+            color: #333;
+            font-weight: 700;
+            font-size: 14px;
+
+            .form-control{
+                font-size: 13px;
+            }
+        }        
+        label{
+            color: #333;
+            font-weight: 700;
+            font-size: 14px;            
+        }
+    }
+}
