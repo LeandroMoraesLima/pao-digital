@@ -38,7 +38,7 @@ $white: #FFF;
 		position: relative;
 		
 	}
-	.fa{
+	.fa.fa-search {
 		font-size: 27px;
 		color: #fff;
 		background-color: #c3c3c3;
@@ -95,9 +95,9 @@ $white: #FFF;
 							text-align: center;
 							display: inline-block;
 							padding-left: 10px;
-							width: -webkit-calc(80% - 120px);
-							width: -moz-calc(80% - 120px);
-							width: calc(80% - 120px);
+							width: -webkit-calc(70% - 120px);
+							width: -moz-calc(70% - 120px);
+							width: calc(70% - 120px);
 						    height: 90px;
 						    float: left;
 						    @include flexbox();
@@ -118,7 +118,7 @@ $white: #FFF;
 							}
 						}
 						.price-holder {
-							width: 20%;
+							width: 30%;
 							float: left;
 							height: 90px;
 							@include flexbox();
@@ -129,7 +129,8 @@ $white: #FFF;
 								font-size: 22px;
 							    color: #636363;
 							    font-family: 'Montserrat', sans-serif;
-							    vertical-align: middle;							  
+							    vertical-align: middle;
+							    padding-right: 8px;							  
 							}
 							a{
 								position: relative;
@@ -144,141 +145,7 @@ $white: #FFF;
 			}
 		}						
 	}
-	.sticky-sidebar{
-		position: relative;
-		overflow: visible;
-		box-sizing: border-box;
-		min-height: 1px;
-
-		.user-order{
-			border: 1px solid #d6d6d6;
-		    padding: 15px 0px;
-		   
-		    h6{
-			    font-family: Montserrat;
-			    font-size: 13px;
-			    font-weight: 600;
-		    	padding: 0 0 20px;
-
-			    span{
-			    	float: right;
-			    	font-size: 13px;
-    				font-weight: 400;
-			    }
-		    }
-		    .price-area{
-				margin: 0 0 12px;
-				background-color: #f2f2f3;
-				border: 1px solid rgba(0,0,0,.125);
-
-				ul{
-					margin: 5px 0;
-					list-style: none;
-					padding: 0;
-					padding: 8px;
-
-					li{
-						font-size: 12px;
-					    line-height: normal;
-					    margin: 0 0 10px;
-					    font-family: 'Open Sans', sans-serif;
-					    font-family: Montserrat;
-					    font-size: 13px;
-					    font-weight: 600;
-					    color: #333c45;
-
-					    .price{
-					    	color: #2f313a;
-							float: right;
-							font-size: 13px;
-   							font-weight: 400;
-					    }
-
-					}
-					.tempo{
-						font-size: 11px;
-    					font-weight: 700;
-    					color: #333c45;
-    					margin: 0;	
-
-    					.min{
-    						float: right;
-    						font-size: 13px;
-    						font-weight: 400;
-    					}
-					}
-				}
-			}
-			.input-group{
-
-				.form-control{
-				    margin-left: 8px;
-				    border-radius: 6px 0 0 6px;
-				    font-size: 15px;
-				}
-				.input-group-append{
-					margin-right: 8px;
-
-					.input-group-text{
-						border-radius: 0 6px 6px 0;
-						color: #ffffff;
-					    font-size: 14px;
-					    font-weight: 800;
-					    background-color: #c3c3c3;
-					}
-				}
-				.atecao{
-
-					p{
-						font-size: 13px;
-						margin: 5px 12px;
-						font-weight: 100;
-
-						span{
-							color: #7b7b87;
-							font-size: 14px;
-							font-weight: 600;
-
-						}
-					}
-				} 
-			}	    
-		    .pay-option{
-		    	margin: 0 0 12px;
-
-		    	li{
-		    		color: #2f313a;
-				    display: inline-block;
-				    font-size: 12px;
-				    font-weight: 700;
-				    line-height: normal;
-				    margin: 0 -4px 0 0;
-				    text-align: center;
-				    vertical-align: middle;
-				    width: 50%;
-		    	}
-		    }
-		    .menu-order{
-		    	padding: 10px;
-			    
-			    .menu-order-confirm{
-			    	background-color: #73c501;
-			    	border: none;
-				    display: block;
-				    border-radius: 3px;
-				    color: #fff;
-				    font-family: 'Montserrat', sans-serif;
-				    font-size: 12px;
-				    font-weight: 700;
-				    padding: 15px 0px;
-				    text-transform: uppercase;
-				    width: 100%;
-				    text-align: center;
-				    border-radius: 8px;
-			    }
-		    }
-		}
-	}	
+		
 }
 
 

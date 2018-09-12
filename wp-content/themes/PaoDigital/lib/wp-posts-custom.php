@@ -20,13 +20,10 @@
 	function my_post_save_function($pieces, $is_new_item, $id )
 	{ 
 		$current_user = wp_get_current_user();
-		$pieces[ 'fields' ][ 'parceiro_id' ][ 'value' ] = $current_user->ID; 
-		//podsDebugger::log_debug_data(print_r($pieces['fields'][ 'parceiro_id' ], TRUE));
+		$pieces[ 'fields' ][ 'parceiro_id' ][ 'value' ] = $current_user->ID;
 		return $pieces;
 	}; 
 	add_action('pods_api_pre_save_pod_item_cardapio', 'my_post_save_function', 10, 3);
-	add_action('pods_api_pre_create_pod_item_cardapio', 'my_post_save_function', 10, 3);
-	add_action('pods_api_pre_edit_pod_item_cardapio', 'my_post_save_function', 10, 3);
 			 
 
 
