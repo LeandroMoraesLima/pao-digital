@@ -1,4 +1,4 @@
-#confirmacao{
+#pedido{
     padding-top: 60px;
     padding-bottom: 60px;
 
@@ -7,7 +7,6 @@
         border-radius: 3px;
         border: 1px solid #ededed;
         padding: 22px;
-        text-align: center;
 
         .inner{
             background-color: #ffb600;
@@ -19,31 +18,19 @@
             border-top-left-radius: 3px;
             border-top-right-radius: 3px;
         }
-        
-        .confirm{
-            
-
-            h3{
-                color: #333;
-                font-size: 24px;
-                font-weight: 500;
-                margin-top: 25px;
-                margin-bottom: 10px;
-
-            }            
-            p{
-                font-size: 13px;
-                color: #555;
-            }
-        }
-        h4{
+        .form-group{
             color: #333;
-            font-size: 18px;
-            font-weight: 500;
-            float: left;
-        }
-        .table{
-            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+
+            .form-control{
+                font-size: 13px;
+            }
+        }        
+        label{
+            color: #333;
+            font-weight: 700;
+            font-size: 14px;            
         }
     }
 }
