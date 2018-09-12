@@ -79,7 +79,7 @@
 				__('Posts'),
 				__('Media'),
 				__('Links'),
-				__('Pages'),
+				//__('Pages'),
 				__('Appearance'),
 				__('Tools'),
 				__('Users'),

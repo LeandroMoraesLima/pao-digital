@@ -1,0 +1,153 @@
+#pagamento{
+    padding-top: 60px;
+    padding-bottom: 60px;
+    
+    .info{
+        background: #fff;
+        border-radius: 3px;
+        border: 1px solid #ededed;
+        margin-bottom: 25px;
+        padding: 22px;
+
+        .nomargin_top{
+            color: #333;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+
+            .dashicons{
+                
+            }
+        }
+        p{
+            font-size: 13px;
+            margin-bottom: 0px;
+            text-align: left;
+        }
+    }
+    .hidden-xs{
+        background: #fff;
+        border-radius: 3px;
+        border: 1px solid #ededed;
+        padding: 12px;
+        text-align: center;
+
+        .dashicons-editor-help{
+            font-size: 75px;
+            display: inline;
+        }
+
+        h4{
+            color: #333;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .phone{
+            font-size: 25px;
+            color: #85c99d;
+        }
+        small{
+            font-size: 11px;
+        }
+    }
+    .box_style_2{
+        background: #fff;
+        border-radius: 3px;
+        border: 1px solid #ededed;
+        padding: 22px;
+
+        .inner{
+            background-color: #ffb600;
+            color: #fff;
+            margin: -25px -23px 25px;
+            padding: 12px 15px;
+            font-size: 22px;
+            font-weight: 600;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+
+        }
+        .payment_select{
+            background-color: #f0f0f0;
+            padding: 15px 15px 10px;
+            margin-bottom: 20px;
+
+            .payment{
+                color: #333;
+                font-size: 16px;
+                font-weight: 700;
+
+                .checked{
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0 10px 2px 0;
+                    padding: 0;
+                    width: 22px;
+                    height: 22px;
+                    background: url(grey.png) no-repeat;
+                    border: none;
+                    cursor: pointer;
+
+
+                    .icheck{
+                        position: absolute;
+                        opacity: 0;
+                    }
+                    .iCheck-helper{
+                        position: absolute;
+                        top: 0%;
+                        left: 0%;
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        margin: 0px;
+                        padding: 0px;
+                        background: rgb(255, 255, 255);
+                        border: 0px;
+                        opacity: 0;
+                    }
+                }
+            }
+            .dashicons-feedback{
+                color: #333;
+                float: right;
+                font-size: 24px;
+            }
+        }
+        .form-group{
+            color: #333;
+            max-width: 100%;
+            margin-bottom: 5px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+
+            .form-control{
+                font-size: 13px;
+                font-weight: 400;
+            }
+        }
+        .payment_select{
+
+            .payment{
+                color: #333;
+                font-size: 16px;
+                font-weight: 700;
+
+                .iradio_square-grey{
+
+                    .icheck{
+
+                    }
+                }
+            }
+            img{
+                float: right;
+            }
+        }
+    }
+}

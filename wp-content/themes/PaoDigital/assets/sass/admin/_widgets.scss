@@ -1,0 +1,64 @@
+.welcome-panel{
+	border: none;
+	box-shadow: none;	
+	.card{
+	    position:relative;
+	    display:-webkit-box;
+	    display:-ms-flexbox;
+	    display:flex;
+	    -webkit-box-orient:vertical;
+	    -webkit-box-direction:normal;
+	    -ms-flex-direction:column;
+	    flex-direction:column;
+	    min-width:0;
+	    word-wrap:break-word;
+	    background-color:#fff;
+	    background-clip:border-box;
+	    border:1px solid rgba(24,28,33,0.06);
+	    border-radius:.25rem;
+
+		.card-body{
+			-webkit-box-flex:1;
+		    -ms-flex:1 1 auto;
+		    flex:1 1 auto;
+		    padding:1.5rem;
+		    padding-left: 0px;
+
+			.d-flex{
+				display:-webkit-box !important;
+			    display:-ms-flexbox !important;
+			    display:flex !important;
+
+				.dashicons-cart{
+					font-size: 35px;
+	    			color: #02BC77;
+				}
+				.dashicons-admin-site{
+					font-size: 35px;
+	    			color: #28c3d7;
+				}
+				.dashicons-networking{
+					font-size: 35px;
+	    			color: #d9534f;
+				}
+				.dashicons-groups{
+					font-size: 35px;
+	    			color: #FFD950;
+				}
+				.ml-3{
+					padding-left: 15px;
+
+					.text-muted{
+						color:#a3a4a6 !important;
+						font-size: 14px;
+	    				font-weight: 400;
+					}
+					.text-large{
+						font-size: 22px !important;
+						color: #4E5155;
+					}
+				}
+			}
+		}
+	}
+}

@@ -54,6 +54,7 @@
 		}
 
 		wp_enqueue_style('boot_css', get_template_directory_uri() . '/assets/css/bootstrap.min.css' );
+		wp_enqueue_style('admin_css', get_template_directory_uri() . '/assets/css/admin.css' );
 		wp_enqueue_script('boot_js', get_template_directory_uri() . '/assets/js/bootstrap.min.js' );
 	}
 
@@ -68,6 +69,25 @@
 		}
 		get_template_part('lib/template', 'widgets');
 	}
+
+
+
+	// Function that outputs the contents of the dashboard widget
+	function dashboard_widget_function( $post, $callback_args ) {
+		get_template_part('lib/template', 'vendas');
+	}
+	function dashboard_widget_pacotes( $post, $callback_args ) {
+		get_template_part('lib/template', 'pacotes');
+	}
+
+	// Function used in the action hook
+	function add_dashboard_widgets() {
+		wp_add_dashboard_widget('dashboard_widget', 'Entregas do dia', 'dashboard_widget_function');
+		wp_add_dashboard_widget('dashboard_widget_2', 'Pacotes', 'dashboard_widget_pacotes');
+	}
+
+	// Register the new dashboard widget with the 'wp_dashboard_setup' action
+	add_action('wp_dashboard_setup', 'add_dashboard_widgets' );
 
 
 

@@ -1,0 +1,98 @@
+/* line 1, ../sass/admin/_widgets.scss */
+.welcome-panel {
+  border: none;
+  box-shadow: none;
+}
+/* line 4, ../sass/admin/_widgets.scss */
+.welcome-panel .card {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(24, 28, 33, 0.06);
+  border-radius: .25rem;
+}
+/* line 20, ../sass/admin/_widgets.scss */
+.welcome-panel .card .card-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.5rem;
+  padding-left: 0px;
+}
+/* line 27, ../sass/admin/_widgets.scss */
+.welcome-panel .card .card-body .d-flex {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+/* line 32, ../sass/admin/_widgets.scss */
+.welcome-panel .card .card-body .d-flex .dashicons-cart {
+  font-size: 35px;
+  color: #02BC77;
+}
+/* line 36, ../sass/admin/_widgets.scss */
+.welcome-panel .card .card-body .d-flex .dashicons-admin-site {
+  font-size: 35px;
+  color: #28c3d7;
+}
+/* line 40, ../sass/admin/_widgets.scss */
+.welcome-panel .card .card-body .d-flex .dashicons-networking {
+  font-size: 35px;
+  color: #d9534f;
+}
+/* line 44, ../sass/admin/_widgets.scss */
+.welcome-panel .card .card-body .d-flex .dashicons-groups {
+  font-size: 35px;
+  color: #FFD950;
+}
+/* line 48, ../sass/admin/_widgets.scss */
+.welcome-panel .card .card-body .d-flex .ml-3 {
+  padding-left: 15px;
+}
+/* line 51, ../sass/admin/_widgets.scss */
+.welcome-panel .card .card-body .d-flex .ml-3 .text-muted {
+  color: #a3a4a6 !important;
+  font-size: 14px;
+  font-weight: 400;
+}
+/* line 56, ../sass/admin/_widgets.scss */
+.welcome-panel .card .card-body .d-flex .ml-3 .text-large {
+  font-size: 22px !important;
+  color: #4E5155;
+}
+
+/* line 1, ../sass/admin/_vendas.scss */
+.inside {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+/* line 5, ../sass/admin/_vendas.scss */
+.inside .table thead th {
+  border: none;
+}
+
+/* line 1, ../sass/admin/_pacotes.scss */
+.nav-tabs-top {
+  margin: 0 !important;
+}
+/* line 8, ../sass/admin/_pacotes.scss */
+.nav-tabs-top .nav .nav-item .nav-link {
+  border-radius: 0px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #212529;
+  padding: 12px;
+}
+/* line 15, ../sass/admin/_pacotes.scss */
+.nav-tabs-top .nav .nav-item .nav-link.active:hover, .nav-tabs-top .nav .nav-item .nav-link.active {
+  background-color: #f8f8f8;
+}
