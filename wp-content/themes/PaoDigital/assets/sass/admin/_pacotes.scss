@@ -1,0 +1,21 @@
+.nav-tabs-top{
+	margin: 0 !important;
+
+	.nav{
+
+		.nav-item{
+
+			.nav-link{
+				border-radius: 0px;
+				font-size: 13px;
+			    font-weight: 700;
+			    color: #212529;
+			    padding: 12px;
+				
+				&.active:hover, &.active{
+					background-color: #f8f8f8;
+				}
+			}
+		}
+	}
+}
