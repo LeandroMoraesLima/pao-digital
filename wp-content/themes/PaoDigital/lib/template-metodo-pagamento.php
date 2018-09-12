@@ -12,7 +12,8 @@ Metodo Pagamento
 ============================-->
 
 <section id="pagamento">
-	<div class="row" style="transform: none;">
+	<div class="container">
+		<div class="row" style="transform: none;">
 			<div class="col-md-3">
 				<div class="box_style_2 hidden-xs info">
 					<h4 class="nomargin_top">Drive Thru<span class="dashicons dashicons-clock"></span></h4>
@@ -196,6 +197,7 @@ Metodo Pagamento
 				</div><!-- End theiaStickySidebar -->
 			</div><!-- End col-md-3 -->
 		</div>
+	</div>
 </section>
 
 
