@@ -43,6 +43,153 @@
 	}
 
 
+	add_action( 'wp_ajax_search_products', 'search_products' );
+	add_action( 'wp_ajax_nopriv_search_products', 'search_products' );
+
+	function search_products() 
+	{
+		// Make your response and echo it.	
+			$params = array(
+				'where'		=> 't.nome LIKE "%'.$_POST['s'].'%" OR t.descricao LIKE "%'.$_POST['s'].'%" OR t.ingredientes LIKE "%'.$_POST['s'].'%" ', 
+				'limit'		=> 15
+			); 
+
+			$html = '';
+
+			// Create and find in one shot 
+			$cardapios = pods( 'cardapio', $params ); 
+
+			if ( 0 < $cardapios->total() ):
+				while ( $cardapios->fetch() ):
+	 
+					include(locate_template('lib/template-products.php'));
+
+				endwhile; // end of books loop 
+			endif;
+
+			echo $html;
+
+		// Don't forget to stop execution afterward.
+		wp_die();
+	}
+
+
+
+
+	add_action( 'wp_ajax_add_to_cart', 'add_to_cart' );
+	add_action( 'wp_ajax_nopriv_add_to_cart', 'add_to_cart' );
+
+	function add_to_cart() 
+	{
+		$id = $_POST['product'];
+
+		if( !is_array($_SESSION['paodigital']['cart']['itens']) )
+		{
+			$_SESSION['paodigital']['cart']['itens'] = [];
+		}
+
+		//$_SESSION['paodigital']['cart']['itens'] = [];
+		// var_dump($_SESSION['paodigital']['cart']);
+		// die();
+
+		$html = '';
+		$vtotal = 0;
+
+		$cardapio = pods( 'cardapio', $id ); 
+
+		$prod = $_SESSION['paodigital']['cart']['itens'][$id];
+
+		$vvenda = str_replace( 'R$ ', '', $cardapio->display('valor_venda') );
+		$vvenda = str_replace( ',', '.', $vvenda );
+
+		$valor = ( $vvenda * ($prod['quantidade'] + 1) );
+
+		if( is_array($prod['quantidade']) !== '' ):
+			$_SESSION['paodigital']['cart']['itens'][$id]['quantidade'] = $prod['quantidade'] + 1;
+			$_SESSION['paodigital']['cart']['itens'][$id]['valor'] = $valor;
+			$_SESSION['paodigital']['cart']['itens'][$id]['nome'] = $cardapio->display('nome');
+			$_SESSION['paodigital']['cart']['itens'][$id]['reais'] = number_format($valor, 2, ',', '.');
+		else:
+			$_SESSION['paodigital']['cart']['itens'][$id]['quantidade'] = 1;
+			$_SESSION['paodigital']['cart']['itens'][$id]['nome'] = $cardapio->display('nome');
+			$_SESSION['paodigital']['cart']['itens'][$id]['valor'] = $vvenda;
+			$_SESSION['paodigital']['cart']['itens'][$id]['reais'] = $cardapio->display('valor_venda');
+		endif;
+		
+		foreach( $_SESSION['paodigital']['cart']['itens'] as $key => $total ):
+			$vtotal = $vtotal + $total['valor'];
+			include(locate_template('lib/template-itens.php'));
+		endforeach;
+
+		$vvoucher = 0;
+		$ventrega = 10;
+		$vltotal = ($vtotal - $vvoucher + $ventrega);
+
+		$_SESSION['paodigital']['cart']['subtotal'] = $vtotal;
+		$_SESSION['paodigital']['cart']['voucher'] = $vvoucher;
+		$_SESSION['paodigital']['cart']['ventrega'] = $ventrega;
+		$_SESSION['paodigital']['cart']['vtotal'] = $vltotal;
+
+		$itens = [
+			'subtotal' 	=> number_format($vtotal, 2, ',', '.'),
+			'voucher'	=> $vvoucher,
+			'ventrega'	=> number_format($ventrega, 2, ',', '.'),
+			'vtotal'	=> number_format($vltotal, 2, ',', '.'),
+			'html'		=> $html
+		];
+
+		// Don't forget to stop execution afterward.
+		echo json_encode($itens);
+		wp_die();
+	}
+
+
+
+
+
+	add_action( 'wp_ajax_get_the_cart', 'get_the_cart' );
+	add_action( 'wp_ajax_nopriv_get_the_cart', 'get_the_cart' );
+
+	function get_the_cart() 
+	{
+
+		//var_dump($_SESSION['paodigital']['cart']['itens'] = '') ;
+		if( !is_array($_SESSION['paodigital']['cart']['itens']) )
+		{
+			echo 0; die();
+		}
+
+		$html = '';
+
+		$vtotal 	= $_SESSION['paodigital']['cart']['subtotal'];
+		$vltotal 	= $_SESSION['paodigital']['cart']['vtotal'];
+		$vvoucher 	= $_SESSION['paodigital']['cart']['voucher'];
+		$ventrega 	= $_SESSION['paodigital']['cart']['ventrega'];
+		
+		foreach( $_SESSION['paodigital']['cart']['itens'] as $key => $total ):
+			include(locate_template('lib/template-itens.php'));
+		endforeach;
+
+		$itens = [
+			'subtotal' 	=> number_format($vtotal, 2, ',', '.'),
+			'voucher'	=> $vvoucher,
+			'ventrega'	=> number_format($ventrega, 2, ',', '.'),
+			'vtotal'	=> number_format($vltotal, 2, ',', '.'),
+			'html'		=> $html
+		];
+
+		// Don't forget to stop execution afterward.
+		echo json_encode($itens);
+		wp_die();
+	}
+
+
+
+
+
+
+
+
 
 
 	add_action('admin_enqueue_scripts', 'cstm_css_and_js');
