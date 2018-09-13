@@ -20,7 +20,10 @@
 	function my_post_save_function($pieces, $is_new_item, $id )
 	{ 
 		$current_user = wp_get_current_user();
-		$pieces[ 'fields' ][ 'parceiro_id' ][ 'value' ] = $current_user->ID;
+		if( !current_user_can('administrator'))
+		{
+			$pieces[ 'fields' ][ 'parceiro_id' ][ 'value' ] = $current_user->ID;
+		}
 		return $pieces;
 	}; 
 	add_action('pods_api_pre_save_pod_item_cardapio', 'my_post_save_function', 10, 3);
