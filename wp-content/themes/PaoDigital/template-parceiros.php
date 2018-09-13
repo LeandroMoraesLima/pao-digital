@@ -5,8 +5,9 @@
 
 get_header('interna');
 
-if( !isset( $_SESSION['paodigital']['plano'] ) || $_SESSION['paodigital']['plano'] == '' || $_SESSION['paodigital']['plano'] != $_POST['plano'] ):
-	$_SESSION['paodigital']['plano'] = $_POST['plano'];
+global $wp_session;
+if( !isset( $wp_session['paodigital']['plano'] ) || $wp_session['paodigital']['plano'] == '' || $wp_session['paodigital']['plano'] != $_POST['plano'] ):
+	$wp_session['paodigital']['plano'] = $_POST['plano'];
 endif;
 
 

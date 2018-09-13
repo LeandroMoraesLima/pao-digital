@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 	define('IMG', get_template_directory_uri().'/assets/img');
 	define('CSS', get_template_directory_uri().'/assets/css');
 	define('JS', get_template_directory_uri().'/assets/js');
@@ -155,7 +156,7 @@
 
 	function my_custom_fonts() { ?>
 	  <style>
-		#wp-admin-bar-comments, #wp-admin-bar-new-content, #wpfooter, #wp-admin-bar-wp-logo, #screen-meta-links { display: none; }
+		#wp-admin-bar-comments, #wp-admin-bar-new-content, #wpfooter, #wp-admin-bar-wp-logo, #screen-meta-links, #navigatediv { display: none; }
 	  </style>';
 	<?php }
 
@@ -225,16 +226,7 @@
 	add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 
 
-	// Verifica se não existe nenhuma função com o nome tutsup_session_start
-	if ( ! function_exists( 'tutsup_session_start' ) ) {
-		// Cria a função
-		function tutsup_session_start() {
-			// Inicia uma sessão PHP
-			if ( ! session_id() ) session_start();
-		}
-		// Executa a ação
-		add_action( 'init', 'tutsup_session_start' );
-	}
+	
 
 
 
