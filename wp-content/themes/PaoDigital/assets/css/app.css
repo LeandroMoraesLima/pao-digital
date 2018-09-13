@@ -1717,6 +1717,7 @@ body button[type=submit] {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
+
 /* line 22, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 .dashicons {
   font-size: 150px;
@@ -1733,11 +1734,14 @@ body button[type=submit] {
   margin-top: 25px;
   margin-bottom: 10px;
 }
+
 /* line 40, ../sass/website/_confirmacao-pagamento.scss */
+
 #confirmacao .box_style_2 .confirm p {
   font-size: 13px;
   color: #555;
 }
+
 /* line 45, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 h4 {
   color: #333;
@@ -1745,6 +1749,7 @@ body button[type=submit] {
   font-weight: 500;
   float: left;
 }
+
 /* line 51, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 .table {
   text-align: left;

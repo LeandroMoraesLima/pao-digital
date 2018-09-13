@@ -82,14 +82,15 @@
 	function add_to_cart() 
 	{
 		$id = $_POST['product'];
-
-		if( !is_array($_SESSION['paodigital']['cart']['itens']) )
+		global $wp_session;
+		
+		if( !is_array($wp_session['paodigital']['cart']['itens']) )
 		{
-			$_SESSION['paodigital']['cart']['itens'] = [];
+			$wp_session['paodigital']['cart']['itens'] = [];
 		}
 
-		//$_SESSION['paodigital']['cart']['itens'] = [];
-		// var_dump($_SESSION['paodigital']['cart']);
+		//$wp_session['paodigital']['cart']['itens'] = [];
+		// var_dump($wp_session['paodigital']['cart']);
 		// die();
 
 		$html = '';
@@ -97,7 +98,7 @@
 
 		$cardapio = pods( 'cardapio', $id ); 
 
-		$prod = $_SESSION['paodigital']['cart']['itens'][$id];
+		$prod = $wp_session['paodigital']['cart']['itens'][$id];
 
 		$vvenda = str_replace( 'R$ ', '', $cardapio->display('valor_venda') );
 		$vvenda = str_replace( ',', '.', $vvenda );
@@ -105,18 +106,18 @@
 		$valor = ( $vvenda * ($prod['quantidade'] + 1) );
 
 		if( is_array($prod['quantidade']) !== '' ):
-			$_SESSION['paodigital']['cart']['itens'][$id]['quantidade'] = $prod['quantidade'] + 1;
-			$_SESSION['paodigital']['cart']['itens'][$id]['valor'] = $valor;
-			$_SESSION['paodigital']['cart']['itens'][$id]['nome'] = $cardapio->display('nome');
-			$_SESSION['paodigital']['cart']['itens'][$id]['reais'] = number_format($valor, 2, ',', '.');
+			$wp_session['paodigital']['cart']['itens'][$id]['quantidade'] = $prod['quantidade'] + 1;
+			$wp_session['paodigital']['cart']['itens'][$id]['valor'] = $valor;
+			$wp_session['paodigital']['cart']['itens'][$id]['nome'] = $cardapio->display('nome');
+			$wp_session['paodigital']['cart']['itens'][$id]['reais'] = number_format($valor, 2, ',', '.');
 		else:
-			$_SESSION['paodigital']['cart']['itens'][$id]['quantidade'] = 1;
-			$_SESSION['paodigital']['cart']['itens'][$id]['nome'] = $cardapio->display('nome');
-			$_SESSION['paodigital']['cart']['itens'][$id]['valor'] = $vvenda;
-			$_SESSION['paodigital']['cart']['itens'][$id]['reais'] = $cardapio->display('valor_venda');
+			$wp_session['paodigital']['cart']['itens'][$id]['quantidade'] = 1;
+			$wp_session['paodigital']['cart']['itens'][$id]['nome'] = $cardapio->display('nome');
+			$wp_session['paodigital']['cart']['itens'][$id]['valor'] = $vvenda;
+			$wp_session['paodigital']['cart']['itens'][$id]['reais'] = $cardapio->display('valor_venda');
 		endif;
 		
-		foreach( $_SESSION['paodigital']['cart']['itens'] as $key => $total ):
+		foreach( $wp_session['paodigital']['cart']['itens'] as $key => $total ):
 			$vtotal = $vtotal + $total['valor'];
 			include(locate_template('lib/template-itens.php'));
 		endforeach;
@@ -125,10 +126,10 @@
 		$ventrega = 10;
 		$vltotal = ($vtotal - $vvoucher + $ventrega);
 
-		$_SESSION['paodigital']['cart']['subtotal'] = $vtotal;
-		$_SESSION['paodigital']['cart']['voucher'] = $vvoucher;
-		$_SESSION['paodigital']['cart']['ventrega'] = $ventrega;
-		$_SESSION['paodigital']['cart']['vtotal'] = $vltotal;
+		$wp_session['paodigital']['cart']['subtotal'] = $vtotal;
+		$wp_session['paodigital']['cart']['voucher'] = $vvoucher;
+		$wp_session['paodigital']['cart']['ventrega'] = $ventrega;
+		$wp_session['paodigital']['cart']['vtotal'] = $vltotal;
 
 		$itens = [
 			'subtotal' 	=> number_format($vtotal, 2, ',', '.'),
@@ -152,21 +153,21 @@
 
 	function get_the_cart() 
 	{
-
-		//var_dump($_SESSION['paodigital']['cart']['itens'] = '') ;
-		if( !is_array($_SESSION['paodigital']['cart']['itens']) )
+		global $wp_session;
+		//var_dump($wp_session['paodigital']['cart']['itens'] = '') ;
+		if( !is_array($wp_session['paodigital']['cart']['itens']) )
 		{
 			echo 0; die();
 		}
 
 		$html = '';
 
-		$vtotal 	= $_SESSION['paodigital']['cart']['subtotal'];
-		$vltotal 	= $_SESSION['paodigital']['cart']['vtotal'];
-		$vvoucher 	= $_SESSION['paodigital']['cart']['voucher'];
-		$ventrega 	= $_SESSION['paodigital']['cart']['ventrega'];
+		$vtotal 	= $wp_session['paodigital']['cart']['subtotal'];
+		$vltotal 	= $wp_session['paodigital']['cart']['vtotal'];
+		$vvoucher 	= $wp_session['paodigital']['cart']['voucher'];
+		$ventrega 	= $wp_session['paodigital']['cart']['ventrega'];
 		
-		foreach( $_SESSION['paodigital']['cart']['itens'] as $key => $total ):
+		foreach( $wp_session['paodigital']['cart']['itens'] as $key => $total ):
 			include(locate_template('lib/template-itens.php'));
 		endforeach;
 

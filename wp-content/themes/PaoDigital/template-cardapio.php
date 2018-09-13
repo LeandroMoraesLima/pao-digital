@@ -138,7 +138,7 @@ menu Section
 							</div>
 						</div>
 						<div class="menu-order">
-							<a href="javascript:void(0)" class="menu-order-confirm" data-rid="1519">
+							<a href="/dados-para-entrega" class="menu-order-confirm" >
 								Dados para entrega
 							</a>
 						</div>

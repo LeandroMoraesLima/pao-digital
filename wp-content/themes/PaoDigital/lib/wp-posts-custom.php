@@ -5,7 +5,7 @@
 	{
 		if( !current_user_can('administrator'))
 		{
-			if($_GET['page'] == 'pods-manage-cardapio')
+			if($_GET['page'] == 'pods-manage-cardapio' && $_GET['action'] == 'manage' )
 			{
 				$current_user = wp_get_current_user();
 				$params->where = "parceiro_id = {$current_user->ID}";
@@ -20,7 +20,10 @@
 	function my_post_save_function($pieces, $is_new_item, $id )
 	{ 
 		$current_user = wp_get_current_user();
-		$pieces[ 'fields' ][ 'parceiro_id' ][ 'value' ] = $current_user->ID;
+		if( !current_user_can('administrator'))
+		{
+			$pieces[ 'fields' ][ 'parceiro_id' ][ 'value' ] = $current_user->ID;
+		}
 		return $pieces;
 	}; 
 	add_action('pods_api_pre_save_pod_item_cardapio', 'my_post_save_function', 10, 3);
@@ -28,23 +31,34 @@
 
 
 	//check permissao para ver a pagina
-	function filter_pods_data_select( $results, $params, $instance ) { 
-	if( !current_user_can('administrator'))
+	function filter_pods_data_select( $apply_filters, $pod_pod, $pod ) 
+	{ 
+		$current_user = wp_get_current_user();
+		if( !current_user_can('administrator'))
 		{
-			if( $_GET['page'] == 'pods-manage-cardapio' )
+			if( $_GET['page'] == 'pods-manage-cardapio' && $_GET['action'] == 'edit' )
 			{
-				if( $results[0]->parceiro_id != $current_user->ID )
+				//echo $pod->display('parceiro_id') .' == '. $current_user->ID;
+				if( (int)$pod->display('parceiro_id') == (int)$current_user->ID )
 				{
-					$string = '<script type="text/javascript">';
-					$string .= 'window.location = "/wp-admin/admin.php?page='.$_GET['page'].'"';
-					$string .= '</script>';
+					//continue	
+				} else {
 
+					//echo "e diferente";
+					$string = '<script type="text/javascript">';
+					//$string .= 'window.location = "/wp-admin/admin.php?page='.$_GET['page'].'"';
+					$string .= '</script>';
+					$string .= '<a href="/wp-admin/admin.php?page='.$_GET['page'].'">Este painel não te pertence! Saia por favor!</a>';
 					echo $string;
 					die();
+					
 				}
+
 			}
 		}
-		return $results;
+
+		return $apply_filters;
+		
 	}; 
 	// add the filter 
-	add_filter( 'pods_data_select', 'filter_pods_data_select', 10, 3 ); 
+	add_filter( 'pods_admin_ui_cardapio', 'filter_pods_data_select', 10, 3 ); 
