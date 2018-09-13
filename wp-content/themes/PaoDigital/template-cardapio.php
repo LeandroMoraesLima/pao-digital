@@ -133,7 +133,7 @@ menu Section
 							</div>
 							<div class="atecao">
 								<p>
-									<span>Ateção:</span> 
+									<span>Atenção:</span> 
 									Vouchers são válidos apenas para pagamento online
 								</p>
 							</div>
