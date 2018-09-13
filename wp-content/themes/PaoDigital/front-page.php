@@ -207,7 +207,7 @@ Our Team Section
 						<h3 class="title">Drive Thru</h3>
 						<hr class="line">
 						<span class="section-divider"></span>
-						<p class="section-description">Esta sem tempo de parar e comer na padaria que mais ama?<br>Ou então quer levar para casa aquela comidinha especial?<br>Peça agora e retire na padaria da sua preferênciq!</p>
+						<p class="section-description">Esta sem tempo de parar e comer na padaria que mais ama?<br>Ou então quer levar para casa aquela comidinha especial?<br>Peça agora e retire na padaria da sua preferência!</p>
 					</div>
 				</div>
 			</div>
@@ -279,7 +279,7 @@ Contact Section
 <section id="contact">
 	<div class="container">
 		<div class="section-header">
-			<h3 class="section-title">contato</h3>
+			<h3 class="section-title">Contato</h3>
 			<hr>
 		</div>
 		<div class="row wow fadeInUp">

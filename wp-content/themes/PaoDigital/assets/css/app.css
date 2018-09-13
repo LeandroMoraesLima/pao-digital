@@ -1575,7 +1575,222 @@ body button[type=submit] {
   border-radius: 8px;
 }
 
-/* line 11, ../sass/app.scss */
+/* line 1, ../sass/website/_metodo-pagamento.scss */
+#pagamento {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+/* line 5, ../sass/website/_metodo-pagamento.scss */
+#pagamento .info {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ededed;
+  margin-bottom: 25px;
+  padding: 22px;
+}
+/* line 12, ../sass/website/_metodo-pagamento.scss */
+#pagamento .info .nomargin_top {
+  color: #333;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+/* line 24, ../sass/website/_metodo-pagamento.scss */
+#pagamento .info p {
+  font-size: 13px;
+  margin-bottom: 0px;
+  text-align: left;
+}
+/* line 30, ../sass/website/_metodo-pagamento.scss */
+#pagamento .hidden-xs {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ededed;
+  padding: 12px;
+  text-align: center;
+}
+/* line 37, ../sass/website/_metodo-pagamento.scss */
+#pagamento .hidden-xs .dashicons-editor-help {
+  font-size: 75px;
+  display: inline;
+}
+/* line 42, ../sass/website/_metodo-pagamento.scss */
+#pagamento .hidden-xs h4 {
+  color: #333;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+/* line 48, ../sass/website/_metodo-pagamento.scss */
+#pagamento .hidden-xs .phone {
+  font-size: 25px;
+  color: #85c99d;
+}
+/* line 52, ../sass/website/_metodo-pagamento.scss */
+#pagamento .hidden-xs small {
+  font-size: 11px;
+}
+/* line 56, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ededed;
+  padding: 22px;
+}
+/* line 62, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .inner {
+  background-color: #ffb600;
+  color: #fff;
+  margin: -25px -23px 25px;
+  padding: 12px 15px;
+  font-size: 22px;
+  font-weight: 600;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+/* line 73, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select {
+  background-color: #f0f0f0;
+  padding: 15px 15px 10px;
+  margin-bottom: 20px;
+}
+/* line 78, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select .payment {
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+}
+/* line 83, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select .dashicons-feedback {
+  color: #333;
+  float: right;
+  font-size: 24px;
+}
+/* line 89, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .form-group {
+  color: #333;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+/* line 97, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .form-group .form-control {
+  font-size: 13px;
+  font-weight: 400;
+}
+/* line 104, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select .payment {
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+}
+/* line 116, ../sass/website/_metodo-pagamento.scss */
+#pagamento .box_style_2 .payment_select img {
+  float: right;
+}
+
+/* line 1, ../sass/website/_confirmacao-pagamento.scss */
+#confirmacao {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+/* line 5, ../sass/website/_confirmacao-pagamento.scss */
+#confirmacao .box_style_2 {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ededed;
+  padding: 22px;
+  text-align: center;
+}
+/* line 12, ../sass/website/_confirmacao-pagamento.scss */
+#confirmacao .box_style_2 .inner {
+  background-color: #ffb600;
+  color: #fff;
+  margin: -25px -23px 35px;
+  padding: 15px 15px;
+  font-size: 22px;
+  font-weight: 600;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+/* line 22, ../sass/website/_confirmacao-pagamento.scss */
+#confirmacao .box_style_2 .dashicons {
+  font-size: 150px;
+  display: inline;
+  border-radius: 90px;
+  border: 10px solid #00FF00;
+  color: #00FF00;
+}
+/* line 32, ../sass/website/_confirmacao-pagamento.scss */
+#confirmacao .box_style_2 .confirm h3 {
+  color: #333;
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+/* line 40, ../sass/website/_confirmacao-pagamento.scss */
+#confirmacao .box_style_2 .confirm p {
+  font-size: 13px;
+  color: #555;
+}
+/* line 45, ../sass/website/_confirmacao-pagamento.scss */
+#confirmacao .box_style_2 h4 {
+  color: #333;
+  font-size: 18px;
+  font-weight: 500;
+  float: left;
+}
+/* line 51, ../sass/website/_confirmacao-pagamento.scss */
+#confirmacao .box_style_2 .table {
+  text-align: left;
+}
+
+/* line 1, ../sass/website/_detalhes-pedido.scss */
+#pedido {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+/* line 5, ../sass/website/_detalhes-pedido.scss */
+#pedido .box_style_2 {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ededed;
+  padding: 22px;
+}
+/* line 11, ../sass/website/_detalhes-pedido.scss */
+#pedido .box_style_2 .inner {
+  background-color: #ffb600;
+  color: #fff;
+  margin: -25px -23px 35px;
+  padding: 15px 15px;
+  font-size: 22px;
+  font-weight: 600;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+/* line 21, ../sass/website/_detalhes-pedido.scss */
+#pedido .box_style_2 .form-group {
+  color: #333;
+  font-weight: 700;
+  font-size: 14px;
+}
+/* line 26, ../sass/website/_detalhes-pedido.scss */
+#pedido .box_style_2 .form-group .form-control {
+  font-size: 13px;
+}
+/* line 30, ../sass/website/_detalhes-pedido.scss */
+#pedido .box_style_2 label {
+  color: #333;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* line 15, ../sass/app.scss */
 #menu {
   padding: 82px 0 115px 0;
   overflow: hidden;
@@ -1607,7 +1822,7 @@ body button[type=submit] {
   border-color: #ced4da;
   position: relative;
 }
-/* line 41, ../sass/app.scss */
+/* line 45, ../sass/app.scss */
 #menu .fa.fa-search {
   font-size: 27px;
   color: #fff;
@@ -1720,7 +1935,7 @@ body button[type=submit] {
   justify-content: flex-end;
   -ms-flex-pack: flex-end;
 }
-/* line 128, ../sass/app.scss */
+/* line 132, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body ul li .price-holder .price {
   font-size: 22px;
   color: #636363;
@@ -1728,7 +1943,7 @@ body button[type=submit] {
   vertical-align: middle;
   padding-right: 8px;
 }
-/* line 135, ../sass/app.scss */
+/* line 139, ../sass/app.scss */
 #menu .accordion .collapse-show .card-body ul li .price-holder a {
   position: relative;
   display: inline-block;

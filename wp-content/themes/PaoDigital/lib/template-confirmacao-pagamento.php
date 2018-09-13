@@ -60,7 +60,7 @@ Confirmação de Pagamento
 					</tr>
 					<tr>
 						<td>
-							<strong>2x</strong> cheeseburger
+							<strong>2x</strong> Cheeseburger
 						</td>
 						<td>
 							<strong class="pull-right">$12</strong>
