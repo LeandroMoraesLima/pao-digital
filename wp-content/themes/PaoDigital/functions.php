@@ -1,5 +1,14 @@
 <?php
 
+	function tatwerat_startSession() {
+
+		if(!session_id()) {
+			session_start();
+		}
+	}
+
+	add_action('init', 'tatwerat_startSession', 1);
+
 	define('IMG', get_template_directory_uri().'/assets/img');
 	define('CSS', get_template_directory_uri().'/assets/css');
 	define('JS', get_template_directory_uri().'/assets/js');

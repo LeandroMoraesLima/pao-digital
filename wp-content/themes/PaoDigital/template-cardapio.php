@@ -10,6 +10,7 @@ if( !isset( $_SESSION['paodigital']['parceiro'] ) || $_SESSION['paodigital']['pa
 	$_SESSION['paodigital']['parceiro'] = $_POST['parceiro'];
 endif;
 
+
 $parceiro_prm = array(
 	'where'   => 't.id = ' . $_POST['parceiro']
 ); 

@@ -50,7 +50,7 @@
 					$string .= '</script>';
 					$string .= '<a href="/wp-admin/admin.php?page='.$_GET['page'].'">Este painel não te pertence! Saia por favor!</a>';
 					echo $string;
-					die();
+					die(); 
 					
 				}
 
