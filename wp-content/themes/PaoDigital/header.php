@@ -30,6 +30,13 @@ License: https://bootstrapmade.com/license/
 
 <body>
 
+<?php 
+
+	if (have_posts()) :
+   		while (have_posts()) : the_post();
+
+?>
+
 <!--==========================
 Header
 ============================-->
@@ -37,8 +44,8 @@ Header
 	<div class="container">
 		<div id="logo" class="pull-left">		
 			<a href="#intro" class="scrollto">
-				<img src="<?php echo IMG; ?>/logo-pao-digital.png" >
-			</a>
+				<?php $imagem = get_field('lo_logo','options'); ?>
+				<img src="<?php echo $imagem; ?>)">
 			<!-- Uncomment below if you prefer to use an image logo -->
 			<!-- <a href="#intro"><img src="img/logo.png" alt="" title=""></a> -->
 		</div>
@@ -46,7 +53,7 @@ Header
 		<nav id="nav-menu-container">
 			<ul class="nav-menu">
 				<li class="menu-active"><a href="#intro">Home</a></li>
-				<li><a href="#">Sobre Nós</a></li>
+				<li><a href="http://localhost/pao-digital/contato/">Sobre Nós</a></li>
 				<li><a href="#about">Cardápio</a></li>
 				<li><a href="#pricing">Planos</a></li>
 				<li><a href="#more-features">Parceiros</a></li>
@@ -58,3 +65,9 @@ Header
 		</nav><!-- #nav-menu-container -->
 	</div>
 </header><!-- #header -->
+
+
+<?php 
+		endwhile;
+	endif; 
+?>

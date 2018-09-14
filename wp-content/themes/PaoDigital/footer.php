@@ -1,3 +1,10 @@
+<?php 
+
+if (have_posts()) :
+    while (have_posts()) : the_post();
+
+?>
+
 <!--==========================
 Footer
 ============================-->
@@ -5,9 +12,10 @@ Footer
 	<div class="container">
 		<div class="row">
 			<div class="footer-logo">
-				<img src="<?php echo IMG; ?>/logo-pao-digital.png" >
-				<p>Todos os direitos reservados</p>
-				<span>Desenvolvido por</span> <a href="https://camelo.digital/" >Camelo Digital</a>
+				<?php $imagem = get_field('lg_logo','options'); ?>
+				<img src="<?php echo $imagem; ?>)">
+				<p><?php echo get_field('tf_texto','options') ?></p>
+				<span><?php echo get_field('texto_desenvolvido','options') ?></span> <a href="<?php echo get_field('link_desenvolvido','options'); ?>" ><?php echo get_field('texto_do_email','options') ?></a>
 			</div>
 		</div>
 	</div>
@@ -17,3 +25,10 @@ Footer
 <?php wp_footer(); ?>
 </body>
 </html>
+
+
+<?php 
+	endwhile;
+endif; 
+
+?>

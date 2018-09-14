@@ -20,10 +20,12 @@ Our Team Section
 						<img src="<?php echo IMG; ?>/drive-thru-pao-digital.jpg">
 					</div>	
 					<div class="text col-lg-6 content wow fadeInRight">
-						<h3 class="title">Sobre Nós</h3>
+						<h3 class="title"><?php echo get_field('sc_titulo','options') ?></h3>
 						<hr class="line">
 						<span class="section-divider"></span>
-						<p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo libero sunt blanditiis adipisci numquam aut eius quae, cumque, aspernatur voluptate hic repudiandae cum, rem neque? Similique et neque totam harum!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo libero sunt blanditiis adipisci numquam aut eius quae, cumque, aspernatur voluptate hic repudiandae cum, rem neque? Similique et neque totam harum!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo libero sunt blanditiis adipisci numquam aut eius quae, cumque, aspernatur voluptate hic repudiandae cum, rem neque? Similique et neque totam harum!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo libero sunt blanditiis adipisci numquam aut eius quae, cumque, aspernatur voluptate hic repudiandae cum, rem neque? Similique et neque totam harum!</p>
+						<p class="section-description">
+							<?php echo get_field('sc_texto','options') ?> 
+						</p>
 					</div>
 				</div>
 			</div>
