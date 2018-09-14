@@ -154,7 +154,7 @@
 			$value = explode(' ',$menu[key($menu)][0]);
 			if( in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
 		}
-		remove_menu_page('edit.php?post_type=acf-field-group');
+		//remove_menu_page('edit.php?post_type=acf-field-group');
 		//die();
 	}
 	add_action('admin_menu', 'remove_menus');
