@@ -2,6 +2,10 @@
 /*
 template name: Detalhes do seu pedido
 */
+ 
+if (have_posts()) :
+    while (have_posts()) : the_post();
+
 
 get_header('interna');
 
@@ -16,23 +20,16 @@ Detalhes do seu pedido
 		<div class="row" style="transform: none;">
 			<div class="col-md-3">
 				<div class="box_style_2 hidden-xs info">
-					<h4 class="nomargin_top">Drive Thru<span class="dashicons dashicons-clock"></span></h4>
+					<h4 class="nomargin_top"><?php echo get_field('ti_titulo1','options') ?><span class="dashicons dashicons-clock"></span></h4>
 					<p>
-						Lorem ipsum dolor sit amet, in pri partem essent. Qui debitis meliore ex, tollit debitis conclusionemque te eos.
+						<?php echo get_field('te_texto1','options') ?>
 					</p>
 					<hr>
-					<h4 class="nomargin_top">Pagamento Seguro<span class="dashicons dashicons-feedback"></span></h4>
+					<h4 class="nomargin_top"><?php echo get_field('ti_titulo2','options') ?><span class="dashicons dashicons-feedback"></span></h4>
 					<p>
-						Lorem ipsum dolor sit amet, in pri partem essent. Qui debitis meliore ex, tollit debitis conclusionemque te eos.
+						<?php echo get_field('te_texto2','options') ?>
 					</p>
 				</div><!-- End box_style_2 -->
-
-				<div class="box_style_2 hidden-xs" id="help">
-					<span class="dashicons dashicons-editor-help"></span>
-					<h4>Posso <span>ajudar?</span></h4>
-					<a href="tel://004542344599" class="phone">+55 999 999 999</a>
-					<small>Segunda a sexta: das 09:00h às 19:30h</small>
-				</div>
 			</div><!-- End col-md-3 -->
             <div class="col-md-9">
             	<div class="row">
@@ -167,8 +164,8 @@ Detalhes do seu pedido
 									</div>
 									<div class="atecao">
 										<p>
-											<span>Ateção:</span> 
-											Vouchers são válidos apenas para pagamento online
+											<span><?php echo get_field('tt_titulo','options') ?></span> 
+											<?php echo get_field('te_texto','options') ?>
 										</p>
 									</div>
 								</div>
@@ -207,5 +204,10 @@ Detalhes do seu pedido
 	})(jQuery);
 </script>
 
+<?php 
+	endwhile;
+endif; 
+
+?>
 
 <?php get_footer(); ?>

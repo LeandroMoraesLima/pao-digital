@@ -3,6 +3,9 @@
 template name: Cardápio
 */
 
+if (have_posts()) :
+    while (have_posts()) : the_post();
+
 get_header('interna');
 
 
@@ -133,8 +136,8 @@ menu Section
 							</div>
 							<div class="atecao">
 								<p>
-									<span>Atenção:</span> 
-									Vouchers são válidos apenas para pagamento online
+									<span><?php echo get_field('tt_titulo','options') ?></span> 
+									<?php echo get_field('te_texto','options') ?>
 								</p>
 							</div>
 						</div>
@@ -194,6 +197,10 @@ menu Section
 	})(jQuery);
 </script>
 
+<?php 
+	endwhile;
+endif; 
 
+?>
 
 <?php get_footer(); ?>
