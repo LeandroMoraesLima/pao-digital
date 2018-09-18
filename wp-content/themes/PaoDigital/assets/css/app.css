@@ -1288,8 +1288,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* line 25, ../sass/_parceiros.scss */
 #more-features.homepage #parceirosHere > div:hover:before {
   position: absolute;
-  height: 0px;
-  width: 0px;
+  height: 0px !important;
+  width: 0px !important;
   content: inherit;
   background-color: transparent;
   border: none;
@@ -1301,6 +1301,21 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* line 38, ../sass/_parceiros.scss */
 #more-features.homepage .botao {
   text-align: center;
+}
+
+/* line 43, ../sass/_parceiros.scss */
+#formParceiros {
+  width: 100%;
+}
+
+/* line 46, ../sass/_parceiros.scss */
+#more-features .wow .col-md-15:hover:before {
+  position: absolute;
+  height: 0px !important;
+  width: 0px !important;
+  content: inherit;
+  background-color: transparent;
+  border: none;
 }
 
 /* line 2, ../sass/website/_login.scss */
@@ -1717,7 +1732,6 @@ body button[type=submit] {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
-
 /* line 22, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 .dashicons {
   font-size: 150px;
@@ -1734,14 +1748,11 @@ body button[type=submit] {
   margin-top: 25px;
   margin-bottom: 10px;
 }
-
 /* line 40, ../sass/website/_confirmacao-pagamento.scss */
-
 #confirmacao .box_style_2 .confirm p {
   font-size: 13px;
   color: #555;
 }
-
 /* line 45, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 h4 {
   color: #333;
@@ -1749,7 +1760,6 @@ body button[type=submit] {
   font-weight: 500;
   float: left;
 }
-
 /* line 51, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 .table {
   text-align: left;

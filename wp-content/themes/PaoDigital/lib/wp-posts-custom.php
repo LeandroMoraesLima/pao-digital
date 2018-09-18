@@ -3,12 +3,13 @@
 	// funcao para buscar a listagem de Cardapios do ususario atual
 	function filter_pods_data_pre_select_params( $params ) 
 	{
-		if( !current_user_can('administrator'))
+
+		if( !current_user_can('administrator') && isset($_GET['page']))
 		{
 			if($_GET['page'] == 'pods-manage-cardapio' && $_GET['action'] == 'manage' )
 			{
 				$current_user = wp_get_current_user();
-				$params->where = "parceiro_id = {$current_user->ID}";
+				$params->where = "parceiro_id = ".PARTNER;
 			}
 		}
 		return $params; 
@@ -19,10 +20,11 @@
 	//funcao para inserir o parceiro id antes de salvar o Cardapio
 	function my_post_save_function($pieces, $is_new_item, $id )
 	{ 
-		$current_user = wp_get_current_user();
+		
+
 		if( !current_user_can('administrator'))
 		{
-			$pieces[ 'fields' ][ 'parceiro_id' ][ 'value' ] = $current_user->ID;
+			$pieces[ 'fields' ][ 'parceiro_id' ][ 'value' ] = PARTNER;
 		}
 		return $pieces;
 	}; 
@@ -33,13 +35,13 @@
 	//check permissao para ver a pagina
 	function filter_pods_data_select( $apply_filters, $pod_pod, $pod ) 
 	{ 
-		$current_user = wp_get_current_user();
+
 		if( !current_user_can('administrator'))
 		{
 			if( $_GET['page'] == 'pods-manage-cardapio' && $_GET['action'] == 'edit' )
 			{
 				//echo $pod->display('parceiro_id') .' == '. $current_user->ID;
-				if( (int)$pod->display('parceiro_id') == (int)$current_user->ID )
+				if( (int)$pod->display('parceiro_id') == PARTNER )
 				{
 					//continue	
 				} else {
@@ -59,6 +61,6 @@
 
 		return $apply_filters;
 		
-	}; 
-	// add the filter 
+	}
 	add_filter( 'pods_admin_ui_cardapio', 'filter_pods_data_select', 10, 3 ); 
+

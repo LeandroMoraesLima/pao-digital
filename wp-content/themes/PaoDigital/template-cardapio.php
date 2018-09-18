@@ -1,4 +1,8 @@
 <?php 
+
+	if( !is_user_logged_in() ):
+		wp_redirect('/');
+	endif;
 /*
 template name: Cardápio
 */
@@ -13,18 +17,35 @@ if( !isset( $_SESSION['paodigital']['parceiro'] ) || $_SESSION['paodigital']['pa
 	$_SESSION['paodigital']['parceiro'] = $_POST['parceiro'];
 endif;
 
+if( isset( $_SESSION['paodigital']['plano'] ) ):
+	$id = $_SESSION['paodigital']['plano'] + 1;
+	$plan = pods( 'cardapio', $id );
 
+	$vvenda = str_replace( 'R$ ', '', $plan->display('valor_venda') );
+	$vvenda = str_replace( ',', '.', $vvenda );
+
+	$valor = ( $vvenda * ($prod['quantidade'] + 1) );
+
+	$_SESSION['paodigital']['cart']['itens'][$id]['quantidade'] = 1;
+	$_SESSION['paodigital']['cart']['itens'][$id]['valor'] = $valor;
+	$_SESSION['paodigital']['cart']['itens'][$id]['nome'] = $plan->display('nome');
+	$_SESSION['paodigital']['cart']['itens'][$id]['reais'] = $plan->display('valor_venda');
+
+endif;
+
+//get data of parceiros
 $parceiro_prm = array(
 	'where'   => 't.id = ' . $_POST['parceiro']
 ); 
 
-$cardapio_prm = array(
-	'where'   => 't.parceiro_id = ' . $_POST['parceiro']
-); 
+//get data of grupos
+$grupos = get_terms( array(
+    'taxonomy' => 'grupo',
+    'hide_empty' => false,
+) );
+
 // Create and find in one shot 
 $parceiros = pods( 'parceiro', $parceiro_prm ); 
-
-$cardapios = pods( 'cardapio', $cardapio_prm );
 
 
 
@@ -54,29 +75,46 @@ menu Section
 						<div class="row">
 							<div class="col-md-12">
 								<div class="accordion" id="accordionExample">
+
+<?php 
+	if( is_array($grupos) && !empty($grupos) ):
+		$index = 0;
+		foreach ($grupos as $key => $grupo): 
+
+			//get data of cardapio
+			$cardapio_prm = array(
+				'where'   => 't.parceiro_id = ' . $_POST['parceiro'] . ' AND grupos.name = "' . $grupo->name . '"'
+			);
+			$cardapios = pods( 'cardapio', $cardapio_prm );
+
+			if( $cardapios->total() > 0 ):
+
+?>
+
 									<div class="card">
-										<div class="card-header" id="headingOne">
+										<div class="card-header" id="heading<?php echo $index; ?>">
 											<h5 class="mb-0">
-												<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-												<?php echo $parceiros->display('nome'); ?>
+												<button class="btn btn-link <?php echo ($index == 0)? '':'collapsed'; ?>" type="button" data-toggle="collapse" data-target="#collapse<?php echo $index; ?>" aria-expanded="false" aria-controls="collapseOne" style="text-decoration: none;">
+												<?php echo $parceiros->display('nome'); ?> | <?php echo $grupo->name; ?>
 												</button>
 											</h5>
 										</div>
-										<div id="collapseOne" class="collapse-show" aria-labelledby="headingOne" data-parent="#accordionExample">
+										<div id="collapse<?php echo $index; ?>" class="collapse-show <?php echo ($index == 0)? '' : 'collapse'; ?>" aria-labelledby="heading<?php echo $index; ?>" >
 											<div class="card-body" id="allProducts">
 												<ul>
 
 
 
-<?php
-	if ( 0 < $cardapios->total() ):
-		while ( $cardapios->fetch() ):
-		
-			include(locate_template('lib/template-products.php'));
-		
-		endwhile;
-	endif;
-?>
+												<?php
+
+													if ( 0 < $cardapios->total() ):
+														while ( $cardapios->fetch() ):
+														
+															include(locate_template('lib/template-products.php'));
+														
+														endwhile;
+													endif;
+												?>
 
 
 
@@ -85,6 +123,13 @@ menu Section
 										</div>
 									</div>  
 									
+
+<?php	
+			endif;
+			$index++;
+		endforeach;
+	endif;
+?>
 								</div>
 							</div>
 						</div>
@@ -142,7 +187,7 @@ menu Section
 							</div>
 						</div>
 						<div class="menu-order">
-							<a href="/dados-para-entrega" class="menu-order-confirm" >
+							<a href="/detalhes-do-seu-pedido" class="menu-order-confirm" >
 								Dados para entrega
 							</a>
 						</div>

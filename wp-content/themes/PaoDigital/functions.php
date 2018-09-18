@@ -7,6 +7,16 @@
 		}
 	}
 
+
+	$current_user = wp_get_current_user();		
+	$parceiros = pods( 'user', $current_user->ID );
+	$parceiro = $parceiros->field('parceiro');
+	define('PARTNER', $parceiro['id'] );
+		
+
+	
+
+
 	add_action('init', 'tatwerat_startSession', 1);
 
 	define('IMG', get_template_directory_uri().'/assets/img');
@@ -86,10 +96,10 @@
 			$restricted = array(
 				//Remova ou comente as linhas a seguir para exibir os itens.
 				__('Dashboard'),
-				__('Posts'),
+				//__('Posts'),
 				__('Media'),
 				__('Links'),
-				//__('Pages'),
+				__('Pages'),
 				__('Appearance'),
 				__('Tools'),
 				__('Users'),
