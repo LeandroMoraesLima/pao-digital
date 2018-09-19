@@ -187,7 +187,7 @@ menu Section
 							</div>
 						</div>
 						<div class="menu-order">
-							<a href="/detalhes-do-seu-pedido" class="menu-order-confirm" >
+							<a href="<?php echo get_bloginfo('url'); ?>/detalhes-do-seu-pedido" class="menu-order-confirm" >
 								Dados para entrega
 							</a>
 						</div>
@@ -231,6 +231,18 @@ menu Section
 			var id = $(this).data('id');
 			$.post(ajax, {
 				action: 'add_to_cart',
+				product: id
+			}, function(data){
+				$('#mitens').html(data.html);
+				$("#subtotal").html(data.subtotal);
+				$("#total").html(data.vtotal);
+			}, 'json');
+		});
+
+		$(document).on("click", ".remove_product_to_kart", function(){
+			var id = $(this).data('id');
+			$.post(ajax, {
+				action: 'remove_to_cart',
 				product: id
 			}, function(data){
 				$('#mitens').html(data.html);

@@ -16,7 +16,6 @@ get_header('interna');
 
 $user = wp_get_current_user();
 
-var_dump($user);
 
 ?>
 
@@ -140,7 +139,7 @@ Detalhes do seu pedido
 									</div>
 								</div>
 								<div class="menu-order">
-									<a href="/formas-de-pagamento" class="menu-order-confirm" >
+									<a href="<?php echo get_bloginfo('url'); ?>/formas-de-pagamento" class="menu-order-confirm" >
 										Forma de Pagamento
 									</a>
 								</div>
@@ -154,9 +153,16 @@ Detalhes do seu pedido
 </section>
 
 
+<?php 
+
+	//funcao que resguarda pagamento atraves da $_SESSION
+	send_payment();
+
+?>
+
+
 <script type="text/javascript">
 	(function($){
-
 
 		$(document).ready(function(){
 			$.post(ajax, {
@@ -169,10 +175,34 @@ Detalhes do seu pedido
 		});
 
 
-		
+		$(document).on("click", ".add_product_to_kart", function(){
+			var id = $(this).data('id');
+			$.post(ajax, {
+				action: 'add_to_cart',
+				product: id
+			}, function(data){
+				$('#mitens').html(data.html);
+				$("#subtotal").html(data.subtotal);
+				$("#total").html(data.vtotal);
+			}, 'json');
+		});
+
+
+		$(document).on("click", ".remove_product_to_kart", function(){
+			var id = $(this).data('id');
+			$.post(ajax, {
+				action: 'remove_to_cart',
+				product: id
+			}, function(data){
+				$('#mitens').html(data.html);
+				$("#subtotal").html(data.subtotal);
+				$("#total").html(data.vtotal);
+			}, 'json');
+		});
 
 	})(jQuery);
 </script>
+
 
 <?php 
 	endwhile;

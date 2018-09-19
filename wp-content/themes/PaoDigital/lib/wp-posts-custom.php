@@ -46,11 +46,7 @@
 					//continue	
 				} else {
 
-					//echo "e diferente";
-					$string = '<script type="text/javascript">';
-					//$string .= 'window.location = "/wp-admin/admin.php?page='.$_GET['page'].'"';
-					$string .= '</script>';
-					$string .= '<a href="/wp-admin/admin.php?page='.$_GET['page'].'">Este painel não te pertence! Saia por favor!</a>';
+					$string .= '<a href="'.get_bloginfo('url').'/minha-padaria/admin.php?page='.$_GET['page'].'">Este painel não te pertence! Saia por favor!</a>';
 					echo $string;
 					die(); 
 					

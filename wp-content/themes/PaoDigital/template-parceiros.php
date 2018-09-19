@@ -18,7 +18,6 @@ if( isset($_POST['plano']) ):
 		|| $_SESSION['paodigital']['plano'] == ''
 		|| $_SESSION['paodigital']['plano'] != $_POST['plano'] 
 	):
-		echo "plano aqui!";
 		$_SESSION['paodigital']['plano'] = $_POST['plano'];
 		$_SESSION['paodigital']['type'] = 'home';
 
@@ -34,7 +33,6 @@ if( isset($_POST['type']) ):
 		|| $_SESSION['paodigital']['type'] == ''
 		|| $_SESSION['paodigital']['type'] != $_POST['type'] 
 	):
-		echo "type aqui!";
 		$_SESSION['paodigital']['type'] = $_POST['type'];
 		$_SESSION['paodigital']['plano'] = 'noplan';
 
@@ -62,7 +60,7 @@ More Features Section
 		</div>
 
 		<?php if( current_user_can('administrator')): ?>
-			<form action="/" id="formParceiros" method="post">
+			<form action="<?php echo get_bloginfo('url'); ?>" id="formParceiros" method="post">
 		<?php endif; ?>
 
 		<div class="row wow fadeInUp" id="parceirosHere">
@@ -98,7 +96,7 @@ More Features Section
 							</div>
 						</div>
 					<?php else: ?>
-						<form action="/cardapio" method="post">
+						<form action="<?php echo get_bloginfo('url'); ?>/cardapio" method="post">
 							<input type="hidden" name="parceiro" value="<?php echo $parceiros->display('id'); ?>" />
 							<input type="submit" value="Selecionar"/>
 						</form>

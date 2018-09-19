@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -15,7 +15,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
 	<script>
-		window.ajax = "/wp-admin/admin-ajax.php";
+		window.ajax = "<?php echo get_bloginfo('url'); ?>/getajax";
 	</script>
 
 	<?php wp_head(); ?>

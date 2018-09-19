@@ -263,7 +263,7 @@ More Features Section
 		</div>
 	
 		<?php if( current_user_can('administrator')): ?>
-			<form action="/" id="formParceiros" method="post">
+			<form action="<?php echo get_bloginfo('url'); ?>" id="formParceiros" method="post">
 		<?php endif; ?>
 
 			<div class="row wow fadeInUp" id="parceirosHere">
@@ -342,7 +342,7 @@ More Features Section
 				<?php if( !is_user_logged_in() ): ?>
 					<a href="/" class="lrm-login ver">Ver todos parceiros</a>
 				<?php else: ?>
-					<a href="/parceiros" class="ver">Ver todos parceiros</a>
+					<a href="<?php echo get_bloginfo('url'); ?>/parceiros" class="ver">Ver todos parceiros</a>
 				<?php endif; ?>
 			</div>	
 		</div>
