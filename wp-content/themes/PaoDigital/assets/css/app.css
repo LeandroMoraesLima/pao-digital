@@ -1328,11 +1328,6 @@ body .lrm-user-modal-container .lrm-switcher a {
   color: #FFF;
 }
 /* line 11, ../sass/website/_login.scss */
-body .fieldset:nth-child(5) {
-  position: absolute;
-  visibility: hidden;
-}
-/* line 15, ../sass/website/_login.scss */
 body button[type=submit] {
   background-color: #ffb600 !important;
   color: #FFF !important;
