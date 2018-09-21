@@ -15,7 +15,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
 	<script>
-		window.ajax = "<?php echo get_bloginfo('url'); ?>/getajax";
+		window.ajax = "<?php echo get_bloginfo('url'); ?>/wp-admin/admin-ajax.php";
 	</script>
 
 	<?php wp_head(); ?>
