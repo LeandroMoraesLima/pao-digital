@@ -53,7 +53,7 @@ Header
 		<nav id="nav-menu-container">
 			<ul class="nav-menu">
 				<li class="menu-active"><a href="#intro">Home</a></li>
-				<li><a href="http://localhost/pao-digital/contato/">Sobre Nós</a></li>
+				<li><a href="<?php echo get_bloginfo('url'); ?>/sobre-nos/">Sobre Nós</a></li>
 				<li><a href="#about">Cardápio</a></li>
 				<li><a href="#pricing">Planos</a></li>
 				<li><a href="#more-features">Parceiros</a></li>
