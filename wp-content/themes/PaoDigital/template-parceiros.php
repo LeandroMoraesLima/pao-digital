@@ -128,7 +128,7 @@ More Features Section
 
 		$(document).on("keyup", "#inlineFormInput", function(){
 			var val = this.value;
-			if( val.length > 3 ){
+			if( val.length > 3 || val.length == 0 ){
 
 				$.post(ajax, {
 					action: 'get_parceiros',
