@@ -1058,7 +1058,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   top: 38%;
   cursor: pointer;
   z-index: 99999;
-  transition: 850ms all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: 450ms all 100ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* line 1058, ../sass/_padrao.scss */

@@ -1052,7 +1052,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   cursor: pointer;
   z-index: 99999;
 
-  transition: 850ms all 300ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+  transition: 450ms all 100ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
 }
 
 #more-features .wow .col-md-15:before {
