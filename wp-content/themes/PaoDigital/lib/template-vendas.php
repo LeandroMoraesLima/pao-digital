@@ -1,3 +1,10 @@
+<?php 
+	$partner = PARTNER;
+	if( !current_user_can('administrator') && ( $partner == '' || is_null($partner) )  ):
+		return null;
+	endif;
+?>
+
 <div class="inside">
 	<table class="table card-table">
 		<thead>
@@ -13,11 +20,15 @@
 
 
 			<?php 
-
+				$query = '';
+				$partner = PARTNER;
+				if( !current_user_can('administrator') ):
+					$query = "AND `pd_parceiros_id` = {$partner}";
+				endif;
 				$day = date('Y-m-d'). ' 00:00:00';
 				$days = [
 					'limit' => 10,
-					'where' => "`created` >= '{$day}' AND `package_type` = 'menu'",
+					'where' => "`created` >= '{$day}' AND `package_type` = 'menu' {$query}",
 					'orderby' => 'id DESC'
 				];
 				$tvendas = pods( 'venda', $days );
@@ -33,11 +44,28 @@
 							#<?php echo sprintf( "%05d", $tvendas->display('id') ); ?>
 						</td>
 						<td class="align-middle">
-							<a href="javascript:void(0)" class="text-dark">Bolota</a>
+							<?php 
+								$uid = get_user_by('id', $tvendas->display('pd_users_id') );
+							?>
+							<a href="javascript:void(0)" class="text-dark">
+								<?php echo $uid->first_name . ' ' . $uid->last_name ?>
+							</a>
 						</td>
-						<td class="text-right">$480.00</td>
-						<td class="text-right">123</td>
-						<td class="text-right">7:00</td>
+						<td class="text-right">
+							R$ <?php echo $tvendas->display('preco_total') ?>
+						</td>
+						<td class="text-right">
+							<?php 
+								$id = $tvendas->display('id');
+								$piten = pods( 'item', [ 'where' => "`venda_id` = {$id}" ] );
+								echo $piten->total_found();
+							?>
+						</td>
+						<td class="text-right">
+							<?php 
+								echo date( 'H:i', strtotime( $tvendas->display('created')  ) )
+							?>
+						</td>
 					</tr>
 					
 				<?php
