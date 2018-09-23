@@ -20,7 +20,7 @@ Intro Section
 	<div class="intro-text">
 		<h2><?php echo get_field('ti_titulo'); ?></h2>
 		<p><?php echo get_field('st_sub_titulo'); ?></p>
-		<a class="btn-get-started scrollto" href="<?php echo get_field('lb_link_do_botao'); ?>">
+		<a class="btn-get-started scrollto" href="/#features">
 			<?php echo get_field('tb_titulo_do_botao'); ?>
 		</a>
 	</div>
@@ -231,9 +231,10 @@ Our Team Section
 						<span class="section-divider"></span>
 						<p class="section-description"><?php echo get_field('tt_texto'); ?></p>
 						<?php if( !is_user_logged_in() ): ?>
-							<a href="#" class="lrm-login pedir">
-								<?php echo get_field('ti_titulo_do_botao'); ?>
-							</a>
+							<form action="<?php echo get_bloginfo('url'); ?>/parceiros" method="post">
+								<input type="hidden" name="type" value="drive" />
+								<input type="button" class="lrm-login get-started-btn yellow" value="Pedir Agora"/>
+							</form>
 						<?php else: ?>
 							<form action="<?php echo get_bloginfo('url'); ?>/parceiros" method="post">
 								<input type="hidden" name="type" value="drive" />

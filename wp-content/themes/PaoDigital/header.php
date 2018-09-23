@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Avilon Bootstrap Template</title>
+	<title>
+		<?php 
+			if(is_front_page() || is_home()):
+				echo get_bloginfo('name');
+			else:
+				echo wp_title('');
+			endif;
+		?>
+	</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<meta content="" name="keywords">
 	<meta content="" name="description">
@@ -43,11 +51,9 @@ Header
 <header id="header">
 	<div class="container">
 		<div id="logo" class="pull-left">		
-			<a href="#intro" class="scrollto">
+			<a href="<?php echo get_bloginfo('url'); ?>" class="scrollto">
 				<?php $imagem = get_field('lo_logo','options'); ?>
 				<img src="<?php echo $imagem; ?>)">
-			<!-- Uncomment below if you prefer to use an image logo -->
-			<!-- <a href="#intro"><img src="img/logo.png" alt="" title=""></a> -->
 		</div>
 
 		<nav id="nav-menu-container">

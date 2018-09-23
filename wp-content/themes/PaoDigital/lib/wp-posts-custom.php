@@ -60,3 +60,14 @@
 	}
 	add_filter( 'pods_admin_ui_cardapio', 'filter_pods_data_select', 10, 3 ); 
 
+
+
+	function action_pods_act_editor_after_metabox( $pod, $obj ) { 
+	    // make action magic happen here... 
+		if( $_GET['action'] == 'edit' && $_GET['page'] == 'pods-manage-venda' ):
+			include(locate_template('lib/template-tables.php'));
+		endif;
+	}; 
+	         
+	// add the action 
+	add_action( 'pods_act_editor_after_metabox', 'action_pods_act_editor_after_metabox', 10, 2 ); 

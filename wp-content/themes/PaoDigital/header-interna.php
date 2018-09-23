@@ -37,7 +37,7 @@ Header
 <header id="header" class="interna">
 	<div class="container">
 		<div id="logo" class="pull-left">		
-			<a href="#intro" class="scrollto">
+			<a href="<?php echo get_bloginfo('url'); ?>" class="scrollto">
 				<img src="<?php echo IMG; ?>/logo-pao-digital.png" >
 			</a>
 			<!-- Uncomment below if you prefer to use an image logo -->
