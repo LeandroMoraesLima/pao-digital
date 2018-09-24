@@ -1,4 +1,8 @@
 <?php 
+
+	if( !is_user_logged_in() ):
+		wp_redirect('/');
+	endif;
 /*
 template name: Detalhes do seu pedido
 */
@@ -8,6 +12,10 @@ if (have_posts()) :
 
 
 get_header('interna');
+
+
+$user = wp_get_current_user();
+
 
 ?>
 
@@ -35,14 +43,14 @@ Detalhes do seu pedido
             	<div class="row">
 					<div class="col-md-7">
 						<div class="box_style_2" id="order_process">
-							<h2 class="inner">Detalhes do seu pedido</h2>
+							<h2 class="inner">Dados para Entrega</h2>
 							<div class="form-group">
 								<label>Primeiro nome</label>
-								<input type="text" class="form-control" id="firstname_order" name="firstname_order" placeholder="Ex.: João">
+								<input type="text" class="form-control" id="firstname_order" name="firstname_order" placeholder="Ex.: João" value="<?php echo $user->first_name; ?>" />
 							</div>
 							<div class="form-group">
 								<label>Último nome</label>
-								<input type="text" class="form-control" id="lastname_order" name="lastname_order" placeholder="Ex.: da Silva">
+								<input type="text" class="form-control" id="lastname_order" name="lastname_order" placeholder="Ex.: da Silva" value="<?php echo $user->last_name; ?>" />
 							</div>
 							<div class="form-group">
 								<label>Telefone / celular</label>
@@ -50,62 +58,23 @@ Detalhes do seu pedido
 							</div>
 							<div class="form-group">
 								<label>Email</label>
-								<input type="email" id="email_booking_2" name="email_order" class="form-control" placeholder="Ex.: joao@silva.com">
+								<input type="email" id="email_booking_2" name="email_order" class="form-control" placeholder="Ex.: joao@silva.com" value="<?php echo $user->user_email; ?>" />
 							</div>
 							<div class="form-group">
 								<label>Seu endereço completo</label>
-								<input type="text" id="address_order" name="address_order" class="form-control" placeholder=" Ex.: Av. Paulista">
+								<input type="text" id="address_order" name="address_order" class="form-control" placeholder=" Ex.: Av. Paulista" value="<?php echo $user->user_address; ?>" />
 							</div>
 							<div class="row">
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Cidade</label>
-										<input type="text" id="city_order" name="city_order" class="form-control" placeholder="Ex.: São Paulo">
+										<input type="text" id="city_order" name="city_order" class="form-control" placeholder="Ex.: São Paulo" value="<?php echo $user->user_cidade; ?>" />
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>CEP</label>
-										<input type="text" id="pcode_oder" name="pcode_oder" class="form-control" placeholder=" Ex.: 01311-000">
-									</div>
-								</div>
-							</div>
-							<hr>
-							<div class="row">
-								<div class="col-md-6 col-sm-6">
-									<div class="form-group">
-										<label>Dia de entrega</label>
-										<select class="form-control" name="delivery_schedule_day" id="delivery_schedule_day">
-											<option value="" selected="">Selecione o dia</option>
-											<option value="Today">Hoje</option>
-											<option value="Tomorrow">Amanhã</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-md-6 col-sm-6">
-									<div class="form-group">
-										<label>Tempo de entrega</label>
-										<select class="form-control" name="delivery_schedule_time" id="delivery_schedule_time">
-											<option value="" selected="">Selecione o horário</option>
-											<option value="11.30am">11.30am</option>
-											<option value="11.45am">11.45am</option>
-											<option value="12.15am">12.15am</option>
-											<option value="12.30am">12.30am</option>
-											<option value="12.45am">12.45am</option>
-											<option value="01.00pm">01.00pm</option>
-											<option value="01.15pm">01.15pm</option>
-											<option value="01.30pm">01.30pm</option>
-											<option value="01.45pm">01.45pm</option>
-											<option value="02.00pm">02.00pm</option>
-											<option value="07.00pm">07.00pm</option>
-											<option value="07.15pm">07.15pm</option>
-											<option value="07.30pm">07.30pm</option>
-											<option value="07.45pm">07.45pm</option>
-											<option value="08.00pm">08.00pm</option>
-											<option value="08.15pm">08.15pm</option>
-											<option value="08.30pm">08.30pm</option>
-											<option value="08.45pm">08.45pm</option>
-										</select>
+										<input type="text" id="pcode_oder" name="pcode_oder" class="form-control" placeholder=" Ex.: 01311-000" value="<?php echo $user->user_cep; ?>" />
 									</div>
 								</div>
 							</div>
@@ -113,7 +82,7 @@ Detalhes do seu pedido
 							<div class="row">
 								<div class="col-md-12">				
 									<label>Notas para a padaria</label>
-									<textarea class="form-control" style="height:150px" placeholder="Ex. reclamações, sugestões e elogios..." name="notes" id="notes"></textarea>		
+									<textarea class="form-control" style="height:150px" placeholder="Ex. reclamações, sugestões e elogios..." name="notes" id="notes" value="<?php echo $user->user_notes; ?>" /></textarea>		
 								</div>
 							</div>
 						</div>
@@ -170,7 +139,7 @@ Detalhes do seu pedido
 									</div>
 								</div>
 								<div class="menu-order">
-									<a href="/formas-de-pagamento" class="menu-order-confirm" >
+									<a href="<?php echo get_bloginfo('url'); ?>/formas-de-pagamento" class="menu-order-confirm" >
 										Forma de Pagamento
 									</a>
 								</div>
@@ -183,10 +152,8 @@ Detalhes do seu pedido
 	</div>
 </section>
 
-
 <script type="text/javascript">
 	(function($){
-
 
 		$(document).ready(function(){
 			$.post(ajax, {
@@ -199,10 +166,34 @@ Detalhes do seu pedido
 		});
 
 
-		
+		$(document).on("click", ".add_product_to_kart", function(){
+			var id = $(this).data('id');
+			$.post(ajax, {
+				action: 'add_to_cart',
+				product: id
+			}, function(data){
+				$('#mitens').html(data.html);
+				$("#subtotal").html(data.subtotal);
+				$("#total").html(data.vtotal);
+			}, 'json');
+		});
+
+
+		$(document).on("click", ".remove_product_to_kart", function(){
+			var id = $(this).data('id');
+			$.post(ajax, {
+				action: 'remove_to_cart',
+				product: id
+			}, function(data){
+				$('#mitens').html(data.html);
+				$("#subtotal").html(data.subtotal);
+				$("#total").html(data.vtotal);
+			}, 'json');
+		});
 
 	})(jQuery);
 </script>
+
 
 <?php 
 	endwhile;

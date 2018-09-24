@@ -7,6 +7,12 @@ if (have_posts()) :
 
 get_header('interna');
 
+
+
+	send_payment();
+
+
+
 ?>
 
 <!--==========================
@@ -161,7 +167,7 @@ Metodo Pagamento
 									</div>
 								</div>
 								<div class="menu-order">
-									<a href="/confirmacao" class="menu-order-confirm" >
+									<a href="<?php echo get_bloginfo('url'); ?>/confirmacao" class="menu-order-confirm" >
 										Confirmar Pedido
 									</a>
 								</div>
@@ -177,7 +183,6 @@ Metodo Pagamento
 <script type="text/javascript">
 	(function($){
 
-
 		$(document).ready(function(){
 			$.post(ajax, {
 				action: 'get_the_cart'
@@ -189,7 +194,29 @@ Metodo Pagamento
 		});
 
 
-		
+		$(document).on("click", ".add_product_to_kart", function(){
+			var id = $(this).data('id');
+			$.post(ajax, {
+				action: 'add_to_cart',
+				product: id
+			}, function(data){
+				$('#mitens').html(data.html);
+				$("#subtotal").html(data.subtotal);
+				$("#total").html(data.vtotal);
+			}, 'json');
+		});
+
+		$(document).on("click", ".remove_product_to_kart", function(){
+			var id = $(this).data('id');
+			$.post(ajax, {
+				action: 'remove_to_cart',
+				product: id
+			}, function(data){
+				$('#mitens').html(data.html);
+				$("#subtotal").html(data.subtotal);
+				$("#total").html(data.vtotal);
+			}, 'json');
+		});
 
 	})(jQuery);
 </script>

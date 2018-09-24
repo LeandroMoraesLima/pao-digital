@@ -7,6 +7,16 @@
 		}
 	}
 
+
+	$current_user = wp_get_current_user();		
+	$parceiros = pods( 'user', $current_user->ID );
+	$parceiro = $parceiros->field('parceiro');
+	define('PARTNER', $parceiro['id'] );
+		
+
+	
+
+
 	add_action('init', 'tatwerat_startSession', 1);
 
 	define('IMG', get_template_directory_uri().'/assets/img');
@@ -86,17 +96,17 @@
 			$restricted = array(
 				//Remova ou comente as linhas a seguir para exibir os itens.
 				__('Dashboard'),
-				__('Posts'),
+				//__('Posts'),
 				__('Media'),
 				__('Links'),
-				//__('Pages'),
-				__('Appearance'),
-				__('Tools'),
+				__('Pages'),
+				//__('Appearance'),
+				//__('Tools'),
 				__('Users'),
 				//__('Settings'),
 				__('Comments'),
 				__('Plugins'),
-				__('Options')
+				//__('Options')
 			);
 
 		} elseif (current_user_can( 'cliente' )) {
@@ -115,6 +125,7 @@
 				__('Plugins'),
 				__('Options')
 			);
+			
 		} elseif (current_user_can( 'ajudante' )) {
 			$restricted = array(
 				//Remova ou comente as linhas a seguir para exibir os itens.
@@ -131,6 +142,7 @@
 				__('Plugins'),
 				__('Options')
 			);
+			
 		} elseif (current_user_can( 'padeiro' )) {
 			$restricted = array(
 				//Remova ou comente as linhas a seguir para exibir os itens.
@@ -147,6 +159,7 @@
 				__('Plugins'),
 				__('Options')
 			);
+			
 		}
 		
 		end ($menu);
@@ -236,18 +249,71 @@
 
 
 	if( function_exists('acf_add_options_page') ) {
-	
-		acf_add_options_page(array(
-			'page_title' 	=> 'Theme General Settings',
-			'menu_title'	=> 'Theme Settings',
-			'menu_slug' 	=> 'theme-general-settings',
-			'capability'	=> 'edit_posts',
-			'redirect'		=> false
-		));
-		
+		if (current_user_can( 'administrator' )):
+			acf_add_options_page(array(
+				'page_title' 	=> 'Theme General Settings',
+				'menu_title'	=> 'Theme Settings',
+				'menu_slug' 	=> 'theme-general-settings',
+				'capability'	=> 'edit_posts',
+				'redirect'		=> false
+			));
+		endif;
 	}
 
 
+
+	function send_payment()
+	{
+
+		$pod = pods( 'venda' ); 
+		$plano = ['junior', 'pleno', 'master', 'corporativo', 'menu' => 'menu'];
+
+		// To add a new item, let's set the data first 
+		$data = array( 
+			'pd_users_id'		=> get_current_user_id(),
+			'pd_parceiros_id'	=> $_SESSION['paodigital']['parceiro'],
+			'preco_total'		=> $_SESSION['paodigital']['cart']['subtotal'],
+			'desconto'			=> 0,
+			'taxas'				=> $_SESSION['paodigital']['cart']['ventrega'],
+			'pagamento_status'	=> 0,
+			'product_type'		=> $_SESSION['paodigital']['type'],
+			'package_type'		=> $plano[ $_SESSION['paodigital']['plano'] ],
+			'pacote_por_x_dias'	=> 0,
+			'week_time'			=> 'A',
+			'drive_time'		=> '0000-00-00 00:00:00',
+			'phone'				=> '',
+			'date_expiration'	=> '0000-00-00 00:00:00',
+			'created'			=> date('Y-m-d H:i:s'),
+			'modified'			=> '0000-00-00 00:00:00'
+		); 
+
+
+		//Add the new item now and get the new ID 
+		$new_venda_id = $pod->add( $data ); 
+
+		$myItens = $_SESSION['paodigital']['cart']['itens'];
+
+		if( is_array($myItens) && count($myItens) > 0 ):
+
+			foreach( $myItens as $key => $prod ):
+				
+				$pod = pods( 'item' ); 
+				$datP = array( 
+					'nome'			=> $prod['nome'],
+					'quantidade'	=> $prod['quantidade'],
+					'valor_no_ato'	=> $prod['valor'],
+					'produto_id'	=> $key,
+					'venda_id'		=> $new_venda_id
+				);
+				$pod->add( $datP );
+
+			endforeach;
+
+		endif;
+
+		$_SESSION['paodigital'] = [];
+
+	}
 
 
 

@@ -24,8 +24,8 @@
 		> div {
 			&:hover:before {
 				position: absolute;
-				height: 0px;
-				width: 0px;
+				height: 0px !important;
+				width: 0px !important;
 				content: inherit;
 				background-color: transparent;
 				border: none;
@@ -38,4 +38,16 @@
 	.botao {
 		text-align: center;
 	}
+}
+
+#formParceiros {
+	width: 100%;
+}
+#more-features .wow .col-md-15:hover:before {
+	position: absolute;
+	height: 0px !important;
+	width: 0px !important;
+	content: inherit;
+	background-color: transparent;
+	border: none;
 }

@@ -1,8 +1,16 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Avilon Bootstrap Template</title>
+	<title>
+		<?php 
+			if(is_front_page() || is_home()):
+				echo get_bloginfo('name');
+			else:
+				echo wp_title('');
+			endif;
+		?>
+	</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<meta content="" name="keywords">
 	<meta content="" name="description">
@@ -15,7 +23,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
 	<script>
-		window.ajax = "/wp-admin/admin-ajax.php";
+		window.ajax = "<?php echo get_bloginfo('url'); ?>/wp-admin/admin-ajax.php";
 	</script>
 
 	<?php wp_head(); ?>
@@ -43,17 +51,15 @@ Header
 <header id="header">
 	<div class="container">
 		<div id="logo" class="pull-left">		
-			<a href="#intro" class="scrollto">
+			<a href="<?php echo get_bloginfo('url'); ?>" class="scrollto">
 				<?php $imagem = get_field('lo_logo','options'); ?>
 				<img src="<?php echo $imagem; ?>)">
-			<!-- Uncomment below if you prefer to use an image logo -->
-			<!-- <a href="#intro"><img src="img/logo.png" alt="" title=""></a> -->
 		</div>
 
 		<nav id="nav-menu-container">
 			<ul class="nav-menu">
 				<li class="menu-active"><a href="#intro">Home</a></li>
-				<li><a href="http://localhost/pao-digital/contato/">Sobre Nós</a></li>
+				<li><a href="<?php echo get_bloginfo('url'); ?>/sobre-nos/">Sobre Nós</a></li>
 				<li><a href="#about">Cardápio</a></li>
 				<li><a href="#pricing">Planos</a></li>
 				<li><a href="#more-features">Parceiros</a></li>

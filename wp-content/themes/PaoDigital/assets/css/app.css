@@ -1058,7 +1058,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   top: 38%;
   cursor: pointer;
   z-index: 99999;
-  transition: 850ms all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: 450ms all 100ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* line 1058, ../sass/_padrao.scss */
@@ -1289,8 +1289,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* line 25, ../sass/_parceiros.scss */
 #more-features.homepage #parceirosHere > div:hover:before {
   position: absolute;
-  height: 0px;
-  width: 0px;
+  height: 0px !important;
+  width: 0px !important;
   content: inherit;
   background-color: transparent;
   border: none;
@@ -1304,6 +1304,21 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
 }
 
+/* line 43, ../sass/_parceiros.scss */
+#formParceiros {
+  width: 100%;
+}
+
+/* line 46, ../sass/_parceiros.scss */
+#more-features .wow .col-md-15:hover:before {
+  position: absolute;
+  height: 0px !important;
+  width: 0px !important;
+  content: inherit;
+  background-color: transparent;
+  border: none;
+}
+
 /* line 2, ../sass/website/_login.scss */
 body .lrm-user-modal-container {
   max-width: 420px;
@@ -1314,11 +1329,6 @@ body .lrm-user-modal-container .lrm-switcher a {
   color: #FFF;
 }
 /* line 11, ../sass/website/_login.scss */
-body .fieldset:nth-child(5) {
-  position: absolute;
-  visibility: hidden;
-}
-/* line 15, ../sass/website/_login.scss */
 body button[type=submit] {
   background-color: #ffb600 !important;
   color: #FFF !important;

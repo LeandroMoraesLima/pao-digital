@@ -82,12 +82,7 @@
 	function add_to_cart() 
 	{
 		$id = $_POST['product'];
-		
-		global $_SESSION;
-		var_dump(session_id());
 
-		var_dump($_SESSION['paodigital']);
-		die();
 		if( !is_array($_SESSION['paodigital']['cart']['itens']) )
 		{
 			$_SESSION['paodigital']['cart']['itens'] = [];
@@ -109,7 +104,7 @@
 
 		$valor = ( $vvenda * ($prod['quantidade'] + 1) );
 
-		if( is_array($prod['quantidade']) !== '' ):
+		if( isset($prod['quantidade']) && count($prod['quantidade']) > 0 ):
 			$_SESSION['paodigital']['cart']['itens'][$id]['quantidade'] = $prod['quantidade'] + 1;
 			$_SESSION['paodigital']['cart']['itens'][$id]['valor'] = $valor;
 			$_SESSION['paodigital']['cart']['itens'][$id]['nome'] = $cardapio->display('nome');
@@ -119,6 +114,72 @@
 			$_SESSION['paodigital']['cart']['itens'][$id]['nome'] = $cardapio->display('nome');
 			$_SESSION['paodigital']['cart']['itens'][$id]['valor'] = $vvenda;
 			$_SESSION['paodigital']['cart']['itens'][$id]['reais'] = $cardapio->display('valor_venda');
+		endif;
+		
+		foreach( $_SESSION['paodigital']['cart']['itens'] as $key => $total ):
+			$vtotal = $vtotal + $total['valor'];
+			include(locate_template('lib/template-itens.php'));
+		endforeach;
+
+		$vvoucher = 0;
+		$ventrega = 10;
+		$vltotal = ($vtotal - $vvoucher + $ventrega);
+
+		$_SESSION['paodigital']['cart']['subtotal'] = $vtotal;
+		$_SESSION['paodigital']['cart']['voucher'] = $vvoucher;
+		$_SESSION['paodigital']['cart']['ventrega'] = $ventrega;
+		$_SESSION['paodigital']['cart']['vtotal'] = $vltotal;
+
+		$itens = [
+			'subtotal' 	=> number_format($vtotal, 2, ',', '.'),
+			'voucher'	=> $vvoucher,
+			'ventrega'	=> number_format($ventrega, 2, ',', '.'),
+			'vtotal'	=> number_format($vltotal, 2, ',', '.'),
+			'html'		=> $html
+		];
+
+		// Don't forget to stop execution afterward.
+		echo json_encode($itens);
+		wp_die();
+	}
+
+
+
+	add_action( 'wp_ajax_remove_to_cart', 'remove_to_cart' );
+	add_action( 'wp_ajax_nopriv_remove_to_cart', 'remove_to_cart' );
+
+	function remove_to_cart() 
+	{
+		$id = $_POST['product'];
+
+		if( !is_array($_SESSION['paodigital']['cart']['itens']) )
+		{
+			$_SESSION['paodigital']['cart']['itens'] = [];
+		}
+
+		//$_SESSION['paodigital']['cart']['itens'] = [];
+		// var_dump($_SESSION['paodigital']['cart']);
+		// die();
+
+		$html = '';
+		$vtotal = 0;
+
+		$cardapio = pods( 'cardapio', $id ); 
+
+		$prod = $_SESSION['paodigital']['cart']['itens'][$id];
+
+		$vvenda = str_replace( 'R$ ', '', $cardapio->display('valor_venda') );
+		$vvenda = str_replace( ',', '.', $vvenda );
+
+		$valor = ( $vvenda * ($prod['quantidade'] - 1) );
+
+		if( isset($prod['quantidade']) && $prod['quantidade'] > 1 ):
+			$_SESSION['paodigital']['cart']['itens'][$id]['quantidade'] = $prod['quantidade'] - 1;
+			$_SESSION['paodigital']['cart']['itens'][$id]['valor'] = $valor;
+			$_SESSION['paodigital']['cart']['itens'][$id]['nome'] = $cardapio->display('nome');
+			$_SESSION['paodigital']['cart']['itens'][$id]['reais'] = number_format($valor, 2, ',', '.');
+		else:
+			unset($_SESSION['paodigital']['cart']['itens'][$id]);
 		endif;
 		
 		foreach( $_SESSION['paodigital']['cart']['itens'] as $key => $total ):
@@ -185,6 +246,37 @@
 
 		// Don't forget to stop execution afterward.
 		echo json_encode($itens);
+		wp_die();
+	}
+
+	add_action( 'wp_ajax_save_order_of_partners', 'save_order_of_partners' );
+	add_action( 'wp_ajax_nopriv_save_order_of_partners', 'save_order_of_partners' );
+	function save_order_of_partners()
+	{
+		parse_str($_POST['itens'], $allFormData);
+
+		foreach ( $allFormData['ordem'] as $key => $order ):
+			
+			if( $_POST['type'] == 'home' ):
+
+				$home = ( isset($order['home']) ) ? 1 : 0;
+				$data = array( 
+				    'home_order'  => $order['position'],
+				    'presente_na_homepage' => $home
+				);
+
+			else:
+				$data = array(
+					'parceiros_order' => $order['position']
+				);
+			endif; 
+			//get pods object for item of ID $id 
+			$pod = pods( 'parceiro', $key ); 
+			//update the item and return item id in $item 
+			$item = $pod->save( $data);
+				
+		endforeach;
+
 		wp_die();
 	}
 
