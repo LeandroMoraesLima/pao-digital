@@ -100,13 +100,13 @@
 				__('Media'),
 				__('Links'),
 				__('Pages'),
-				__('Appearance'),
-				__('Tools'),
+				//__('Appearance'),
+				//__('Tools'),
 				__('Users'),
 				//__('Settings'),
 				__('Comments'),
 				__('Plugins'),
-				__('Options')
+				//__('Options')
 			);
 
 		} elseif (current_user_can( 'cliente' )) {
@@ -125,6 +125,7 @@
 				__('Plugins'),
 				__('Options')
 			);
+			
 		} elseif (current_user_can( 'ajudante' )) {
 			$restricted = array(
 				//Remova ou comente as linhas a seguir para exibir os itens.
@@ -141,6 +142,7 @@
 				__('Plugins'),
 				__('Options')
 			);
+			
 		} elseif (current_user_can( 'padeiro' )) {
 			$restricted = array(
 				//Remova ou comente as linhas a seguir para exibir os itens.
@@ -157,6 +159,7 @@
 				__('Plugins'),
 				__('Options')
 			);
+			
 		}
 		
 		end ($menu);
@@ -246,18 +249,25 @@
 
 
 	if( function_exists('acf_add_options_page') ) {
-	
-		acf_add_options_page(array(
-			'page_title' 	=> 'Theme General Settings',
-			'menu_title'	=> 'Theme Settings',
-			'menu_slug' 	=> 'theme-general-settings',
-			'capability'	=> 'edit_posts',
-			'redirect'		=> false
-		));
-		
+		if (current_user_can( 'administrator' )):
+			acf_add_options_page(array(
+				'page_title' 	=> 'Theme General Settings',
+				'menu_title'	=> 'Theme Settings',
+				'menu_slug' 	=> 'theme-general-settings',
+				'capability'	=> 'edit_posts',
+				'redirect'		=> false
+			));
+		endif;
 	}
 
 
+
+	function send_payment()
+	{
+
+		
+		
+	}
 
 
 

@@ -152,15 +152,6 @@ Detalhes do seu pedido
 	</div>
 </section>
 
-
-<?php 
-
-	//funcao que resguarda pagamento atraves da $_SESSION
-	send_payment();
-
-?>
-
-
 <script type="text/javascript">
 	(function($){
 

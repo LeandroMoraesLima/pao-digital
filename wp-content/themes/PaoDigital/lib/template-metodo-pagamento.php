@@ -7,6 +7,12 @@ if (have_posts()) :
 
 get_header('interna');
 
+
+
+	send_payment();
+
+
+
 ?>
 
 <!--==========================
