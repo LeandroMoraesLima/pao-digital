@@ -35,7 +35,7 @@
 	
 	$i = 1;
 	$params = [
-		'venda_id' => $_GET['id'],
+		'where' => '`venda_id` = '.$_GET['id'],
 		'orderby'	=> 'id ASC'
 	];
 

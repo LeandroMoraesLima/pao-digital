@@ -265,8 +265,54 @@
 	function send_payment()
 	{
 
-		
-		
+		$pod = pods( 'venda' ); 
+		$plano = ['junior', 'pleno', 'master', 'corporativo', 'menu' => 'menu'];
+
+		// To add a new item, let's set the data first 
+		$data = array( 
+			'pd_users_id'		=> get_current_user_id(),
+			'pd_parceiros_id'	=> $_SESSION['paodigital']['parceiro'],
+			'preco_total'		=> $_SESSION['paodigital']['cart']['subtotal'],
+			'desconto'			=> 0,
+			'taxas'				=> $_SESSION['paodigital']['cart']['ventrega'],
+			'pagamento_status'	=> 0,
+			'product_type'		=> $_SESSION['paodigital']['type'],
+			'package_type'		=> $plano[ $_SESSION['paodigital']['plano'] ],
+			'pacote_por_x_dias'	=> 0,
+			'week_time'			=> 'A',
+			'drive_time'		=> '0000-00-00 00:00:00',
+			'phone'				=> '',
+			'date_expiration'	=> '0000-00-00 00:00:00',
+			'created'			=> date('Y-m-d H:i:s'),
+			'modified'			=> '0000-00-00 00:00:00'
+		); 
+
+
+		//Add the new item now and get the new ID 
+		$new_venda_id = $pod->add( $data ); 
+
+		$myItens = $_SESSION['paodigital']['cart']['itens'];
+
+		if( is_array($myItens) && count($myItens) > 0 ):
+
+			foreach( $myItens as $key => $prod ):
+				
+				$pod = pods( 'item' ); 
+				$datP = array( 
+					'nome'			=> $prod['nome'],
+					'quantidade'	=> $prod['quantidade'],
+					'valor_no_ato'	=> $prod['valor'],
+					'produto_id'	=> $key,
+					'venda_id'		=> $new_venda_id
+				);
+				$pod->add( $datP );
+
+			endforeach;
+
+		endif;
+
+		$_SESSION['paodigital'] = [];
+
 	}
 
 
