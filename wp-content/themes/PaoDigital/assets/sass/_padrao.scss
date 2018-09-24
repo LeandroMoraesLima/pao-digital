@@ -1160,7 +1160,18 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 
 #contact input, textarea {
-  background: #ffb600;
+  border: 1px solid #6d6964;
+  width: 100%;
+  border-radius: 7px;
+  margin-bottom: 23px;
+  padding: 15px;
+  font-size: 18px;
+  font-family: Myriad Pro;
+  color: #8d8a8a;
+  outline: none;
+}
+#ver{
+	background: #ffb600;
     display: inline-block;
     padding: 6px 30px;
     border-radius: 20px;
@@ -1172,7 +1183,6 @@ body.mobile-nav-active #mobile-nav-toggle {
     text-align: center;
     outline: none;
 }
-
 
 #contact textarea {
   height: 223px;
