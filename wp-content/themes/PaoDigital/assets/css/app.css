@@ -1176,32 +1176,33 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 15px;
   font-size: 18px;
   font-family: Myriad Pro;
-  color: #f4f4f4;
+  color: #8d8a8a;
+  outline: none;
 }
 
-/* line 1174, ../sass/_padrao.scss */
+/* line 1175, ../sass/_padrao.scss */
 #contact textarea {
   height: 223px;
   resize: none;
 }
 
-/* line 1180, ../sass/_padrao.scss */
+/* line 1181, ../sass/_padrao.scss */
 #contact .left {
   margin-right: .5%;
 }
 
-/* line 1185, ../sass/_padrao.scss */
+/* line 1186, ../sass/_padrao.scss */
 #contact .right {
   margin-left: .5%;
 }
 
-/* line 1190, ../sass/_padrao.scss */
+/* line 1191, ../sass/_padrao.scss */
 #contact .botao {
   text-align: center;
   padding-top: 40px;
 }
 
-/* line 1196, ../sass/_padrao.scss */
+/* line 1197, ../sass/_padrao.scss */
 #contact .ver {
   background: #ffb600;
   display: inline-block;
@@ -1218,7 +1219,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-/* line 1213, ../sass/_padrao.scss */
+/* line 1214, ../sass/_padrao.scss */
 #footer {
   background: #434343;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
@@ -1227,40 +1228,40 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 14px;
 }
 
-/* line 1222, ../sass/_padrao.scss */
+/* line 1223, ../sass/_padrao.scss */
 #footer .footer-links a:first-child {
   padding-left: 0;
 }
 
-/* line 1227, ../sass/_padrao.scss */
+/* line 1228, ../sass/_padrao.scss */
 #footer .footer-links a:hover {
   color: #1dc8cd;
 }
 
-/* line 1232, ../sass/_padrao.scss */
+/* line 1233, ../sass/_padrao.scss */
 #footer .footer-logo {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 1238, ../sass/_padrao.scss */
+/* line 1239, ../sass/_padrao.scss */
 #footer .footer-logo img {
   width: 39%;
   width: 65%;
 }
 
-/* line 1244, ../sass/_padrao.scss */
+/* line 1245, ../sass/_padrao.scss */
 #footer .footer-logo p {
   margin: 5px 0;
   color: #d3d3d3;
 }
 
-/* line 1250, ../sass/_padrao.scss */
+/* line 1251, ../sass/_padrao.scss */
 #footer .footer-logo a {
   color: #b8375d;
 }
 
-/* line 1255, ../sass/_padrao.scss */
+/* line 1256, ../sass/_padrao.scss */
 #footer .footer-logo span {
   color: #d3d3d3;
 }
@@ -1717,7 +1718,6 @@ body button[type=submit] {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
-
 /* line 22, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 .dashicons {
   font-size: 150px;
@@ -1734,14 +1734,11 @@ body button[type=submit] {
   margin-top: 25px;
   margin-bottom: 10px;
 }
-
 /* line 40, ../sass/website/_confirmacao-pagamento.scss */
-
 #confirmacao .box_style_2 .confirm p {
   font-size: 13px;
   color: #555;
 }
-
 /* line 45, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 h4 {
   color: #333;
@@ -1749,7 +1746,6 @@ body button[type=submit] {
   font-weight: 500;
   float: left;
 }
-
 /* line 51, ../sass/website/_confirmacao-pagamento.scss */
 #confirmacao .box_style_2 .table {
   text-align: left;

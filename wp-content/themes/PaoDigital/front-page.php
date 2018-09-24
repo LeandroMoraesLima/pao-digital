@@ -280,21 +280,7 @@ Contact Section
 			<h3 class="section-title">Contato</h3>
 			<hr>
 		</div>
-		<div class="row wow fadeInUp">
-			<div class="col-md-8 offset-md-2">
-				<div class="contact left">
-					<input type="text" name="nome" autocomplete="name" placeholder="Nome" required>
-					<input type="text" name="empresa" autocomplete="organization" placeholder="Empresa">
-					<input type="text" name="telefone" autocomplete="tel-national" placeholder="Telefone" required>
-				</div>
-				<div class="contact right">
-					<textarea name="mensagem" placeholder="Mensagem" required></textarea>   
-				</div>
-			</div>
-		</div>
-		<div class="botao">
-			<a href="#" class="ver">Ver todos parceiros</a>
-		</div>
+		<?php echo do_shortcode('[contact-form-7 id="190" title="Formulario footer"]'); ?>
 	</div>
 </section><!-- #contact -->
 

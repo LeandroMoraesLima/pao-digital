@@ -15,7 +15,8 @@ Footer
 				<?php $imagem = get_field('lg_logo','options'); ?>
 				<img src="<?php echo $imagem; ?>)">
 				<p><?php echo get_field('tf_texto','options') ?></p>
-				<span><?php echo get_field('texto_desenvolvido','options') ?></span> <a href="<?php echo get_field('link_desenvolvido','options'); ?>" ><?php echo get_field('texto_do_email','options') ?></a>
+				<span><?php echo get_field('texto_desenvolvido','options') ?></span> 
+				<a href="<?php echo get_field('link_desenvolvido','options'); ?>" ><?php echo get_field('texto_do_email','options') ?></a>
 			</div>
 		</div>
 	</div>
