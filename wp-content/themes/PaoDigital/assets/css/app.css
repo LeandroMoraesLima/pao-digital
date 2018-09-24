@@ -1169,6 +1169,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* line 1162, ../sass/_padrao.scss */
 #contact input, textarea {
+  border: 1px solid #6d6964;
+  width: 100%;
+  border-radius: 7px;
+  margin-bottom: 23px;
+  padding: 15px;
+  font-size: 18px;
+  font-family: Myriad Pro;
+  color: #8d8a8a;
+  outline: none;
+}
+
+/* line 1173, ../sass/_padrao.scss */
+#ver {
   background: #ffb600;
   display: inline-block;
   padding: 6px 30px;
@@ -1182,29 +1195,29 @@ body.mobile-nav-active #mobile-nav-toggle {
   outline: none;
 }
 
-/* line 1177, ../sass/_padrao.scss */
+/* line 1187, ../sass/_padrao.scss */
 #contact textarea {
   height: 223px;
   resize: none;
 }
 
-/* line 1183, ../sass/_padrao.scss */
+/* line 1193, ../sass/_padrao.scss */
 #contact .left {
   margin-right: .5%;
 }
 
-/* line 1188, ../sass/_padrao.scss */
+/* line 1198, ../sass/_padrao.scss */
 #contact .right {
   margin-left: .5%;
 }
 
-/* line 1193, ../sass/_padrao.scss */
+/* line 1203, ../sass/_padrao.scss */
 #contact .botao {
   text-align: center;
   padding-top: 40px;
 }
 
-/* line 1199, ../sass/_padrao.scss */
+/* line 1209, ../sass/_padrao.scss */
 #contact .ver {
   background: #ffb600;
   display: inline-block;
@@ -1221,7 +1234,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-/* line 1216, ../sass/_padrao.scss */
+/* line 1226, ../sass/_padrao.scss */
 #footer {
   background: #434343;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
@@ -1230,40 +1243,40 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 14px;
 }
 
-/* line 1225, ../sass/_padrao.scss */
+/* line 1235, ../sass/_padrao.scss */
 #footer .footer-links a:first-child {
   padding-left: 0;
 }
 
-/* line 1230, ../sass/_padrao.scss */
+/* line 1240, ../sass/_padrao.scss */
 #footer .footer-links a:hover {
   color: #1dc8cd;
 }
 
-/* line 1235, ../sass/_padrao.scss */
+/* line 1245, ../sass/_padrao.scss */
 #footer .footer-logo {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 1241, ../sass/_padrao.scss */
+/* line 1251, ../sass/_padrao.scss */
 #footer .footer-logo img {
   width: 39%;
   width: 65%;
 }
 
-/* line 1247, ../sass/_padrao.scss */
+/* line 1257, ../sass/_padrao.scss */
 #footer .footer-logo p {
   margin: 5px 0;
   color: #d3d3d3;
 }
 
-/* line 1253, ../sass/_padrao.scss */
+/* line 1263, ../sass/_padrao.scss */
 #footer .footer-logo a {
   color: #b8375d;
 }
 
-/* line 1258, ../sass/_padrao.scss */
+/* line 1268, ../sass/_padrao.scss */
 #footer .footer-logo span {
   color: #d3d3d3;
 }
