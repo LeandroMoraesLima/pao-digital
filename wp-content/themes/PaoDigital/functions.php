@@ -88,89 +88,7 @@
 
 
 
-	function remove_menus () 
-	{
-		global $menu;
-		if (current_user_can( 'administrator' ))
-		{
-			$restricted = array(
-				//Remova ou comente as linhas a seguir para exibir os itens.
-				__('Dashboard'),
-				//__('Posts'),
-				__('Media'),
-				__('Links'),
-				__('Pages'),
-				//__('Appearance'),
-				//__('Tools'),
-				__('Users'),
-				//__('Settings'),
-				__('Comments'),
-				__('Plugins'),
-				//__('Options')
-			);
-
-		} elseif (current_user_can( 'cliente' )) {
-			$restricted = array(
-				//Remova ou comente as linhas a seguir para exibir os itens.
-				__('Dashboard'),
-				__('Posts'),
-				__('Media'),
-				__('Links'),
-				__('Pages'),
-				__('Appearance'),
-				__('Tools'),
-				__('Users'),
-				__('Settings'),
-				__('Comments'),
-				__('Plugins'),
-				__('Options')
-			);
-			
-		} elseif (current_user_can( 'ajudante' )) {
-			$restricted = array(
-				//Remova ou comente as linhas a seguir para exibir os itens.
-				__('Dashboard'),
-				__('Posts'),
-				__('Media'),
-				__('Links'),
-				__('Pages'),
-				__('Appearance'),
-				__('Tools'),
-				__('Users'),
-				__('Settings'),
-				__('Comments'),
-				__('Plugins'),
-				__('Options')
-			);
-			
-		} elseif (current_user_can( 'padeiro' )) {
-			$restricted = array(
-				//Remova ou comente as linhas a seguir para exibir os itens.
-				__('Dashboard'),
-				__('Posts'),
-				__('Media'),
-				__('Links'),
-				__('Pages'),
-				__('Appearance'),
-				__('Tools'),
-				__('Users'),
-				__('Settings'),
-				__('Comments'),
-				__('Plugins'),
-				__('Options')
-			);
-			
-		}
-		
-		end ($menu);
-		while (prev($menu)){
-			$value = explode(' ',$menu[key($menu)][0]);
-			if( in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
-		}
-		//remove_menu_page('edit.php?post_type=acf-field-group');
-		//die();
-	}
-	add_action('admin_menu', 'remove_menus');
+	
 
 
 	// Disable Admin Bar for everyone
@@ -248,13 +166,15 @@
 	add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 
 
-	if( function_exists('acf_add_options_page') ) {
+	if( function_exists('acf_add_options_sub_page') ) {
 		if (current_user_can( 'administrator' )):
-			acf_add_options_page(array(
-				'page_title' 	=> 'Theme General Settings',
-				'menu_title'	=> 'Theme Settings',
+			acf_add_options_sub_page(array(
+				'page_title' 	=> 'Opções do Tema',
+				'menu_title'	=> 'Opções do Tema',
 				'menu_slug' 	=> 'theme-general-settings',
+				'parent_slug'	=> 'edit.php?post_type=page',
 				'capability'	=> 'edit_posts',
+				'icon_url'		=> 'dashicons-welcome-write-blog',
 				'redirect'		=> false
 			));
 		endif;
@@ -316,7 +236,134 @@
 	}
 
 
+	function remove_menus () 
+	{
+		global $menu;
+		if (current_user_can( 'administrator' ))
+		{
+			$restricted = array(
+				//Remova ou comente as linhas a seguir para exibir os itens.
+				__('Dashboard'),
+				__('Posts'),
+				__('Media'),
+				__('Links'),
+				//__('Pages'),
+				__('Appearance'),
+				__('Tools'),
+				//__('Users'),
+				__('Settings'),
+				__('Comments'),
+				__('Plugins'),
+				__('Options')
+			);
 
+		} elseif (current_user_can( 'cliente' )) {
+			$restricted = array(
+				//Remova ou comente as linhas a seguir para exibir os itens.
+				__('Dashboard'),
+				__('Posts'),
+				__('Media'),
+				__('Links'),
+				__('Pages'),
+				__('Appearance'),
+				__('Tools'),
+				__('Users'),
+				__('Settings'),
+				__('Comments'),
+				__('Plugins'),
+				__('Options')
+			);
+			
+		} elseif (current_user_can( 'ajudante' )) {
+			$restricted = array(
+				//Remova ou comente as linhas a seguir para exibir os itens.
+				__('Dashboard'),
+				__('Posts'),
+				__('Media'),
+				__('Links'),
+				__('Pages'),
+				__('Appearance'),
+				__('Tools'),
+				__('Users'),
+				__('Settings'),
+				__('Comments'),
+				__('Plugins'),
+				__('Options')
+			);
+			
+		} elseif (current_user_can( 'padeiro' )) {
+			$restricted = array(
+				//Remova ou comente as linhas a seguir para exibir os itens.
+				__('Dashboard'),
+				__('Posts'),
+				__('Media'),
+				__('Links'),
+				__('Pages'),
+				__('Appearance'),
+				__('Tools'),
+				__('Users'),
+				__('Settings'),
+				__('Comments'),
+				__('Plugins'),
+				__('Options')
+			);
+			
+		}
+		
+		end ($menu);
+		while (prev($menu)){
+			$value = explode(' ',$menu[key($menu)][0]);
+			if( in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
+		}
+
+		//var_dump($menu);
+		remove_menu_page('pods-manage-item');
+		remove_menu_page('edit.php?post_type=acf-field-group');
+		//die();
+	}
+	add_action('admin_menu', 'remove_menus');
+
+
+	add_action( 'admin_init', 'the_dramatist_debug_admin_menu' );
+
+	function the_dramatist_debug_admin_menu() {
+
+
+		$GLOBALS[ 'menu' ]['110'] = $GLOBALS[ 'menu' ]['70'];
+		unset($GLOBALS[ 'menu' ]['58.5']);
+		unset($GLOBALS[ 'menu' ]['70']);
+		unset($GLOBALS[ 'menu' ]['100']);
+		unset($GLOBALS[ 'menu' ]['101']);
+		unset($GLOBALS[ 'menu' ]['105']);
+		//echo '<pre>' . print_r( $GLOBALS[ 'menu' ], TRUE) . '</pre>';
+	}
+
+
+function modify_contact_methods($profile_fields) {
+	// Remove old fields
+	$profile_fields = [];
+
+	?>
+        <script type="text/javascript">
+            jQuery(".user-rich-editing-wrap").remove();
+            jQuery(".user-syntax-highlighting-wrap").remove();
+            jQuery(".user-admin-color-wrap").remove();
+            jQuery(".user-comment-shortcuts-wrap").remove();
+            jQuery(".user-admin-bar-front-wrap").remove();
+            jQuery(".user-language-wrap").remove();
+            jQuery("h2:contains('Opções pessoais')").remove();
+            jQuery("h2:contains('Informações de contato')").remove();//
+            jQuery(".user-url-wrap").remove();
+            jQuery("h2:contains('Privilégios adicionais')").remove();//
+            jQuery(".user-capabilities-wrap").remove();
+        </script>
+<?php
+
+	$profile_fields['Endereco'] = 'Facebook URL';
+	
+	return $profile_fields;
+}
+add_filter('user_contactmethods', 'modify_contact_methods');
 
 
  ?>
