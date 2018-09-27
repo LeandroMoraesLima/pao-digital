@@ -1,4 +1,4 @@
-#pedido{
+#pedido{ 
     padding-top: 60px;
     padding-bottom: 60px;
 
@@ -7,6 +7,20 @@
         border-radius: 3px;
         border: 1px solid #ededed;
         padding: 22px;
+
+        .nomargin_top{
+    	    color: #333;
+		    font-size: 17px;
+		    font-weight: 600;
+		    margin-bottom: 10px;
+		    display: flex;
+		    justify-content: space-between;
+        }
+        p{
+            font-size: 13px;
+            margin-bottom: 0px;
+            text-align: left;
+        }
 
         .inner{
             background-color: #ffb600;

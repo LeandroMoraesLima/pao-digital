@@ -1199,21 +1199,25 @@ body.mobile-nav-active #mobile-nav-toggle {
   resize: none;
 }
 
+
 /* line 1191, ../sass/_padrao.scss */
 #contact .left {
   margin-right: .5%;
 }
+
 
 /* line 1196, ../sass/_padrao.scss */
 #contact .right {
   margin-left: .5%;
 }
 
-/* line 1201, ../sass/_padrao.scss */
+
+/* line 1203, ../sass/_padrao.scss */
 #contact .botao {
   text-align: center;
   padding-top: 40px;
 }
+
 
 /* line 1207, ../sass/_padrao.scss */
 #contact .botao input[type="submit"] {
@@ -1232,6 +1236,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+
 /* line 1224, ../sass/_padrao.scss */
 #footer {
   background: #434343;
@@ -1241,10 +1246,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 14px;
 }
 
+
 /* line 1233, ../sass/_padrao.scss */
 #footer .footer-links a:first-child {
   padding-left: 0;
 }
+
 
 /* line 1238, ../sass/_padrao.scss */
 #footer .footer-links a:hover {
@@ -1256,6 +1263,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: 0 auto;
   text-align: center;
 }
+
 
 /* line 1249, ../sass/_padrao.scss */
 #footer .footer-logo img {
@@ -1787,6 +1795,21 @@ body button[type=submit] {
   padding: 22px;
 }
 /* line 11, ../sass/website/_detalhes-pedido.scss */
+#pedido .box_style_2 .nomargin_top {
+  color: #333;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+/* line 19, ../sass/website/_detalhes-pedido.scss */
+#pedido .box_style_2 p {
+  font-size: 13px;
+  margin-bottom: 0px;
+  text-align: left;
+}
+/* line 25, ../sass/website/_detalhes-pedido.scss */
 #pedido .box_style_2 .inner {
   background-color: #ffb600;
   color: #fff;
@@ -1797,17 +1820,17 @@ body button[type=submit] {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
-/* line 21, ../sass/website/_detalhes-pedido.scss */
+/* line 35, ../sass/website/_detalhes-pedido.scss */
 #pedido .box_style_2 .form-group {
   color: #333;
   font-weight: 700;
   font-size: 14px;
 }
-/* line 26, ../sass/website/_detalhes-pedido.scss */
+/* line 40, ../sass/website/_detalhes-pedido.scss */
 #pedido .box_style_2 .form-group .form-control {
   font-size: 13px;
 }
-/* line 30, ../sass/website/_detalhes-pedido.scss */
+/* line 44, ../sass/website/_detalhes-pedido.scss */
 #pedido .box_style_2 label {
   color: #333;
   font-weight: 700;
