@@ -1128,7 +1128,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   height: 3px;
   background: #ffb700;
   margin: 0 auto;
-  margin-bottom: 41px;
+  margin-bottom: 41px; 
 }
 
 
@@ -1139,7 +1139,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 
-#contact .form button[type="submit"] {
+#contact .form input[type="submit"] {
   background: linear-gradient(45deg, #1de099, #1dc8cd);
   border: 0;
   border-radius: 20px;
@@ -1148,7 +1148,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 
-#contact .form button[type="submit"]:hover {
+#contact .form input[type="submit"]:hover {
   cursor: pointer;
 }
 
@@ -1159,7 +1159,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 
-#contact input, textarea {
+#contact input[type="text"], textarea {
   border: 1px solid #6d6964;
   width: 100%;
   border-radius: 7px;
@@ -1170,18 +1170,16 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #8d8a8a;
   outline: none;
 }
-#ver{
-	background: #ffb600;
-    display: inline-block;
-    padding: 6px 30px;
-    border-radius: 20px;
-    color: #fff;
-    transition: none;
-    font-size: 14px;
-    font-weight: 400;
-    font-family: "Montserrat", sans-serif;
-    text-align: center;
-    outline: none;
+#contact input[type="tel"], textarea {
+  border: 1px solid #6d6964;
+  width: 100%;
+  border-radius: 7px;
+  margin-bottom: 23px;
+  padding: 15px;
+  font-size: 18px;
+  font-family: Myriad Pro;
+  color: #8d8a8a;
+  outline: none;
 }
 
 #contact textarea {
@@ -1206,7 +1204,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 
-#contact .ver {
+#contact .botao input[type="submit"] {
   background: #ffb600;
   display: inline-block;
   padding: 6px 30px;
