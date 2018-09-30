@@ -28,6 +28,7 @@
 	require_once (__DIR__.'/lib/wp-database-custom.php');
 	require_once (__DIR__.'/lib/wp-posts-custom.php');
 	require_once (__DIR__.'/lib/wp-wordpress-actions.php');
+	require_once (__DIR__.'/lib/save-address.php');
 	
 
 
@@ -329,12 +330,38 @@
 	function the_dramatist_debug_admin_menu() {
 
 
-		$GLOBALS[ 'menu' ]['110'] = $GLOBALS[ 'menu' ]['70'];
-		unset($GLOBALS[ 'menu' ]['58.5']);
-		unset($GLOBALS[ 'menu' ]['70']);
-		unset($GLOBALS[ 'menu' ]['100']);
-		unset($GLOBALS[ 'menu' ]['101']);
-		unset($GLOBALS[ 'menu' ]['105']);
+		//$GLOBALS[ 'menu' ]['110'] = $GLOBALS[ 'menu' ]['70'];
+
+		if( isset($GLOBALS[ 'menu' ]) ):
+
+			foreach( $GLOBALS[ 'menu' ] as $key => $menu ):
+
+				if( in_array( 'pods-manage-item', $menu ) )
+					unset($GLOBALS[ 'menu' ][$key]);
+
+				if( in_array( 'blue_admin', $menu ) )
+					unset($GLOBALS[ 'menu' ][$key]);
+
+				if( in_array( 'hide_wp', $menu ) )
+					unset($GLOBALS[ 'menu' ][$key]);
+
+				if( in_array( 'UsuarioEnderecos', $menu ) )
+					unset($GLOBALS[ 'menu' ][$key]);
+
+				if( in_array( 'Pods Admin', $menu ) )
+					unset($GLOBALS[ 'menu' ][$key]);
+
+				if( in_array( 'users.php', $menu ) && $key !== 200 ):
+
+					$GLOBALS[ 'menu' ]['200'] = $GLOBALS[ 'menu' ][$key];
+					unset($GLOBALS[ 'menu' ][$key]);
+				endif;
+				
+
+			endforeach;
+
+		endif;
+
 		//echo '<pre>' . print_r( $GLOBALS[ 'menu' ], TRUE) . '</pre>';
 	}
 

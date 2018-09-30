@@ -47,4 +47,24 @@
             font-size: 14px;            
         }
     }
+
+    .address-confirm {
+        background-color: #007bff;
+        border: none;
+        display: block;
+        border-radius: 3px;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 15px 0px;
+        width: 100%;
+        text-align: center;
+        border-radius: 8px;
+        &:hover {
+            color: #fff;
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+    }
 }

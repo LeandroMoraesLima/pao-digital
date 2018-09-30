@@ -1199,25 +1199,21 @@ body.mobile-nav-active #mobile-nav-toggle {
   resize: none;
 }
 
-
 /* line 1191, ../sass/_padrao.scss */
 #contact .left {
   margin-right: .5%;
 }
-
 
 /* line 1196, ../sass/_padrao.scss */
 #contact .right {
   margin-left: .5%;
 }
 
-
-/* line 1203, ../sass/_padrao.scss */
+/* line 1201, ../sass/_padrao.scss */
 #contact .botao {
   text-align: center;
   padding-top: 40px;
 }
-
 
 /* line 1207, ../sass/_padrao.scss */
 #contact .botao input[type="submit"] {
@@ -1236,7 +1232,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-
 /* line 1224, ../sass/_padrao.scss */
 #footer {
   background: #434343;
@@ -1246,12 +1241,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 14px;
 }
 
-
 /* line 1233, ../sass/_padrao.scss */
 #footer .footer-links a:first-child {
   padding-left: 0;
 }
-
 
 /* line 1238, ../sass/_padrao.scss */
 #footer .footer-links a:hover {
@@ -1263,7 +1256,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: 0 auto;
   text-align: center;
 }
-
 
 /* line 1249, ../sass/_padrao.scss */
 #footer .footer-logo img {
@@ -1835,6 +1827,27 @@ body button[type=submit] {
   color: #333;
   font-weight: 700;
   font-size: 14px;
+}
+/* line 51, ../sass/website/_detalhes-pedido.scss */
+#pedido .address-confirm {
+  background-color: #007bff;
+  border: none;
+  display: block;
+  border-radius: 3px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 15px 0px;
+  width: 100%;
+  text-align: center;
+  border-radius: 8px;
+}
+/* line 64, ../sass/website/_detalhes-pedido.scss */
+#pedido .address-confirm:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
 }
 
 /* line 15, ../sass/app.scss */
