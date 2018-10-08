@@ -67,7 +67,26 @@
 		if( $_GET['action'] == 'edit' && $_GET['page'] == 'pods-manage-venda' ):
 			include(locate_template('lib/template-tables.php'));
 		endif;
+
+		if( $_GET['action'] == 'edit'  && $_GET['page'] == 'pods-manage-parceiro' ):
+			include(locate_template('lib/template-maps.php'));
+		endif;
+
+		if( ( $_GET['action'] == 'edit' || $_GET['action'] == 'add' ) && $_GET['page'] == 'pods-manage-parceiro' ):
+			include(locate_template('lib/parceiro-cep.php'));
+		endif;
 	}; 
 	         
 	// add the action 
 	add_action( 'pods_act_editor_after_metabox', 'action_pods_act_editor_after_metabox', 10, 2 ); 
+
+
+
+
+
+
+
+
+
+
+

@@ -137,7 +137,11 @@ Pricing Section
 							<?php if( !is_user_logged_in() ): ?>
 								<input type="button" class="lrm-login get-started-btn" value="Fazer Pedido"/>
 							<?php else: ?>
-									<input type="hidden" name="plano" value="<?php echo $i++; ?>" />
+									<?php 
+										$plano = array('junior', 'pleno', 'master', 'corporativo');
+									?>
+									<input type="hidden" name="type" value="home" />
+									<input type="hidden" name="plano" value="<?php echo $plano[$i++]; ?>" />
 									<input type="submit" class="get-started-btn" value="Fazer Pedido"/>
 							<?php endif; ?>
 						</form>
@@ -198,6 +202,7 @@ About Us Section
 						<?php else: ?>
 							<form action="<?php echo get_bloginfo('url'); ?>/parceiros" method="post">
 								<input type="hidden" name="type" value="home" />
+								<input type="hidden" name="plano" value="menu" />
 								<input type="submit" class="get-started-btn yellow" value="Pedir Agora"/>
 							</form>
 						<?php endif; ?>
@@ -238,6 +243,7 @@ Our Team Section
 						<?php else: ?>
 							<form action="<?php echo get_bloginfo('url'); ?>/parceiros" method="post">
 								<input type="hidden" name="type" value="drive" />
+								<input type="hidden" name="plano" value="menu" />
 								<input type="submit" class="get-started-btn yellow" value="Pedir Agora"/>
 							</form>
 						<?php endif; ?>

@@ -81,65 +81,37 @@
 
 	function add_to_cart() 
 	{
+
 		$id = $_POST['product'];
+		$vid = $_SESSION['paodigital']['venda'];
 
-		if( !is_array($_SESSION['paodigital']['cart']['itens']) )
-		{
-			$_SESSION['paodigital']['cart']['itens'] = [];
-		}
+		$pod = pods('cardapio', $id);
+		var_dump($pod);
 
-		//$_SESSION['paodigital']['cart']['itens'] = [];
-		// var_dump($_SESSION['paodigital']['cart']);
-		// die();
+		$item = pods( 'item', array('where' => "produto_id = {$id} AND venda_id = {$vid}") ); 
+		$itemData = $item->data();
 
-		$html = '';
-		$vtotal = 0;
+		if( $item->total_found() > 0 ):
+			
+			$data = $itemData[0];
+			$updateItem = pods('item', $data->id );
+			$updateItem->save( "quantidade", ($data->quantidade + 1) );
 
-		$cardapio = pods( 'cardapio', $id ); 
-
-		$prod = $_SESSION['paodigital']['cart']['itens'][$id];
-
-		$vvenda = str_replace( 'R$ ', '', $cardapio->display('valor_venda') );
-		$vvenda = str_replace( ',', '.', $vvenda );
-
-		$valor = ( $vvenda * ($prod['quantidade'] + 1) );
-
-		if( isset($prod['quantidade']) && count($prod['quantidade']) > 0 ):
-			$_SESSION['paodigital']['cart']['itens'][$id]['quantidade'] = $prod['quantidade'] + 1;
-			$_SESSION['paodigital']['cart']['itens'][$id]['valor'] = $valor;
-			$_SESSION['paodigital']['cart']['itens'][$id]['nome'] = $cardapio->display('nome');
-			$_SESSION['paodigital']['cart']['itens'][$id]['reais'] = number_format($valor, 2, ',', '.');
 		else:
-			$_SESSION['paodigital']['cart']['itens'][$id]['quantidade'] = 1;
-			$_SESSION['paodigital']['cart']['itens'][$id]['nome'] = $cardapio->display('nome');
-			$_SESSION['paodigital']['cart']['itens'][$id]['valor'] = $vvenda;
-			$_SESSION['paodigital']['cart']['itens'][$id]['reais'] = $cardapio->display('valor_venda');
+			$item = $pod->row();
+
+			$newIten = pods('item');
+			$datP = array( 
+				'nome'			=> $item['nome'],
+				'quantidade'	=> 1,
+				'valor_no_ato'	=> (Float)$item['valor_venda'],
+				'produto_id'	=> $item['id'],
+				'venda_id'		=> $vid
+			);
+			$newIten->add( $datP );
+
 		endif;
 		
-		foreach( $_SESSION['paodigital']['cart']['itens'] as $key => $total ):
-			$vtotal = $vtotal + $total['valor'];
-			include(locate_template('lib/template-itens.php'));
-		endforeach;
-
-		$vvoucher = 0;
-		$ventrega = 10;
-		$vltotal = ($vtotal - $vvoucher + $ventrega);
-
-		$_SESSION['paodigital']['cart']['subtotal'] = $vtotal;
-		$_SESSION['paodigital']['cart']['voucher'] = $vvoucher;
-		$_SESSION['paodigital']['cart']['ventrega'] = $ventrega;
-		$_SESSION['paodigital']['cart']['vtotal'] = $vltotal;
-
-		$itens = [
-			'subtotal' 	=> number_format($vtotal, 2, ',', '.'),
-			'voucher'	=> $vvoucher,
-			'ventrega'	=> number_format($ventrega, 2, ',', '.'),
-			'vtotal'	=> number_format($vltotal, 2, ',', '.'),
-			'html'		=> $html
-		];
-
-		// Don't forget to stop execution afterward.
-		echo json_encode($itens);
 		wp_die();
 	}
 
@@ -151,61 +123,42 @@
 	function remove_to_cart() 
 	{
 		$id = $_POST['product'];
+		$vid = $_SESSION['paodigital']['venda'];
 
-		if( !is_array($_SESSION['paodigital']['cart']['itens']) )
-		{
-			$_SESSION['paodigital']['cart']['itens'] = [];
-		}
+		//$pod = pods( 'cardapio', $id );
 
-		//$_SESSION['paodigital']['cart']['itens'] = [];
-		// var_dump($_SESSION['paodigital']['cart']);
-		// die();
+		$item = pods( 'item', array('where' => "produto_id = {$id} AND venda_id = {$vid}") ); 
+		$itemData = $item->data();
 
-		$html = '';
-		$vtotal = 0;
+		if( $item->total_found() > 0 ):
+			$data = $itemData[0];
+			if( $data->quantidade == 1 ):
+				//$item->delete($data->id);
+			else:
+				echo $qt = ($data->quantidade - 1);
+			endif;
 
-		$cardapio = pods( 'cardapio', $id ); 
-
-		$prod = $_SESSION['paodigital']['cart']['itens'][$id];
-
-		$vvenda = str_replace( 'R$ ', '', $cardapio->display('valor_venda') );
-		$vvenda = str_replace( ',', '.', $vvenda );
-
-		$valor = ( $vvenda * ($prod['quantidade'] - 1) );
-
-		if( isset($prod['quantidade']) && $prod['quantidade'] > 1 ):
-			$_SESSION['paodigital']['cart']['itens'][$id]['quantidade'] = $prod['quantidade'] - 1;
-			$_SESSION['paodigital']['cart']['itens'][$id]['valor'] = $valor;
-			$_SESSION['paodigital']['cart']['itens'][$id]['nome'] = $cardapio->display('nome');
-			$_SESSION['paodigital']['cart']['itens'][$id]['reais'] = number_format($valor, 2, ',', '.');
-		else:
-			unset($_SESSION['paodigital']['cart']['itens'][$id]);
 		endif;
+			
+		// 	$data = $itemData[0];
+		// 	$updateItem = pods('item', $data->id );
+		// 	$updateItem->save( "quantidade", ($data->quantidade + 1) );
+
+		// else:
+		// 	$item = $pod->row();
+
+		// 	$newIten = pods('item');
+		// 	$datP = array( 
+		// 		'nome'			=> $item['nome'],
+		// 		'quantidade'	=> 1,
+		// 		'valor_no_ato'	=> (Float)$item['valor_venda'],
+		// 		'produto_id'	=> $item['id'],
+		// 		'venda_id'		=> $vid
+		// 	);
+		// 	$newIten->add( $datP );
+
+		// endif;
 		
-		foreach( $_SESSION['paodigital']['cart']['itens'] as $key => $total ):
-			$vtotal = $vtotal + $total['valor'];
-			include(locate_template('lib/template-itens.php'));
-		endforeach;
-
-		$vvoucher = 0;
-		$ventrega = 10;
-		$vltotal = ($vtotal - $vvoucher + $ventrega);
-
-		$_SESSION['paodigital']['cart']['subtotal'] = $vtotal;
-		$_SESSION['paodigital']['cart']['voucher'] = $vvoucher;
-		$_SESSION['paodigital']['cart']['ventrega'] = $ventrega;
-		$_SESSION['paodigital']['cart']['vtotal'] = $vltotal;
-
-		$itens = [
-			'subtotal' 	=> number_format($vtotal, 2, ',', '.'),
-			'voucher'	=> $vvoucher,
-			'ventrega'	=> number_format($ventrega, 2, ',', '.'),
-			'vtotal'	=> number_format($vltotal, 2, ',', '.'),
-			'html'		=> $html
-		];
-
-		// Don't forget to stop execution afterward.
-		echo json_encode($itens);
 		wp_die();
 	}
 
@@ -218,39 +171,56 @@
 
 	function get_the_cart() 
 	{
-		global $_SESSION;
-		//var_dump($_SESSION['paodigital']['cart']['itens'] = '') ;
-		if( !is_array($_SESSION['paodigital']['cart']['itens']) )
-		{
-			echo 0; die();
-		}
+		$grandTotal = 0.00;
+		$vid = $_SESSION['paodigital']['venda'];
+		//$itens = pods('item', array('where' => "venda_id = {$vid}"));
+		$itens = pods_query("
+			SELECT *, (valor_no_ato * quantidade ) AS sub_total
+			FROM pd_pods_item 
+			WHERE venda_id = {$vid}");
 
-		$html = '';
 
-		$vtotal 	= $_SESSION['paodigital']['cart']['subtotal'];
-		$vltotal 	= $_SESSION['paodigital']['cart']['vtotal'];
-		$vvoucher 	= $_SESSION['paodigital']['cart']['voucher'];
-		$ventrega 	= $_SESSION['paodigital']['cart']['ventrega'];
-		
-		foreach( $_SESSION['paodigital']['cart']['itens'] as $key => $total ):
+		foreach( $itens as $key => $total ):
+			$grandTotal = $grandTotal + $total->sub_total;
 			include(locate_template('lib/template-itens.php'));
 		endforeach;
 
+		$ventrega = "5,00";
+		$vvoucher = 0.00;
+		$vtotal = ( $grandTotal + $ventrega - $vvoucher );
+
 		$itens = [
-			'subtotal' 	=> number_format($vtotal, 2, ',', '.'),
+			'subtotal' 	=> "R$ ".number_format($grandTotal, 2, ',', '.'),
 			'voucher'	=> $vvoucher,
-			'ventrega'	=> number_format($ventrega, 2, ',', '.'),
-			'vtotal'	=> number_format($vltotal, 2, ',', '.'),
+			'ventrega'	=> "R$ ".number_format($ventrega, 2, ',', '.'),
+			'vtotal'	=> "R$ ".number_format($vtotal, 2, ',', '.'),
 			'html'		=> $html
 		];
 
-		// Don't forget to stop execution afterward.
 		echo json_encode($itens);
 		wp_die();
 	}
 
 	add_action( 'wp_ajax_get_block_address', 'get_block_address' );
 	add_action( 'wp_ajax_nopriv_get_block_address', 'get_block_address' );
+
+
+
+
+	/*
+		CART FUNCTIONS - FIRST CREATE ITEM INTO CART
+		============================================
+	*/
+
+		function add_item_to_cart()
+		{
+
+		}
+
+
+
+
+
 
 	function get_block_address()
 	{
@@ -271,8 +241,8 @@
 
 				$home = ( isset($order['home']) ) ? 1 : 0;
 				$data = array( 
-				    'home_order'  => $order['position'],
-				    'presente_na_homepage' => $home
+					'home_order'  => $order['position'],
+					'presente_na_homepage' => $home
 				);
 
 			else:
@@ -291,10 +261,283 @@
 	}
 
 
+	add_action( 'wp_ajax_save_polygon', 'save_polygon' );
+	add_action( 'wp_ajax_nopriv_save_polygon', 'save_polygon' );
+	function save_polygon()
+	{
+		$postedData = $_POST["polygon"];
+		$tempData = str_replace("\\", "",$postedData);
+		$cleanData = json_decode($tempData, true);
+
+		//var_dump($cleanData);
+	
+		$array = array(
+			'string'		=> base64_encode( $_POST["polygon"] ),
+			'parceiro_id'	=> $_POST["parceiro"]
+		);
+		$maps = pods("maps");
+		$mapid = $maps->save($array);
+
+
+		if( is_array($cleanData) && count($cleanData) > 0 ):
+			foreach ($cleanData as $key => $point):
+
+				$pointarray = array(
+					'latitude'		=> $point['lat'],
+					'longitude'		=> $point['lng'],
+					'map_id'		=> $mapid
+				);
+				$maps = pods("mappoint");
+				$maps->save($pointarray);
+
+			endforeach;
+		endif;
 
 
 
+		wp_die();
 
+	}
+
+
+	add_action( 'wp_ajax_delete_polygon', 'delete_polygon' );
+	add_action( 'wp_ajax_nopriv_delete_polygon', 'delete_polygon' );
+	function delete_polygon()
+	{
+		$where = array(
+			'where'   => 'parceiro_id = ' . $_POST['parceiro'],
+			'limit'   => -1
+		);
+		$map = pods('maps', $where );
+		$maps = $map->data(); 
+
+
+		if( !empty($maps) ):
+			foreach( $maps as $key => $val ):
+
+		
+
+				$map->delete($val->id);
+
+				$mapoint = pods( 'mappoint', array( 'where'   => "map_id = {$val->id}", 'limit' => -1 ) );
+				$mapoints = $mapoint->data(); 
+				if( !empty($mapoints) ):
+					foreach( $mapoints as $key => $val ):
+
+						$mapoint->delete($val->id);
+
+					endforeach;
+				endif;
+
+			endforeach;
+		endif;
+
+
+		echo true;
+		wp_die();
+
+	}
+
+
+
+	/*
+		THIS PARTS IS FOR GET ALL PARCEIROS BY CEP AND ASSOCIATE WITH MAPS POLIGONS. 
+		ITS VERY IMPORTANT TO LEARN ALL GOOGLE MAPS API TO CONCERN AND RESOLVE ALL PROBLEMS
+		===================================================================================
+	*/
+
+	add_action( 'wp_ajax_get_all_parceiros_by_cep', 'get_all_parceiros_by_cep' );
+	add_action( 'wp_ajax_nopriv_get_all_parceiros_by_cep', 'get_all_parceiros_by_cep' );
+
+	function get_all_parceiros_by_cep() 
+	{
+		$parceiros = array();
+		$myAddress = array();
+		$cep = $_POST['cep'];
+
+		$cepass = wp_remote_get("https://maps.googleapis.com/maps/api/geocode/json?address={$cep}&key=AIzaSyBV2fGkkJbjzROwAewWvVZNuNRPFNNvVsk");
+
+		$request = json_decode($cepass['body'], true);
+
+		$myAddress = $request['results'][0]['geometry']['location']['lat'] . ' ' . $request['results'][0]['geometry']['location']['lng'];
+
+		//get all 
+		$where = array( 
+			'limit' => -1,
+		);
+		$maps = pods('maps', $where);
+
+
+		if ( 0 < $maps->total() ):
+			$o = 0;
+			while ( $maps->fetch() ):
+
+				$mapid = $maps->display('id');
+				$parid = $maps->display('parceiro_id');
+				
+				$polygon = array();
+
+				$mapoint = pods('mappoint', array( 'where' => "map_id = {$mapid}" ) );
+				if ( 0 < $mapoint->total() ):
+					$i = 0;
+					while ( $mapoint->fetch() ):
+
+
+						$polygon[$i] = $mapoint->display('latitude') . ' ' . $mapoint->display('longitude');
+
+					$i++;
+					endwhile;
+				endif;
+
+		
+				
+				// var_dump($polygon);
+				// var_dump($myAddress);
+
+				$pointLocation = new pointLocation();
+				$inside = $pointLocation->pointInPolygon($myAddress, $polygon);
+
+				if( $inside != "outside" ):
+					$parceiros[$o] = $parid;
+				endif;
+				
+				$o++;
+			endwhile;
+
+		else:
+			echo "Não temos Parceiros na sua Região";
+		endif;
+
+		print_parceiros($parceiros);
+
+		wp_die();
+	}
+
+
+	function print_parceiros($parceiros)
+	{
+		if( is_array($parceiros) && count($parceiros) > 0 ):
+			//var_dump($parceiros);
+				$parinc = implode(",", $parceiros);
+				$params = array(
+					'where'		=> "`t`.`id` IN ({$parinc})"
+				); 
+
+				// Create and find in one shot 
+				$parceiros = pods( 'parceiro', $params ); 
+				//var_dump($parceiros);
+				$i = 1;
+
+				//var_dump($parceiros->total());
+
+				if ( 0 < $parceiros->total() ):
+					while ( $parceiros->fetch() ):
+
+						//var_dump($parceiros);
+			?> 
+				
+					<div class="col-xs-6 col-sm-3 col-md-15 col-lg-15" id="parceiro-<?php echo $i; ?>" data-id="<?php echo $i; ?>">  
+						<div style="background-image: url('<?php echo $parceiros->display('logomarca'); ?>');"></div>  
+						<h4>
+							<?php echo $parceiros->display('bairro'); ?>-
+							<?php echo $parceiros->display('estado'); ?>
+						</h4>	
+						<form action="<?php echo get_bloginfo('url'); ?>/cardapio" method="post">
+							<input type="hidden" name="parceiro" value="<?php echo $parceiros->display('id'); ?>" />
+							<input type="submit" value="Selecionar"/>
+						</form>
+						
+														
+					</div>
+			<?php 
+						$i++;
+					endwhile; // end of books loop 
+				endif; 
+		else:
+
+			echo '<div class="alert alert-warning" role="alert" style="width:100%; text-align: center; ">';
+  				echo '<strong>Desculpe!</strong> Não encontramos nenhum parceiro em sua região';
+			echo '</div>';
+
+		endif;
+	}
+
+
+
+	
+
+
+class pointLocation {
+    var $pointOnVertex = true; // Check if the point sits exactly on one of the vertices?
+ 
+    function pointLocation() {
+    }
+ 
+    function pointInPolygon($point, $polygon, $pointOnVertex = true) {
+        $this->pointOnVertex = $pointOnVertex;
+ 
+        // Transform string coordinates into arrays with x and y values
+        $point = $this->pointStringToCoordinates($point);
+        $vertices = array(); 
+        foreach ($polygon as $vertex) {
+            $vertices[] = $this->pointStringToCoordinates($vertex); 
+        }
+ 
+        // Check if the point sits exactly on a vertex
+        if ($this->pointOnVertex == true and $this->pointOnVertex($point, $vertices) == true) {
+            return "vertex";
+        }
+ 
+        // Check if the point is inside the polygon or on the boundary
+        $intersections = 0; 
+        $vertices_count = count($vertices);
+ 
+        for ($i=1; $i < $vertices_count; $i++) {
+            $vertex1 = $vertices[$i-1]; 
+            $vertex2 = $vertices[$i];
+            if ($vertex1['y'] == $vertex2['y'] and $vertex1['y'] == $point['y'] and $point['x'] > min($vertex1['x'], $vertex2['x']) and $point['x'] < max($vertex1['x'], $vertex2['x'])) { // Check if point is on an horizontal polygon boundary
+                return "boundary";
+            }
+            if ($point['y'] > min($vertex1['y'], $vertex2['y']) and $point['y'] <= max($vertex1['y'], $vertex2['y']) and $point['x'] <= max($vertex1['x'], $vertex2['x']) and $vertex1['y'] != $vertex2['y']) { 
+                $xinters = ($point['y'] - $vertex1['y']) * ($vertex2['x'] - $vertex1['x']) / ($vertex2['y'] - $vertex1['y']) + $vertex1['x']; 
+                if ($xinters == $point['x']) { // Check if point is on the polygon boundary (other than horizontal)
+                    return "boundary";
+                }
+                if ($vertex1['x'] == $vertex2['x'] || $point['x'] <= $xinters) {
+                    $intersections++; 
+                }
+            } 
+        } 
+        // If the number of edges we passed through is odd, then it's in the polygon. 
+        if ($intersections % 2 != 0) {
+            return "inside";
+        } else {
+            return "outside";
+        }
+    }
+ 
+    function pointOnVertex($point, $vertices) {
+        foreach($vertices as $vertex) {
+            if ($point == $vertex) {
+                return true;
+            }
+        }
+ 
+    }
+ 
+    function pointStringToCoordinates($pointString) {
+        $coordinates = explode(" ", $pointString);
+        return array("x" => $coordinates[0], "y" => $coordinates[1]);
+    }
+ 
+}
+
+
+
+	/*
+		END OF GOOGLE MAPS BY CEP
+		=========================
+	*/
 
 
 

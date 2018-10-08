@@ -21,23 +21,6 @@ if (have_posts()) :
 $user = wp_get_current_user();
 
 
-	$headers = array(
-	    'Content-Type:application/x-www-form-urlencoded',
-	    'Authorization: Basic '. base64_encode("ff8cf021-20df-458d-97c8-f733bacbe646:3c8a6d30-1604-4170-905a-3e8b5905ec23")
-	);
-
-	$url = "https://api-sandbox.getnet.com.br/auth/oauth/v2/token";
-
-	$tk = base64_encode("ff8cf021-20df-458d-97c8-f733bacbe646:3c8a6d30-1604-4170-905a-3e8b5905ec23");
-	$e = shell_exec("curl -X POST \
-	https://api-sandbox.getnet.com.br/auth/oauth/v2/token \
-	-H 'authorization: Basic {$tk}' \
-	-H 'content-type: application/x-www-form-urlencoded' \
-	-d 'scope=oob&grant_type=client_credentials'");
-
-	$e = json_decode($e, true);
-
-
 ?>
 
 <!--==========================
@@ -214,172 +197,13 @@ Detalhes do seu pedido
 					</div>
 		            
 					<div class="sticky-sidebar col-md-5" id="sidebar" style="">
-		            	<div class="user-order-holder">
-							<div class="user-order">
-								<ul id="myItens">
-									<h4 class="text-center">
-										Seu pedido
-										<span class="dashicons dashicons-cart"></span>
-									</h4>
-									<div class="text-center" id="mitens">
-										Seu carrinho esta vazio
-									</div>
-								</ul>		            
-								<div class="price-area dev-menu-price-con" data-vatsw="on" data-vat="13">
-									<ul>
-										
-										<li> Sub Total Do Produto
-											<span class="price">
-												<span class="dev-menu-subtotal" id="subtotal">R$ 0,00</span>
-											</span>
-										</li>
-										<li class="restaurant-fee-con">
-											<span class="fee-title">Taxa De Entrega</span>
-											<span class="price">
-												<span class="dev-menu-subtotal" id="entrega">R$ 0,00</span>
-											</span>
-										</li>
-										<li>Total
-											<span class="price">
-												<span class="dev-menu-subtotal" id="total">R$ 0,00</span>
-											</span>
-										</li>
-										<li class="tempo">Tempo De Entrega Estimado:
-											<span class="price">
-												<span class="dev-menu-subtotal">40-60 min</span>
-											</span>
-										</li>
-									</ul>
-								</div>
-								<div class="input-group mb-3">
-									<input type="text" class="form-control" placeholder="Insira o voucher aqui" aria-label="Recipient's username" aria-describedby="basic-addon2">
-									<div class="input-group-append">
-										<span class="input-group-text" id="basic-addon2">OK</span>
-									</div>
-									<div class="atecao">
-										<p>
-											<span><?php echo get_field('tt_titulo','options') ?></span> 
-											<?php echo get_field('te_texto','options') ?>
-										</p>
-									</div>
-								</div>
-								<script async src="https://checkout-homologacao.getnet.com.br/loader.js"
-									data-getnet-sellerid="38da9229-8bb5-4cf4-a728-bf702e565144"
-									data-getnet-token="<?php echo $e['access_token']; ?>"
-									data-getnet-amount="25.00"
-									data-getnet-customerid="12345"
-									data-getnet-orderid="12345"
-									data-getnet-button-class="pay-button-getnet"
-									data-getnet-installments="4"
-									data-getnet-customer-first-name="João"
-									data-getnet-customer-last-name="da Silva"
-									data-getnet-customer-document-type="CPF"
-									data-getnet-customer-document-number="22233366638"
-									data-getnet-customer-email="teste@getnet.com.br"
-									data-getnet-customer-phone-number="1134562356"
-									data-getnet-customer-address-street="Rua Alexandre Dumas"
-									data-getnet-customer-address-street-number="1711"
-									data-getnet-customer-address-complementary=""
-									data-getnet-customer-address-neighborhood="Chacara Santo Antonio"
-									data-getnet-customer-address-city="São Paulo"
-									data-getnet-customer-address-state="SP"
-									data-getnet-customer-address-zipcode="04717004"
-									data-getnet-customer-country="Brasil"
-									data-getnet-shipping-address='[{ "first_name": "João", "name": "João Borgas", "email": "joaoborgas@gmail.com", "phone_number": "", "shipping_amount": 10, "address": { "street": "Rua dos Pagamentos", "complement": "", "number": "171", "district": "Centro", "city": "São Paulo", "state": "SP", "country": "Brasil", "postal_code": "12345678"}}]'
-									data-getnet-items='[{"name": "","description": "", "value": 0, "quantity": 0,"sku": ""}]'
-									data-getnet-url-callback="http://paodigital.lo/sucesso"
-									data-getnet-pre-authorization-credit="">
-								</script>	
-								<div class="menu-order">
-									<a href="#" class="menu-order-confirm pay-button-getnet"  >
-										Forma de Pagamento
-									</a>
-								</div>
-							</div>
-						</div>
+		            	<?php include(locate_template('sidebar-valores.php')); ?>
 					</div>
             	</div>
 			</div>
 		</div>
 	</div>
 </section>
-
-<script type="text/javascript">
-	(function($){
-
-		$(document).ready(function(){
-			$.post(ajax, {
-				action: 'get_the_cart'
-			}, function(data){
-				$('#mitens').html(data.html);
-				$("#subtotal").html(data.subtotal);
-				$("#total").html(data.vtotal);
-			}, 'json');
-		});
-
-
-		$(document).on("click", ".add_product_to_kart", function(){
-			var id = $(this).data('id');
-			$.post(ajax, {
-				action: 'add_to_cart',
-				product: id
-			}, function(data){
-				$('#mitens').html(data.html);
-				$("#subtotal").html(data.subtotal);
-				$("#total").html(data.vtotal);
-			}, 'json');
-		});
-
-
-		$(document).on("click", ".remove_product_to_kart", function(){
-			var id = $(this).data('id');
-			$.post(ajax, {
-				action: 'remove_to_cart',
-				product: id
-			}, function(data){
-				$('#mitens').html(data.html);
-				$("#subtotal").html(data.subtotal);
-				$("#total").html(data.vtotal);
-			}, 'json');
-		});
-
-		$(document).on('keyup', ".cep", function(){
-
-			var val = $(this).val();
-			var i = $(this).data('id');
-
-			if( val.length == 9 ){
-
-				$.get("https://viacep.com.br/ws/"+val+"/json/",{}, function(data){
-					console.log(data);
-					$("#bairro"+i).val(data.bairro);
-					$("#cidade"+i).val(data.localidade);
-					$("#uf"+i).val(data.uf);
-					$("#endereco"+i).val(data.logradouro);
-				}, 'json');
-
-			}
-
-		});
-
-		$(document).on('click', "#addNewAddress", function(){
-			$.post(ajax, {
-				action: 'get_block_address',
-				blocks: $("fieldset.addresses").length
-			}, function(data){
-				$("#addresses").append(data);
-			}, 'html');
-		});
-
-
-		//all masks
-		$(".cep").mask("00000-000");
-		$("#tel_order").mask("00 00000-0000");
-		
-
-
-	})(jQuery);
-</script>
 
 
 <?php 
