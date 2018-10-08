@@ -64,12 +64,17 @@ Header
 					<li><a href="#login" class="lrm-login lrm-hide-if-logged-in">Login</a></li>
 				<?php else: ?>
 					<?php 
-						$vi = $_SESSION['paodigital']['venda'];
-						$pods = pods('item', array('where' => "venda_id = {$vi}") );
+						if( isset($_SESSION['paodigital']['venda']) ):
+							$vi = $_SESSION['paodigital']['venda'];
+							$pods = pods('item', array('where' => "venda_id = {$vi}") );
+							$num = $pods->total_found();
+						else: 
+							$num = 0;
+						endif;
 					?>
 					<li>
 						<span class="dashicons dashicons-cart">
-							<div><?php echo $pods->total_found(); ?></div>
+							<div><?php echo $num; ?></div>
 						</span>
 					</li>
 				<?php endif; ?>
