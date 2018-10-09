@@ -71,7 +71,7 @@
 			include(locate_template('lib/template-maps.php'));
 		endif;
 
-		if( ( $_GET['action'] == 'edit' || $_GET['action'] == 'add' ) && $_GET['page'] == 'pods-manage-parceiro' ):
+		if( ( $_GET['action'] == 'edit' || $_GET['action'] == 'add' ) && ( $_GET['page'] == 'pods-manage-parceiro' || $_GET['page'] == 'pods-add-new-parceiro' ) ):
 			include(locate_template('lib/parceiro-cep.php'));
 		endif;
 
