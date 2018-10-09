@@ -83,9 +83,30 @@
 
 
 
+	function filter_pods_field_pick_data( $data, $name, $value, $options, $pod, $id ) { 
+	    // make filter magic happen here... 
+
+	    if( $name == 'pods_field_parceiro_id' ):
+
+	    	$pods = pods('parceiro', array('limit' => -1));
+	    	$pods = $pods->data();
+
+	    	$data = array();;
+	    	if( is_array($pods) && count($pods) ):
+	    		foreach($pods as $key => $val):
+
+	    			$data[$val->id] = $val->nome;
+
+	    		endforeach;
+	    	endif;
 
 
-
+	    endif;
+	    return $data; 
+	}; 
+	         
+	// add the filter 
+	add_filter( 'pods_field_pick_data', 'filter_pods_field_pick_data', 10, 6 ); 
 
 
 
