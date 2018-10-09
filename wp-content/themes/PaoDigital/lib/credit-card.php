@@ -17,22 +17,35 @@ class GetPayment
 	
 	private $customer_id = 0;
 	
-	private $card_number = "5155901222280001";
+	private $card_number = "";
 
 	private $seller_id = "f32bfdfa-8dd5-4f45-b7d9-147050c2bd53";
 
 	private $httpcode = 400;
 
-	private $compra = false;
+	public $compra = false;
 
 	private $status = '';
 
-	private $venda = 0;
+	public $venda = 0;
 	
 	public function __construct()
 	{
+
+		$this->card_number = str_replace( " ", "", $_POST['card_number'] );
 		$this->venda = $_SESSION['paodigital']['venda'];
-		unset( $_SESSION['paodigital']['venda'] );
+		//unset( $_SESSION['paodigital']['venda'] );
+
+		$this->get_the_card();
+
+		$this->close_itens();
+
+		return $this->venda;
+	}
+
+
+	public function get_the_card()
+	{
 
 		$this->current_user = wp_get_current_user();
 		$this->customer_id = str_pad($current_user->ID, 12, '0', STR_PAD_LEFT);
@@ -46,7 +59,7 @@ class GetPayment
 			$this->tokenization();
 
 			if( $this->httpcode == 201 && isset( $this->tokenizado['number_token'] ) ):
-				
+
 				$this->verification();
 				$st = $this->verificado['status'];
 
@@ -73,7 +86,7 @@ class GetPayment
 			$this->compra = false;
 		endif;
 
-		return $this->venda;
+		
 	}
 
 
@@ -98,6 +111,8 @@ class GetPayment
 		$this->auth = json_decode(curl_exec($cr), true);
 		$this->httpcode = curl_getinfo($cr, CURLINFO_HTTP_CODE);
 		curl_close($cr);
+
+		//var_dump($this->auth);
 
 	}
 
@@ -127,6 +142,8 @@ class GetPayment
 		$this->tokenizado = json_decode(curl_exec($cr), true);
 		$this->httpcode = curl_getinfo($cr, CURLINFO_HTTP_CODE);
 		curl_close($cr);
+
+		//var_dump($this->tokenizado);
 
 	}
 
@@ -289,6 +306,26 @@ class GetPayment
 
 	public function close_itens()
 	{
+		$grandTotal = 0.00;
+		
+		$itens = pods_query("
+			SELECT *, (valor_no_ato * quantidade ) AS sub_total
+			FROM pd_pods_item 
+			WHERE venda_id = {$this->venda}");
+
+		foreach( $itens as $key => $total ):
+			$grandTotal = $grandTotal + $total->sub_total;
+		endforeach;
+
+		$ventrega = "5,00";
+		$vvoucher = 0.00;
+		$vtotal = ( $grandTotal + $ventrega - $vvoucher );
+
+		$podVenda = pods('venda', $this->venda);
+		$podVenda->save(array(
+			'preco_total' 	=> $vtotal,
+			'desconto'		=> 0.00
+		));
 
 	}
 

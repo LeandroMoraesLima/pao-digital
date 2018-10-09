@@ -214,11 +214,15 @@
 	{
 		$grandTotal = 0.00;
 		$vid = $id;
-		//$itens = pods('item', array('where' => "venda_id = {$vid}"));
+
 		$itens = pods_query("
 			SELECT *, (valor_no_ato * quantidade ) AS sub_total
 			FROM pd_pods_item 
 			WHERE venda_id = {$vid}");
+
+		foreach( $itens as $key => $total ):
+			$grandTotal = $grandTotal + $total->sub_total;
+		endforeach;
 
 		$ventrega = "5,00";
 		$vvoucher = 0.00;

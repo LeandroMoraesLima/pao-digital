@@ -13,20 +13,29 @@
 template name: Pedido Confirmado
 */
 
+echo "
+	<div id='cat' style='width:100%; height: 100%; position: fixed; top: 0; left: 0; background-color: #66ceff; display: flex; justify-content: center; align-items: center; flex-direction: column; font-family: \"Open Sans\", sans-serif; font-size: 40px; color: #FFF; text-align: center;
+'>
+		<img src='".IMG."/cat.gif' alt=''>
+		Aguarde! <br>Estamos processando seu pagamento!
+	</div>
+";
+
+
+
 get_header('interna');
-//include(locate_template('lib/credit-card.php'));
-$compra = true;
-
-
-
-	
-
-
-
-
+include(locate_template('lib/credit-card.php'));
 
 
 ?>
+
+<script>
+	(function($){
+
+		$("#cat").css('display', 'none');
+
+	})(jQuery);
+</script>
 
 <!--==========================
 Confirmação de Pagamento
@@ -34,7 +43,7 @@ Confirmação de Pagamento
 
 <section id="confirmacao">
 	<div class="col offset-md-3 col-md-6">
-		<?php if( $compra == true ): ?>
+		<?php if( $payment->compra == true ): ?>
 			<div class="box_style_2">
 				<h2 class="inner">Pedido confirmado!</h2>
 				<div class="confirm" id="confirm">
@@ -49,7 +58,7 @@ Confirmação de Pagamento
 					<tbody>
 
 						<?php 
-							$venda = pods('venda', $_SESSION['paodigital']['venda'] );
+							$venda = pods('venda', $payment->venda );
 							$tVenda = $venda->row();
 							$whereItem = array(
 						        'where'   => "venda_id = {$tVenda['id']}", 
@@ -86,7 +95,7 @@ Confirmação de Pagamento
 							endif;
 
 
-							$entrega = get_payment_closed( $_SESSION['paodigital']['venda'] );
+							$entrega = get_payment_closed( $payment->venda );
 						?>
 
 									<tr>
@@ -120,9 +129,11 @@ Confirmação de Pagamento
 							</td>
 							<td class="total_confirm">
 								<span class="pull-right">
+									<strong style="font-size: 30px;">
 									<?php 
 										echo $entrega['vtotal']; 
 									?>
+									</strong>
 								</span>
 							</td>
 						</tr>
