@@ -34,7 +34,7 @@ class GetPayment
 
 		$this->card_number = str_replace( " ", "", $_POST['card_number'] );
 		$this->venda = $_SESSION['paodigital']['venda'];
-		//unset( $_SESSION['paodigital']['venda'] );
+		unset( $_SESSION['paodigital']['venda'] );
 
 		$this->get_the_card();
 
