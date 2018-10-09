@@ -20,22 +20,21 @@
 	//funcao para inserir o parceiro id antes de salvar o Cardapio
 	function my_post_save_function($pieces, $is_new_item, $id )
 	{ 
-		
 
 		if( !current_user_can('administrator'))
 		{
 			$pieces[ 'fields' ][ 'parceiro_id' ][ 'value' ] = PARTNER;
-		}
+		} 
+
 		return $pieces;
 	}; 
 	add_action('pods_api_pre_save_pod_item_cardapio', 'my_post_save_function', 10, 3);
-			 
+
 
 
 	//check permissao para ver a pagina
 	function filter_pods_data_select( $apply_filters, $pod_pod, $pod ) 
 	{ 
-
 		if( !current_user_can('administrator'))
 		{
 			if( $_GET['page'] == 'pods-manage-cardapio' && $_GET['action'] == 'edit' )
@@ -75,11 +74,14 @@
 		if( ( $_GET['action'] == 'edit' || $_GET['action'] == 'add' ) && $_GET['page'] == 'pods-manage-parceiro' ):
 			include(locate_template('lib/parceiro-cep.php'));
 		endif;
+
+		if( ( $_GET['action'] == 'edit' || $_GET['action'] == 'add' ) && $_GET['page'] == 'pods-manage-cardapio' ):
+			include(locate_template('lib/cardapio-script.php'));
+		endif;
 	}; 
 	         
 	// add the action 
 	add_action( 'pods_act_editor_after_metabox', 'action_pods_act_editor_after_metabox', 10, 2 ); 
-
 
 
 
@@ -91,7 +93,6 @@
 	    	$pods = pods('parceiro', array('limit' => -1));
 	    	$pods = $pods->data();
 
-	    	$data = array();;
 	    	if( is_array($pods) && count($pods) ):
 	    		foreach($pods as $key => $val):
 
@@ -102,12 +103,11 @@
 
 
 	    endif;
+	    //var_dump($data);
 	    return $data; 
 	}; 
 	         
 	// add the filter 
 	add_filter( 'pods_field_pick_data', 'filter_pods_field_pick_data', 10, 6 ); 
-
-
 
 

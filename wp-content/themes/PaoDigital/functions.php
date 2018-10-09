@@ -350,7 +350,7 @@
 					unset($GLOBALS[ 'menu' ][$key]);
 
 				if( in_array( 'Pods Admin', $menu ) )
-					unset($GLOBALS[ 'menu' ][$key]);
+					//unset($GLOBALS[ 'menu' ][$key]);
 
 				if( in_array( 'users.php', $menu ) && $key !== 200 ):
 
