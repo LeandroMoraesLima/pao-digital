@@ -58,7 +58,7 @@
 		wp_register_script( 'hoverintent', LIB . '/superfish/hoverIntent.js', array(), '0.0.1' );
 		wp_register_script( 'superfishjs', LIB . '/superfish/superfish.min.js', array(), '0.0.1' );
 		wp_register_script( 'magnific-popupjs', LIB . '/magnific-popup/magnific-popup.min.js', array(), '0.0.1' );
-		wp_register_script( 'mainjs', JS . '/mask.js', array(), '0.0.1' );
+		wp_register_script( 'mask', JS . '/mask.js', array(), '0.0.1' );
 		wp_register_script( 'mainjs', JS . '/main.js', array(), '0.0.1' );
 		//wp_register_script( 'masterjs', JS . '/master.js', array(), '0.0.1');
 		
@@ -80,6 +80,7 @@
 		wp_enqueue_script('hoverintent');
 		wp_enqueue_script('superfishjs');
 		wp_enqueue_script('magnific-popupjs');
+		wp_enqueue_script('mask');
 		wp_enqueue_script('mainjs');
 		//wp_enqueue_script('swiperjs');
 		//wp_enqueue_script('masterjs');
