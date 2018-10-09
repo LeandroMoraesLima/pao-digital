@@ -3,6 +3,11 @@
 	if( !is_user_logged_in() ):
 		wp_redirect('/');
 	endif;
+
+	if( !isset( $_SESSION['paodigital']['venda'] ) ):
+		wp_redirect('/');
+	endif;
+
 /*
 template name: Cardápio
 */

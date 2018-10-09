@@ -32,6 +32,7 @@
 			if( count( $_POST['address'] ) > 0 ):
 				foreach ( $_POST['address'] as $key => $add ):
 
+
 					$id = $add['house'];
 					
 					if( $add['house'] > 0 ):
@@ -55,7 +56,7 @@
 								'bairro' => $add['bairro'],
 								'cidade' => $add['city'],
 								'estado' => $add['state'],
-								'entrega' => $_POST['entrega'],
+								'entrega' => ( isset( $add['entrega'] )? 1 : 0 ),
 								'numero' => $add['num']
 							];
 							$newAddress->save($array);
@@ -74,7 +75,7 @@
 							'bairro' => $add['bairro'],
 							'cidade' => $add['city'],
 							'estado' => $add['state'],
-							'entrega' => $_POST['entrega'],
+							'entrega' => ( isset( $add['entrega'] )? 1 : 0 ),
 							'numero' => $add['num']
 						];
 						$newAddress->save($array);
@@ -87,6 +88,7 @@
 
 		endif;
 
+		die();
 		wp_redirect($_POST['url']);
 
 	}

@@ -1,10 +1,30 @@
 <?php 
+
+	if( !is_user_logged_in() ):
+		wp_redirect('/');
+	endif;
+
+	if( !isset( $_SESSION['paodigital']['venda'] ) ):
+		wp_redirect('/');
+	endif;
+
+
 /*
 template name: Pedido Confirmado
 */
 
 get_header('interna');
-include(locate_template('lib/credit-card.php'));
+//include(locate_template('lib/credit-card.php'));
+$compra = true;
+
+
+
+	
+
+
+
+
+
 
 ?>
 
@@ -27,52 +47,71 @@ Confirmação de Pagamento
 				<h4>Resumo</h4>
 				<table class="table table-striped nomargin">
 					<tbody>
+
+						<?php 
+							$venda = pods('venda', $_SESSION['paodigital']['venda'] );
+							$tVenda = $venda->row();
+							$whereItem = array(
+						        'where'   => "venda_id = {$tVenda['id']}", 
+						        'limit'   => -1
+							);
+
+							$itens = pods('item', $whereItem );
+							$itens = $itens->data();
+
+							if( is_array($itens) && count($itens) > 0 ):
+
+								foreach ($itens as $key => $item) :
+						?>
+
+
+									<tr>
+										<td>
+											<strong><?php echo $item->quantidade; ?>x</strong> 
+											<?php echo $item->nome; ?>
+										</td>
+										<td>
+											<strong class="pull-right">
+												<?php 
+													echo "R$ ".number_format($item->valor_no_ato, 2, ',', '.'); 
+												?>
+											</strong>
+										</td>
+									</tr>
+
+									
+						<?php
+								endforeach;
+
+							endif;
+
+
+							$entrega = get_payment_closed( $_SESSION['paodigital']['venda'] );
+						?>
+
+									<tr>
+										<td>
+											<strong></strong> 
+											Entrega
+										</td>
+										<td>
+											<strong class="pull-right">
+												<?php 
+													echo $entrega['ventrega']; 
+												?>
+											</strong>
+										</td>
+									</tr>
+						
+
 						<tr>
 							<td>
-								<strong>1x</strong> Café
+								Tempo Estimado 
+								<i class="icon_question_alt"></i>
+							
 							</td>
 							<td>
-								<strong class="pull-right">$11</strong>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>2x</strong> Pão
-							</td>
-							<td>
-								<strong class="pull-right">$14</strong>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>1x</strong> Torta
-							</td>
-							<td>
-								<strong class="pull-right">$20</strong>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>2x</strong> Achocolatado
-							</td>
-							<td>
-								<strong class="pull-right">$9</strong>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>2x</strong> Cheeseburger
-							</td>
-							<td>
-								<strong class="pull-right">$12</strong>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								Agenda de entrega <a href="#" class="tooltip-1" data-placement="top" title="" data-original-title="Please consider 30 minutes of margin for the delivery!"><i class="icon_question_alt"></i></a>
-							</td>
-							<td>
-								<strong class="pull-right">Hoje às 07:30</strong>
+								<strong class="pull-right">45 minutos</strong>
 							</td>
 						</tr>
 						<tr>
@@ -80,7 +119,11 @@ Confirmação de Pagamento
 								TOTAL
 							</td>
 							<td class="total_confirm">
-								<span class="pull-right">$66</span>
+								<span class="pull-right">
+									<?php 
+										echo $entrega['vtotal']; 
+									?>
+								</span>
 							</td>
 						</tr>
 					</tbody>

@@ -4,6 +4,11 @@
 		wp_redirect('/');
 	endif;
 
+	if( !isset( $_SESSION['paodigital']['venda'] ) ):
+		wp_redirect('/');
+	endif;
+
+
 /*
 template name: Modo de Pagamento
 */
@@ -47,7 +52,7 @@ Metodo Pagamento
             	<div class="row">
 					<div class="col-md-7">
 						<div class="box_style_2">
-							<form action="" method="post">
+							<form action="<?php echo get_bloginfo('url') . '/pagamento'; ?>" method="post">
 								<h2 class="inner">Métodos de Pagamento</h2>
 								<div class="payment_select">
 									<label class="payment">
@@ -61,7 +66,7 @@ Metodo Pagamento
 								</div>
 								<div class="form-group">
 									<label>Nome *</label>
-									<input type="text" class="form-control" id="name_card_order" name="firstname" placeholder="Como esta escrito no cartão">
+									<input type="text" class="form-control" id="name_card_order" name="card_name" placeholder="Como esta escrito no cartão">
 								</div>
 								<div class="form-group">
 									<label>Número do cartão *</label>

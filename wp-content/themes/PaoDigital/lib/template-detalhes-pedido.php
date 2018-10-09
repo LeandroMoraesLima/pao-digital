@@ -3,6 +3,10 @@
 	if( !is_user_logged_in() ):
 		wp_redirect('/');
 	endif;
+
+	if( !isset( $_SESSION['paodigital']['venda'] ) ):
+		wp_redirect('/');
+	endif;
 /*
 template name: Detalhes do seu pedido
 */
@@ -127,7 +131,7 @@ Detalhes do seu pedido
 											<div class="col-md-6 col-sm-6">
 												<div class="form-group">
 													<label for="cidade1">Cidade</label>
-													<input type="text" id="cidade1" name="address[1][city]" class="form-control" placeholder="Ex.: São Paulo" value="" />
+													<input type="text" id="cidade1" name="address[1][city]" class="form-control" placeholder="Ex.: São Paulo" value="" required />
 												</div>
 											</div>
 										</div>
@@ -135,13 +139,13 @@ Detalhes do seu pedido
 											<div class="col-md-10 col-sm-10">
 												<div class="form-group">
 													<label for="endereco1">Seu endereço completo</label>
-													<input type="text" id="endereco1" name="address[1][address]" class="form-control" placeholder=" Ex.: Av. Paulista" value="" />
+													<input type="text" id="endereco1" name="address[1][address]" class="form-control" placeholder=" Ex.: Av. Paulista" required value="" />
 												</div>
 											</div>
 											<div class="col-md-2 col-sm-2">
 												<div class="form-group">
 													<label for="num1">Nº</label>
-													<input type="text" id="num1" name="address[1][num]" class="form-control" placeholder="" value="" />
+													<input type="text" id="num1" name="address[1][num]" class="form-control" placeholder="" required value="" />
 												</div>
 											</div>
 										</div>
@@ -149,20 +153,20 @@ Detalhes do seu pedido
 											<div class="col-md-6 col-sm-6">
 												<div class="form-group">
 													<label for="bairro1">Bairro</label>
-													<input type="text" id="bairro1" name="address[1][bairro]" class="form-control" placeholder=" Ex.: 01311-000" value="" />
+													<input type="text" id="bairro1" name="address[1][bairro]" class="form-control" placeholder=" Ex.: 01311-000" required value="" />
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="form-group">
 													<label for="uf1">Estado</label>
-													<input type="text" id="uf1" name="address[1][state]" class="form-control" placeholder="Ex.: São Paulo" value="" />
+													<input type="text" id="uf1" name="address[1][state]" class="form-control" required placeholder="Ex.: São Paulo" value="" />
 												</div>
 											</div>
 										</div>
 											
 										<div class="form-check">
 											<label class="form-check-label">
-											<input class="form-check-input" name="entrega" checked="true" type="radio" value="1">
+											<input class="form-check-input" name="address[1][entrega]" checked="true" type="checkbox" value="1">
 												Escolher este como endereço de entrega
 											</label>
 										</div>
@@ -211,5 +215,26 @@ Detalhes do seu pedido
 endif; 
 
 ?>
+
+<script>
+	(function($){
+
+		$(document).on('change', ".form-check-input", function(){
+			$(".form-check-input").attr("checked", false);
+			$(this).attr("checked", true);
+		});
+
+		$(document).on('click', ".btremove", function(){
+			console.log("#fieldset" + $(this).data('item'));
+			$.post(ajax, {
+				action: 'remove_address',
+				address: $(this).data('id')
+			}, function(){ }, 'html');
+			var i = $(this).data('item');
+			$("#fieldset" + i ).remove();
+		});
+
+	})(jQuery);
+</script>
 
 <?php get_footer(); ?>

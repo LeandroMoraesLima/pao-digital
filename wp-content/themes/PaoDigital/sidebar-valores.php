@@ -48,7 +48,19 @@
 			</div>
 		</div>
 		<div class="menu-order">
-			<a href="<?php echo get_bloginfo('url'); ?>/detalhes-do-seu-pedido" class="menu-order-confirm" >
+			<?php 
+				global $post;
+				$tpl =  get_page_template_slug( $post->ID );
+
+				if( $tpl == "template-cardapio.php" ):
+					$url = get_bloginfo('url') . "/detalhes-do-seu-pedido";
+				elseif( $tpl == "lib/template-detalhes-pedido.php"):
+					$url = get_bloginfo('url') . "/formas-de-pagamento";
+				endif;
+
+
+			?>
+			<a href="<?php echo $url; ?>" class="menu-order-confirm" >
 				Dados para entrega
 			</a>
 		</div>
@@ -58,17 +70,21 @@
 <script type="text/javascript">
 	(function($){
 
-		function get_the_cart()
-		{
-			$.post(ajax, {
-				action: 'get_the_cart'
-			}, function(data){
-				$('#mitens').html(data.html);
-				$("#subtotal").html(data.subtotal);
-				$("#total").html(data.vtotal);
-				$("#entrega").html(data.ventrega);
-			}, 'json');
+		window.cart = {
+
+			get_the_cart: function()
+			{
+				$.post(ajax, {
+					action: 'get_the_cart'
+				}, function(data){
+					$('#mitens').html(data.html);
+					$("#subtotal").html(data.subtotal);
+					$("#total").html(data.vtotal);
+					$("#entrega").html(data.ventrega);
+				}, 'json');
+			}
 		}
+
 
 		$(document).on("keyup", "#searchProducts", function(){
 			var val = this.value;
@@ -85,7 +101,7 @@
 		});
 
 		$(document).ready(function(){
-			get_the_cart();
+			cart.get_the_cart();
 		});
 
 
@@ -94,9 +110,12 @@
 			$.post(ajax, {
 				action: 'add_to_cart',
 				product: id
-			}, function(data){
-				get_the_cart();
-			}, 'json');
+			}, function(){
+
+				console.log('added to cart');
+				cart.get_the_cart();
+
+			}, 'html');
 		});
 
 		$(document).on("click", ".remove_product_to_kart", function(){
@@ -105,10 +124,11 @@
 				action: 'remove_to_cart',
 				product: id
 			}, function(data){
-				$('#mitens').html(data.html);
-				$("#subtotal").html(data.subtotal);
-				$("#total").html(data.vtotal);
-			}, 'json');
+
+				console.log('added to cart');
+				cart.get_the_cart();
+
+			}, 'html');
 		});
 
 		$(document).on('keyup', ".cep", function(){

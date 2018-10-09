@@ -86,7 +86,6 @@
 		$vid = $_SESSION['paodigital']['venda'];
 
 		$pod = pods('cardapio', $id);
-		var_dump($pod);
 
 		$item = pods( 'item', array('where' => "produto_id = {$id} AND venda_id = {$vid}") ); 
 		$itemData = $item->data();
@@ -132,33 +131,32 @@
 
 		if( $item->total_found() > 0 ):
 			$data = $itemData[0];
+
+			var_dump($id);
+
 			if( $data->quantidade == 1 ):
-				//$item->delete($data->id);
+
+				//remove item of list
+				if( $id > 4 ):
+					$qtd = pods('item');
+					$qtd->delete($data->id);
+				else:
+					// if delete an pagckage delete the sales
+					$pv = pods('venda');
+					$pv->delete($vid);
+
+					$itens = pods_query("DELETE FROM `pd_pods_item` WHERE `venda_id` = {$vid}");
+					unset($_SESSION['paodigital']['venda']);
+
+				endif;
 			else:
-				echo $qt = ($data->quantidade - 1);
+				$qt = ($data->quantidade - 1);
+				$qtd = pods('item', $data->id);
+				$qtd->save('quantidade', $qt);
 			endif;
 
 		endif;
 			
-		// 	$data = $itemData[0];
-		// 	$updateItem = pods('item', $data->id );
-		// 	$updateItem->save( "quantidade", ($data->quantidade + 1) );
-
-		// else:
-		// 	$item = $pod->row();
-
-		// 	$newIten = pods('item');
-		// 	$datP = array( 
-		// 		'nome'			=> $item['nome'],
-		// 		'quantidade'	=> 1,
-		// 		'valor_no_ato'	=> (Float)$item['valor_venda'],
-		// 		'produto_id'	=> $item['id'],
-		// 		'venda_id'		=> $vid
-		// 	);
-		// 	$newIten->add( $datP );
-
-		// endif;
-		
 		wp_die();
 	}
 
@@ -212,10 +210,29 @@
 		============================================
 	*/
 
-		function add_item_to_cart()
-		{
+	function get_payment_closed( $id )
+	{
+		$grandTotal = 0.00;
+		$vid = $id;
+		//$itens = pods('item', array('where' => "venda_id = {$vid}"));
+		$itens = pods_query("
+			SELECT *, (valor_no_ato * quantidade ) AS sub_total
+			FROM pd_pods_item 
+			WHERE venda_id = {$vid}");
 
-		}
+		$ventrega = "5,00";
+		$vvoucher = 0.00;
+		$vtotal = ( $grandTotal + $ventrega - $vvoucher );
+
+		$itens = [
+			'subtotal' 	=> "R$ ".number_format($grandTotal, 2, ',', '.'),
+			'voucher'	=> $vvoucher,
+			'ventrega'	=> "R$ ".number_format($ventrega, 2, ',', '.'),
+			'vtotal'	=> "R$ ".number_format($vtotal, 2, ',', '.')
+		];
+
+		return $itens;
+	}
 
 
 
@@ -336,6 +353,23 @@
 		echo true;
 		wp_die();
 
+	}
+
+
+	add_action( 'wp_ajax_remove_address', 'remove_address' );
+	add_action( 'wp_ajax_nopriv_remove_address', 'remove_address' );
+
+	function remove_address() 
+	{
+		$address = $_POST['address'];
+		$user = wp_get_current_user();
+
+		$add = pods('usuarioendereco', array("where" => "user_id = {$user->ID} AND id = {$address}"));
+		$nadd = $add->data()[0];
+
+		$add->delete($nadd->id);
+
+		wp_die();
 	}
 
 
@@ -461,6 +495,9 @@
 
 		endif;
 	}
+
+
+
 
 
 

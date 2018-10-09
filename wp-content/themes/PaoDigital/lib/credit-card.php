@@ -26,9 +26,14 @@ class GetPayment
 	private $compra = false;
 
 	private $status = '';
+
+	private $venda = 0;
 	
 	public function __construct()
 	{
+		$this->venda = $_SESSION['paodigital']['venda'];
+		unset( $_SESSION['paodigital']['venda'] );
+
 		$this->current_user = wp_get_current_user();
 		$this->customer_id = str_pad($current_user->ID, 12, '0', STR_PAD_LEFT);
 
@@ -67,6 +72,8 @@ class GetPayment
 		else:
 			$this->compra = false;
 		endif;
+
+		return $this->venda;
 	}
 
 
@@ -164,6 +171,7 @@ class GetPayment
 	*/
 	public function get_payment()
 	{
+
 		$order_id = 0;
 
 		$jsonArray = array (
@@ -254,6 +262,33 @@ class GetPayment
 		$this->comprado = json_decode(curl_exec($cr), true);
 		$this->httpcode = curl_getinfo($cr, CURLINFO_HTTP_CODE);
 		curl_close($cr);
+
+	}
+
+
+	public function close_payment()
+	{
+		$pagamento = new stdClass();
+		//card values
+		$pagamento->card_name 		= $_POST['card_name'];
+		$pagamento->card_number 	= $_POST['card_number'];
+		$pagamento->expire_month 	= $_POST['expire_month'];
+		$pagamento->expire_year 	= $_POST['expire_year'];
+		$pagamento->ccv 			= $_POST['ccv'];
+
+		//user Id
+		$pagamento->user 			= $this->current_user;
+		$pagamento->user_id 		= $user->ID;
+
+		//compra
+		$this->close_itens();
+		$compra 			= pods("venda", $this->venda );
+
+		//endereco de entrega
+	}
+
+	public function close_itens()
+	{
 
 	}
 
