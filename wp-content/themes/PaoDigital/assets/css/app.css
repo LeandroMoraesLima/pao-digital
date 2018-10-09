@@ -7,7 +7,133 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-/* line 11, ../sass/_padrao.scss */
+/* line 10, ../sass/_padrao.scss */
+.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+/* line 14, ../sass/_padrao.scss */
+.aligncenter,
+div.aligncenter {
+  display: block;
+  margin: 5px auto 5px auto;
+}
+
+/* line 20, ../sass/_padrao.scss */
+.alignright {
+  float: right;
+  margin: 5px 0 20px 20px;
+}
+
+/* line 25, ../sass/_padrao.scss */
+.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0;
+}
+
+/* line 30, ../sass/_padrao.scss */
+a img.alignright {
+  float: right;
+  margin: 5px 0 20px 20px;
+}
+
+/* line 35, ../sass/_padrao.scss */
+a img.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+/* line 39, ../sass/_padrao.scss */
+a img.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0;
+}
+
+/* line 44, ../sass/_padrao.scss */
+a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 50, ../sass/_padrao.scss */
+.wp-caption {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  max-width: 96%;
+  /* Image does not overflow the content area */
+  padding: 5px 3px 10px;
+  text-align: center;
+}
+
+/* line 58, ../sass/_padrao.scss */
+.wp-caption.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+/* line 62, ../sass/_padrao.scss */
+.wp-caption.alignleft {
+  margin: 5px 20px 20px 0;
+}
+
+/* line 66, ../sass/_padrao.scss */
+.wp-caption.alignright {
+  margin: 5px 0 20px 20px;
+}
+
+/* line 70, ../sass/_padrao.scss */
+.wp-caption img {
+  border: 0 none;
+  height: auto;
+  margin: 0;
+  max-width: 98.5%;
+  padding: 0;
+  width: auto;
+}
+
+/* line 79, ../sass/_padrao.scss */
+.wp-caption p.wp-caption-text {
+  font-size: 11px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0 4px 5px;
+}
+
+/* Text meant only for screen readers. */
+/* line 87, ../sass/_padrao.scss */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+/* line 100, ../sass/_padrao.scss */
+.screen-reader-text:focus {
+  background-color: #eee;
+  clip: auto !important;
+  clip-path: none;
+  color: #444;
+  display: block;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
+}
+
+/* line 119, ../sass/_padrao.scss */
 .col-xs-15,
 .col-sm-15,
 .col-md-15,
@@ -18,7 +144,7 @@
   padding-left: 10px;
 }
 
-/* line 23, ../sass/_padrao.scss */
+/* line 131, ../sass/_padrao.scss */
 .col-xs-15 {
   width: 20%;
   max-width: 20%;
@@ -26,7 +152,7 @@
 }
 
 @media (min-width: 768px) {
-  /* line 31, ../sass/_padrao.scss */
+  /* line 139, ../sass/_padrao.scss */
   .col-sm-15 {
     width: 20%;
     max-width: 20%;
@@ -34,7 +160,7 @@
   }
 }
 @media (min-width: 992px) {
-  /* line 39, ../sass/_padrao.scss */
+  /* line 147, ../sass/_padrao.scss */
   .col-md-15 {
     width: 20%;
     max-width: 20%;
@@ -42,14 +168,14 @@
   }
 }
 @media (min-width: 1200px) {
-  /* line 47, ../sass/_padrao.scss */
+  /* line 155, ../sass/_padrao.scss */
   .col-lg-15 {
     width: 20%;
     max-width: 20%;
     float: left;
   }
 }
-/* line 54, ../sass/_padrao.scss */
+/* line 162, ../sass/_padrao.scss */
 body {
   background: #fff;
   color: #666666;
@@ -57,26 +183,26 @@ body {
   overflow-x: hidden;
 }
 
-/* line 62, ../sass/_padrao.scss */
+/* line 170, ../sass/_padrao.scss */
 a {
   color: #1dc8cd;
   transition: 0.5s;
 }
 
-/* line 68, ../sass/_padrao.scss */
+/* line 176, ../sass/_padrao.scss */
 a:hover, a:active, a:focus {
   color: #fff;
   outline: none;
   text-decoration: none;
 }
 
-/* line 75, ../sass/_padrao.scss */
+/* line 183, ../sass/_padrao.scss */
 p {
   padding: 0;
   margin: 0 0 30px 0;
 }
 
-/* line 81, ../sass/_padrao.scss */
+/* line 189, ../sass/_padrao.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
@@ -84,7 +210,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
-/* line 90, ../sass/_padrao.scss */
+/* line 198, ../sass/_padrao.scss */
 .back-to-top {
   position: fixed;
   display: none;
@@ -101,7 +227,7 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-/* line 107, ../sass/_padrao.scss */
+/* line 215, ../sass/_padrao.scss */
 #header {
   padding: 50px 0;
   height: 140px;
@@ -113,7 +239,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 997;
 }
 
-/* line 119, ../sass/_padrao.scss */
+/* line 227, ../sass/_padrao.scss */
 #header.interna {
   padding: 50px 0;
   height: 140px;
@@ -126,12 +252,12 @@ h1, h2, h3, h4, h5, h6 {
   background: #61543c;
 }
 
-/* line 132, ../sass/_padrao.scss */
+/* line 240, ../sass/_padrao.scss */
 #header #logo {
   float: left;
 }
 
-/* line 137, ../sass/_padrao.scss */
+/* line 245, ../sass/_padrao.scss */
 #header #logo h1 {
   font-size: 36px;
   margin: -4px 0 0 0;
@@ -144,30 +270,30 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-/* line 150, ../sass/_padrao.scss */
+/* line 258, ../sass/_padrao.scss */
 #header #logo h1 a, #header #logo h1 a:hover {
   color: #fff;
 }
 
-/* line 155, ../sass/_padrao.scss */
+/* line 263, ../sass/_padrao.scss */
 #header #logo img {
   padding: 0;
   margin: 0;
 }
 
 @media (max-width: 768px) {
-  /* line 162, ../sass/_padrao.scss */
+  /* line 270, ../sass/_padrao.scss */
   #header #logo h1 {
     font-size: 28px;
     margin-top: 0;
   }
 
-  /* line 168, ../sass/_padrao.scss */
+  /* line 276, ../sass/_padrao.scss */
   #header #logo img {
     max-height: 40px;
   }
 }
-/* line 173, ../sass/_padrao.scss */
+/* line 281, ../sass/_padrao.scss */
 #header.header-fixed {
   background: #61543c;
   transition: all 0.5s;
@@ -176,7 +302,7 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Intro Section
 --------------------------------------------------------------*/
-/* line 182, ../sass/_padrao.scss */
+/* line 290, ../sass/_padrao.scss */
 #intro {
   width: 100%;
   height: 100vh;
@@ -186,12 +312,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 1024px) {
-  /* line 192, ../sass/_padrao.scss */
+  /* line 300, ../sass/_padrao.scss */
   #intro {
     background-attachment: fixed;
   }
 }
-/* line 197, ../sass/_padrao.scss */
+/* line 305, ../sass/_padrao.scss */
 #intro .intro-text {
   position: absolute;
   left: 0;
@@ -216,7 +342,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 100;
 }
 
-/* line 222, ../sass/_padrao.scss */
+/* line 330, ../sass/_padrao.scss */
 #intro h2 {
   margin: 30px 0 10px 0;
   padding: 0 15px;
@@ -227,13 +353,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-  /* line 233, ../sass/_padrao.scss */
+  /* line 341, ../sass/_padrao.scss */
   #intro h2 {
     font-size: 28px;
     line-height: 36px;
   }
 }
-/* line 239, ../sass/_padrao.scss */
+/* line 347, ../sass/_padrao.scss */
 #intro p {
   color: #fff;
   margin-bottom: 20px;
@@ -242,14 +368,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-  /* line 248, ../sass/_padrao.scss */
+  /* line 356, ../sass/_padrao.scss */
   #intro p {
     font-size: 18px;
     line-height: 24px;
     margin-bottom: 20px;
   }
 }
-/* line 255, ../sass/_padrao.scss */
+/* line 363, ../sass/_padrao.scss */
 #intro .btn-get-started {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
@@ -264,13 +390,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-/* line 270, ../sass/_padrao.scss */
+/* line 378, ../sass/_padrao.scss */
 #intro .btn-get-started:hover {
   color: #1dc8cd;
   background: #fff;
 }
 
-/* line 276, ../sass/_padrao.scss */
+/* line 384, ../sass/_padrao.scss */
 #intro .product-screens {
   position: absolute;
   left: 0;
@@ -282,12 +408,12 @@ h1, h2, h3, h4, h5, h6 {
   height: 50%;
 }
 
-/* line 288, ../sass/_padrao.scss */
+/* line 396, ../sass/_padrao.scss */
 #intro .product-screens img {
   box-shadow: 0px -2px 19px 4px rgba(0, 0, 0, 0.29);
 }
 
-/* line 293, ../sass/_padrao.scss */
+/* line 401, ../sass/_padrao.scss */
 #intro .product-screens .product-screen-1 {
   position: absolute;
   z-index: 30;
@@ -296,7 +422,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 30px;
 }
 
-/* line 302, ../sass/_padrao.scss */
+/* line 410, ../sass/_padrao.scss */
 #intro .product-screens .product-screen-2 {
   position: absolute;
   z-index: 20;
@@ -305,7 +431,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 90px;
 }
 
-/* line 311, ../sass/_padrao.scss */
+/* line 419, ../sass/_padrao.scss */
 #intro .product-screens .product-screen-3 {
   position: absolute;
   z-index: 10;
@@ -315,64 +441,64 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 767px) {
-  /* line 321, ../sass/_padrao.scss */
+  /* line 429, ../sass/_padrao.scss */
   #intro .product-screens .product-screen-1 {
     position: static;
     padding-top: 30px;
   }
 
-  /* line 327, ../sass/_padrao.scss */
+  /* line 435, ../sass/_padrao.scss */
   #intro .product-screens .product-screen-2, #intro .product-screens .product-screen-3 {
     display: none;
   }
 }
 /* Product Featuress Section
 --------------------------------*/
-/* line 334, ../sass/_padrao.scss */
+/* line 442, ../sass/_padrao.scss */
 #features {
   background: #fff;
   padding: 60px 0 0 0;
   overflow: hidden;
 }
 
-/* line 341, ../sass/_padrao.scss */
+/* line 449, ../sass/_padrao.scss */
 #features .features-img {
   text-align: center;
   padding-top: 20px;
 }
 
 @media (min-width: 769px) {
-  /* line 348, ../sass/_padrao.scss */
+  /* line 456, ../sass/_padrao.scss */
   #features .features-img {
     padding-top: 120px;
     margin-top: -200px;
   }
 }
-/* line 354, ../sass/_padrao.scss */
+/* line 462, ../sass/_padrao.scss */
 #features .features-img img {
   max-width: 100%;
 }
 
-/* line 359, ../sass/_padrao.scss */
+/* line 467, ../sass/_padrao.scss */
 #features .box {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
 }
 
-/* line 366, ../sass/_padrao.scss */
+/* line 474, ../sass/_padrao.scss */
 #features .icon {
   margin-bottom: 10px;
 }
 
-/* line 371, ../sass/_padrao.scss */
+/* line 479, ../sass/_padrao.scss */
 #features .icon i {
   color: #666666;
   font-size: 40px;
   transition: 0.5s;
 }
 
-/* line 378, ../sass/_padrao.scss */
+/* line 486, ../sass/_padrao.scss */
 #features .icon i:before {
   background: #1dc8cd;
   background: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
@@ -381,13 +507,13 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-fill-color: transparent;
 }
 
-/* line 387, ../sass/_padrao.scss */
+/* line 495, ../sass/_padrao.scss */
 #features .title {
   font-weight: 300;
   margin-bottom: 15px;
 }
 
-/* line 393, ../sass/_padrao.scss */
+/* line 501, ../sass/_padrao.scss */
 #features .title a {
   font-size: 92px;
   color: #aa6a3b;
@@ -396,7 +522,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 10px;
 }
 
-/* line 402, ../sass/_padrao.scss */
+/* line 510, ../sass/_padrao.scss */
 #features .description {
   font-size: 18px;
   line-height: 20px;
@@ -405,20 +531,20 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Montserrat;
 }
 
-/* line 411, ../sass/_padrao.scss */
+/* line 519, ../sass/_padrao.scss */
 #features .section-description {
   padding-bottom: 10px;
 }
 
 /* Pricing Section
 --------------------------------*/
-/* line 418, ../sass/_padrao.scss */
+/* line 526, ../sass/_padrao.scss */
 #pricing {
   padding: 60px 0 60px 0;
   overflow: hidden;
 }
 
-/* line 424, ../sass/_padrao.scss */
+/* line 532, ../sass/_padrao.scss */
 #pricing .box {
   padding: 31px;
   margin-bottom: 30px;
@@ -428,7 +554,7 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 445px;
 }
 
-/* line 434, ../sass/_padrao.scss */
+/* line 542, ../sass/_padrao.scss */
 #pricing h3 {
   font-weight: 400;
   margin-bottom: 15px;
@@ -436,26 +562,26 @@ h1, h2, h3, h4, h5, h6 {
   color: #696969;
 }
 
-/* line 442, ../sass/_padrao.scss */
+/* line 550, ../sass/_padrao.scss */
 #pricing h4 {
   font-size: 46px;
   color: #ffb600;
   font-weight: 300;
 }
 
-/* line 449, ../sass/_padrao.scss */
+/* line 557, ../sass/_padrao.scss */
 #pricing h4 sup {
   font-size: 20px;
   top: -20px;
 }
 
-/* line 455, ../sass/_padrao.scss */
+/* line 563, ../sass/_padrao.scss */
 #pricing h4 span {
   color: #979797;
   font-size: 20px;
 }
 
-/* line 461, ../sass/_padrao.scss */
+/* line 569, ../sass/_padrao.scss */
 #pricing ul {
   padding: 0;
   list-style: none;
@@ -465,24 +591,24 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 215px;
 }
 
-/* line 471, ../sass/_padrao.scss */
+/* line 579, ../sass/_padrao.scss */
 #pricing .row > div:last-child ul {
   min-height: 290px;
 }
 
-/* line 476, ../sass/_padrao.scss */
+/* line 584, ../sass/_padrao.scss */
 #pricing ul li {
   padding-bottom: 12px;
 }
 
-/* line 481, ../sass/_padrao.scss */
+/* line 589, ../sass/_padrao.scss */
 #pricing ul i {
   color: #1dc8cd;
   font-size: 18px;
   padding-right: 4px;
 }
 
-/* line 488, ../sass/_padrao.scss */
+/* line 596, ../sass/_padrao.scss */
 #pricing .get-started-btn {
   background: #515e61;
   display: inline-block;
@@ -495,12 +621,12 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat", sans-serif;
 }
 
-/* line 501, ../sass/_padrao.scss */
+/* line 609, ../sass/_padrao.scss */
 #pricing .featured {
   border: 2px solid #ffb600;
 }
 
-/* line 506, ../sass/_padrao.scss */
+/* line 614, ../sass/_padrao.scss */
 #pricing .featured .get-started-btn {
   background: linear-gradient(45deg, #ffb600, #ffb600);
 }
@@ -508,14 +634,14 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
-/* line 515, ../sass/_padrao.scss */
+/* line 623, ../sass/_padrao.scss */
 .nav-menu, .nav-menu * {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* line 522, ../sass/_padrao.scss */
+/* line 630, ../sass/_padrao.scss */
 .nav-menu ul {
   position: absolute;
   display: none;
@@ -524,40 +650,40 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 99;
 }
 
-/* line 531, ../sass/_padrao.scss */
+/* line 639, ../sass/_padrao.scss */
 .nav-menu li {
   position: relative;
   white-space: nowrap;
 }
 
-/* line 537, ../sass/_padrao.scss */
+/* line 645, ../sass/_padrao.scss */
 .nav-menu > li {
   float: left;
 }
 
-/* line 542, ../sass/_padrao.scss */
+/* line 650, ../sass/_padrao.scss */
 .nav-menu li:hover > ul,
 .nav-menu li.sfHover > ul {
   display: block;
 }
 
-/* line 548, ../sass/_padrao.scss */
+/* line 656, ../sass/_padrao.scss */
 .nav-menu ul ul {
   top: 0;
   left: 100%;
 }
 
-/* line 554, ../sass/_padrao.scss */
+/* line 662, ../sass/_padrao.scss */
 .nav-menu ul li {
   min-width: 180px;
 }
 
-/* line 560, ../sass/_padrao.scss */
+/* line 668, ../sass/_padrao.scss */
 .sf-arrows .sf-with-ul {
   padding-right: 30px;
 }
 
-/* line 565, ../sass/_padrao.scss */
+/* line 673, ../sass/_padrao.scss */
 .sf-arrows .sf-with-ul:after {
   content: "\f107";
   position: absolute;
@@ -567,24 +693,24 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
-/* line 575, ../sass/_padrao.scss */
+/* line 683, ../sass/_padrao.scss */
 .sf-arrows ul .sf-with-ul:after {
   content: "\f105";
 }
 
-/* line 581, ../sass/_padrao.scss */
+/* line 689, ../sass/_padrao.scss */
 #nav-menu-container {
   float: right;
   margin: 0;
 }
 
 @media (max-width: 768px) {
-  /* line 588, ../sass/_padrao.scss */
+  /* line 696, ../sass/_padrao.scss */
   #nav-menu-container {
     display: none;
   }
 }
-/* line 594, ../sass/_padrao.scss */
+/* line 702, ../sass/_padrao.scss */
 .nav-menu a {
   padding: 22px 8px 10px 8px;
   text-decoration: none;
@@ -596,12 +722,12 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
 }
 
-/* line 606, ../sass/_padrao.scss */
+/* line 714, ../sass/_padrao.scss */
 .nav-menu > li {
   margin-left: 10px;
 }
 
-/* line 611, ../sass/_padrao.scss */
+/* line 719, ../sass/_padrao.scss */
 .nav-menu ul {
   margin: 4px 0 0 0;
   padding: 10px;
@@ -609,12 +735,12 @@ h1, h2, h3, h4, h5, h6 {
   background: #fff;
 }
 
-/* line 619, ../sass/_padrao.scss */
+/* line 727, ../sass/_padrao.scss */
 .nav-menu ul li {
   transition: 0.3s;
 }
 
-/* line 624, ../sass/_padrao.scss */
+/* line 732, ../sass/_padrao.scss */
 .nav-menu ul li a {
   padding: 10px;
   color: #333;
@@ -624,17 +750,17 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: none;
 }
 
-/* line 634, ../sass/_padrao.scss */
+/* line 742, ../sass/_padrao.scss */
 .nav-menu ul li:hover > a {
   color: #1dc8cd;
 }
 
-/* line 639, ../sass/_padrao.scss */
+/* line 747, ../sass/_padrao.scss */
 .nav-menu ul ul {
   margin: 0;
 }
 
-/* line 645, ../sass/_padrao.scss */
+/* line 753, ../sass/_padrao.scss */
 #mobile-nav-toggle {
   position: fixed;
   right: 0;
@@ -650,18 +776,18 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
-/* line 661, ../sass/_padrao.scss */
+/* line 769, ../sass/_padrao.scss */
 #mobile-nav-toggle i {
   color: #fff;
 }
 
 @media (max-width: 768px) {
-  /* line 667, ../sass/_padrao.scss */
+  /* line 775, ../sass/_padrao.scss */
   #mobile-nav-toggle {
     display: inline;
   }
 }
-/* line 673, ../sass/_padrao.scss */
+/* line 781, ../sass/_padrao.scss */
 #mobile-nav {
   position: fixed;
   top: 0;
@@ -675,19 +801,19 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.4s;
 }
 
-/* line 687, ../sass/_padrao.scss */
+/* line 795, ../sass/_padrao.scss */
 #mobile-nav ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-/* line 694, ../sass/_padrao.scss */
+/* line 802, ../sass/_padrao.scss */
 #mobile-nav ul li {
   position: relative;
 }
 
-/* line 699, ../sass/_padrao.scss */
+/* line 807, ../sass/_padrao.scss */
 #mobile-nav ul li a {
   color: #fff;
   font-size: 16px;
@@ -700,17 +826,17 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
 }
 
-/* line 712, ../sass/_padrao.scss */
+/* line 820, ../sass/_padrao.scss */
 #mobile-nav ul li a:hover {
   color: #fff;
 }
 
-/* line 717, ../sass/_padrao.scss */
+/* line 825, ../sass/_padrao.scss */
 #mobile-nav ul li li {
   padding-left: 30px;
 }
 
-/* line 722, ../sass/_padrao.scss */
+/* line 830, ../sass/_padrao.scss */
 #mobile-nav ul .menu-has-children i {
   position: absolute;
   right: 0;
@@ -720,17 +846,17 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-/* line 732, ../sass/_padrao.scss */
+/* line 840, ../sass/_padrao.scss */
 #mobile-nav ul .menu-has-children i.fa-chevron-up {
   color: #1dc8cd;
 }
 
-/* line 737, ../sass/_padrao.scss */
+/* line 845, ../sass/_padrao.scss */
 #mobile-nav ul .menu-item-active {
   color: #1dc8cd;
 }
 
-/* line 742, ../sass/_padrao.scss */
+/* line 850, ../sass/_padrao.scss */
 #mobile-body-overly {
   width: 100%;
   height: 100%;
@@ -742,17 +868,17 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-/* line 755, ../sass/_padrao.scss */
+/* line 863, ../sass/_padrao.scss */
 body.mobile-nav-active {
   overflow: hidden;
 }
 
-/* line 760, ../sass/_padrao.scss */
+/* line 868, ../sass/_padrao.scss */
 body.mobile-nav-active #mobile-nav {
   left: 0;
 }
 
-/* line 765, ../sass/_padrao.scss */
+/* line 873, ../sass/_padrao.scss */
 body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
 }
@@ -762,7 +888,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------------------------------------*/
 /* Sections Header
 --------------------------------*/
-/* line 775, ../sass/_padrao.scss */
+/* line 883, ../sass/_padrao.scss */
 .section-header .section-title {
   font-size: 32px;
   color: #696969;
@@ -770,14 +896,14 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-weight: 400;
 }
 
-/* line 783, ../sass/_padrao.scss */
+/* line 891, ../sass/_padrao.scss */
 .section-header .section-description {
   text-align: center;
   padding-bottom: 40px;
   color: #777;
 }
 
-/* line 790, ../sass/_padrao.scss */
+/* line 898, ../sass/_padrao.scss */
 .section-header .section-divider {
   display: block;
   width: 60px;
@@ -789,51 +915,51 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Section with background
 --------------------------------*/
-/* line 802, ../sass/_padrao.scss */
+/* line 910, ../sass/_padrao.scss */
 .section-bg {
   background: #fcf6e7;
 }
 
 /* About Us Section
 --------------------------------*/
-/* line 809, ../sass/_padrao.scss */
+/* line 917, ../sass/_padrao.scss */
 #about {
   overflow: hidden;
 }
 
-/* line 814, ../sass/_padrao.scss */
+/* line 922, ../sass/_padrao.scss */
 #about .about-img {
   height: 435px;
   overflow: hidden;
   margin-top: 85px;
 }
 
-/* line 821, ../sass/_padrao.scss */
+/* line 929, ../sass/_padrao.scss */
 #about .about-img img {
   margin-left: -15px;
   max-width: 100%;
 }
 
 @media (max-width: 768px) {
-  /* line 828, ../sass/_padrao.scss */
+  /* line 936, ../sass/_padrao.scss */
   #about .about-img {
     height: auto;
   }
 
-  /* line 833, ../sass/_padrao.scss */
+  /* line 941, ../sass/_padrao.scss */
   #about .about-img img {
     margin-left: 0;
     padding-bottom: 30px;
   }
 }
-/* line 839, ../sass/_padrao.scss */
+/* line 947, ../sass/_padrao.scss */
 #about .content .h2 {
   color: #333;
   font-weight: 300;
   font-size: 24px;
 }
 
-/* line 846, ../sass/_padrao.scss */
+/* line 954, ../sass/_padrao.scss */
 #about .content h3 {
   color: #4a4a4a;
   font-weight: 300;
@@ -841,40 +967,40 @@ body.mobile-nav-active #mobile-nav-toggle {
   line-height: 26px;
 }
 
-/* line 854, ../sass/_padrao.scss */
+/* line 962, ../sass/_padrao.scss */
 #about .content p {
   line-height: 26px;
 }
 
-/* line 859, ../sass/_padrao.scss */
+/* line 967, ../sass/_padrao.scss */
 #about .content p:last-child {
   margin-bottom: 0;
 }
 
-/* line 864, ../sass/_padrao.scss */
+/* line 972, ../sass/_padrao.scss */
 #about .content i {
   font-size: 20px;
   padding-right: 4px;
   color: #1dc8cd;
 }
 
-/* line 871, ../sass/_padrao.scss */
+/* line 979, ../sass/_padrao.scss */
 #about .content ul {
   list-style: none;
   padding: 0;
 }
 
-/* line 877, ../sass/_padrao.scss */
+/* line 985, ../sass/_padrao.scss */
 #about .content ul li {
   padding-bottom: 10px;
 }
 
-/* line 882, ../sass/_padrao.scss */
+/* line 990, ../sass/_padrao.scss */
 #about .menu {
   margin-top: 85px;
 }
 
-/* line 887, ../sass/_padrao.scss */
+/* line 995, ../sass/_padrao.scss */
 #about .menu h3 {
   font-size: 28px;
   color: #696969;
@@ -882,7 +1008,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: 0;
 }
 
-/* line 895, ../sass/_padrao.scss */
+/* line 1003, ../sass/_padrao.scss */
 #about .menu .pedir {
   background: #ffb600;
   display: inline-block;
@@ -895,7 +1021,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-family: "Montserrat", sans-serif;
 }
 
-/* line 908, ../sass/_padrao.scss */
+/* line 1016, ../sass/_padrao.scss */
 #about .menu .line {
   width: 60px;
   height: 3px;
@@ -905,39 +1031,39 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Our Team Section
 --------------------------------*/
-/* line 918, ../sass/_padrao.scss */
+/* line 1026, ../sass/_padrao.scss */
 #team {
   padding: 60px 0;
   overflow: hidden;
   background: #edeef0;
 }
 
-/* line 925, ../sass/_padrao.scss */
+/* line 1033, ../sass/_padrao.scss */
 #team.interna {
   padding: 60px 0;
   overflow: hidden;
   background: #fff;
 }
 
-/* line 932, ../sass/_padrao.scss */
+/* line 1040, ../sass/_padrao.scss */
 #team .member {
   text-align: center;
   margin-bottom: 20px;
 }
 
-/* line 938, ../sass/_padrao.scss */
+/* line 1046, ../sass/_padrao.scss */
 #team .member .pic {
   margin-bottom: 15px;
   overflow: hidden;
   height: 260px;
 }
 
-/* line 945, ../sass/_padrao.scss */
+/* line 1053, ../sass/_padrao.scss */
 #team .member .pic img {
   max-width: 100%;
 }
 
-/* line 950, ../sass/_padrao.scss */
+/* line 1058, ../sass/_padrao.scss */
 #team .member h3 {
   font-size: 28px;
   color: #111;
@@ -945,40 +1071,35 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-weight: 400;
 }
 
-/* line 958, ../sass/_padrao.scss */
+/* line 1066, ../sass/_padrao.scss */
 #team .member span {
   font-style: italic;
   display: block;
   font-size: 13px;
 }
 
-/* line 965, ../sass/_padrao.scss */
+/* line 1073, ../sass/_padrao.scss */
 #team .member .social {
   margin-top: 15px;
 }
 
-/* line 970, ../sass/_padrao.scss */
+/* line 1078, ../sass/_padrao.scss */
 #team .member .social a {
   color: #b3b3b3;
 }
 
-/* line 975, ../sass/_padrao.scss */
+/* line 1083, ../sass/_padrao.scss */
 #team .member .social a:hover {
   color: #1dc8cd;
 }
 
-/* line 980, ../sass/_padrao.scss */
+/* line 1088, ../sass/_padrao.scss */
 #team .member .social i {
   font-size: 18px;
   margin: 0 2px;
 }
 
-/* line 986, ../sass/_padrao.scss */
-#team .text {
-  padding-left: 115px;
-}
-
-/* line 991, ../sass/_padrao.scss */
+/* line 1098, ../sass/_padrao.scss */
 #team .title {
   font-size: 28px;
   color: #696969;
@@ -986,7 +1107,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: 0;
 }
 
-/* line 999, ../sass/_padrao.scss */
+/* line 1106, ../sass/_padrao.scss */
 #team .line {
   width: 60px;
   height: 3px;
@@ -996,18 +1117,18 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* More Features Section
 --------------------------------*/
-/* line 1009, ../sass/_padrao.scss */
+/* line 1116, ../sass/_padrao.scss */
 #more-features {
   padding: 60px 0 60px 0;
   overflow: hidden;
 }
 
-/* line 1014, ../sass/_padrao.scss */
+/* line 1121, ../sass/_padrao.scss */
 #more-features .wow .col-md-15 {
   overflow: hidden;
 }
 
-/* line 1018, ../sass/_padrao.scss */
+/* line 1125, ../sass/_padrao.scss */
 #more-features .wow .col-md-15 div {
   background-repeat: no-repeat;
   background-size: cover;
@@ -1018,7 +1139,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   cursor: pointer;
 }
 
-/* line 1028, ../sass/_padrao.scss */
+/* line 1135, ../sass/_padrao.scss */
 #more-features .wow .col-md-15 form {
   position: absolute;
   width: 100%;
@@ -1041,7 +1162,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   align-items: center;
 }
 
-/* line 1039, ../sass/_padrao.scss */
+/* line 1146, ../sass/_padrao.scss */
 #more-features .wow .col-md-15 form input[type=submit] {
   background-color: #ffb600;
   color: #000;
@@ -1053,7 +1174,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   position: absolute;
 }
 
-/* line 1050, ../sass/_padrao.scss */
+/* line 1157, ../sass/_padrao.scss */
 #more-features .wow .col-md-15:hover form input[type=submit] {
   top: 38%;
   cursor: pointer;
@@ -1061,12 +1182,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   transition: 450ms all 100ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* line 1058, ../sass/_padrao.scss */
+/* line 1165, ../sass/_padrao.scss */
 #more-features .wow .col-md-15:before {
   left: -100%;
 }
 
-/* line 1062, ../sass/_padrao.scss */
+/* line 1169, ../sass/_padrao.scss */
 #more-features .wow .col-md-15:hover:before {
   position: absolute;
   content: '';
@@ -1078,7 +1199,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   transitions: all 2s linear;
 }
 
-/* line 1073, ../sass/_padrao.scss */
+/* line 1180, ../sass/_padrao.scss */
 #more-features p.section-description {
   padding-bottom: 0px;
   margin-bottom: 10px;
@@ -1087,7 +1208,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   cursor: pointer;
 }
 
-/* line 1082, ../sass/_padrao.scss */
+/* line 1189, ../sass/_padrao.scss */
 #more-features .wow .col-md-15 h4 {
   text-align: center;
   color: #545454;
@@ -1095,7 +1216,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding-top: 10px;
 }
 
-/* line 1090, ../sass/_padrao.scss */
+/* line 1197, ../sass/_padrao.scss */
 #more-features .botao {
   min-width: 440px;
   min-height: 50px;
@@ -1106,7 +1227,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: left;
 }
 
-/* line 1101, ../sass/_padrao.scss */
+/* line 1208, ../sass/_padrao.scss */
 #more-features .ver {
   background: #ffb600;
   display: inline-block;
@@ -1122,7 +1243,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Contact Section
 --------------------------------*/
-/* line 1117, ../sass/_padrao.scss */
+/* line 1224, ../sass/_padrao.scss */
 #contact {
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
   padding: 50px 0;
@@ -1130,7 +1251,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #f4f4f4;
 }
 
-/* line 1125, ../sass/_padrao.scss */
+/* line 1232, ../sass/_padrao.scss */
 #contact hr {
   display: block;
   width: 60px;
@@ -1140,14 +1261,14 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 41px;
 }
 
-/* line 1135, ../sass/_padrao.scss */
+/* line 1242, ../sass/_padrao.scss */
 #contact .form input, #contact .form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
 }
 
-/* line 1142, ../sass/_padrao.scss */
+/* line 1249, ../sass/_padrao.scss */
 #contact .form input[type="submit"] {
   background: linear-gradient(45deg, #1de099, #1dc8cd);
   border: 0;
@@ -1156,18 +1277,18 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
 }
 
-/* line 1151, ../sass/_padrao.scss */
+/* line 1258, ../sass/_padrao.scss */
 #contact .form input[type="submit"]:hover {
   cursor: pointer;
 }
 
-/* line 1156, ../sass/_padrao.scss */
+/* line 1263, ../sass/_padrao.scss */
 #contact .contact {
   float: left;
   width: 49.5%;
 }
 
-/* line 1162, ../sass/_padrao.scss */
+/* line 1269, ../sass/_padrao.scss */
 #contact input[type="text"], textarea {
   border: 1px solid #6d6964;
   width: 100%;
@@ -1180,7 +1301,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   outline: none;
 }
 
-/* line 1173, ../sass/_padrao.scss */
+/* line 1280, ../sass/_padrao.scss */
 #contact input[type="tel"], textarea {
   border: 1px solid #6d6964;
   width: 100%;
@@ -1193,29 +1314,29 @@ body.mobile-nav-active #mobile-nav-toggle {
   outline: none;
 }
 
-/* line 1185, ../sass/_padrao.scss */
+/* line 1292, ../sass/_padrao.scss */
 #contact textarea {
   height: 223px;
   resize: none;
 }
 
-/* line 1191, ../sass/_padrao.scss */
+/* line 1298, ../sass/_padrao.scss */
 #contact .left {
   margin-right: .5%;
 }
 
-/* line 1196, ../sass/_padrao.scss */
+/* line 1303, ../sass/_padrao.scss */
 #contact .right {
   margin-left: .5%;
 }
 
-/* line 1201, ../sass/_padrao.scss */
+/* line 1308, ../sass/_padrao.scss */
 #contact .botao {
   text-align: center;
   padding-top: 40px;
 }
 
-/* line 1207, ../sass/_padrao.scss */
+/* line 1314, ../sass/_padrao.scss */
 #contact .botao input[type="submit"] {
   background: #ffb600;
   display: inline-block;
@@ -1232,7 +1353,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-/* line 1224, ../sass/_padrao.scss */
+/* line 1331, ../sass/_padrao.scss */
 #footer {
   background: #434343;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
@@ -1241,40 +1362,40 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 14px;
 }
 
-/* line 1233, ../sass/_padrao.scss */
+/* line 1340, ../sass/_padrao.scss */
 #footer .footer-links a:first-child {
   padding-left: 0;
 }
 
-/* line 1238, ../sass/_padrao.scss */
+/* line 1345, ../sass/_padrao.scss */
 #footer .footer-links a:hover {
   color: #1dc8cd;
 }
 
-/* line 1243, ../sass/_padrao.scss */
+/* line 1350, ../sass/_padrao.scss */
 #footer .footer-logo {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 1249, ../sass/_padrao.scss */
+/* line 1356, ../sass/_padrao.scss */
 #footer .footer-logo img {
   width: 39%;
   width: 65%;
 }
 
-/* line 1255, ../sass/_padrao.scss */
+/* line 1362, ../sass/_padrao.scss */
 #footer .footer-logo p {
   margin: 5px 0;
   color: #d3d3d3;
 }
 
-/* line 1261, ../sass/_padrao.scss */
+/* line 1368, ../sass/_padrao.scss */
 #footer .footer-logo a {
   color: #b8375d;
 }
 
-/* line 1266, ../sass/_padrao.scss */
+/* line 1373, ../sass/_padrao.scss */
 #footer .footer-logo span {
   color: #d3d3d3;
 }
