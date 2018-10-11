@@ -57,11 +57,12 @@ Header
 			<a href="<?php echo get_bloginfo('url'); ?>" class="scrollto">
 				<?php $imagem = get_field('lo_logo','options'); ?>
 				<img src="<?php echo $imagem; ?>)">
+			</a>
 		</div>
 
 		<nav id="nav-menu-container">
 			<ul class="nav-menu">
-				<li class="menu-active"><a href="#intro">Home</a></li>
+				<li class="menu-active"><a href="/#home">Home</a></li>
 				<li><a href="<?php echo get_bloginfo('url'); ?>/sobre-nos/">Sobre Nós</a></li>
 				<li><a href="#about">Cardápio</a></li>
 				<li><a href="#pricing">Planos</a></li>
