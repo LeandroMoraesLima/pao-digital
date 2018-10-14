@@ -112,14 +112,35 @@
 	    		i.fa-minus-circle {
 	    			color: #bc2026;
 	    			cursor: pointer;
+	    			@media screen and (max-width: 767px){
+	    				font-size: 28px;
+	    				float: left;
+	    			}
 	    		}
 	    		i.fa-plus-circle {
 	    			color: #73c501;
 	    			cursor: pointer;
+	    			@media screen and (max-width: 767px){
+	    				font-size: 28px;
+	    			}
+	    		}
+	    		div.qtd {
+	    			@media screen and (max-width: 767px){
+						padding: 0px 3px 0px;
+						border: 1px solid;
+						width: 27px;
+						text-align: center;
+						float: left;
+						margin: 0 3px;
+	    			}
 	    		}
 	    		.ttle {
 	    			padding-left: 10px;
 	    			font-weight: 600;
+
+	    			@media screen and (max-width: 767px){
+	    				font-size: 12px;
+	    			}
 	    		}
 	    	}
 	    }

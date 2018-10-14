@@ -42,7 +42,7 @@
 		wp_register_style( 'font-awesomecss', LIB . '/font-awesome/css/font-awesome.min.css', array(), '0.0.1', false );
 		wp_register_style( 'ioniconscss', LIB . '/ionicons/css/ionicons.min.css', array(), '0.0.1', false );
 		wp_register_style( 'magnific-popupcss', LIB . '/magnific-popup/magnific-popup.css', array(), '0.0.1', false );
-		wp_register_style( 'appcss', CSS . '/app.css', array(), '0.0.4', false );
+		wp_register_style( 'appcss', CSS . '/app.css', array(), '0.0.5', false );
 
 		//wp_register_style('swipercss', CSS . '/swiper.css', array(), '0.0.1', false );
 		//wp_register_style('style_css', CSS . '/app.css', array(), '0.0.4', false );
@@ -254,10 +254,10 @@
 				__('Appearance'),
 				__('Tools'),
 				//__('Users'),
-				__('Settings'),
+				//__('Settings'),
 				__('Comments'),
 				__('Plugins'),
-				__('Options')
+				//__('Options')
 			);
 
 		} elseif (current_user_can( 'cliente' )) {
@@ -351,7 +351,7 @@
 					unset($GLOBALS[ 'menu' ][$key]);
 
 				if( in_array( 'Pods Admin', $menu ) )
-					unset($GLOBALS[ 'menu' ][$key]);
+					//unset($GLOBALS[ 'menu' ][$key]);
 
 				if( in_array( 'users.php', $menu ) && $key !== 200 ):
 

@@ -20,7 +20,7 @@ Intro Section
 	<div class="intro-text">
 		<h2><?php echo get_field('ti_titulo'); ?></h2>
 		<p><?php echo get_field('st_sub_titulo'); ?></p>
-		<a class="btn-get-started scrollto" href="/#features">
+		<a class="btn-get-started scrollto" href="/#pricing">
 			<?php echo get_field('tb_titulo_do_botao'); ?>
 		</a>
 	</div>
@@ -34,7 +34,7 @@ Intro Section
 Product Featuress Section
 ============================-->
 
-	<?php
+	<?php /* //Escondido a pedido do cliente
 
 		// check if the repeater field has rows of data
 		if( have_rows('te_texto') ): 
@@ -85,7 +85,7 @@ Product Featuress Section
 
      	else:
 			echo "nao existe Section!";
-		endif;
+		endif; */
 	?>
 
 <!--==========================
@@ -349,7 +349,14 @@ More Features Section
 				<?php if( !is_user_logged_in() ): ?>
 					<a href="/" class="lrm-login ver">Ver todos parceiros</a>
 				<?php else: ?>
-					<a href="<?php echo get_bloginfo('url'); ?>/parceiros" class="ver">Ver todos parceiros</a>
+
+					<form action="<?php echo get_bloginfo('url'); ?>/parceiros" method="post">
+						<input type="hidden" name="type" value="home" />
+						<input type="hidden" name="plano" value="menu" />
+						<input 	type="submit" class="get-started-btn yellow" 
+								value="Ver todos parceiros" />
+					</form>
+
 				<?php endif; ?>
 			</div>	
 		</div>
@@ -362,7 +369,7 @@ More Features Section
 	<script>
 		(function($){
 
-			$(document).on("keyup change click",".nposition", function(){
+			$(document).on("keyup input change click",".nposition", function(){
 				var parent = $(this).parent('div');
 				$('button', parent).css('opacity', '1');
 			});

@@ -386,17 +386,18 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50px;
   transition: 0.5s;
   margin: 10px;
-  border: 2px solid #fff;
-  color: #fff;
+  background-color: #ffb600;
+  color: #FFF;
 }
 
 /* line 378, ../sass/_padrao.scss */
 #intro .btn-get-started:hover {
-  color: #1dc8cd;
-  background: #fff;
+  color: #fff !important;
+  background: #515e61 !important;
+  opacity: 1;
 }
 
-/* line 384, ../sass/_padrao.scss */
+/* line 385, ../sass/_padrao.scss */
 #intro .product-screens {
   position: absolute;
   left: 0;
@@ -408,12 +409,12 @@ h1, h2, h3, h4, h5, h6 {
   height: 50%;
 }
 
-/* line 396, ../sass/_padrao.scss */
+/* line 397, ../sass/_padrao.scss */
 #intro .product-screens img {
   box-shadow: 0px -2px 19px 4px rgba(0, 0, 0, 0.29);
 }
 
-/* line 401, ../sass/_padrao.scss */
+/* line 402, ../sass/_padrao.scss */
 #intro .product-screens .product-screen-1 {
   position: absolute;
   z-index: 30;
@@ -422,7 +423,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 30px;
 }
 
-/* line 410, ../sass/_padrao.scss */
+/* line 411, ../sass/_padrao.scss */
 #intro .product-screens .product-screen-2 {
   position: absolute;
   z-index: 20;
@@ -431,7 +432,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 90px;
 }
 
-/* line 419, ../sass/_padrao.scss */
+/* line 420, ../sass/_padrao.scss */
 #intro .product-screens .product-screen-3 {
   position: absolute;
   z-index: 10;
@@ -441,64 +442,64 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 767px) {
-  /* line 429, ../sass/_padrao.scss */
+  /* line 430, ../sass/_padrao.scss */
   #intro .product-screens .product-screen-1 {
     position: static;
     padding-top: 30px;
   }
 
-  /* line 435, ../sass/_padrao.scss */
+  /* line 436, ../sass/_padrao.scss */
   #intro .product-screens .product-screen-2, #intro .product-screens .product-screen-3 {
     display: none;
   }
 }
 /* Product Featuress Section
 --------------------------------*/
-/* line 442, ../sass/_padrao.scss */
+/* line 443, ../sass/_padrao.scss */
 #features {
   background: #fff;
   padding: 60px 0 0 0;
   overflow: hidden;
 }
 
-/* line 449, ../sass/_padrao.scss */
+/* line 450, ../sass/_padrao.scss */
 #features .features-img {
   text-align: center;
   padding-top: 20px;
 }
 
 @media (min-width: 769px) {
-  /* line 456, ../sass/_padrao.scss */
+  /* line 457, ../sass/_padrao.scss */
   #features .features-img {
     padding-top: 120px;
     margin-top: -200px;
   }
 }
-/* line 462, ../sass/_padrao.scss */
+/* line 463, ../sass/_padrao.scss */
 #features .features-img img {
   max-width: 100%;
 }
 
-/* line 467, ../sass/_padrao.scss */
+/* line 468, ../sass/_padrao.scss */
 #features .box {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
 }
 
-/* line 474, ../sass/_padrao.scss */
+/* line 475, ../sass/_padrao.scss */
 #features .icon {
   margin-bottom: 10px;
 }
 
-/* line 479, ../sass/_padrao.scss */
+/* line 480, ../sass/_padrao.scss */
 #features .icon i {
   color: #666666;
   font-size: 40px;
   transition: 0.5s;
 }
 
-/* line 486, ../sass/_padrao.scss */
+/* line 487, ../sass/_padrao.scss */
 #features .icon i:before {
   background: #1dc8cd;
   background: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
@@ -507,13 +508,13 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-fill-color: transparent;
 }
 
-/* line 495, ../sass/_padrao.scss */
+/* line 496, ../sass/_padrao.scss */
 #features .title {
   font-weight: 300;
   margin-bottom: 15px;
 }
 
-/* line 501, ../sass/_padrao.scss */
+/* line 502, ../sass/_padrao.scss */
 #features .title a {
   font-size: 92px;
   color: #aa6a3b;
@@ -522,7 +523,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 10px;
 }
 
-/* line 510, ../sass/_padrao.scss */
+/* line 511, ../sass/_padrao.scss */
 #features .description {
   font-size: 18px;
   line-height: 20px;
@@ -531,20 +532,20 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Montserrat;
 }
 
-/* line 519, ../sass/_padrao.scss */
+/* line 520, ../sass/_padrao.scss */
 #features .section-description {
   padding-bottom: 10px;
 }
 
 /* Pricing Section
 --------------------------------*/
-/* line 526, ../sass/_padrao.scss */
+/* line 527, ../sass/_padrao.scss */
 #pricing {
   padding: 60px 0 60px 0;
   overflow: hidden;
 }
 
-/* line 532, ../sass/_padrao.scss */
+/* line 533, ../sass/_padrao.scss */
 #pricing .box {
   padding: 31px;
   margin-bottom: 30px;
@@ -554,7 +555,7 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 445px;
 }
 
-/* line 542, ../sass/_padrao.scss */
+/* line 543, ../sass/_padrao.scss */
 #pricing h3 {
   font-weight: 400;
   margin-bottom: 15px;
@@ -562,26 +563,26 @@ h1, h2, h3, h4, h5, h6 {
   color: #696969;
 }
 
-/* line 550, ../sass/_padrao.scss */
+/* line 551, ../sass/_padrao.scss */
 #pricing h4 {
   font-size: 46px;
   color: #ffb600;
   font-weight: 300;
 }
 
-/* line 557, ../sass/_padrao.scss */
+/* line 558, ../sass/_padrao.scss */
 #pricing h4 sup {
   font-size: 20px;
   top: -20px;
 }
 
-/* line 563, ../sass/_padrao.scss */
+/* line 564, ../sass/_padrao.scss */
 #pricing h4 span {
   color: #979797;
   font-size: 20px;
 }
 
-/* line 569, ../sass/_padrao.scss */
+/* line 570, ../sass/_padrao.scss */
 #pricing ul {
   padding: 0;
   list-style: none;
@@ -591,24 +592,24 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 215px;
 }
 
-/* line 579, ../sass/_padrao.scss */
+/* line 580, ../sass/_padrao.scss */
 #pricing .row > div:last-child ul {
   min-height: 290px;
 }
 
-/* line 584, ../sass/_padrao.scss */
+/* line 585, ../sass/_padrao.scss */
 #pricing ul li {
   padding-bottom: 12px;
 }
 
-/* line 589, ../sass/_padrao.scss */
+/* line 590, ../sass/_padrao.scss */
 #pricing ul i {
   color: #1dc8cd;
   font-size: 18px;
   padding-right: 4px;
 }
 
-/* line 596, ../sass/_padrao.scss */
+/* line 597, ../sass/_padrao.scss */
 #pricing .get-started-btn {
   background: #515e61;
   display: inline-block;
@@ -621,12 +622,12 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat", sans-serif;
 }
 
-/* line 609, ../sass/_padrao.scss */
+/* line 610, ../sass/_padrao.scss */
 #pricing .featured {
   border: 2px solid #ffb600;
 }
 
-/* line 614, ../sass/_padrao.scss */
+/* line 615, ../sass/_padrao.scss */
 #pricing .featured .get-started-btn {
   background: linear-gradient(45deg, #ffb600, #ffb600);
 }
@@ -634,14 +635,14 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
-/* line 623, ../sass/_padrao.scss */
+/* line 624, ../sass/_padrao.scss */
 .nav-menu, .nav-menu * {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* line 630, ../sass/_padrao.scss */
+/* line 631, ../sass/_padrao.scss */
 .nav-menu ul {
   position: absolute;
   display: none;
@@ -650,40 +651,40 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 99;
 }
 
-/* line 639, ../sass/_padrao.scss */
+/* line 640, ../sass/_padrao.scss */
 .nav-menu li {
   position: relative;
   white-space: nowrap;
 }
 
-/* line 645, ../sass/_padrao.scss */
+/* line 646, ../sass/_padrao.scss */
 .nav-menu > li {
   float: left;
 }
 
-/* line 650, ../sass/_padrao.scss */
+/* line 651, ../sass/_padrao.scss */
 .nav-menu li:hover > ul,
 .nav-menu li.sfHover > ul {
   display: block;
 }
 
-/* line 656, ../sass/_padrao.scss */
+/* line 657, ../sass/_padrao.scss */
 .nav-menu ul ul {
   top: 0;
   left: 100%;
 }
 
-/* line 662, ../sass/_padrao.scss */
+/* line 663, ../sass/_padrao.scss */
 .nav-menu ul li {
   min-width: 180px;
 }
 
-/* line 668, ../sass/_padrao.scss */
+/* line 669, ../sass/_padrao.scss */
 .sf-arrows .sf-with-ul {
   padding-right: 30px;
 }
 
-/* line 673, ../sass/_padrao.scss */
+/* line 674, ../sass/_padrao.scss */
 .sf-arrows .sf-with-ul:after {
   content: "\f107";
   position: absolute;
@@ -693,24 +694,24 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
-/* line 683, ../sass/_padrao.scss */
+/* line 684, ../sass/_padrao.scss */
 .sf-arrows ul .sf-with-ul:after {
   content: "\f105";
 }
 
-/* line 689, ../sass/_padrao.scss */
+/* line 690, ../sass/_padrao.scss */
 #nav-menu-container {
   float: right;
   margin: 0;
 }
 
 @media (max-width: 768px) {
-  /* line 696, ../sass/_padrao.scss */
+  /* line 697, ../sass/_padrao.scss */
   #nav-menu-container {
     display: none;
   }
 }
-/* line 702, ../sass/_padrao.scss */
+/* line 703, ../sass/_padrao.scss */
 .nav-menu a {
   padding: 22px 8px 10px 8px;
   text-decoration: none;
@@ -722,12 +723,12 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
 }
 
-/* line 714, ../sass/_padrao.scss */
+/* line 715, ../sass/_padrao.scss */
 .nav-menu > li {
   margin-left: 10px;
 }
 
-/* line 719, ../sass/_padrao.scss */
+/* line 720, ../sass/_padrao.scss */
 .nav-menu ul {
   margin: 4px 0 0 0;
   padding: 10px;
@@ -735,12 +736,12 @@ h1, h2, h3, h4, h5, h6 {
   background: #fff;
 }
 
-/* line 727, ../sass/_padrao.scss */
+/* line 728, ../sass/_padrao.scss */
 .nav-menu ul li {
   transition: 0.3s;
 }
 
-/* line 732, ../sass/_padrao.scss */
+/* line 733, ../sass/_padrao.scss */
 .nav-menu ul li a {
   padding: 10px;
   color: #333;
@@ -750,17 +751,17 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: none;
 }
 
-/* line 742, ../sass/_padrao.scss */
+/* line 743, ../sass/_padrao.scss */
 .nav-menu ul li:hover > a {
   color: #1dc8cd;
 }
 
-/* line 747, ../sass/_padrao.scss */
+/* line 748, ../sass/_padrao.scss */
 .nav-menu ul ul {
   margin: 0;
 }
 
-/* line 753, ../sass/_padrao.scss */
+/* line 754, ../sass/_padrao.scss */
 #mobile-nav-toggle {
   position: fixed;
   right: 0;
@@ -776,18 +777,18 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
-/* line 769, ../sass/_padrao.scss */
+/* line 770, ../sass/_padrao.scss */
 #mobile-nav-toggle i {
   color: #fff;
 }
 
 @media (max-width: 768px) {
-  /* line 775, ../sass/_padrao.scss */
+  /* line 776, ../sass/_padrao.scss */
   #mobile-nav-toggle {
     display: inline;
   }
 }
-/* line 781, ../sass/_padrao.scss */
+/* line 782, ../sass/_padrao.scss */
 #mobile-nav {
   position: fixed;
   top: 0;
@@ -801,19 +802,19 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.4s;
 }
 
-/* line 795, ../sass/_padrao.scss */
+/* line 796, ../sass/_padrao.scss */
 #mobile-nav ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-/* line 802, ../sass/_padrao.scss */
+/* line 803, ../sass/_padrao.scss */
 #mobile-nav ul li {
   position: relative;
 }
 
-/* line 807, ../sass/_padrao.scss */
+/* line 808, ../sass/_padrao.scss */
 #mobile-nav ul li a {
   color: #fff;
   font-size: 16px;
@@ -826,17 +827,17 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
 }
 
-/* line 820, ../sass/_padrao.scss */
+/* line 821, ../sass/_padrao.scss */
 #mobile-nav ul li a:hover {
   color: #fff;
 }
 
-/* line 825, ../sass/_padrao.scss */
+/* line 826, ../sass/_padrao.scss */
 #mobile-nav ul li li {
   padding-left: 30px;
 }
 
-/* line 830, ../sass/_padrao.scss */
+/* line 831, ../sass/_padrao.scss */
 #mobile-nav ul .menu-has-children i {
   position: absolute;
   right: 0;
@@ -846,17 +847,17 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-/* line 840, ../sass/_padrao.scss */
+/* line 841, ../sass/_padrao.scss */
 #mobile-nav ul .menu-has-children i.fa-chevron-up {
   color: #1dc8cd;
 }
 
-/* line 845, ../sass/_padrao.scss */
+/* line 846, ../sass/_padrao.scss */
 #mobile-nav ul .menu-item-active {
   color: #1dc8cd;
 }
 
-/* line 850, ../sass/_padrao.scss */
+/* line 851, ../sass/_padrao.scss */
 #mobile-body-overly {
   width: 100%;
   height: 100%;
@@ -868,17 +869,17 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-/* line 863, ../sass/_padrao.scss */
+/* line 864, ../sass/_padrao.scss */
 body.mobile-nav-active {
   overflow: hidden;
 }
 
-/* line 868, ../sass/_padrao.scss */
+/* line 869, ../sass/_padrao.scss */
 body.mobile-nav-active #mobile-nav {
   left: 0;
 }
 
-/* line 873, ../sass/_padrao.scss */
+/* line 874, ../sass/_padrao.scss */
 body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
 }
@@ -888,7 +889,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------------------------------------*/
 /* Sections Header
 --------------------------------*/
-/* line 883, ../sass/_padrao.scss */
+/* line 884, ../sass/_padrao.scss */
 .section-header .section-title {
   font-size: 32px;
   color: #696969;
@@ -896,14 +897,14 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-weight: 400;
 }
 
-/* line 891, ../sass/_padrao.scss */
+/* line 892, ../sass/_padrao.scss */
 .section-header .section-description {
   text-align: center;
   padding-bottom: 40px;
   color: #777;
 }
 
-/* line 898, ../sass/_padrao.scss */
+/* line 899, ../sass/_padrao.scss */
 .section-header .section-divider {
   display: block;
   width: 60px;
@@ -915,51 +916,51 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Section with background
 --------------------------------*/
-/* line 910, ../sass/_padrao.scss */
+/* line 911, ../sass/_padrao.scss */
 .section-bg {
   background: #fcf6e7;
 }
 
 /* About Us Section
 --------------------------------*/
-/* line 917, ../sass/_padrao.scss */
+/* line 918, ../sass/_padrao.scss */
 #about {
   overflow: hidden;
 }
 
-/* line 922, ../sass/_padrao.scss */
+/* line 923, ../sass/_padrao.scss */
 #about .about-img {
   height: 435px;
   overflow: hidden;
   margin-top: 85px;
 }
 
-/* line 929, ../sass/_padrao.scss */
+/* line 930, ../sass/_padrao.scss */
 #about .about-img img {
   margin-left: -15px;
   max-width: 100%;
 }
 
 @media (max-width: 768px) {
-  /* line 936, ../sass/_padrao.scss */
+  /* line 937, ../sass/_padrao.scss */
   #about .about-img {
     height: auto;
   }
 
-  /* line 941, ../sass/_padrao.scss */
+  /* line 942, ../sass/_padrao.scss */
   #about .about-img img {
     margin-left: 0;
     padding-bottom: 30px;
   }
 }
-/* line 947, ../sass/_padrao.scss */
+/* line 948, ../sass/_padrao.scss */
 #about .content .h2 {
   color: #333;
   font-weight: 300;
   font-size: 24px;
 }
 
-/* line 954, ../sass/_padrao.scss */
+/* line 955, ../sass/_padrao.scss */
 #about .content h3 {
   color: #4a4a4a;
   font-weight: 300;
@@ -967,40 +968,40 @@ body.mobile-nav-active #mobile-nav-toggle {
   line-height: 26px;
 }
 
-/* line 962, ../sass/_padrao.scss */
+/* line 963, ../sass/_padrao.scss */
 #about .content p {
   line-height: 26px;
 }
 
-/* line 967, ../sass/_padrao.scss */
+/* line 968, ../sass/_padrao.scss */
 #about .content p:last-child {
   margin-bottom: 0;
 }
 
-/* line 972, ../sass/_padrao.scss */
+/* line 973, ../sass/_padrao.scss */
 #about .content i {
   font-size: 20px;
   padding-right: 4px;
   color: #1dc8cd;
 }
 
-/* line 979, ../sass/_padrao.scss */
+/* line 980, ../sass/_padrao.scss */
 #about .content ul {
   list-style: none;
   padding: 0;
 }
 
-/* line 985, ../sass/_padrao.scss */
+/* line 986, ../sass/_padrao.scss */
 #about .content ul li {
   padding-bottom: 10px;
 }
 
-/* line 990, ../sass/_padrao.scss */
+/* line 991, ../sass/_padrao.scss */
 #about .menu {
   margin-top: 85px;
 }
 
-/* line 995, ../sass/_padrao.scss */
+/* line 996, ../sass/_padrao.scss */
 #about .menu h3 {
   font-size: 28px;
   color: #696969;
@@ -1008,7 +1009,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: 0;
 }
 
-/* line 1003, ../sass/_padrao.scss */
+/* line 1004, ../sass/_padrao.scss */
 #about .menu .pedir {
   background: #ffb600;
   display: inline-block;
@@ -1021,7 +1022,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-family: "Montserrat", sans-serif;
 }
 
-/* line 1016, ../sass/_padrao.scss */
+/* line 1017, ../sass/_padrao.scss */
 #about .menu .line {
   width: 60px;
   height: 3px;
@@ -1031,39 +1032,39 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Our Team Section
 --------------------------------*/
-/* line 1026, ../sass/_padrao.scss */
+/* line 1027, ../sass/_padrao.scss */
 #team {
   padding: 60px 0;
   overflow: hidden;
   background: #edeef0;
 }
 
-/* line 1033, ../sass/_padrao.scss */
+/* line 1034, ../sass/_padrao.scss */
 #team.interna {
   padding: 60px 0;
   overflow: hidden;
   background: #fff;
 }
 
-/* line 1040, ../sass/_padrao.scss */
+/* line 1041, ../sass/_padrao.scss */
 #team .member {
   text-align: center;
   margin-bottom: 20px;
 }
 
-/* line 1046, ../sass/_padrao.scss */
+/* line 1047, ../sass/_padrao.scss */
 #team .member .pic {
   margin-bottom: 15px;
   overflow: hidden;
   height: 260px;
 }
 
-/* line 1053, ../sass/_padrao.scss */
+/* line 1054, ../sass/_padrao.scss */
 #team .member .pic img {
   max-width: 100%;
 }
 
-/* line 1058, ../sass/_padrao.scss */
+/* line 1059, ../sass/_padrao.scss */
 #team .member h3 {
   font-size: 28px;
   color: #111;
@@ -1071,35 +1072,35 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-weight: 400;
 }
 
-/* line 1066, ../sass/_padrao.scss */
+/* line 1067, ../sass/_padrao.scss */
 #team .member span {
   font-style: italic;
   display: block;
   font-size: 13px;
 }
 
-/* line 1073, ../sass/_padrao.scss */
+/* line 1074, ../sass/_padrao.scss */
 #team .member .social {
   margin-top: 15px;
 }
 
-/* line 1078, ../sass/_padrao.scss */
+/* line 1079, ../sass/_padrao.scss */
 #team .member .social a {
   color: #b3b3b3;
 }
 
-/* line 1083, ../sass/_padrao.scss */
+/* line 1084, ../sass/_padrao.scss */
 #team .member .social a:hover {
   color: #1dc8cd;
 }
 
-/* line 1088, ../sass/_padrao.scss */
+/* line 1089, ../sass/_padrao.scss */
 #team .member .social i {
   font-size: 18px;
   margin: 0 2px;
 }
 
-/* line 1098, ../sass/_padrao.scss */
+/* line 1099, ../sass/_padrao.scss */
 #team .title {
   font-size: 28px;
   color: #696969;
@@ -1107,7 +1108,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: 0;
 }
 
-/* line 1106, ../sass/_padrao.scss */
+/* line 1107, ../sass/_padrao.scss */
 #team .line {
   width: 60px;
   height: 3px;
@@ -1117,18 +1118,18 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* More Features Section
 --------------------------------*/
-/* line 1116, ../sass/_padrao.scss */
+/* line 1117, ../sass/_padrao.scss */
 #more-features {
   padding: 60px 0 60px 0;
   overflow: hidden;
 }
 
-/* line 1121, ../sass/_padrao.scss */
+/* line 1122, ../sass/_padrao.scss */
 #more-features .wow .col-md-15 {
   overflow: hidden;
 }
 
-/* line 1125, ../sass/_padrao.scss */
+/* line 1126, ../sass/_padrao.scss */
 #more-features .wow .col-md-15 div {
   background-repeat: no-repeat;
   background-size: cover;
@@ -1139,7 +1140,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   cursor: pointer;
 }
 
-/* line 1135, ../sass/_padrao.scss */
+/* line 1136, ../sass/_padrao.scss */
 #more-features .wow .col-md-15 form {
   position: absolute;
   width: 100%;
@@ -1162,7 +1163,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   align-items: center;
 }
 
-/* line 1146, ../sass/_padrao.scss */
+/* line 1147, ../sass/_padrao.scss */
 #more-features .wow .col-md-15 form input[type=submit] {
   background-color: #ffb600;
   color: #000;
@@ -1174,7 +1175,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   position: absolute;
 }
 
-/* line 1157, ../sass/_padrao.scss */
+/* line 1158, ../sass/_padrao.scss */
 #more-features .wow .col-md-15:hover form input[type=submit] {
   top: 38%;
   cursor: pointer;
@@ -1182,12 +1183,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   transition: 450ms all 100ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* line 1165, ../sass/_padrao.scss */
+/* line 1166, ../sass/_padrao.scss */
 #more-features .wow .col-md-15:before {
   left: -100%;
 }
 
-/* line 1169, ../sass/_padrao.scss */
+/* line 1170, ../sass/_padrao.scss */
 #more-features .wow .col-md-15:hover:before {
   position: absolute;
   content: '';
@@ -1199,7 +1200,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   transitions: all 2s linear;
 }
 
-/* line 1180, ../sass/_padrao.scss */
+/* line 1181, ../sass/_padrao.scss */
 #more-features p.section-description {
   padding-bottom: 0px;
   margin-bottom: 10px;
@@ -1208,7 +1209,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   cursor: pointer;
 }
 
-/* line 1189, ../sass/_padrao.scss */
+/* line 1190, ../sass/_padrao.scss */
 #more-features .wow .col-md-15 h4 {
   text-align: center;
   color: #545454;
@@ -1216,7 +1217,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding-top: 10px;
 }
 
-/* line 1197, ../sass/_padrao.scss */
+/* line 1198, ../sass/_padrao.scss */
 #more-features .botao {
   min-width: 440px;
   min-height: 50px;
@@ -1227,7 +1228,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: left;
 }
 
-/* line 1208, ../sass/_padrao.scss */
+/* line 1209, ../sass/_padrao.scss */
 #more-features .ver {
   background: #ffb600;
   display: inline-block;
@@ -1243,7 +1244,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Contact Section
 --------------------------------*/
-/* line 1224, ../sass/_padrao.scss */
+/* line 1225, ../sass/_padrao.scss */
 #contact {
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
   padding: 50px 0;
@@ -1251,7 +1252,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #f4f4f4;
 }
 
-/* line 1232, ../sass/_padrao.scss */
+/* line 1233, ../sass/_padrao.scss */
 #contact hr {
   display: block;
   width: 60px;
@@ -1261,14 +1262,14 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 41px;
 }
 
-/* line 1242, ../sass/_padrao.scss */
+/* line 1243, ../sass/_padrao.scss */
 #contact .form input, #contact .form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
 }
 
-/* line 1249, ../sass/_padrao.scss */
+/* line 1250, ../sass/_padrao.scss */
 #contact .form input[type="submit"] {
   background: linear-gradient(45deg, #1de099, #1dc8cd);
   border: 0;
@@ -1277,18 +1278,18 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
 }
 
-/* line 1258, ../sass/_padrao.scss */
+/* line 1259, ../sass/_padrao.scss */
 #contact .form input[type="submit"]:hover {
   cursor: pointer;
 }
 
-/* line 1263, ../sass/_padrao.scss */
+/* line 1264, ../sass/_padrao.scss */
 #contact .contact {
   float: left;
   width: 49.5%;
 }
 
-/* line 1269, ../sass/_padrao.scss */
+/* line 1270, ../sass/_padrao.scss */
 #contact input[type="text"], textarea {
   border: 1px solid #6d6964;
   width: 100%;
@@ -1301,7 +1302,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   outline: none;
 }
 
-/* line 1280, ../sass/_padrao.scss */
+/* line 1281, ../sass/_padrao.scss */
 #contact input[type="tel"], textarea {
   border: 1px solid #6d6964;
   width: 100%;
@@ -1314,29 +1315,29 @@ body.mobile-nav-active #mobile-nav-toggle {
   outline: none;
 }
 
-/* line 1292, ../sass/_padrao.scss */
+/* line 1293, ../sass/_padrao.scss */
 #contact textarea {
   height: 223px;
   resize: none;
 }
 
-/* line 1298, ../sass/_padrao.scss */
+/* line 1299, ../sass/_padrao.scss */
 #contact .left {
   margin-right: .5%;
 }
 
-/* line 1303, ../sass/_padrao.scss */
+/* line 1304, ../sass/_padrao.scss */
 #contact .right {
   margin-left: .5%;
 }
 
-/* line 1308, ../sass/_padrao.scss */
+/* line 1309, ../sass/_padrao.scss */
 #contact .botao {
   text-align: center;
   padding-top: 40px;
 }
 
-/* line 1314, ../sass/_padrao.scss */
+/* line 1315, ../sass/_padrao.scss */
 #contact .botao input[type="submit"] {
   background: #ffb600;
   display: inline-block;
@@ -1353,7 +1354,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-/* line 1331, ../sass/_padrao.scss */
+/* line 1332, ../sass/_padrao.scss */
 #footer {
   background: #434343;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
@@ -1362,40 +1363,40 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 14px;
 }
 
-/* line 1340, ../sass/_padrao.scss */
+/* line 1341, ../sass/_padrao.scss */
 #footer .footer-links a:first-child {
   padding-left: 0;
 }
 
-/* line 1345, ../sass/_padrao.scss */
+/* line 1346, ../sass/_padrao.scss */
 #footer .footer-links a:hover {
   color: #1dc8cd;
 }
 
-/* line 1350, ../sass/_padrao.scss */
+/* line 1351, ../sass/_padrao.scss */
 #footer .footer-logo {
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 1356, ../sass/_padrao.scss */
+/* line 1357, ../sass/_padrao.scss */
 #footer .footer-logo img {
   width: 39%;
   width: 65%;
 }
 
-/* line 1362, ../sass/_padrao.scss */
+/* line 1363, ../sass/_padrao.scss */
 #footer .footer-logo p {
   margin: 5px 0;
   color: #d3d3d3;
 }
 
-/* line 1368, ../sass/_padrao.scss */
+/* line 1369, ../sass/_padrao.scss */
 #footer .footer-logo a {
   color: #b8375d;
 }
 
-/* line 1373, ../sass/_padrao.scss */
+/* line 1374, ../sass/_padrao.scss */
 #footer .footer-logo span {
   color: #d3d3d3;
 }
@@ -1585,30 +1586,60 @@ body button[type=submit] {
   color: #bc2026;
   cursor: pointer;
 }
-/* line 116, ../sass/website/_cardapio.scss */
+@media screen and (max-width: 767px) {
+  /* line 112, ../sass/website/_cardapio.scss */
+  .sticky-sidebar .user-order ul li i.fa-minus-circle {
+    font-size: 28px;
+    float: left;
+  }
+}
+/* line 120, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order ul li i.fa-plus-circle {
   color: #73c501;
   cursor: pointer;
 }
-/* line 120, ../sass/website/_cardapio.scss */
+@media screen and (max-width: 767px) {
+  /* line 120, ../sass/website/_cardapio.scss */
+  .sticky-sidebar .user-order ul li i.fa-plus-circle {
+    font-size: 28px;
+  }
+}
+@media screen and (max-width: 767px) {
+  /* line 127, ../sass/website/_cardapio.scss */
+  .sticky-sidebar .user-order ul li div.qtd {
+    padding: 0px 3px 0px;
+    border: 1px solid;
+    width: 27px;
+    text-align: center;
+    float: left;
+    margin: 0 3px;
+  }
+}
+/* line 137, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order ul li .ttle {
   padding-left: 10px;
   font-weight: 600;
 }
-/* line 127, ../sass/website/_cardapio.scss */
+@media screen and (max-width: 767px) {
+  /* line 137, ../sass/website/_cardapio.scss */
+  .sticky-sidebar .user-order ul li .ttle {
+    font-size: 12px;
+  }
+}
+/* line 148, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order h6 {
   font-family: Montserrat;
   font-size: 13px;
   font-weight: 600;
   padding: 0 0 20px;
 }
-/* line 133, ../sass/website/_cardapio.scss */
+/* line 154, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order h6 span {
   float: right;
   font-size: 13px;
   font-weight: 400;
 }
-/* line 139, ../sass/website/_cardapio.scss */
+/* line 160, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .price-area {
   margin: 0 0 12px;
   background-color: #f2f2f3;
@@ -1616,14 +1647,14 @@ body button[type=submit] {
   border-right: 0px;
   border-left: 0px;
 }
-/* line 146, ../sass/website/_cardapio.scss */
+/* line 167, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .price-area ul {
   margin: 5px 0;
   list-style: none;
   padding: 0;
   padding: 8px;
 }
-/* line 152, ../sass/website/_cardapio.scss */
+/* line 173, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .price-area ul li {
   font-size: 12px;
   line-height: normal;
@@ -1634,37 +1665,37 @@ body button[type=submit] {
   font-weight: 600;
   color: #333c45;
 }
-/* line 162, ../sass/website/_cardapio.scss */
+/* line 183, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .price-area ul li .price {
   color: #2f313a;
   float: right;
   font-size: 13px;
   font-weight: 400;
 }
-/* line 170, ../sass/website/_cardapio.scss */
+/* line 191, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .price-area ul .tempo {
   font-size: 11px;
   font-weight: 700;
   color: #333c45;
   margin: 0;
 }
-/* line 176, ../sass/website/_cardapio.scss */
+/* line 197, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .price-area ul .tempo .min {
   float: right;
   font-size: 13px;
   font-weight: 400;
 }
-/* line 186, ../sass/website/_cardapio.scss */
+/* line 207, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .input-group .form-control {
   margin-left: 8px;
   border-radius: 6px 0 0 6px;
   font-size: 15px;
 }
-/* line 191, ../sass/website/_cardapio.scss */
+/* line 212, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .input-group .input-group-append {
   margin-right: 8px;
 }
-/* line 194, ../sass/website/_cardapio.scss */
+/* line 215, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .input-group .input-group-append .input-group-text {
   border-radius: 0 6px 6px 0;
   color: #ffffff;
@@ -1672,23 +1703,23 @@ body button[type=submit] {
   font-weight: 800;
   background-color: #c3c3c3;
 }
-/* line 204, ../sass/website/_cardapio.scss */
+/* line 225, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .input-group .atecao p {
   font-size: 13px;
   margin: 5px 12px;
   font-weight: 100;
 }
-/* line 209, ../sass/website/_cardapio.scss */
+/* line 230, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .input-group .atecao p span {
   color: #7b7b87;
   font-size: 14px;
   font-weight: 600;
 }
-/* line 218, ../sass/website/_cardapio.scss */
+/* line 239, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .pay-option {
   margin: 0 0 12px;
 }
-/* line 221, ../sass/website/_cardapio.scss */
+/* line 242, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .pay-option li {
   color: #2f313a;
   display: inline-block;
@@ -1700,11 +1731,11 @@ body button[type=submit] {
   vertical-align: middle;
   width: 50%;
 }
-/* line 233, ../sass/website/_cardapio.scss */
+/* line 254, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .menu-order {
   padding: 10px;
 }
-/* line 236, ../sass/website/_cardapio.scss */
+/* line 257, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .menu-order .menu-order-confirm {
   background-color: #73c501;
   border: none;

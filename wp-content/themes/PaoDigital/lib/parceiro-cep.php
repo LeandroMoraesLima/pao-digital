@@ -6,7 +6,7 @@
 		$("#pods-form-ui-pods-field-cep").mask("00000-000");
 
 
-		$(document).on('keyup', "#pods-form-ui-pods-field-cep", function(){
+		$(document).on('keyup input', "#pods-form-ui-pods-field-cep", function(){
 
 			var val = $(this).val();
 

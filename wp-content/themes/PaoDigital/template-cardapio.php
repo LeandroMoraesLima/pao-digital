@@ -8,6 +8,13 @@
 		wp_redirect('/');
 	endif;
 
+	if( isset($_POST['direct']) ):
+		//if is direct selected parceiro
+		include(locate_template('lib/cart-parceiros.php'));
+	endif;
+
+	include(locate_template('lib/cart-cardapio.php'));
+	
 /*
 template name: Cardápio
 */
@@ -16,7 +23,7 @@ if (have_posts()) :
     while (have_posts()) : the_post();
 
 get_header('interna');
-include(locate_template('lib/cart-cardapio.php'));
+
 
 
 ?>

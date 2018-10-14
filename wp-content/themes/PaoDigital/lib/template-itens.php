@@ -6,7 +6,7 @@ $html .= "
 		<div class='row'>
 			<div class='col-8 text-left'>
 				<i class='fa fa-minus-circle remove_product_to_kart' data-id='{$total->produto_id}'></i>
-				<span>".$total->quantidade."</span>
+				<div class='qtd'>".$total->quantidade."</div>
 				<i class='fa fa-plus-circle add_product_to_kart' data-id='{$total->produto_id}'></i>
 				<span class='ttle'>".$total->nome."</span>
 			</div>

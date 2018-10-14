@@ -4,63 +4,104 @@
 	Iniciando a compra atraves da homepage
 	======================================
 */
-$user = wp_get_current_user();
-$pagamento = pods('venda', array( 
-	'where' 	=> "`pd_users_id` = {$user->ID} AND `pagamento_status` = false",
-	'limit'		=> 1,
-	'orderby'	=> "id DESC"
-));
 
-$total = $pagamento->total_found();
-$pagamento = $pagamento->data();
+function get_old_cart()
+{
+	$user = wp_get_current_user();
+	$pagamento = pods('venda', array( 
+		'where' 	=> "`pd_users_id` = {$user->ID} AND `pagamento_status` = false",
+		'limit'		=> 1,
+		'orderby'	=> "id DESC"
+	));
 
-$vendaId = 0;
+	$total = $pagamento->total_found();
 
-if( $total == 0 ):
+	if ( $total > 0 ):
 
-	$itens = array(
-		'product_type' 			=> $_POST['type'],
-		'package_type'			=> $_POST['plano'],
-		'pacote_por_x_dias'		=> 0,
-		'week_time'				=> null,
-		'pd_users_id'			=> $user->ID
-	);
+		//return the last data
+		$pag = $pagamento->data()[0];
+		$_SESSION['paodigital']['venda'] = $pag->id;
+		return $pag;
 
-	$pod = pods('venda');
-	$vendaId = $pod->add($itens);
-	$_SESSION['paodigital']['venda'] = $vendaId;
+	else:
+		
+		$itens = array(
+			'product_type' 			=> (isset($_POST['type']))? $_POST['type'] : 0,
+			'package_type'			=> (isset($_POST['plano']))? $_POST['plano'] : 0,
+			'parceiro_id'			=> (isset($_POST['parceiro']))? $_POST['parceiro'] : 0,
+			'pacote_por_x_dias'		=> 0,
+			'week_time'				=> null,
+			'pd_users_id'			=> $user->ID
+		);
+
+		$pod 		= pods('venda');
+		$vendaId 	= $pod->save($itens);
 
 
-else:
+		//return created data
+		$pag = $pod->row();
+		$_SESSION['paodigital']['venda'] = $pag->id;
+		return $pag;
 
-	$itens = array(
-		'product_type' 			=> $_POST['type'],
-		'package_type'			=> $_POST['plano'],
-		'pacote_por_x_dias'		=> 0,
-		'week_time'				=> null,
-		'pd_users_id'			=> $user->ID
-	);
-	$act = $pagamento[0];
-	$pod = pods( 'venda', $act->id );
-	$vendaId = $pod->save($itens);
-	$_SESSION['paodigital']['venda'] = $vendaId;
+	endif;
+}
 
+function get_cart_all_itens($cartId)
+{
+
+	if( isset($_POST['plano']) ):
+
+
+		$pl = ( isset($_POST['plano']) ) ? $_POST['plano'] : 0;
+
+		$plano = array( 'junior' => 1, 'pleno' => 2, 'master' => 3, 'corporativo' => 4 );
+
+		$pnl = $plano[$pl];
+
+
+		$cardapio = pods('cardapio', $pnl );
+		$cardapio = $cardapio->row();
+
+
+		$itens = pods( 'item', array(
+			'where' => "venda_id = {$cartId} AND produto_id = {$pnl}"  
+		));
+
+		$vitens = $itens->data();
+
+		if( is_array($vitens) && count($vitens) > 0 ):
+
+			$viten = $vitens[0];
+
+			$pod = pods( 'item', $viten->id );
+			$podItem = $pod->row();
+
+			$a = $pod->save( 'quantidade', ($podItem['quantidade'] + 1) );
+
+		else:
+
+			$pod = pods( 'item' ); 
+			$datP = array( 
+				'nome'			=> $cardapio['nome'],
+				'quantidade'	=> 1,
+				'valor_no_ato'	=> (Float)$cardapio['valor_venda'],
+				'produto_id'	=> $cardapio['id'],
+				'venda_id'		=> $vendaId
+			);
+			$pod->add( $datP );
+		
+
+		endif;
+
+	endif;
+}
+
+//exist session venda yes | no
+
+if( isset($_POST['plano']) ):
+	$data = get_old_cart();
+	get_cart_all_itens($data->id);
+	unset($_POST['plano']);
 endif;
 
-if( $_POST['plano'] !== 'menu' ):
 
-	$plano = array('junior' => 1, 'pleno' => 2, 'master' => 3);
-	$cardapio = pods('cardapio', $plano[$_POST['plano']] );
-	$cardapio = $cardapio->row();
-
-	$pod = pods( 'item' ); 
-	$datP = array( 
-		'nome'			=> $cardapio['nome'],
-		'quantidade'	=> 1,
-		'valor_no_ato'	=> (Float)$cardapio['valor_venda'],
-		'produto_id'	=> $cardapio['id'],
-		'venda_id'		=> $vendaId
-	);
-	$pod->add( $datP );
-
-endif;

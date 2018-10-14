@@ -132,7 +132,7 @@
 		if( $item->total_found() > 0 ):
 			$data = $itemData[0];
 
-			var_dump($id);
+			//var_dump($id);
 
 			if( $data->quantidade == 1 ):
 
@@ -393,11 +393,20 @@
 		$myAddress = array();
 		$cep = $_POST['cep'];
 
-		$cepass = wp_remote_get("https://maps.googleapis.com/maps/api/geocode/json?address={$cep}&key=AIzaSyBV2fGkkJbjzROwAewWvVZNuNRPFNNvVsk");
+		$cstreet = wp_remote_get("https://viacep.com.br/ws/{$cep}/json/");
+		$cstreet = $cstreet['body'];
+		$cstreet = json_decode($cstreet);
+		$clograd = $cstreet->logradouro;
+		$clocali = $cstreet->localidade;
+		$cuf 	 = $cstreet->uf;
+
+		$cepass = wp_remote_get("https://maps.googleapis.com/maps/api/geocode/json?address={$clograd},{$clocali},{$cuf},{$cep}&key=AIzaSyBV2fGkkJbjzROwAewWvVZNuNRPFNNvVsk");
 
 		$request = json_decode($cepass['body'], true);
 
 		$myAddress = $request['results'][0]['geometry']['location']['lat'] . ' ' . $request['results'][0]['geometry']['location']['lng'];
+
+		//var_dump($myAddress);
 
 		//get all 
 		$where = array( 
@@ -429,12 +438,12 @@
 
 		
 				
-				// var_dump($polygon);
-				// var_dump($myAddress);
+				//var_dump($polygon);
+				//var_dump($myAddress);
 
 				$pointLocation = new pointLocation();
 				$inside = $pointLocation->pointInPolygon($myAddress, $polygon);
-
+//var_dump($inside);
 				if( $inside != "outside" ):
 					$parceiros[$o] = $parid;
 				endif;
@@ -454,12 +463,16 @@
 
 	function print_parceiros($parceiros)
 	{
+		//var_dump($parceiros);
+
 		if( is_array($parceiros) && count($parceiros) > 0 ):
 			//var_dump($parceiros);
 				$parinc = implode(",", $parceiros);
 				$params = array(
 					'where'		=> "`t`.`id` IN ({$parinc})"
 				); 
+
+				//var_dump($params);
 
 				// Create and find in one shot 
 				$parceiros = pods( 'parceiro', $params ); 
@@ -523,6 +536,9 @@ class pointLocation {
         foreach ($polygon as $vertex) {
             $vertices[] = $this->pointStringToCoordinates($vertex); 
         }
+
+        //var_dump($point);
+        //var_dump($vertices);
  
         // Check if the point sits exactly on a vertex
         if ($this->pointOnVertex == true and $this->pointOnVertex($point, $vertices) == true) {
@@ -549,6 +565,7 @@ class pointLocation {
                 }
             } 
         } 
+        //var_dump($intersections);
         // If the number of edges we passed through is odd, then it's in the polygon. 
         if ($intersections % 2 != 0) {
             return "inside";
@@ -626,6 +643,8 @@ class pointLocation {
 
 	// Register the new dashboard widget with the 'wp_dashboard_setup' action
 	add_action('wp_dashboard_setup', 'add_dashboard_widgets' );
+
+
 
 
 

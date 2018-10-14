@@ -4,12 +4,13 @@
 		wp_redirect('/');
 	endif;
 
+	include(locate_template('lib/cart-parceiros.php'));
 /*
 	template name: Parceiros
 */
 
 get_header('interna');
-include(locate_template('lib/cart-parceiros.php'));
+
 
 ?>
 
@@ -25,6 +26,7 @@ More Features Section
 		</div>
 		<div class="lupa">
 			<input type="text" class="botao form-control mb-2 cep" style="text-align: center;" id="inlineFormInput" placeholder="Digite seu Cep">
+			<i class="fa fa-search"></i>
 		</div>
 
 		<div class="row wow fadeInUp" id="parceirosHere"></div>
@@ -37,7 +39,7 @@ More Features Section
 		(function($){
 
 			$(".cep").mask("00000-000");
-			$(document).on('keyup', ".cep", function(){
+			$(document).on('keyup input', ".cep", function(){
 				var val = $(this).val();
 				if( val.length == 9 ){
 

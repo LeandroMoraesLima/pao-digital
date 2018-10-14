@@ -370,14 +370,15 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50px;
   transition: 0.5s;
   margin: 10px;
-  border: 2px solid #fff;
-  color: #fff;
+  background-color: #ffb600;
+  color: #FFF;
 }
 
 
 #intro .btn-get-started:hover {
   color: #fff !important;
-  background: #ffb600 !important;
+  background: #515e61 !important;
+  opacity: 1;
 }
 
 

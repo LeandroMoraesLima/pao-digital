@@ -86,7 +86,7 @@
 		}
 
 
-		$(document).on("keyup", "#searchProducts", function(){
+		$(document).on("keyup input", "#searchProducts", function(){
 			var val = this.value;
 			if( val.length > 3 || val.length == 0 ){
 
@@ -131,7 +131,7 @@
 			}, 'html');
 		});
 
-		$(document).on('keyup', ".cep", function(){
+		$(document).on('keyup input', ".cep", function(){
 
 			var val = $(this).val();
 			var i = $(this).data('id');
