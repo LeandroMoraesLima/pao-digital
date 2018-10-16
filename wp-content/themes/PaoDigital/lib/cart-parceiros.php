@@ -5,7 +5,7 @@
 	======================================
 */
 
-function get_old_cart()
+function get_old_cart() 
 {
 	$user = wp_get_current_user();
 	$pagamento = pods('venda', array( 
@@ -86,7 +86,7 @@ function get_cart_all_itens($cartId)
 				'quantidade'	=> 1,
 				'valor_no_ato'	=> (Float)$cardapio['valor_venda'],
 				'produto_id'	=> $cardapio['id'],
-				'venda_id'		=> $vendaId
+				'venda_id'		=> $cartId
 			);
 			$pod->add( $datP );
 		
