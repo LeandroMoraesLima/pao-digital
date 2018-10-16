@@ -199,8 +199,7 @@
 		wp_die();
 	}
 
-	add_action( 'wp_ajax_get_block_address', 'get_block_address' );
-	add_action( 'wp_ajax_nopriv_get_block_address', 'get_block_address' );
+	
 
 
 
@@ -241,8 +240,8 @@
 
 
 
-
-
+	add_action( 'wp_ajax_get_block_address', 'get_block_address' );
+	add_action( 'wp_ajax_nopriv_get_block_address', 'get_block_address' );
 	function get_block_address()
 	{
 		$blocks = ( $_POST['blocks'] + 1 );

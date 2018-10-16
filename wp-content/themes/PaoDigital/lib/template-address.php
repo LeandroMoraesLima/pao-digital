@@ -16,7 +16,8 @@
 				<label for="cep<?php echo $blocks; ?>">CEP</label>
 				<input 
 					type="text" 
-					id="cep<?php echo $blocks; ?>" 
+					id="cep<?php echo $blocks; ?>"
+					data-id="<?php echo $blocks; ?>" 
 					name="address[<?php echo $blocks; ?>][cep]" 
 					class="form-control cep"
 					data-id="<?php echo $blocks; ?>"
@@ -61,8 +62,9 @@
 			</div>
 		</div>
 	</div>
-	
-	<?php $check = ($add->display('estado') == 'yes')? 'checked="checked"': ''; ?>
+		
+
+	<?php $check = ($add->display('entrega') == 'Yes')? 'checked="checked"': ''; ?>
 	<div class="form-check">
 		<label class="form-check-label">
 		<input class="form-check-input" name="address[<?php echo $blocks; ?>][entrega]" type="checkbox" <?php echo $check; ?> value="1" >
@@ -107,6 +109,7 @@
 				<input 
 					type="text" 
 					id="cep<?php echo $blocks; ?>" 
+					data-id="<?php echo $blocks; ?>" 
 					name="address[<?php echo $blocks; ?>][cep]" 
 					class="form-control cep"
 					data-id="<?php echo $blocks; ?>"
@@ -166,7 +169,7 @@
 					type="button" 
 					style="margin-top: 10px;"
 					data-item="<?php echo $blocks; ?>" 
-					data-id="<?php echo $add->display('id') ?>" 
+					data-id="" 
 					class="btn btn-warning btn-sm btremove">
 						Remover
 				</button>

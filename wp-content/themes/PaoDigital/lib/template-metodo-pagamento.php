@@ -119,7 +119,7 @@ Metodo Pagamento
 					</div><!-- End col-md-6 -->
 
 					<div class="sticky-sidebar col-md-5" id="sidebar">
-						<div class="user-order-holder">
+						<!-- <div class="user-order-holder">
 							<div class="user-order">
 								<ul id="myItens">
 									<h4 class="text-center">
@@ -159,7 +159,8 @@ Metodo Pagamento
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> -->
+						<?php include(locate_template('sidebar-valores.php')); ?>
 					</div>
 				</div>
 			</div>
@@ -170,40 +171,40 @@ Metodo Pagamento
 <script type="text/javascript">
 	(function($){
 
-		$(document).ready(function(){
-			$.post(ajax, {
-				action: 'get_the_cart'
-			}, function(data){
-				$('#mitens').html(data.html);
-				$("#subtotal").html(data.subtotal);
-				$("#total").html(data.vtotal);
-			}, 'json');
-		});
+		// $(document).ready(function(){
+		// 	$.post(ajax, {
+		// 		action: 'get_the_cart'
+		// 	}, function(data){
+		// 		$('#mitens').html(data.html);
+		// 		$("#subtotal").html(data.subtotal);
+		// 		$("#total").html(data.vtotal);
+		// 	}, 'json');
+		// });
 
 
-		$(document).on("click", ".add_product_to_kart", function(){
-			var id = $(this).data('id');
-			$.post(ajax, {
-				action: 'add_to_cart',
-				product: id
-			}, function(data){
-				$('#mitens').html(data.html);
-				$("#subtotal").html(data.subtotal);
-				$("#total").html(data.vtotal);
-			}, 'json');
-		});
+		// $(document).on("click", ".add_product_to_kart", function(){
+		// 	var id = $(this).data('id');
+		// 	$.post(ajax, {
+		// 		action: 'add_to_cart',
+		// 		product: id
+		// 	}, function(data){
+		// 		$('#mitens').html(data.html);
+		// 		$("#subtotal").html(data.subtotal);
+		// 		$("#total").html(data.vtotal);
+		// 	}, 'json');
+		// });
 
-		$(document).on("click", ".remove_product_to_kart", function(){
-			var id = $(this).data('id');
-			$.post(ajax, {
-				action: 'remove_to_cart',
-				product: id
-			}, function(data){
-				$('#mitens').html(data.html);
-				$("#subtotal").html(data.subtotal);
-				$("#total").html(data.vtotal);
-			}, 'json');
-		});
+		// $(document).on("click", ".remove_product_to_kart", function(){
+		// 	var id = $(this).data('id');
+		// 	$.post(ajax, {
+		// 		action: 'remove_to_cart',
+		// 		product: id
+		// 	}, function(data){
+		// 		$('#mitens').html(data.html);
+		// 		$("#subtotal").html(data.subtotal);
+		// 		$("#total").html(data.vtotal);
+		// 	}, 'json');
+		// });
 
 		$("#card_number").mask("0000 0000 0000 0000");
 		$("#expire_month").mask("00");

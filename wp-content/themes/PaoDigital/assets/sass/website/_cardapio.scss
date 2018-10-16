@@ -112,6 +112,8 @@
 	    		i.fa-minus-circle {
 	    			color: #bc2026;
 	    			cursor: pointer;
+					float: left;
+					font-size: 20px;
 	    			@media screen and (max-width: 767px){
 	    				font-size: 28px;
 	    				float: left;
@@ -120,11 +122,18 @@
 	    		i.fa-plus-circle {
 	    			color: #73c501;
 	    			cursor: pointer;
+	    			font-size: 20px;
 	    			@media screen and (max-width: 767px){
 	    				font-size: 28px;
 	    			}
 	    		}
 	    		div.qtd {
+					width: 27px;
+					float: left;
+					padding: 0px 4px;
+					height: 23px;
+					text-align: center;
+					font-weight: bold;
 	    			@media screen and (max-width: 767px){
 						padding: 0px 3px 0px;
 						border: 1px solid;

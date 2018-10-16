@@ -60,7 +60,7 @@ menu Section
 
 			//get data of cardapio
 			$cardapio_prm = array(
-				'where'   => 't.parceiro_id = ' . $_POST['parceiro'] . ' AND grupos.name = "' . $grupo->name . '"'
+				'where'   => 't.parceiro_id = ' . $theparca . ' AND grupos.name = "' . $grupo->name . '"'
 			);
 			$cardapios = pods( 'cardapio', $cardapio_prm );
 

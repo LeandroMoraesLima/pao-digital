@@ -88,7 +88,7 @@
 
 		endif;
 
-		die();
+		
 		wp_redirect($_POST['url']);
 
 	}

@@ -1,7 +1,7 @@
 <?php 
 
 
-$user = wp_get_current_user();
+$user = wp_get_current_user(); 
 $pagamento = pods('venda', $_SESSION['paodigital']['venda']);
 
 if( isset( $_POST['parceiro'] ) ):
@@ -16,6 +16,8 @@ if( $pag->pd_parceiros_id == 0 || is_null($pag->pd_parceiros_id) ):
 	$_SESSION['message'] = "Começe escolhendo um Parceiro, digite seu CEP abaixo!";
 	wp_redirect('/parceiros');
 endif;
+
+$theparca = $pag->pd_parceiros_id;
 
 //get data of parceiros
 $parceiro_prm = array(

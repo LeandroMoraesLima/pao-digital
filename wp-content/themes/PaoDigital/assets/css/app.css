@@ -1585,6 +1585,8 @@ body button[type=submit] {
 .sticky-sidebar .user-order ul li i.fa-minus-circle {
   color: #bc2026;
   cursor: pointer;
+  float: left;
+  font-size: 20px;
 }
 @media screen and (max-width: 767px) {
   /* line 112, ../sass/website/_cardapio.scss */
@@ -1593,19 +1595,29 @@ body button[type=submit] {
     float: left;
   }
 }
-/* line 120, ../sass/website/_cardapio.scss */
+/* line 122, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order ul li i.fa-plus-circle {
   color: #73c501;
   cursor: pointer;
+  font-size: 20px;
 }
 @media screen and (max-width: 767px) {
-  /* line 120, ../sass/website/_cardapio.scss */
+  /* line 122, ../sass/website/_cardapio.scss */
   .sticky-sidebar .user-order ul li i.fa-plus-circle {
     font-size: 28px;
   }
 }
+/* line 130, ../sass/website/_cardapio.scss */
+.sticky-sidebar .user-order ul li div.qtd {
+  width: 27px;
+  float: left;
+  padding: 0px 4px;
+  height: 23px;
+  text-align: center;
+  font-weight: bold;
+}
 @media screen and (max-width: 767px) {
-  /* line 127, ../sass/website/_cardapio.scss */
+  /* line 130, ../sass/website/_cardapio.scss */
   .sticky-sidebar .user-order ul li div.qtd {
     padding: 0px 3px 0px;
     border: 1px solid;
@@ -1615,31 +1627,31 @@ body button[type=submit] {
     margin: 0 3px;
   }
 }
-/* line 137, ../sass/website/_cardapio.scss */
+/* line 146, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order ul li .ttle {
   padding-left: 10px;
   font-weight: 600;
 }
 @media screen and (max-width: 767px) {
-  /* line 137, ../sass/website/_cardapio.scss */
+  /* line 146, ../sass/website/_cardapio.scss */
   .sticky-sidebar .user-order ul li .ttle {
     font-size: 12px;
   }
 }
-/* line 148, ../sass/website/_cardapio.scss */
+/* line 157, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order h6 {
   font-family: Montserrat;
   font-size: 13px;
   font-weight: 600;
   padding: 0 0 20px;
 }
-/* line 154, ../sass/website/_cardapio.scss */
+/* line 163, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order h6 span {
   float: right;
   font-size: 13px;
   font-weight: 400;
 }
-/* line 160, ../sass/website/_cardapio.scss */
+/* line 169, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .price-area {
   margin: 0 0 12px;
   background-color: #f2f2f3;
@@ -1647,14 +1659,14 @@ body button[type=submit] {
   border-right: 0px;
   border-left: 0px;
 }
-/* line 167, ../sass/website/_cardapio.scss */
+/* line 176, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .price-area ul {
   margin: 5px 0;
   list-style: none;
   padding: 0;
   padding: 8px;
 }
-/* line 173, ../sass/website/_cardapio.scss */
+/* line 182, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .price-area ul li {
   font-size: 12px;
   line-height: normal;
@@ -1665,37 +1677,37 @@ body button[type=submit] {
   font-weight: 600;
   color: #333c45;
 }
-/* line 183, ../sass/website/_cardapio.scss */
+/* line 192, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .price-area ul li .price {
   color: #2f313a;
   float: right;
   font-size: 13px;
   font-weight: 400;
 }
-/* line 191, ../sass/website/_cardapio.scss */
+/* line 200, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .price-area ul .tempo {
   font-size: 11px;
   font-weight: 700;
   color: #333c45;
   margin: 0;
 }
-/* line 197, ../sass/website/_cardapio.scss */
+/* line 206, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .price-area ul .tempo .min {
   float: right;
   font-size: 13px;
   font-weight: 400;
 }
-/* line 207, ../sass/website/_cardapio.scss */
+/* line 216, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .input-group .form-control {
   margin-left: 8px;
   border-radius: 6px 0 0 6px;
   font-size: 15px;
 }
-/* line 212, ../sass/website/_cardapio.scss */
+/* line 221, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .input-group .input-group-append {
   margin-right: 8px;
 }
-/* line 215, ../sass/website/_cardapio.scss */
+/* line 224, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .input-group .input-group-append .input-group-text {
   border-radius: 0 6px 6px 0;
   color: #ffffff;
@@ -1703,23 +1715,23 @@ body button[type=submit] {
   font-weight: 800;
   background-color: #c3c3c3;
 }
-/* line 225, ../sass/website/_cardapio.scss */
+/* line 234, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .input-group .atecao p {
   font-size: 13px;
   margin: 5px 12px;
   font-weight: 100;
 }
-/* line 230, ../sass/website/_cardapio.scss */
+/* line 239, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .input-group .atecao p span {
   color: #7b7b87;
   font-size: 14px;
   font-weight: 600;
 }
-/* line 239, ../sass/website/_cardapio.scss */
+/* line 248, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .pay-option {
   margin: 0 0 12px;
 }
-/* line 242, ../sass/website/_cardapio.scss */
+/* line 251, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .pay-option li {
   color: #2f313a;
   display: inline-block;
@@ -1731,11 +1743,11 @@ body button[type=submit] {
   vertical-align: middle;
   width: 50%;
 }
-/* line 254, ../sass/website/_cardapio.scss */
+/* line 263, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .menu-order {
   padding: 10px;
 }
-/* line 257, ../sass/website/_cardapio.scss */
+/* line 266, ../sass/website/_cardapio.scss */
 .sticky-sidebar .user-order .menu-order .menu-order-confirm {
   background-color: #73c501;
   border: none;

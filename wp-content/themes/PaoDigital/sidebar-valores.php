@@ -1,3 +1,8 @@
+<?php 
+	global $post;
+	$tpl =  get_page_template_slug( $post->ID );
+	$st = ( $tpl == "lib/template-metodo-pagamento.php" )? "style='margin-bottom:0px;'" : '';
+?>
 <div class="user-order-holder">
 	<div class="user-order">
 		<ul id="myItens">
@@ -9,7 +14,7 @@
 				Seu carrinho esta vazio
 			</div>
 		</ul>		            
-		<div class="price-area dev-menu-price-con" data-vatsw="on" data-vat="13">
+		<div class="price-area dev-menu-price-con" data-vatsw="on" data-vat="13" <?php echo $st; ?> >
 			<ul>
 				
 				<li> Sub Total Do Produto
@@ -35,6 +40,9 @@
 				</li>
 			</ul>
 		</div>
+<?php 
+	if( $tpl !== "lib/template-metodo-pagamento.php" ):
+?>
 		<div class="input-group mb-3">
 			<input type="text" class="form-control" placeholder="Insira o voucher aqui" aria-label="Recipient's username" aria-describedby="basic-addon2">
 			<div class="input-group-append">
@@ -48,9 +56,7 @@
 			</div>
 		</div>
 		<div class="menu-order">
-			<?php 
-				global $post;
-				$tpl =  get_page_template_slug( $post->ID );
+			<?php
 
 				if( $tpl == "template-cardapio.php" ):
 					$url = get_bloginfo('url') . "/detalhes-do-seu-pedido";
@@ -64,6 +70,9 @@
 				Dados para entrega
 			</a>
 		</div>
+
+<?php endif; ?>
+
 	</div>
 </div>
 
@@ -131,38 +140,7 @@
 			}, 'html');
 		});
 
-		$(document).on('keyup input', ".cep", function(){
-
-			var val = $(this).val();
-			var i = $(this).data('id');
-
-			if( val.length == 9 ){
-
-				$.get("https://viacep.com.br/ws/"+val+"/json/",{}, function(data){
-					console.log(data);
-					$("#bairro"+i).val(data.bairro);
-					$("#cidade"+i).val(data.localidade);
-					$("#uf"+i).val(data.uf);
-					$("#endereco"+i).val(data.logradouro);
-				}, 'json');
-
-			}
-
-		});
-
-		$(document).on('click', "#addNewAddress", function(){
-			$.post(ajax, {
-				action: 'get_block_address',
-				blocks: $("fieldset.addresses").length
-			}, function(data){
-				$("#addresses").append(data);
-			}, 'html');
-		});
-
-
-		//all masks
-		$(".cep").mask("00000-000");
-		$("#tel_order").mask("00 00000-0000");
+		
 
 	})(jQuery);
 </script>

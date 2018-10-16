@@ -11,15 +11,9 @@
 template name: Detalhes do seu pedido
 */
 get_header('interna');
-
-if(isset($_POST['cep1'])):
-var_dump($_POST); die();
-endif;
  
 if (have_posts()) :
     while (have_posts()) : the_post();
-
-
 
 
 $user = wp_get_current_user();
@@ -119,7 +113,8 @@ Detalhes do seu pedido
 													<label for="cep1">CEP</label>
 													<input 
 														type="text" 
-														id="cep1" 
+														id="cep"
+														data-id="1" 
 														name="address[1][cep]" 
 														class="form-control cep"
 														placeholder=" Ex.: 01311-000" 
@@ -184,7 +179,7 @@ Detalhes do seu pedido
 								</div>
 								<hr>
 								<div class="text-right">
-									<button type="button" id="addNewAddress" class="btn btn-primary">Adicionar Novo Endereço</button>
+									<button type="button" id="addNewAddress" data-active="true" class="btn btn-primary">Adicionar Novo Endereço</button>
 								</div>
 								<hr>
 								<div class="row">
@@ -233,6 +228,38 @@ endif;
 			var i = $(this).data('item');
 			$("#fieldset" + i ).remove();
 		});
+
+		$(document).on('keyup input', ".cep", function(){
+ 			var val = $(this).val();
+			var i = $(this).data('id');
+ 			if( val.length == 9 ){
+ 				$.get("https://viacep.com.br/ws/"+val+"/json/",{}, function(data){
+					console.log("#bairro"+i);
+					$("#bairro"+i).val(data.bairro);
+					$("#cidade"+i).val(data.localidade);
+					$("#uf"+i).val(data.uf);
+					$("#endereco"+i).val(data.logradouro);
+
+				}, 'json');
+ 			}
+ 		});
+ 		$(document).on('click', "#addNewAddress", function(){
+ 				console.log($(this).data('active'));
+ 			if( $(this).data('active') )
+ 			{
+ 				$(this).data('active', false); 
+				$.post(ajax, {
+					action: 'get_block_address',
+					blocks: $("fieldset.addresses").length
+				}, function(data){
+					$("#addresses").append(data);
+					$("#addNewAddress").data('active', true); 
+				}, 'html');
+ 			}
+		});
+ 		//all masks
+		$(".cep").mask("00000-000");
+		$("#tel_order").mask("00 00000-0000");
 
 	})(jQuery);
 </script>
