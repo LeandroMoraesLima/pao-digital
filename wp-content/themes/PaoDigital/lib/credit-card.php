@@ -249,7 +249,7 @@ class GetPayment
 
 		
 
-		var_dump($jsonArray);
+		//var_dump($jsonArray);
 		die();
 
 		$cr = curl_init();
@@ -297,8 +297,8 @@ class GetPayment
 
 
 		$cupomData = pods( 'cupom', $cupomId );
-		var_dump($cupomData->display('desconto'));
-		echo $percent = str_replace( ",", ".", $cupomData->display('desconto') );
+		//var_dump($cupomData->display('desconto'));
+		$percent = str_replace( ",", ".", $cupomData->display('desconto') );
 	
 		$hasCp = ( $cupomData->display('desconto') > 0 ) ? true : false;
 
@@ -315,7 +315,7 @@ class GetPayment
 			'html'		=> $html
 		];
 
-		var_dump($itens);
+		//var_dump($itens);
 
 		$podVenda = pods('venda', $this->venda);
 		$podVenda->save(array(
