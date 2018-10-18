@@ -7,6 +7,8 @@
 		}
 	}
 
+	define('VALOR_ENTREGA', "5,00");
+
 
 	$current_user = wp_get_current_user();		
 	$parceiros = pods( 'user', $current_user->ID );

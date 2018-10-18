@@ -68,6 +68,13 @@ Detalhes do seu pedido
 										<input type="text" id="tel_order" name="tel" class="form-control" placeholder="Ex.: 11 99999-9999" value="<?php echo $user_telefone; ?>" required>
 									</div>
 									<div class="form-group">
+										<?php 
+											$user_cpf = get_user_meta( $user->id, 'user_cpf', true );
+										?>
+										<label for="tel_order">CPF</label>
+										<input type="text" id="cpf_order" name="cpf" class="form-control" placeholder="999.999.999-99" value="<?php echo $user_cpf; ?>" required>
+									</div>
+									<div class="form-group">
 										<label>Email</label>
 										<input type="email" id="email_booking_2" name="email_order" class="form-control" placeholder="Ex.: joao@silva.com" required value="<?php echo $user->user_email; ?>" />
 									</div>
@@ -86,6 +93,7 @@ Detalhes do seu pedido
 
 										// Create and find in one shot 
 										$add = pods( 'usuarioendereco', $params ); 
+
 										$blocks = 1;
 										if ( 0 < $add->total() ):
 											while ( $add->fetch() ):
@@ -260,6 +268,7 @@ endif;
  		//all masks
 		$(".cep").mask("00000-000");
 		$("#tel_order").mask("00 00000-0000");
+		$("#cpf_order").mask("000.000.000-00");
 
 	})(jQuery);
 </script>

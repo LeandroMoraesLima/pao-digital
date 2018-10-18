@@ -80,7 +80,7 @@
                 font-size: 16px;
                 font-weight: 700;
             }
-            .dashicons-feedback{
+            .dashicons{
                 color: #333;
                 float: right;
                 font-size: 24px;
@@ -97,6 +97,26 @@
             .form-control{
                 font-size: 13px;
                 font-weight: 400;
+            }
+            button.red {
+                background-color: #7d0001;
+                border: 1px solid #5f0606;
+                font-size: 13px !important;
+                margin: 5px 0;
+                &:hover {
+                    background-color: transparent;
+                    color: #5f0606;
+                }
+            }
+            button.blue {
+                background-color: #003688;
+                border: 1px solid #02255a;
+                font-size: 13px !important;
+                margin: 5px 0;
+                &:hover {
+                    background-color: transparent;
+                    color: #02255a;
+                }
             }
         }
         .payment_select{

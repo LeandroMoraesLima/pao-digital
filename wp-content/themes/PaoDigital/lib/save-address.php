@@ -27,11 +27,17 @@
 		endif;
 
 
+		if ( get_user_meta($user_id, 'user_cpf', true ) ):
+			update_user_meta( $user_id, 'user_cpf', $_POST['cpf'] );
+		else:
+			add_user_meta( $user_id, 'user_cpf', $_POST['cpf'] );
+		endif;
+
+
 		if( isset($_POST['save-address']) ):
 			
 			if( count( $_POST['address'] ) > 0 ):
 				foreach ( $_POST['address'] as $key => $add ):
-
 
 					$id = $add['house'];
 					
@@ -43,8 +49,7 @@
 						); 
 						$address = pods( 'usuarioendereco', $params );
 
-
-						if( count($address) > 0 ):
+						if( (integer)$address->total_found() > 0 ):
 							$newAddress = pods('usuarioendereco', $address->display('id') );
 							$array = [
 								'name' => $add['desc'],
@@ -56,7 +61,7 @@
 								'bairro' => $add['bairro'],
 								'cidade' => $add['city'],
 								'estado' => $add['state'],
-								'entrega' => ( isset( $add['entrega'] )? 1 : 0 ),
+								'entrega' => ( isset( $add['entrega'] ) )? 1 : 0 ,
 								'numero' => $add['num']
 							];
 							$newAddress->save($array);
@@ -75,7 +80,7 @@
 							'bairro' => $add['bairro'],
 							'cidade' => $add['city'],
 							'estado' => $add['state'],
-							'entrega' => ( isset( $add['entrega'] )? 1 : 0 ),
+							'entrega' => ( isset( $add['entrega'] ) ) ? 1 : 0 ,
 							'numero' => $add['num']
 						];
 						$newAddress->save($array);

@@ -28,6 +28,12 @@
 						<span class="dev-menu-subtotal" id="entrega">R$ 0,00</span>
 					</span>
 				</li>
+				<li class="restaurant-fee-con descupom" style="display: none;">
+					<span class="fee-title">Desconto (cupons)</span>
+					<span class="price">
+						<span class="dev-menu-subtotal" id="cdesconto">R$ 0,00</span>
+					</span>
+				</li>
 				<li>Total
 					<span class="price">
 						<span class="dev-menu-subtotal" id="total">R$ 0,00</span>
@@ -43,9 +49,11 @@
 <?php 
 	if( $tpl !== "lib/template-metodo-pagamento.php" ):
 ?>
+
+		<?php $mycp = (isset($_SESSION['paodigital']['cupom']))? $_SESSION['paodigital']['cupom'] : ''; ?>
 		<div class="input-group mb-3">
-			<input type="text" class="form-control" placeholder="Insira o voucher aqui" aria-label="Recipient's username" aria-describedby="basic-addon2">
-			<div class="input-group-append">
+			<input type="text" class="form-control" style="text-transform: uppercase;" placeholder="Insira o voucher aqui" id='insertCupom' value="<?php echo $mycp; ?>" />
+			<div class="input-group-append" style="cursor: pointer;">
 				<span class="input-group-text" id="basic-addon2">OK</span>
 			</div>
 			<div class="atecao">
@@ -56,6 +64,7 @@
 			</div>
 		</div>
 		<div class="menu-order">
+			<div id="msgcup"></div>
 			<?php
 
 				if( $tpl == "template-cardapio.php" ):
@@ -90,6 +99,10 @@
 					$("#subtotal").html(data.subtotal);
 					$("#total").html(data.vtotal);
 					$("#entrega").html(data.ventrega);
+					if( data.hasvouch == true ){
+						$(".descupom").css('display', 'block');
+						$("#cdesconto").html(data.voucher);
+					}
 				}, 'json');
 			}
 		}
@@ -97,13 +110,14 @@
 
 		$(document).on("keyup input", "#searchProducts", function(){
 			var val = this.value;
-			if( val.length > 3 || val.length == 0 ){
+			if( val.length > 1 || val.length == 0 ){
 
 				$.post(ajax, {
 					action: 'search_products',
-					s: val
+					s: val,
+					parca: <?php echo $theparca; ?>
 				}, function(data){
-					$("#allProducts ul").html(data);
+					$("#accordionExample").html(data);
 				}, 'html');
 
 			}
@@ -138,6 +152,22 @@
 				cart.get_the_cart();
 
 			}, 'html');
+		});
+
+		$(document).on('click', "#basic-addon2", function(){
+			var tag = $("#insertCupom").val();
+			$.post(ajax, {
+				action: 'add_cupom',
+				tag: tag
+			}, function(data){
+
+				$("#msgcup").html('<div class="alert alert-'+data.status+'" role="alert">'+data.msg+'</div>');
+				if( data.status == 'info' ){
+					cart.get_the_cart();
+
+				}
+
+			}, 'json');
 		});
 
 		

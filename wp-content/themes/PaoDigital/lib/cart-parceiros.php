@@ -99,8 +99,11 @@ function get_cart_all_itens($cartId)
 //exist session venda yes | no
 
 if( isset($_POST['plano']) ):
-	$data = get_old_cart();
-	get_cart_all_itens($data->id);
+	$data = (object) get_old_cart();
+	var_dump($data);
+	if( isset($data->id) && !is_null($data->id) && $data->id !== '' ):
+		get_cart_all_itens($data->id);
+	endif;
 	unset($_POST['plano']);
 endif;
 

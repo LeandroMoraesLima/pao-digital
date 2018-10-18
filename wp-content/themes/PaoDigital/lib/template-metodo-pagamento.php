@@ -60,6 +60,30 @@ Metodo Pagamento
 											<ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">										
 											</ins>
 										</div>							
+											Pague na entrega
+									</label>
+									<span class="dashicons dashicons-store"></span>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-7 col-sm-12">
+											<button type="button" class="btn btn-success btn-block red">
+												Dinheiro e Cartão Alimentação
+											</button>
+										</div>
+										<div class="col-md-5 col-sm-12">
+											<button type="button" class="btn btn-success btn-block blue">
+												Cartão Refeição
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="payment_select">
+									<label class="payment">
+										<div class="iradio_square-grey checked" style="position: relative;">		<input type="radio" value="" checked="" name="payment_method" class="	 icheck" style="position: absolute; opacity: 0;">
+											<ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">										
+											</ins>
+										</div>							
 											Cartão de crédito
 									</label>
 									<span class="dashicons dashicons-feedback"></span>

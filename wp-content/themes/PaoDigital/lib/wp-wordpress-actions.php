@@ -43,31 +43,133 @@
 	}
 
 
+
+
+
+
+	add_action( 'wp_ajax_add_cupom', 'add_cupom' );
+	add_action( 'wp_ajax_nopriv_add_cupom', 'add_cupom' );
+
+	function add_cupom() 
+	{
+		$tag = $_POST['tag'];
+
+		$cupom = pods('cupom', array('where' => "tag_do_cupom = '{$tag}'"));
+
+		if( $cupom->data() == false ):
+
+			echo json_encode( array( 'status' => 'danger', 'msg' => 'Cupom não encontrado!' ) );
+
+		else:
+
+			$myCp = $cupom->data();
+
+			$vendaId = $_SESSION['paodigital']['venda'];
+
+			$vd = pods("venda", $vendaId);
+			$vd->save( 'cupom', $myCp[0]->id );
+
+			$_SESSION['paodigital']['cupom'] = $tag;
+			echo json_encode( array( 'status' => 'info', 'msg' => 'Cupom Cadastrado!' ) );
+
+		endif;
+
+		wp_die();
+	}
+
+
+
+
+
+
+
+
 	add_action( 'wp_ajax_search_products', 'search_products' );
 	add_action( 'wp_ajax_nopriv_search_products', 'search_products' );
 
 	function search_products() 
 	{
+		//get data of grupos
+		$grupos = get_terms( array(
+		    'taxonomy' => 'grupo',
+		    'hide_empty' => false,
+		));
+
+		$parceiro_prm = array('where'   => 't.id = ' . $_SESSION['paodigital']['venda']); 
+		$parceiros = pods( 'parceiro', $parceiro_prm ); 
+
+		if( is_array($grupos) && !empty($grupos) ):
+			$index = 0;
+			foreach ($grupos as $key => $grupo): 
+
+				//get data of cardapio
+				$cardapio_prm = array(
+					'where'   => '( t.nome LIKE "%'.$_POST['s'].'%" OR t.descricao LIKE "%'.$_POST['s'].'%" OR t.ingredientes LIKE "%'.$_POST['s'].'%" ) AND t.parceiro_id = ' . $_POST['parca'] . ' AND grupos.name = "' . $grupo->name . '"'
+				);
+				$cardapios = pods( 'cardapio', $cardapio_prm );
+
+				if( $cardapios->total() > 0 ): ?>
+
+					
+					<div class="card">
+						<div class="card-header" id="heading<?php echo $index; ?>">
+							<h5 class="mb-0">
+								<button class="btn btn-link <?php echo ($index == 0)? '':'collapsed'; ?>" type="button" data-toggle="collapse" data-target="#collapse<?php echo $index; ?>" aria-expanded="false" aria-controls="collapseOne" style="text-decoration: none;">
+								<?php echo $parceiros->display('nome'); ?> | <?php echo $grupo->name; ?>
+								</button>
+							</h5>
+						</div>
+						<div id="collapse<?php echo $index; ?>" class="collapse-show <?php echo ($index == 0)? 'show' : 'collapse'; ?>" aria-labelledby="heading<?php echo $index; ?>" >
+							<div class="card-body" id="allProducts">
+								<ul>
+
+									<?php
+
+										if ( 0 < $cardapios->total() ):
+											while ( $cardapios->fetch() ):
+											
+												include(locate_template('lib/template-products.php'));
+											
+											endwhile;
+										endif;
+									?>
+
+								</ul>
+							</div>
+						</div>
+					</div> 
+
+
+
+
+		<?php
+					$index++;
+				endif;
+				
+			endforeach;
+		endif;
+
+
 		// Make your response and echo it.	
-			$params = array(
-				'where'		=> 't.nome LIKE "%'.$_POST['s'].'%" OR t.descricao LIKE "%'.$_POST['s'].'%" OR t.ingredientes LIKE "%'.$_POST['s'].'%" ', 
-				'limit'		=> 15
-			); 
+			// $params = array(
+			// 	'where'		=> 't.nome LIKE "%'.$_POST['s'].'%" OR t.descricao LIKE "%'.$_POST['s'].'%" OR t.ingredientes LIKE "%'.$_POST['s'].'%" ', 
+			// 	'limit'		=> 15
+			// ); 
 
-			$html = '';
+			// $html = ''; 
 
-			// Create and find in one shot 
-			$cardapios = pods( 'cardapio', $params ); 
+			// // Create and find in one shot 
+			// $cardapios = pods( 'cardapio', $params ); 
 
-			if ( 0 < $cardapios->total() ):
-				while ( $cardapios->fetch() ):
+			// if ( 0 < $cardapios->total() ):
+			// 	while ( $cardapios->fetch() ):
 	 
-					include(locate_template('lib/template-products.php'));
+			// 		include(locate_template('lib/template-products.php'));
 
-				endwhile; // end of books loop 
-			endif;
+			// 	endwhile; // end of books loop 
+			// endif;
 
-			echo $html;
+			// echo $html;
 
 		// Don't forget to stop execution afterward.
 		wp_die();
@@ -183,13 +285,23 @@
 			include(locate_template('lib/template-itens.php'));
 		endforeach;
 
+
+		$vcp = pods( 'venda', $vid );
+		$cupomId = $vcp->display('cupom');
+
+
+		$cupomData = pods( 'cupom', $cupomId );
+		$percent = str_replace( ",", ".", $cupomData->display('desconto') );
+		$hasCp = ( $cupomData->display('desconto') > 0 ) ? true : false;
+
 		$ventrega = "5,00";
-		$vvoucher = 0.00;
+		$vvoucher = ( $grandTotal * ( $percent / 100 ) );
 		$vtotal = ( $grandTotal + $ventrega - $vvoucher );
 
 		$itens = [
 			'subtotal' 	=> "R$ ".number_format($grandTotal, 2, ',', '.'),
-			'voucher'	=> $vvoucher,
+			'voucher'	=> "R$ ".number_format($vvoucher, 2, ',', '.'),
+			'hasvouch'  => $hasCp,
 			'ventrega'	=> "R$ ".number_format($ventrega, 2, ',', '.'),
 			'vtotal'	=> "R$ ".number_format($vtotal, 2, ',', '.'),
 			'html'		=> $html
@@ -399,13 +511,20 @@
 		$clocali = $cstreet->localidade;
 		$cuf 	 = $cstreet->uf;
 
-		$cepass = wp_remote_get("https://maps.googleapis.com/maps/api/geocode/json?address={$clograd},{$clocali},{$cuf},{$cep}&key=AIzaSyBV2fGkkJbjzROwAewWvVZNuNRPFNNvVsk");
+		$cepass = wp_remote_get("https://maps.googleapis.com/maps/api/geocode/json?address={$cep}&key=AIzaSyBV2fGkkJbjzROwAewWvVZNuNRPFNNvVsk");
 
 		$request = json_decode($cepass['body'], true);
 
+		if( $request['status'] == "ZERO_RESULTS" ):
+
+			$cepass = wp_remote_get("https://maps.googleapis.com/maps/api/geocode/json?address={$clograd},{$clocali},{$cuf}&key=AIzaSyBV2fGkkJbjzROwAewWvVZNuNRPFNNvVsk");
+
+			$request = json_decode($cepass['body'], true);
+
+		endif;
+
 		$myAddress = $request['results'][0]['geometry']['location']['lat'] . ' ' . $request['results'][0]['geometry']['location']['lng'];
 
-		//var_dump($myAddress);
 
 		//get all 
 		$where = array( 
@@ -513,11 +632,6 @@
 	}
 
 
-
-
-
-
-	
 
 
 class pointLocation {

@@ -34,7 +34,7 @@ class GetPayment
 
 		$this->card_number = str_replace( " ", "", $_POST['card_number'] );
 		$this->venda = $_SESSION['paodigital']['venda'];
-		unset( $_SESSION['paodigital']['venda'] );
+		//unset( $_SESSION['paodigital']['venda'] );
 
 		$this->get_the_card();
 
@@ -188,8 +188,9 @@ class GetPayment
 	*/
 	public function get_payment()
 	{
-
 		$order_id = 0;
+		$add = $this->get_address($this->current_user->id);
+		$paymentClosed = $this->close_payment();
 
 		$jsonArray = array (
 			'seller_id' => $this->seller_id,
@@ -201,24 +202,15 @@ class GetPayment
 				'product_type' => "",
 			),
 			'customer' => array (
-				'customer_id' => 'customer_21081826',
-				'first_name' => 'João',
-				'last_name' => 'da Silva',
-				'name' => 'João da Silva',
-				'email' => 'customer@email.com.br',
+				'customer_id' => $this->customer_id,
+				'first_name' => $this->current_user->first_name,
+				'last_name' => $this->current_user->last_name,
+				'name' => $this->current_user->first_name . " " . $this->current_user->last_name,
+				'email' => $this->current_user->user_email,
 				'document_type' => 'CPF',
-				'document_number' => '12345678912',
-				'phone_number' => '5551999887766',
-  				'billing_address' => array (
-					'street' => 'Av. Brasil',
-					'number' => '1000',
-					'complement' => 'Sala 1',
-					'district' => 'São Geraldo',
-					'city' => 'Porto Alegre',
-					'state' => 'RS',
-					'country' => 'Brasil',
-					'postal_code' => '90230060',
-				),
+				'document_number' => get_user_meta( $this->current_user->id, 'user_cpf', true ),
+				'phone_number' => get_user_meta( $this->current_user->id, 'user_telefone', true ),
+  				'billing_address' => $add,
 
 			),
 			'device' => array (
@@ -227,21 +219,12 @@ class GetPayment
 			),
 			'shippings' => array (
 				0 => array (
-					'first_name' => 'João',
-					'name' => 'João da Silva',
-					'email' => 'customer@email.com.br',
-					'phone_number' => '5551999887766',
+					'first_name' => $this->current_user->first_name,
+					'name' => $this->current_user->first_name . " " . $this->current_user->last_name,
+					'email' => $this->current_user->user_email,
+					'phone_number' => get_user_meta( $this->current_user->id, 'user_telefone', true ),
 					'shipping_amount' => 3000,
-					'address' => array (
-						'street' => 'Av. Brasil',
-						'number' => '1000',
-						'complement' => 'Sala 1',
-						'district' => 'São Geraldo',
-						'city' => 'Porto Alegre',
-						'state' => 'RS',
-						'country' => 'Brasil',
-						'postal_code' => '90230060',
-					),
+					'address' => $add,
 				)
 			),
 			'credit' => array (
@@ -256,14 +239,18 @@ class GetPayment
 				'card' => array (
 					"number_token" 		=> $this->tokenizado['number_token'],
 					"brand"				=> $this->get_type_card($this->card_number),
-					"cardholder_name"	=> "Alex S. Morais",
-					"expiration_month"	=> "12",
-					"expiration_year"	=> "18",
-					"security_code"		=> "123"
+					"cardholder_name"	=> $_POST['card_name'],
+					"expiration_month"	=> $_POST['expire_month'],
+					"expiration_year"	=> $_POST['expire_year'],
+					"security_code"		=> $_POST['ccv']
 				),
 			),
 		);
 
+		
+
+		var_dump($jsonArray);
+		die();
 
 		$cr = curl_init();
 		curl_setopt($cr, CURLOPT_URL, "https://api-homologacao.getnet.com.br/v1/payments/credit"); 
@@ -285,23 +272,9 @@ class GetPayment
 
 	public function close_payment()
 	{
-		$pagamento = new stdClass();
-		//card values
-		$pagamento->card_name 		= $_POST['card_name'];
-		$pagamento->card_number 	= $_POST['card_number'];
-		$pagamento->expire_month 	= $_POST['expire_month'];
-		$pagamento->expire_year 	= $_POST['expire_year'];
-		$pagamento->ccv 			= $_POST['ccv'];
-
-		//user Id
-		$pagamento->user 			= $this->current_user;
-		$pagamento->user_id 		= $user->ID;
-
 		//compra
-		$this->close_itens();
-		$compra 			= pods("venda", $this->venda );
+		$this->close_itens($vd);
 
-		//endereco de entrega
 	}
 
 	public function close_itens()
@@ -313,13 +286,36 @@ class GetPayment
 			FROM pd_pods_item 
 			WHERE venda_id = {$this->venda}");
 
+
+
 		foreach( $itens as $key => $total ):
 			$grandTotal = $grandTotal + $total->sub_total;
 		endforeach;
 
-		$ventrega = "5,00";
-		$vvoucher = 0.00;
+		$vcp = pods( 'venda', $this->venda );
+		$cupomId = $vcp->display('cupom');
+
+
+		$cupomData = pods( 'cupom', $cupomId );
+		var_dump($cupomData->display('desconto'));
+		echo $percent = str_replace( ",", ".", $cupomData->display('desconto') );
+	
+		$hasCp = ( $cupomData->display('desconto') > 0 ) ? true : false;
+
+		$ventrega = VALOR_ENTREGA;
+		$vvoucher = ( $grandTotal * ( $percent / 100 ) );
 		$vtotal = ( $grandTotal + $ventrega - $vvoucher );
+
+		$itens = [
+			'subtotal' 	=> "R$ ".number_format($grandTotal, 2, ',', '.'),
+			'voucher'	=> "R$ ".number_format($vvoucher, 2, ',', '.'),
+			'hasvouch'  => $hasCp,
+			'ventrega'	=> "R$ ".number_format($ventrega, 2, ',', '.'),
+			'vtotal'	=> "R$ ".number_format($vtotal, 2, ',', '.'),
+			'html'		=> $html
+		];
+
+		var_dump($itens);
 
 		$podVenda = pods('venda', $this->venda);
 		$podVenda->save(array(
@@ -327,6 +323,36 @@ class GetPayment
 			'desconto'		=> 0.00
 		));
 
+		return $podVenda;
+
+	}
+
+	public function get_address($userId)
+	{
+		$address = pods('usuarioendereco', array( 
+						'where' => "user_id = {$userId} AND entrega = 1",
+						'limit'	=> 1 
+		));
+
+		if( $address->total_found() > 0 ):
+
+			$add = $address->data();
+			$newAdd = $add[0];
+
+			return array(
+				'street' => $newAdd->endereco,
+				'number' => $newAdd->numero,
+				'complement' => '',
+				'district' => $newAdd->bairro,
+				'city' => $newAdd->cidade,
+				'state' => $newAdd->estado,
+				'country' => 'Brasil',
+				'postal_code' => str_replace("-", "", $newAdd->cep),
+			);
+
+		else: 
+			return array();
+		endif;
 	}
 
 	
