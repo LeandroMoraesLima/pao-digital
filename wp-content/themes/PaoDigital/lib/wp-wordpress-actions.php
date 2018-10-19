@@ -59,6 +59,9 @@
 		if( $cupom->data() == false ):
 
 			echo json_encode( array( 'status' => 'danger', 'msg' => 'Cupom não encontrado!' ) );
+			unset($_SESSION['paodigital']['cupom']);
+			$vd = pods("venda", $vendaId);
+			$vd->save( 'cupom', 0 );
 
 		else:
 
