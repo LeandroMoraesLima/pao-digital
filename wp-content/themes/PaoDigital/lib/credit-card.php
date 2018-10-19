@@ -34,11 +34,13 @@ class GetPayment
 
 		$this->card_number = str_replace( " ", "", $_POST['card_number'] );
 		$this->venda = $_SESSION['paodigital']['venda'];
-		//unset( $_SESSION['paodigital']['venda'] );
 
 		$this->get_the_card();
 
-		$this->close_itens();
+		
+
+		unset( $_SESSION['paodigital']['venda'] );
+		unset( $_POST );
 
 		return $this->venda;
 	}
@@ -48,7 +50,7 @@ class GetPayment
 	{
 
 		$this->current_user = wp_get_current_user();
-		$this->customer_id = str_pad($current_user->ID, 12, '0', STR_PAD_LEFT);
+		$this->customer_id = str_pad($this->current_user->ID, 12, '0', STR_PAD_LEFT);
 
 		//get authentication
 		$this->get_authentication();
@@ -69,8 +71,12 @@ class GetPayment
 					$cp = $this->comprado['status'];
 
 					if( $this->httpcode == 200 && isset( $cp ) && $cp == 'APPROVED' ):
+						
 						$this->compra = true;
+						$this->close_itens();
+
 					else:
+
 						$this->compra = false;
 					endif;
 
@@ -86,7 +92,17 @@ class GetPayment
 			$this->compra = false;
 		endif;
 
-		
+		if( $this->compra == false ):
+			$this->cancelPayment();
+		endif;
+
+	}
+
+	public function cancelPayment()
+	{
+		$vcp = pods( 'venda', $this->venda );
+		$vcp->save("pago_com", "cancelado");
+
 	}
 
 
@@ -188,13 +204,18 @@ class GetPayment
 	*/
 	public function get_payment()
 	{
-		$order_id = 0;
+		$order_id = $this->venda;
 		$add = $this->get_address($this->current_user->id);
 		$paymentClosed = $this->close_payment();
 
+		$pag = (object)$paymentClosed->row();
+
+		$cpf = get_user_meta( $this->current_user->id, 'user_cpf', true );
+		$phone = get_user_meta( $this->current_user->id, 'user_telefone', true );
+
 		$jsonArray = array (
 			'seller_id' => $this->seller_id,
-			'amount' => 100,
+			'amount' => str_replace(".", "", $pag->preco_total ),
 			'currency' => 'BRL',
 			'order' => array (
 				'order_id' => str_pad($order_id, 12, '0', STR_PAD_LEFT),
@@ -208,8 +229,8 @@ class GetPayment
 				'name' => $this->current_user->first_name . " " . $this->current_user->last_name,
 				'email' => $this->current_user->user_email,
 				'document_type' => 'CPF',
-				'document_number' => get_user_meta( $this->current_user->id, 'user_cpf', true ),
-				'phone_number' => get_user_meta( $this->current_user->id, 'user_telefone', true ),
+				'document_number' => $this->filter($cpf),
+				'phone_number' => $this->filter($phone),
   				'billing_address' => $add,
 
 			),
@@ -222,7 +243,7 @@ class GetPayment
 					'first_name' => $this->current_user->first_name,
 					'name' => $this->current_user->first_name . " " . $this->current_user->last_name,
 					'email' => $this->current_user->user_email,
-					'phone_number' => get_user_meta( $this->current_user->id, 'user_telefone', true ),
+					'phone_number' => $this->filter($phone),
 					'shipping_amount' => 3000,
 					'address' => $add,
 				)
@@ -247,11 +268,6 @@ class GetPayment
 			),
 		);
 
-		
-
-		//var_dump($jsonArray);
-		die();
-
 		$cr = curl_init();
 		curl_setopt($cr, CURLOPT_URL, "https://api-homologacao.getnet.com.br/v1/payments/credit"); 
 		curl_setopt($cr,CURLOPT_HTTPHEADER, array(
@@ -267,13 +283,22 @@ class GetPayment
 		$this->httpcode = curl_getinfo($cr, CURLINFO_HTTP_CODE);
 		curl_close($cr);
 
+
+	}
+
+	public function filter($iten)
+	{
+		return str_replace(
+			array(" ", "-", "."), 
+			array("","",""), 
+			$iten
+		);
 	}
 
 
 	public function close_payment()
 	{
-		//compra
-		$this->close_itens($vd);
+		return $this->close_itens($vd);
 
 	}
 
@@ -303,7 +328,11 @@ class GetPayment
 		$hasCp = ( $cupomData->display('desconto') > 0 ) ? true : false;
 
 		$ventrega = VALOR_ENTREGA;
-		$vvoucher = ( $grandTotal * ( $percent / 100 ) );
+		$vvoucher = 0.00;
+
+		if( $hasCp == true ):
+			$vvoucher = ( $grandTotal * ( $percent / 100 ) );
+		endif;
 		$vtotal = ( $grandTotal + $ventrega - $vvoucher );
 
 		$itens = [
@@ -323,7 +352,7 @@ class GetPayment
 			'desconto'						=> $vvoucher,
 			'taxas'							=> VALOR_ENTREGA,
 			'pagamento_status'				=> 1,
-			'pago_com'						=> 'cartao',
+			'pago_com'						=> 'credito',
 			'retirado'						=> 0,
 			'pedido'						=> 0,
 		));

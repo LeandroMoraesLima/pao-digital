@@ -10,7 +10,6 @@
 
 	<!-- Favicons -->
 	<link href="img/favicon.png" rel="icon">
-	<link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -54,7 +53,7 @@ Header
 
 		<nav id="nav-menu-container">
 			<ul class="nav-menu">
-				<li class="menu-active"><a href="/#home">Home</a></li>
+				<li class="menu-active"><a href="/">Home</a></li>
 				<li><a href="<?php echo get_bloginfo('url'); ?>/sobre-nos/">Sobre Nós</a></li>
 				<li><a href="<?php echo get_bloginfo('url'); ?>/#about">Cardápio</a></li>
 				<li><a href="<?php echo get_bloginfo('url'); ?>/#pricing">Planos</a></li>
@@ -66,15 +65,19 @@ Header
 					<?php 
 						if( isset($_SESSION['paodigital']['venda']) ):
 							$vi = $_SESSION['paodigital']['venda'];
-							$pods = pods('item', array('where' => "venda_id = {$vi}") );
-							$num = $pods->total_found();
+							$pods = pods('item', array(
+								'where' 	=> "venda_id = {$vi}",
+								'select'	=> "sum(quantidade) as qt"
+							));
+							$num = $pods->data()[0];
+							
 						else: 
 							$num = 0;
 						endif;
 					?>
 					<li>
 						<span class="dashicons dashicons-cart">
-							<div><?php echo $num; ?></div>
+							<div><?php echo $num->qt; ?></div>
 						</span>
 					</li>
 				<?php endif; ?>

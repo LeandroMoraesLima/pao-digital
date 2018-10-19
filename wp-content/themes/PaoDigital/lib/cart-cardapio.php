@@ -12,7 +12,8 @@ $pag = (object)$pagamento->row();
 
 //if not exists parceiros yet
 
-if( $pag->pd_parceiros_id == 0 || is_null($pag->pd_parceiros_id) ):
+
+if( (integer)$pag->pd_parceiros_id == 0 || is_null($pag->pd_parceiros_id) ):
 	$_SESSION['message'] = "Começe escolhendo um Parceiro, digite seu CEP abaixo!";
 	wp_redirect('/parceiros');
 endif;

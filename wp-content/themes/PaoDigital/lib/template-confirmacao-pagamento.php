@@ -143,9 +143,10 @@ Confirmação de Pagamento
 						</tr>
 					</tbody>
 				</table>
-				<button class="btn btn-success btn-block">Voltar A Pagina Inicial</button>
+				<a href="/" class="btn btn-success btn-block">Voltar a Pagina Inicial</a>
 			</div>
 		<?php else: ?>
+
 			<div class="box_style_2">
 				<h2 class="inner">Pedido Negado!</h2>	
 				<div class="confirm" id="confirm">
@@ -156,7 +157,7 @@ Confirmação de Pagamento
 					</p>
 				</div>
 
-				<a href="/" class="btn btn-success btn-block">Voltar a Pagina Inicial</button>
+				<a href="/" class="btn btn-success btn-block">Voltar a Pagina Inicial</a>
 			</div>
 		<?php endif; ?>
 	</div>
