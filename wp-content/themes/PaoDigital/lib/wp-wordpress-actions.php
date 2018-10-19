@@ -239,18 +239,9 @@
 			if( $data->quantidade == 1 ):
 
 				//remove item of list
-				if( $id > 4 ):
-					$qtd = pods('item');
-					$qtd->delete($data->id);
-				else:
-					// if delete an pagckage delete the sales
-					$pv = pods('venda');
-					$pv->delete($vid);
-
-					$itens = pods_query("DELETE FROM `pd_pods_item` WHERE `venda_id` = {$vid}");
-					unset($_SESSION['paodigital']['venda']);
-
-				endif;
+				$qtd = pods('item');
+				$qtd->delete($data->id);
+				
 			else:
 				$qt = ($data->quantidade - 1);
 				$qtd = pods('item', $data->id);
