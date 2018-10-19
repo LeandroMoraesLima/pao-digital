@@ -29,6 +29,15 @@ More Features Section
 			<i class="fa fa-search"></i>
 		</div>
 
+		<?php if(isset($_SESSION['message'])): ?>
+			<div class="alert alert-info text-center" role="alert">
+			  	<?php echo $_SESSION['message']; ?>
+			  	<?php unset($_SESSION['message']); ?>
+			  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php endif; ?>
 		<div class="row wow fadeInUp" id="parceirosHere"></div>
 
 

@@ -7,6 +7,14 @@
 	if( !isset( $_SESSION['paodigital']['venda'] ) ):
 		wp_redirect('/');
 	endif;
+
+	$pag = pods('venda', $_SESSION['paodigital']['venda'] );
+	$pag = (object) $pag->row();
+
+	if( $pag->pd_parceiros_id == 0 || is_null($pag->pd_parceiros_id) ):
+		$_SESSION['message'] = "Começe escolhendo um Parceiro, digite seu CEP abaixo!";
+		wp_redirect('/parceiros');
+	endif;
 /*
 template name: Detalhes do seu pedido
 */

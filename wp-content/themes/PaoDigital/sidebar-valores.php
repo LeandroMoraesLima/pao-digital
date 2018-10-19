@@ -85,6 +85,14 @@
 	</div>
 </div>
 
+<?php 
+
+	$pag = pods('venda', $_SESSION['paodigital']['venda'] );
+	$pag = (object) $pag->row();
+	$theparca = $pag->pd_parceiros_id;
+
+?>
+
 <script type="text/javascript">
 	(function($){
 
