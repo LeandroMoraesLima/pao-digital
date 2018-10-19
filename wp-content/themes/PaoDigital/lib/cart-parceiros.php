@@ -106,8 +106,10 @@ if( isset($_POST['plano']) ):
 	$data = (object) get_old_cart();
 	
 	if( isset($data->id) && !is_null($data->id) && $data->id !== '' ):
-		if( $_POST['type'] !== 'drive' || ( $_POST['type'] !== 'home' && $_POST['plano'] !== 'menu' ) ):
+		if( $_POST['type'] == 'home' && ( $_POST['plano'] == 'junior' || $_POST['plano'] == 'pleno' || $_POST['plano'] == 'master' || $_POST['plano'] == 'corporativo'  ) ):
+
 			get_cart_all_itens($data->id);
+
 		endif;
 	endif;
 	unset($_POST['plano']);
