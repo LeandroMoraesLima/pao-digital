@@ -53,6 +53,7 @@
 	function add_cupom() 
 	{
 		$tag = $_POST['tag'];
+		$vendaId = $_SESSION['paodigital']['venda'];
 
 		$cupom = pods('cupom', array('where' => "tag_do_cupom = '{$tag}'"));
 
@@ -60,14 +61,14 @@
 
 			echo json_encode( array( 'status' => 'danger', 'msg' => 'Cupom não encontrado!' ) );
 			unset($_SESSION['paodigital']['cupom']);
-			$vd = pods("venda", $vendaId);
+			$vd = pods("venda", $vendaId );
 			$vd->save( 'cupom', 0 );
 
 		else:
 
 			$myCp = $cupom->data();
 
-			$vendaId = $_SESSION['paodigital']['venda'];
+			
 
 			$vd = pods("venda", $vendaId);
 			$vd->save( 'cupom', $myCp[0]->id );
