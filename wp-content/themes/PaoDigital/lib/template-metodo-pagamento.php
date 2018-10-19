@@ -77,7 +77,7 @@ Metodo Pagamento
 									<div class="col-md-5 col-sm-12">
 										<form action="<?php echo get_bloginfo('url') . '/pagamento'; ?>" method="post">
 											<input type="hidden" name="pagode" value="refeicao">
-											<button type="button" class="btn btn-success btn-block blue">
+											<button type="submit" class="btn btn-success btn-block blue">
 												Cartão Refeição
 											</button>
 										</form>

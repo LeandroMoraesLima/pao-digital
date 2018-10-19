@@ -4,7 +4,13 @@
 		wp_redirect('/');
 	endif;
 
+	if( !isset($_POST['plano']) && !isset($_SESSION['paodigital']['venda']) ):
+		wp_redirect('/');
+	endif;
+
 	include(locate_template('lib/cart-parceiros.php'));
+
+
 /*
 	template name: Parceiros
 */

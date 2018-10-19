@@ -33,7 +33,9 @@
 			$vvoucher = ( $grandTotal * ( $percent / 100 ) );
 		endif;
 
+
 		$vtotal = ( $grandTotal + $ventrega - $vvoucher );
+
 
 		$itens = [
 			'subtotal' 	=> "R$ ".number_format($grandTotal, 2, ',', '.'),
@@ -46,14 +48,15 @@
 
 		$podVenda = pods('venda', $venda);
 		$podVenda->save(array(
-			'preco_total' 					=> $vtotal,
-			'desconto'						=> $vvoucher,
-			'taxas'							=> VALOR_ENTREGA,
+			'preco_total' 					=> number_format($vtotal, 2, ',', '.'),
+			'desconto'						=> number_format($vvoucher, 2, ',', '.'),
+			'taxas'							=> str_replace(".", ",", VALOR_ENTREGA_G ),
 			'pagamento_status'				=> 0,
 			'pago_com'						=> ($_POST['pagode'] == 'dinheiro')? 'dinheiro' : 'refeicao',
 			'retirado'						=> 0,
 			'pedido'						=> 0,
 		));
+
 
 
 		$payment = new stdClass();

@@ -8,8 +8,9 @@
 function get_old_cart() 
 {
 	$user = wp_get_current_user();
+
 	$pagamento = pods('venda', array( 
-		'where' 	=> "`pd_users_id` = {$user->ID} AND `pedido` = true",
+		'where' 	=> "`pd_users_id` = {$user->ID} AND `pedido` = 1",
 		'limit'		=> 1,
 		'orderby'	=> "id DESC"
 	));
@@ -34,12 +35,13 @@ function get_old_cart()
 			'pd_users_id'			=> $user->ID
 		);
 
+	
 		$pod 		= pods('venda');
 		$vendaId 	= $pod->save($itens);
 
 
 		//return created data
-		$pag = $pod->row();
+		$pag = (object)$pod->row();
 		$_SESSION['paodigital']['venda'] = $pag->id;
 		return $pag;
 
@@ -97,12 +99,16 @@ function get_cart_all_itens($cartId)
 }
 
 //exist session venda yes | no
+// unset($_SESSION['paodigital']);
+// unset($_POST);
 
 if( isset($_POST['plano']) ):
 	$data = (object) get_old_cart();
-	//var_dump($data);
+	
 	if( isset($data->id) && !is_null($data->id) && $data->id !== '' ):
-		get_cart_all_itens($data->id);
+		if( $_POST['type'] !== 'drive' || ( $_POST['type'] !== 'home' && $_POST['plano'] !== 'menu' ) ):
+			get_cart_all_itens($data->id);
+		endif;
 	endif;
 	unset($_POST['plano']);
 endif;

@@ -7,7 +7,8 @@
 		}
 	}
 
-	define('VALOR_ENTREGA', "5,00");
+	define('VALOR_ENTREGA', 5.00 );
+	define('VALOR_ENTREGA_G', "5,00" );
 
 
 	$current_user = wp_get_current_user();		

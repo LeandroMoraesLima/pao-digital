@@ -101,7 +101,14 @@ class GetPayment
 	public function cancelPayment()
 	{
 		$vcp = pods( 'venda', $this->venda );
-		$vcp->save("pago_com", "cancelado");
+		$vcp->save(
+			array( 
+				"pago_com"  => "cancelado",
+				"pedido"	=> 0,
+			)
+		);
+
+		return false;
 
 	}
 
