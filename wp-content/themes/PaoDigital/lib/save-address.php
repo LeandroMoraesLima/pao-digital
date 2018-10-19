@@ -94,7 +94,7 @@
 		endif;
 
 		
-		wp_redirect($_POST['url']);
+		wp_redirect( get_bloginfo('url') . "/detalhes-do-seu-pedido/" );
 
 	}
 	
