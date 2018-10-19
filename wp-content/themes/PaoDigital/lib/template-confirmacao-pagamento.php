@@ -13,19 +13,23 @@
 template name: Pedido Confirmado
 */
 
-echo "
-	<div id='cat' style='width:100%; height: 100%; position: fixed; top: 0; left: 0; background-color: #66ceff; display: flex; justify-content: center; align-items: center; flex-direction: column; font-family: \"Open Sans\", sans-serif; font-size: 40px; color: #FFF; text-align: center;
-'>
-		<img src='".IMG."/cat.gif' alt=''>
-		Aguarde! <br>Estamos processando seu pagamento!
-	</div>
-";
+// echo "
+// 	<div id='cat' style='width:100%; height: 100%; position: fixed; top: 0; left: 0; background-color: #66ceff; display: flex; justify-content: center; align-items: center; flex-direction: column; font-family: \"Open Sans\", sans-serif; font-size: 40px; color: #FFF; text-align: center;
+// '>
+// 		<img src='".IMG."/cat.gif' alt=''>
+// 		Aguarde! <br>Estamos processando seu pagamento!
+// 	</div>
+// ";
 
 
 
 get_header('interna');
-include(locate_template('lib/credit-card.php'));
 
+if( isset($_POST['pagode']) && ( $_POST['pagode'] == 'dinheiro' || $_POST['pagode'] == 'refeicao' ) ):
+	include(locate_template('lib/dinheiro.php'));
+else:
+	include(locate_template('lib/credit-card.php'));
+endif;
 
 ?>
 
@@ -139,6 +143,7 @@ Confirmação de Pagamento
 						</tr>
 					</tbody>
 				</table>
+				<button class="btn btn-success btn-block">Voltar A Pagina Inicial</button>
 			</div>
 		<?php else: ?>
 			<div class="box_style_2">
@@ -150,6 +155,8 @@ Confirmação de Pagamento
 						Lorem ipsum dolor sit amet, nostrud nominati vis ex, essent conceptam eam ad. Cu etiam comprehensam nec. Cibo delicata mei an, eum porro legere no.
 					</p>
 				</div>
+
+				<a href="/" class="btn btn-success btn-block">Voltar a Pagina Inicial</button>
 			</div>
 		<?php endif; ?>
 	</div>

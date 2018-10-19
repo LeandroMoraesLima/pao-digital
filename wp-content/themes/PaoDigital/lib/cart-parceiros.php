@@ -9,7 +9,7 @@ function get_old_cart()
 {
 	$user = wp_get_current_user();
 	$pagamento = pods('venda', array( 
-		'where' 	=> "`pd_users_id` = {$user->ID} AND `pagamento_status` = false",
+		'where' 	=> "`pd_users_id` = {$user->ID} AND `pedido` = true",
 		'limit'		=> 1,
 		'orderby'	=> "id DESC"
 	));

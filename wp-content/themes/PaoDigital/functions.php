@@ -209,7 +209,8 @@
 			'phone'				=> '',
 			'date_expiration'	=> '0000-00-00 00:00:00',
 			'created'			=> date('Y-m-d H:i:s'),
-			'modified'			=> '0000-00-00 00:00:00'
+			'modified'			=> '0000-00-00 00:00:00',
+			'pedido'			=> true
 		); 
 
 

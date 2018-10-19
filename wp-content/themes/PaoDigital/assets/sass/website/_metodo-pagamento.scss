@@ -99,23 +99,23 @@
                 font-weight: 400;
             }
             button.red {
-                background-color: #7d0001;
-                border: 1px solid #5f0606;
+                background-color: #7d0001 !important;
+                border: 1px solid #5f0606 !important;
                 font-size: 13px !important;
                 margin: 5px 0;
                 &:hover {
-                    background-color: transparent;
-                    color: #5f0606;
+                    background-color: transparent !important;
+                    color: #5f0606 !important;
                 }
             }
             button.blue {
-                background-color: #003688;
-                border: 1px solid #02255a;
+                background-color: #003688 !important;
+                border: 1px solid #02255a !important;
                 font-size: 13px !important;
                 margin: 5px 0;
                 &:hover {
-                    background-color: transparent;
-                    color: #02255a;
+                    background-color: transparent !important;
+                    color: #02255a !important;
                 }
             }
         }

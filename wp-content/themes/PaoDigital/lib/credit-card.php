@@ -319,8 +319,13 @@ class GetPayment
 
 		$podVenda = pods('venda', $this->venda);
 		$podVenda->save(array(
-			'preco_total' 	=> $vtotal,
-			'desconto'		=> 0.00
+			'preco_total' 					=> $vtotal,
+			'desconto'						=> $vvoucher,
+			'taxas'							=> VALOR_ENTREGA,
+			'pagamento_status'				=> 1,
+			'pago_com'						=> 'cartao',
+			'retirado'						=> 0,
+			'pedido'						=> 0,
 		));
 
 		return $podVenda;
