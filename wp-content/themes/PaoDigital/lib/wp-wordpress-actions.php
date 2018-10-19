@@ -650,8 +650,8 @@ class pointLocation {
             $vertices[] = $this->pointStringToCoordinates($vertex); 
         }
 
-        //var_dump($point);
-        //var_dump($vertices);
+        var_dump($point);
+        var_dump($vertices);
  
         // Check if the point sits exactly on a vertex
         if ($this->pointOnVertex == true and $this->pointOnVertex($point, $vertices) == true) {
@@ -678,7 +678,7 @@ class pointLocation {
                 }
             } 
         } 
-        //var_dump($intersections);
+        var_dump($intersections);
         // If the number of edges we passed through is odd, then it's in the polygon. 
         if ($intersections % 2 != 0) {
             return "inside";
@@ -698,7 +698,7 @@ class pointLocation {
  
     function pointStringToCoordinates($pointString) {
         $coordinates = explode(" ", $pointString);
-        return array("x" => $coordinates[0], "y" => $coordinates[1]);
+        return array("x" => str_replace("-", "", $coordinates[0]) , "y" => str_replace("-", "", $coordinates[1]) );
     }
  
 }
