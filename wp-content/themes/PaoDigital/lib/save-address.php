@@ -10,10 +10,11 @@
 		
 		$user_id = get_current_user_id();
 
+
+
 		$user_id = wp_update_user( 
 			array( 
-				'ID' 			=> $user_id, 
-				'user_email' 	=> $_POST['email_order'],
+				'ID' 			=> $user_id,
 				'first_name'	=> $_POST['name'],
 				'last_name'		=> $_POST['lastname'],
 				'description'	=> $_POST['notes']

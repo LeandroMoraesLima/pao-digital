@@ -84,7 +84,7 @@ Detalhes do seu pedido
 									</div>
 									<div class="form-group">
 										<label>Email</label>
-										<input type="email" id="email_booking_2" name="email_order" class="form-control" placeholder="Ex.: joao@silva.com" required value="<?php echo $user->user_email; ?>" />
+										<input type="email" readonly="readonly" class="form-control" placeholder="Ex.: joao@silva.com" required value="<?php echo $user->user_email; ?>" />
 									</div>
 								</fieldset>
 								<hr>
@@ -161,6 +161,14 @@ Detalhes do seu pedido
 											</div>
 										</div>
 										<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<div class="form-group">
+													<label for="complemento1">Complemento</label>
+													<input type="text" id="complemento1" name="address[1][complemento]" class="form-control" placeholder=" Ex.: Apt 110" value="" required />
+												</div>
+											</div>
+										</div>
+										<div class="row">
 											<div class="col-md-6 col-sm-6">
 												<div class="form-group">
 													<label for="bairro1">Bairro</label>
@@ -205,7 +213,8 @@ Detalhes do seu pedido
 									</div>
 								</div>
 								<div class="menu-order">
-									<input type="submit" name="save-address" value="Salvar Endereços" class="address-confirm" />
+									<input type="hidden" name="saveme" value="tasalvo" />
+									<input type="submit" name="save-address" value="Salvar Endereços" class="address-confirm" id="saveAddress"/>
 								</div>
 							</div>
 						</form>
@@ -277,6 +286,8 @@ endif;
 		$(".cep").mask("00000-000");
 		$("#tel_order").mask("00 00000-0000");
 		$("#cpf_order").mask("000.000.000-00");
+
+
 
 	})(jQuery);
 </script>
