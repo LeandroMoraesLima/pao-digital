@@ -556,7 +556,7 @@
 
 				$pointLocation = new pointLocation();
 				$inside = $pointLocation->pointInPolygon($myAddress, $polygon);
-//var_dump($inside);
+
 				if( $inside != "outside" ):
 					$parceiros[$o] = $parid;
 				endif;
@@ -636,50 +636,42 @@ class pointLocation {
     }
  
     function pointInPolygon($point, $polygon, $pointOnVertex = true) {
-        $this->pointOnVertex = $pointOnVertex;
- 
-        // Transform string coordinates into arrays with x and y values
-        $point = $this->pointStringToCoordinates($point);
+
+    	$point = $this->pointStringToCoordinates($point);
         $vertices = array(); 
+        $vertices_x = array();
+        $vertices_y = array();
+        
         foreach ($polygon as $vertex) {
-            $vertices[] = $this->pointStringToCoordinates($vertex); 
+            $vertic = $this->pointStringToCoordinates($vertex);
+            //$vertices[] = $vertic;
+        	$vertices_x[] = $vertic['x'];
+        	$vertices_y[] = $vertic['y'];
         }
 
-        //var_dump($point);
-        //var_dump($vertices);
- 
-        // Check if the point sits exactly on a vertex
-        if ($this->pointOnVertex == true and $this->pointOnVertex($point, $vertices) == true) {
-            return "vertex";
-        }
- 
-        // Check if the point is inside the polygon or on the boundary
-        $intersections = 0; 
-        $vertices_count = count($vertices);
- 
-        for ($i=1; $i < $vertices_count; $i++) {
-            $vertex1 = $vertices[$i-1]; 
-            $vertex2 = $vertices[$i];
-            if ($vertex1['y'] == $vertex2['y'] and $vertex1['y'] == $point['y'] and $point['x'] > min($vertex1['x'], $vertex2['x']) and $point['x'] < max($vertex1['x'], $vertex2['x'])) { // Check if point is on an horizontal polygon boundary
-                return "boundary";
-            }
-            if ($point['y'] > min($vertex1['y'], $vertex2['y']) and $point['y'] <= max($vertex1['y'], $vertex2['y']) and $point['x'] <= max($vertex1['x'], $vertex2['x']) and $vertex1['y'] != $vertex2['y']) { 
-                $xinters = ($point['y'] - $vertex1['y']) * ($vertex2['x'] - $vertex1['x']) / ($vertex2['y'] - $vertex1['y']) + $vertex1['x']; 
-                if ($xinters == $point['x']) { // Check if point is on the polygon boundary (other than horizontal)
-                    return "boundary";
-                }
-                if ($vertex1['x'] == $vertex2['x'] || $point['x'] <= $xinters) {
-                    $intersections++; 
-                }
-            } 
-        } 
-        //var_dump($intersections);
-        // If the number of edges we passed through is odd, then it's in the polygon. 
-        if ($intersections % 2 != 0) {
-            return "inside";
-        } else {
-            return "outside";
-        }
+
+		function is_in_polygon($points_polygon, $vertices_x, $vertices_y, $longitude_x, $latitude_y)
+		{
+		  $i = $j = $c = 0;
+		  for ($i = 0, $j = $points_polygon ; $i < $points_polygon; $j = $i++) {
+		    if ( (($vertices_y[$i]  >  $latitude_y != ($vertices_y[$j] > $latitude_y)) &&
+		     ($longitude_x < ($vertices_x[$j] - $vertices_x[$i]) * ($latitude_y - $vertices_y[$i]) / ($vertices_y[$j] - $vertices_y[$i]) + $vertices_x[$i]) ) )
+		       $c = !$c;
+		  }
+		  return $c;
+		}
+
+
+		$points_polygon = count($vertices_x) - 1;  // number vertices - zero-based array
+		$longitude_x = $_GET["longitude"];  // x-coordinate of the point to test
+		$latitude_y = $_GET["latitude"];    // y-coordinate of the point to test
+
+		if (is_in_polygon($points_polygon, $vertices_x, $vertices_y, $point['x'], $point['y'] )){
+			return "inside";
+		}
+		return "outside";
+
+		
     }
  
     function pointOnVertex($point, $vertices) {
@@ -693,7 +685,10 @@ class pointLocation {
  
     function pointStringToCoordinates($pointString) {
         $coordinates = explode(" ", $pointString);
-        return array("x" => str_replace("-", "", $coordinates[0]) , "y" => str_replace("-", "", $coordinates[1]) );
+        $zero = substr(str_replace("-", "", $coordinates[0]), 0, 10);
+        $unos = substr(str_replace("-", "", $coordinates[1]), 0, 10);
+
+        return array("x" =>  $zero, "y" => $unos );
     }
  
 }
