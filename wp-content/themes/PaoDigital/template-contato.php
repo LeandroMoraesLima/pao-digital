@@ -20,12 +20,17 @@ Our Team Section
 						<img src="<?php echo IMG; ?>/drive-thru-pao-digital.jpg" style="max-width: 100%;">
 					</div>	
 					<div class="text col-lg-6 content wow fadeInRight">
-						<h3 class="title"><?php echo get_field('sc_titulo','options') ?></h3>
+						<h3 class="title"><?php the_title(); ?></h3>
 						<hr class="line">
 						<span class="section-divider"></span>
 						<p class="section-description">
-							<?php echo get_field('sc_texto','options') ?> 
+							<?php echo get_the_content(); ?> 
 						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<?php echo get_field('extra'); ?>
 					</div>
 				</div>
 			</div>
