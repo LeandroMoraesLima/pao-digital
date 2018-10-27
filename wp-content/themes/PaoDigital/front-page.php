@@ -119,13 +119,13 @@ Pricing Section
 
 				<?php $ativar = (get_sub_field('at_ativar_marcador') == true)? 'featured' : ''; ?>
 
-				<div class="col-lg-3 col-md-6">
+				<div class="col-lg-3 col-md-6 text-center">
 					<div class="box <?php echo $ativar; ?> wow <?php echo get_sub_field('se_section'); ?>">
 					
 						<h3><?php echo get_sub_field('pa_pacotes') ?></h3>
 					
 						<?php if (get_sub_field('vl_valor') >= true): ?>			    
-						
+							<?php echo ($i == 3)? "A partir de":""; ?>
 							<h4>R$ <?php echo get_sub_field('vl_valor') ?><span>/mês</span></h4>
 
 						<?php endif ?>
