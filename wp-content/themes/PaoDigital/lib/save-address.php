@@ -62,7 +62,8 @@
 								'cidade' => $add['city'],
 								'estado' => $add['state'],
 								'entrega' => ( isset( $add['entrega'] ) )? 1 : 0 ,
-								'numero' => $add['num']
+								'numero' => $add['num'],
+								'complemento' => $add['complemento']
 							];
 							$newAddress->save($array);
 						endif;
@@ -81,7 +82,8 @@
 							'cidade' => $add['city'],
 							'estado' => $add['state'],
 							'entrega' => ( isset( $add['entrega'] ) ) ? 1 : 0 ,
-							'numero' => $add['num']
+							'numero' => $add['num'],
+							'complemento' => $add['complemento']
 						];
 						$newAddress->save($array);
 
