@@ -31,7 +31,7 @@ More Features Section
 			<span class="section-divider"></span>
 		</div>
 		<div class="lupa">
-			<input type="text" class="botao form-control mb-2 cep" style="text-align: center;" id="inlineFormInput" placeholder="Digite seu Cep">
+			<input type="text" class="botao form-control mb-2 cep" style="text-align: center;" id="inlineFormInput" placeholder="Digite o Cep do endereço de entrega">
 			<i class="fa fa-search"></i>
 		</div>
 
