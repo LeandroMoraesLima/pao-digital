@@ -5,6 +5,9 @@
 
 get_header('interna');
 
+if (have_posts()) :
+    while (have_posts()) : the_post();
+
 ?>
 
 
@@ -58,4 +61,9 @@ Contact Section
 
 
 
-<?php get_footer(); ?>
+<?php 
+	
+	endwhile;
+endif;
+
+get_footer(); ?>
