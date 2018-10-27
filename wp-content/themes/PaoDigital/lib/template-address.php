@@ -49,6 +49,14 @@
 		</div>
 	</div>
 	<div class="row">
+		<div class="col-md-12 col-sm-12">
+			<div class="form-group">
+				<label for="complemento<?php echo $blocks; ?>">Complemento</label>
+				<input type="text" id="complemento<?php echo $blocks; ?>" name="address[<?php echo $blocks; ?>][complemento]" class="form-control" placeholder=" Ex.: Apt 110" value="<?php echo $add->display('complemento') ?>" required />
+			</div>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-6 col-sm-6">
 			<div class="form-group">
 				<label for="bairro<?php echo $blocks; ?>">Bairro</label>
@@ -137,6 +145,14 @@
 			<div class="form-group">
 				<label for="num<?php echo $blocks; ?>">Nº</label>
 				<input type="text" id="num<?php echo $blocks; ?>" name="address[<?php echo $blocks; ?>][num]" class="form-control" placeholder="" value="" required />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 col-sm-12">
+			<div class="form-group">
+				<label for="complemento<?php echo $blocks; ?>">Complemento</label>
+				<input type="text" id="complemento<?php echo $blocks; ?>" name="address[<?php echo $blocks; ?>][complemento]" class="form-control" placeholder=" Ex.: Apt 110" value="" required />
 			</div>
 		</div>
 	</div>

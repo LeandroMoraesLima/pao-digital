@@ -76,9 +76,11 @@ Header
 						endif;
 					?>
 					<li>
-						<span class="dashicons dashicons-cart">
-							<div><?php echo $num->qt; ?></div>
-						</span>
+						<a href="/cardapio" style="padding: 0px;">
+							<span class="dashicons dashicons-cart">
+								<div><?php echo $num->qt; ?></div>
+							</span>
+						</a>
 					</li>
 				<?php endif; ?>
 			</ul>

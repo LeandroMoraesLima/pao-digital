@@ -66,6 +66,27 @@ Header
 				<li><a href="#contact">Contato</a></li>
 				<?php if( !is_user_logged_in() ): ?>
 					<li><a href="#login" class="lrm-login lrm-hide-if-logged-in">Login</a></li>
+				<?php else: ?>
+					<?php 
+						if( isset($_SESSION['paodigital']['venda']) ):
+							$vi = $_SESSION['paodigital']['venda'];
+							$pods = pods('item', array(
+								'where' 	=> "venda_id = {$vi}",
+								'select'	=> "sum(quantidade) as qt"
+							));
+							$num = $pods->data()[0];
+							
+						else: 
+							$num = 0;
+						endif;
+					?>
+					<li>
+						<a href="/cardapio" style="padding: 0px;">
+							<span class="dashicons dashicons-cart">
+								<div><?php echo $num->qt; ?></div>
+							</span>
+						</a>
+					</li>
 				<?php endif; ?>
 			</ul>
 		</nav><!-- #nav-menu-container -->
