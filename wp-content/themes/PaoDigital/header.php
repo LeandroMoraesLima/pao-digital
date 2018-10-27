@@ -79,6 +79,8 @@ Header
 						else: 
 							$num = 0;
 						endif;
+						
+							if( $num == 0 ):
 					?>
 					<li>
 						<a href="/cardapio" style="padding: 0px;">
@@ -87,7 +89,10 @@ Header
 							</span>
 						</a>
 					</li>
-				<?php endif; ?>
+				<?php 
+						endif;
+					endif; 
+				?>
 			</ul>
 		</nav><!-- #nav-menu-container -->
 	</div>
