@@ -125,7 +125,7 @@ Pricing Section
 						<h3><?php echo get_sub_field('pa_pacotes') ?></h3>
 					
 						<?php if (get_sub_field('vl_valor') >= true): ?>			    
-							<?php echo ($i == 3)? "A partir de":""; ?>
+							<?php echo ($i == 3)? "A partir de":"&nbsp;"; ?>
 							<h4>R$ <?php echo get_sub_field('vl_valor') ?><span>/mês</span></h4>
 
 						<?php endif ?>
