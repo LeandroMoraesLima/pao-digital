@@ -130,8 +130,8 @@ Pricing Section
 
 						<?php endif ?>
 
-						<div class="text-center"><?php echo get_sub_field('tt_texto') ?></div>
-						
+						<div class="text-center" style="min-height: 400px; overflow-y: auto;"><?php echo get_sub_field('tt_texto') ?></div>
+
 						<form action="<?php echo get_bloginfo('url'); ?>/parceiros" method="post">
 							<?php if( !is_user_logged_in() ): ?>
 								<input type="button" class="lrm-login get-started-btn" value="Fazer Pedido"/>
