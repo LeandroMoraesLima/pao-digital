@@ -52,6 +52,22 @@ Detalhes do seu pedido
             <div class="col-md-9">
             	<div class="row">
 					<div class="col-md-7">
+						<?php 
+
+							if( isset($_SESSION['paodigital']['msgAddress']) !== '' ):
+
+								$type = $_SESSION['paodigital']['msgAddressType'];
+
+								echo 	'<div class="alert alert-'.$type.'" role="alert">
+											'.$_SESSION['paodigital']['msgAddress'].'
+										</div>';
+
+								unset($_SESSION['paodigital']['msgAddress']);
+								unset($_SESSION['paodigital']['msgAddressType']);
+
+							endif;
+
+						?>
 						<form action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post" >
 							<div class="box_style_2" id="order_process">
 								<input type="hidden" name="action" value="contact_form">
@@ -73,13 +89,13 @@ Detalhes do seu pedido
 											$user_telefone = get_user_meta( $user->id, 'user_telefone', true );
 										?>
 										<label for="tel_order">Telefone / celular</label>
-										<input type="text" id="tel_order" name="tel" class="form-control" placeholder="Ex.: 11 99999-9999" value="<?php echo $user_telefone; ?>" required>
+										<input type="text" id="tel_order" name="tel_order" class="form-control" placeholder="Ex.: 11 99999-9999" value="<?php echo $user_telefone; ?>" required>
 									</div>
 									<div class="form-group">
 										<?php 
 											$user_cpf = get_user_meta( $user->id, 'user_cpf', true );
 										?>
-										<label for="tel_order">CPF</label>
+										<label for="cpf_order">CPF</label>
 										<input type="text" id="cpf_order" name="cpf" class="form-control" placeholder="999.999.999-99" value="<?php echo $user_cpf; ?>" required>
 									</div>
 									<div class="form-group">

@@ -7,51 +7,76 @@
 		 *
 		 * We can do our normal processing here
 		 */ 
-		
-		$user_id = get_current_user_id();
+
+		try {
+
+			$user_id = get_current_user_id();
 
 
+			if( $_POST['name'] == "" || $_POST['lastname'] == "" || $_POST['tel'] = "" || $_POST['cpf'] == "" ):
+				$_SESSION['paodigital']['msg'] = "Confirme se Nome, Sobrenome, Telefone ou CPF estão corretamente preenchidos!";
+				wp_redirect( get_bloginfo('url') . "/detalhes-do-seu-pedido/" );
+			endif;
 
-		$user_id = wp_update_user( 
-			array( 
-				'ID' 			=> $user_id,
-				'first_name'	=> $_POST['name'],
-				'last_name'		=> $_POST['lastname'],
-				'description'	=> $_POST['notes']
-			) 
-		);
+			$user_id = wp_update_user( 
+				array( 
+					'ID' 			=> $user_id,
+					'first_name'	=> $_POST['name'],
+					'last_name'		=> $_POST['lastname'],
+					'description'	=> $_POST['notes']
+				) 
+			);
 
-		if ( get_user_meta($user_id, 'user_telefone', true ) ):
-			update_user_meta( $user_id, 'user_telefone', $_POST['tel'] );
-		else:
-			add_user_meta( $user_id, 'user_telefone', $_POST['tel'] );
-		endif;
+			if ( get_user_meta($user_id, 'user_telefone' ) ):
+				$a = update_user_meta( $user_id, 'user_telefone', $_POST['tel_order'] );
+			else:
+				$a = add_user_meta( $user_id, 'user_telefone', $_POST['tel_order'] );
+			endif;
+
+			if ( get_user_meta($user_id, 'user_cpf', true ) ):
+				update_user_meta( $user_id, 'user_cpf', $_POST['cpf'] );
+			else:
+				add_user_meta( $user_id, 'user_cpf', $_POST['cpf'] );
+			endif;
 
 
-		if ( get_user_meta($user_id, 'user_cpf', true ) ):
-			update_user_meta( $user_id, 'user_cpf', $_POST['cpf'] );
-		else:
-			add_user_meta( $user_id, 'user_cpf', $_POST['cpf'] );
-		endif;
+			if( isset($_POST['save-address']) ):
+				
+				if( count( $_POST['address'] ) > 0 ):
+					foreach ( $_POST['address'] as $key => $add ):
 
+						$id = $add['house'];
+						
+						if( $add['house'] > 0 ):
 
-		if( isset($_POST['save-address']) ):
-			
-			if( count( $_POST['address'] ) > 0 ):
-				foreach ( $_POST['address'] as $key => $add ):
+							$params = array(
+								'where'		=> "id = {$id} AND user_id = {$user_id}", 
+								'limit'		=> 1
+							); 
+							$address = pods( 'usuarioendereco', $params );
 
-					$id = $add['house'];
-					
-					if( $add['house'] > 0 ):
+							if( (integer)$address->total_found() > 0 ):
+								$newAddress = pods('usuarioendereco', $address->display('id') );
+								$array = [
+									'name' => $add['desc'],
+									'created' => date('Y-m-d H:i:s'),
+									'modified' => date('Y-m-d H:i:s'),
+									'cep' => $add['cep'],
+									'endereco' => $add['address'],
+									'user_id' => $user_id,
+									'bairro' => $add['bairro'],
+									'cidade' => $add['city'],
+									'estado' => $add['state'],
+									'entrega' => ( isset( $add['entrega'] ) )? 1 : 0 ,
+									'numero' => $add['num'],
+									'complemento' => $add['complemento']
+								];
+								$newAddress->save($array);
+							endif;
 
-						$params = array(
-							'where'		=> "id = {$id} AND user_id = {$user_id}", 
-							'limit'		=> 1
-						); 
-						$address = pods( 'usuarioendereco', $params );
+						else:
 
-						if( (integer)$address->total_found() > 0 ):
-							$newAddress = pods('usuarioendereco', $address->display('id') );
+							$newAddress = pods('usuarioendereco');
 							$array = [
 								'name' => $add['desc'],
 								'created' => date('Y-m-d H:i:s'),
@@ -62,42 +87,33 @@
 								'bairro' => $add['bairro'],
 								'cidade' => $add['city'],
 								'estado' => $add['state'],
-								'entrega' => ( isset( $add['entrega'] ) )? 1 : 0 ,
+								'entrega' => ( isset( $add['entrega'] ) ) ? 1 : 0 ,
 								'numero' => $add['num'],
 								'complemento' => $add['complemento']
 							];
 							$newAddress->save($array);
+
 						endif;
 
-					else:
+					endforeach;
 
-						$newAddress = pods('usuarioendereco');
-						$array = [
-							'name' => $add['desc'],
-							'created' => date('Y-m-d H:i:s'),
-							'modified' => date('Y-m-d H:i:s'),
-							'cep' => $add['cep'],
-							'endereco' => $add['address'],
-							'user_id' => $user_id,
-							'bairro' => $add['bairro'],
-							'cidade' => $add['city'],
-							'estado' => $add['state'],
-							'entrega' => ( isset( $add['entrega'] ) ) ? 1 : 0 ,
-							'numero' => $add['num'],
-							'complemento' => $add['complemento']
-						];
-						$newAddress->save($array);
-
-					endif;
-
-				endforeach;
+				endif;
 
 			endif;
 
-		endif;
+			$_SESSION['paodigital']['msgAddress'] = "Endereço salvo com sucesso!";
+			$_SESSION['paodigital']['msgAddressType'] = "success";
+			wp_redirect( get_bloginfo('url') . "/detalhes-do-seu-pedido/" );
+			
+		} catch (Exception $e) {
+			
+			$_SESSION['paodigital']['msgAddress'] = "Não Foi Possivel salvar o endereço tente novamente.";
+			$_SESSION['paodigital']['msgAddressType'] = "danger";
+			wp_redirect( get_bloginfo('url') . "/detalhes-do-seu-pedido/" );
 
+		}
 		
-		wp_redirect( get_bloginfo('url') . "/detalhes-do-seu-pedido/" );
+		
 
 	}
 	
