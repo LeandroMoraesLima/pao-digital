@@ -28,6 +28,8 @@ class GetPayment
 	private $status = '';
 
 	public $venda = 0;
+
+	public $error = "";
 	
 	public function __construct()
 	{
@@ -37,7 +39,7 @@ class GetPayment
 
 		$this->get_the_card();
 
-		
+		$_SESSION['paodigital']['errorsVenda'] = $this->error;
 
 		unset( $_SESSION['paodigital']['venda'] );
 		unset( $_POST );
@@ -63,14 +65,16 @@ class GetPayment
 			if( $this->httpcode == 201 && isset( $this->tokenizado['number_token'] ) ):
 
 				$this->verification();
+		
 				$st = $this->verificado['status'];
 
 				if( $this->httpcode == 200 && isset( $st ) && $st == 'VERIFIED' ):
 
 					$this->get_payment();
 					$cp = $this->comprado['status'];
-
-					if( $this->httpcode == 200 && isset( $cp ) && $cp == 'APPROVED' ):
+	
+					//if( $this->httpcode == 200 && isset( $cp ) && $cp == 'APPROVED' ):
+					if( $this->httpcode == 200 && isset( $cp ) ):
 						
 						$this->compra = true;
 						$this->close_itens();
@@ -81,14 +85,17 @@ class GetPayment
 					endif;
 
 				else:
+					$this->error = "A verificação dos dados do cartão Falhou!";
 					$this->compra = false;
 				endif;
 
 			else:
+				$this->error = "Erro com os dados do Cartão de Crédito!";
 				$this->compra = false;
 			endif;
 
 		else:
+			$this->error = "Authenticação com a Api de Pagamento Falhou!"; 
 			$this->compra = false;
 		endif;
 
@@ -135,8 +142,6 @@ class GetPayment
 		$this->httpcode = curl_getinfo($cr, CURLINFO_HTTP_CODE);
 		curl_close($cr);
 
-		//var_dump($this->auth);
-
 	}
 
 	/*
@@ -181,18 +186,18 @@ class GetPayment
 		$jsonArray = array(
 			"number_token" 		=> $this->tokenizado['number_token'],
 			"brand"				=> $this->get_type_card($this->card_number),
-			"cardholder_name"	=> "Alex S. Morais",
-			"expiration_month"	=> "12",
-			"expiration_year"	=> "18",
-			"security_code"		=> "123"
+			"cardholder_name"	=> $_POST['card_name'],
+			"expiration_month"	=> $_POST['expire_month'],
+			"expiration_year"	=> $_POST['expire_year'],
+			"security_code"		=> $_POST['ccv']
 		);
-
 
 		$cr = curl_init();
 		curl_setopt($cr, CURLOPT_URL, "https://api-homologacao.getnet.com.br/v1/cards/verification"); 
 		curl_setopt($cr,CURLOPT_HTTPHEADER, array(
 			"Content-type: application/json",
-			"Authorization: Bearer ".$this->auth['access_token']
+			"Authorization: Bearer ".$this->auth['access_token'],
+			"seller_id: {$this->seller_id}"
 		));
 		curl_setopt($cr, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($cr, CURLOPT_ENCODING, '');
@@ -364,6 +369,28 @@ class GetPayment
 			'pedido'						=> 0,
 		));
 
+
+		//Pegar endereco de entrega caso for entrega
+		$enderecoUser = pods('usuarioendereco', array(
+			'where' => "user_id = {$this->current_user->ID} AND entrega = 1"
+		));
+		$endUser = $enderecoUser->data();
+		$endUser = (object)$endUser[0];
+
+		$endVenda = pods('vendaentrega');
+		$endVenda->save(array(
+			'rua' 			=> $endUser->endereco,
+			'numero' 		=> $endUser->numero,
+			'bairro' 		=> $endUser->bairro,
+			'cep' 			=> $endUser->cep,
+			'cidade' 		=> $endUser->cidade,
+			'estado' 		=> $endUser->estado,
+			'complemento' 	=> $endUser->complemento,
+			'vendaid' 		=> $podVenda->id
+		));
+		//fim 
+		
+
 		return $podVenda;
 
 	}
@@ -404,12 +431,12 @@ class GetPayment
 	public function get_type_card($card_number)
 	{
 		$cards = array(
-			"visa" => "(4\d{12}(?:\d{3})?)",
-			"amex" => "(3[47]\d{13})",
-			"jcb" => "(35[2-8][89]\d\d\d{10})",
-			"maestro" => "((?:5020|5038|6304|6579|6761)\d{12}(?:\d\d)?)",
-			"solo" => "((?:6334|6767)\d{12}(?:\d\d)?\d?)",
-			"mastercard" => "(5[1-5]\d{14})",
+			"Visa" => "(4\d{12}(?:\d{3})?)",
+			"Amex" => "(3[47]\d{13})",
+			"Jcb" => "(35[2-8][89]\d\d\d{10})",
+			"Maestro" => "((?:5020|5038|6304|6579|6761)\d{12}(?:\d\d)?)",
+			"Solo" => "((?:6334|6767)\d{12}(?:\d\d)?\d?)",
+			"Mastercard" => "(5[1-5]\d{14})",
 			"switch" => "(?:(?:(?:4903|4905|4911|4936|6333|6759)\d{12})|(?:(?:564182|633110)\d{10})(\d\d)?\d?)",
 		);
 

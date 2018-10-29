@@ -31,6 +31,8 @@ else:
 	include(locate_template('lib/credit-card.php'));
 endif;
 
+
+
 ?>
 
 <script>
@@ -153,8 +155,19 @@ Confirmação de Pagamento
 					<i class="icon_check_alt2"></i>
 					<h3>Desculpe! pedido Negado.</h3>
 					<p>
-						Lorem ipsum dolor sit amet, nostrud nominati vis ex, essent conceptam eam ad. Cu etiam comprehensam nec. Cibo delicata mei an, eum porro legere no.
+						Desculpe encontramos alguns erros ao processar seu pagamento, listamos abaixo alguns deles:
 					</p>
+					<?php 
+
+						$error = $_SESSION['paodigital']['errorsVenda'];
+						if( isset($error) && $error !== "" ):
+							echo '<ul style="list-style: none;">';
+								echo "<li>{$error}</li>";
+							echo '</ul>';
+							unset($_SESSION['paodigital']['errorsVenda']);
+						endif;
+					?>
+					
 				</div>
 
 				<a href="/" class="btn btn-success btn-block">Voltar a Pagina Inicial</a>

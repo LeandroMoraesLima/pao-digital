@@ -63,6 +63,28 @@
 		$payment->compra = true;
 		$payment->venda = $venda;
 
+
+		$user = wp_get_current_user();
+		//Pegar endereco de entrega caso for entrega
+		$enderecoUser = pods('usuarioendereco', array(
+			'where' => "user_id = {$user->ID} AND entrega = 1"
+		));
+		$endUser = $enderecoUser->data();
+		$endUser = (object)$endUser[0];
+
+		$endVenda = pods('vendaentrega');
+		$endVenda->save(array(
+			'rua' 			=> $endUser->endereco,
+			'numero' 		=> $endUser->numero,
+			'bairro' 		=> $endUser->bairro,
+			'cep' 			=> $endUser->cep,
+			'cidade' 		=> $endUser->cidade,
+			'estado' 		=> $endUser->estado,
+			'complemento' 	=> $endUser->complemento,
+			'vendaid' 		=> $podVenda->id
+		));
+		//fim 
+
 		unset($_SESSION['paodigital']);
 		unset($_POST);
 

@@ -32,6 +32,7 @@
 	require_once (__DIR__.'/lib/wp-posts-custom.php');
 	require_once (__DIR__.'/lib/wp-wordpress-actions.php');
 	require_once (__DIR__.'/lib/save-address.php');
+	require_once (__DIR__.'/admin/include-report.php');
 	
 
 
@@ -40,7 +41,7 @@
 
 
 		/* Registering style */
-		wp_register_style( 'bootstrapcss', CSS . '/bootstrap.min.css', array(), '0.0.1', false );
+		wp_register_style( 'bootstrapcss', CSS . '/bootstrap.min.css', array('dashicons'), '0.0.1', false );
 		wp_register_style( 'animatecss', LIB . '/animate/animate.min.css', array(), '0.0.1', false );
 		wp_register_style( 'font-awesomecss', LIB . '/font-awesome/css/font-awesome.min.css', array(), '0.0.1', false );
 		wp_register_style( 'ioniconscss', LIB . '/ionicons/css/ionicons.min.css', array(), '0.0.1', false );
