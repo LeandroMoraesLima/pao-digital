@@ -56,7 +56,7 @@
 <div class="bd-example">
 	<ul class="nav nav-tabs">
 		<li class="nav-item">
-			<a class="nav-link active" href="/wp-admin/admin.php?page=relatorios">Venda (em R$)</a>
+			<a class="nav-link" href="/wp-admin/admin.php?page=relatorios">Venda (em R$)</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="/wp-admin/admin.php?page=porclientes">Clientes</a>
@@ -65,7 +65,7 @@
 			<a class="nav-link" href="/wp-admin/admin.php?page=porprodutos">Produtos</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/wp-admin/admin.php?page=porcupons">Vouchers Utilizados</a>
+			<a class="nav-link active" href="/wp-admin/admin.php?page=porcupons">Vouchers Utilizados</a>
 		</li>
 	</ul>
 </div>
@@ -81,27 +81,27 @@
 		<input type="text" autocomplete="off" id="to" />
 	</div>
 	
-	<table id="example" class="display" style="width:100%">
+	<table id="example" class="display" style="width:100%; text-align: left;">
 		<thead>
 			<tr>
 				<th>#ID</th>
-				<th>Cliente</th>
-				<th>Endereço</th>
-				<th>Pago Online</th>
-				<th>Data do Pedido</th>
-				<th>Quantidade de Itens</th>
-				<th>Valor da Venda</th>
+				<th>Titulo Cupom</th>
+				<th>TAG Cupom</th>
+				<th>Total R$</th>
+				<th>% desconto</th>
+				<th>Ativo</th>
+				<th>Usados</th>
 			</tr>
 		</thead>
 		<tfoot>
 			<tr>
 				<th>#ID</th>
-				<th>Cliente</th>
-				<th>Endereço</th>
-				<th>Pago Online</th>
-				<th>Data do Pedido</th>
-				<th>Quantidade de Itens</th>
-				<th>Valor da Venda</th>
+				<th>Titulo Cupom</th>
+				<th>TAG Cupom</th>
+				<th>Total R$</th>
+				<th>% desconto</th>
+				<th>Ativo</th>
+				<th>Usados</th>
 			</tr>
 		</tfoot>
 	</table>
@@ -124,7 +124,7 @@
 			"url": ajaxurl,
 			"type": "POST",
 			"data": function(d) {
-				d.action = 'get_by_venda',
+				d.action = 'get_by_cupons',
 				d.from = $("#from").val(),
 				d.to = $("#to").val()
 			}
@@ -138,12 +138,12 @@
 		"order": [[ 3, "desc" ]],
 		"columns": [
 			{ "data": "id", bSortable: false },
-			{ "data": "cliente", bSortable: false },
-			{ "data": "endereco", bSortable: false },
-			{ "data": "pago", bSortable: false },
-			{ "data": "datapedido", bSortable: false },
-			{ "data": "valortotal", bSortable: false },
-			{ "data": "itens", bSortable: false }
+			{ "data": "cupom", bSortable: false },
+			{ "data": "tag", bSortable: false },
+			{ "data": "total", bSortable: false },
+			{ "data": "desconto", bSortable: false },
+			{ "data": "ativo", bSortable: false },
+			{ "data": "usado", bSortable: false }
 		]
 	});
 

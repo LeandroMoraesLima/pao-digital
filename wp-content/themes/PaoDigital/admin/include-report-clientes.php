@@ -56,10 +56,10 @@
 <div class="bd-example">
 	<ul class="nav nav-tabs">
 		<li class="nav-item">
-			<a class="nav-link active" href="/wp-admin/admin.php?page=relatorios">Venda (em R$)</a>
+			<a class="nav-link" href="/wp-admin/admin.php?page=relatorios">Venda (em R$)</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/wp-admin/admin.php?page=porclientes">Clientes</a>
+			<a class="nav-link active" href="/wp-admin/admin.php?page=porclientes">Clientes</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="/wp-admin/admin.php?page=porprodutos">Produtos</a>
@@ -81,16 +81,16 @@
 		<input type="text" autocomplete="off" id="to" />
 	</div>
 	
-	<table id="example" class="display" style="width:100%">
+	<table id="example" class="display" style="width:100%; text-align: left;">
 		<thead>
 			<tr>
 				<th>#ID</th>
 				<th>Cliente</th>
 				<th>Endereço</th>
-				<th>Pago Online</th>
-				<th>Data do Pedido</th>
-				<th>Quantidade de Itens</th>
-				<th>Valor da Venda</th>
+				<th>Qtd Compras</th>
+				<th>Valores Gastos</th>
+				<th>Descontos Obtidos</th>
+				<th>Qtd Produtos</th>
 			</tr>
 		</thead>
 		<tfoot>
@@ -98,10 +98,10 @@
 				<th>#ID</th>
 				<th>Cliente</th>
 				<th>Endereço</th>
-				<th>Pago Online</th>
-				<th>Data do Pedido</th>
-				<th>Quantidade de Itens</th>
-				<th>Valor da Venda</th>
+				<th>Qtd Compras</th>
+				<th>Valores Gastos</th>
+				<th>Descontos Obtidos</th>
+				<th>Qtd Produtos</th>
 			</tr>
 		</tfoot>
 	</table>
@@ -124,7 +124,7 @@
 			"url": ajaxurl,
 			"type": "POST",
 			"data": function(d) {
-				d.action = 'get_by_venda',
+				d.action = 'get_by_clientes',
 				d.from = $("#from").val(),
 				d.to = $("#to").val()
 			}
@@ -140,10 +140,10 @@
 			{ "data": "id", bSortable: false },
 			{ "data": "cliente", bSortable: false },
 			{ "data": "endereco", bSortable: false },
-			{ "data": "pago", bSortable: false },
-			{ "data": "datapedido", bSortable: false },
-			{ "data": "valortotal", bSortable: false },
-			{ "data": "itens", bSortable: false }
+			{ "data": "qtcompras", bSortable: false },
+			{ "data": "valores", bSortable: false },
+			{ "data": "descontos", bSortable: false },
+			{ "data": "qtprodutos", bSortable: false }
 		]
 	});
 

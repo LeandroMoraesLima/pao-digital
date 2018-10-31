@@ -52,56 +52,41 @@
 	}
 
 </style>
-
-<div class="bd-example">
-	<ul class="nav nav-tabs">
-		<li class="nav-item">
-			<a class="nav-link active" href="/wp-admin/admin.php?page=relatorios">Venda (em R$)</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="/wp-admin/admin.php?page=porclientes">Clientes</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="/wp-admin/admin.php?page=porprodutos">Produtos</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="/wp-admin/admin.php?page=porcupons">Vouchers Utilizados</a>
-		</li>
-	</ul>
+<div class="wrap">
+	<h1 class="wp-heading-inline">Pedidos - Vendas</h1>
 </div>
 
-
-<div style="padding: 20px 40px;">
+<div style="padding: 20px 15px 20px 5px; ">
 
 	<div class="data" style="padding-bottom: 30px;">
 		<strong>
-			relatorio entre as datas:
+			venda entre as datas:
 		</strong>
 		<input type="text" autocomplete="off" id="from" />
 		<input type="text" autocomplete="off" id="to" />
 	</div>
 	
-	<table id="example" class="display" style="width:100%">
+	<table id="example" class="display" style="width:100%; text-align: left;">
 		<thead>
 			<tr>
-				<th>#ID</th>
 				<th>Cliente</th>
 				<th>Endereço</th>
-				<th>Pago Online</th>
-				<th>Data do Pedido</th>
-				<th>Quantidade de Itens</th>
-				<th>Valor da Venda</th>
+				<th>Telefone</th>
+				<th>Qtdade Itens</th>
+				<th>Total</th>
+				<th>Pago</th>
+				<th>Entrega</th>
 			</tr>
 		</thead>
 		<tfoot>
 			<tr>
-				<th>#ID</th>
 				<th>Cliente</th>
 				<th>Endereço</th>
-				<th>Pago Online</th>
-				<th>Data do Pedido</th>
-				<th>Quantidade de Itens</th>
-				<th>Valor da Venda</th>
+				<th>Telefone</th>
+				<th>Qtdade Itens</th>
+				<th>Total</th>
+				<th>Pago</th>
+				<th>Entrega</th>
 			</tr>
 		</tfoot>
 	</table>
@@ -124,7 +109,7 @@
 			"url": ajaxurl,
 			"type": "POST",
 			"data": function(d) {
-				d.action = 'get_by_venda',
+				d.action = 'get_all_pedidos',
 				d.from = $("#from").val(),
 				d.to = $("#to").val()
 			}
@@ -137,13 +122,13 @@
 		},
 		"order": [[ 3, "desc" ]],
 		"columns": [
-			{ "data": "id", bSortable: false },
 			{ "data": "cliente", bSortable: false },
 			{ "data": "endereco", bSortable: false },
+			{ "data": "telefone", bSortable: false },
+			{ "data": "qtdade", bSortable: false },
+			{ "data": "valor", bSortable: false },
 			{ "data": "pago", bSortable: false },
-			{ "data": "datapedido", bSortable: false },
-			{ "data": "valortotal", bSortable: false },
-			{ "data": "itens", bSortable: false }
+			{ "data": "entrega", bSortable: false },
 		]
 	});
 

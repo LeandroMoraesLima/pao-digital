@@ -56,13 +56,13 @@
 <div class="bd-example">
 	<ul class="nav nav-tabs">
 		<li class="nav-item">
-			<a class="nav-link active" href="/wp-admin/admin.php?page=relatorios">Venda (em R$)</a>
+			<a class="nav-link" href="/wp-admin/admin.php?page=relatorios">Venda (em R$)</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="/wp-admin/admin.php?page=porclientes">Clientes</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/wp-admin/admin.php?page=porprodutos">Produtos</a>
+			<a class="nav-link active" href="/wp-admin/admin.php?page=porprodutos">Produtos</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="/wp-admin/admin.php?page=porcupons">Vouchers Utilizados</a>
@@ -81,27 +81,25 @@
 		<input type="text" autocomplete="off" id="to" />
 	</div>
 	
-	<table id="example" class="display" style="width:100%">
+	<table id="example" class="display" style="width:100%; text-align: left;">
 		<thead>
 			<tr>
 				<th>#ID</th>
-				<th>Cliente</th>
-				<th>Endereço</th>
-				<th>Pago Online</th>
-				<th>Data do Pedido</th>
-				<th>Quantidade de Itens</th>
-				<th>Valor da Venda</th>
+				<th>Nome do Produto</th>
+				<th>Valor Un.</th>
+				<th>Valor Total</th>
+				<th>Total de Itens</th>
+				<th>Qtd de vendas</th>
 			</tr>
 		</thead>
 		<tfoot>
 			<tr>
 				<th>#ID</th>
-				<th>Cliente</th>
-				<th>Endereço</th>
-				<th>Pago Online</th>
-				<th>Data do Pedido</th>
-				<th>Quantidade de Itens</th>
-				<th>Valor da Venda</th>
+				<th>Nome do Produto</th>
+				<th>Valor Un.</th>
+				<th>Valor Total</th>
+				<th>Total de Itens</th>
+				<th>Qtd de vendas</th>
 			</tr>
 		</tfoot>
 	</table>
@@ -124,7 +122,7 @@
 			"url": ajaxurl,
 			"type": "POST",
 			"data": function(d) {
-				d.action = 'get_by_venda',
+				d.action = 'get_by_produtos',
 				d.from = $("#from").val(),
 				d.to = $("#to").val()
 			}
@@ -138,12 +136,11 @@
 		"order": [[ 3, "desc" ]],
 		"columns": [
 			{ "data": "id", bSortable: false },
-			{ "data": "cliente", bSortable: false },
-			{ "data": "endereco", bSortable: false },
-			{ "data": "pago", bSortable: false },
-			{ "data": "datapedido", bSortable: false },
+			{ "data": "nome", bSortable: false },
+			{ "data": "valorun", bSortable: false },
 			{ "data": "valortotal", bSortable: false },
-			{ "data": "itens", bSortable: false }
+			{ "data": "totalitens", bSortable: false },
+			{ "data": "vendas", bSortable: false }
 		]
 	});
 
