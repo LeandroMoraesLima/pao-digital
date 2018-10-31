@@ -81,16 +81,16 @@
 		<input type="text" autocomplete="off" id="to" />
 	</div>
 	
-	<table id="example" class="display" style="width:100%">
+	<table id="example" class="display" style="width:100%; text-align: left;">
 		<thead>
 			<tr>
 				<th>#ID</th>
 				<th>Cliente</th>
 				<th>Endereço</th>
-				<th>Pago Online</th>
+				<th>Drivetru</th>
 				<th>Data do Pedido</th>
-				<th>Quantidade de Itens</th>
 				<th>Valor da Venda</th>
+				<th>Quantidade de Itens</th>
 			</tr>
 		</thead>
 		<tfoot>
@@ -98,10 +98,10 @@
 				<th>#ID</th>
 				<th>Cliente</th>
 				<th>Endereço</th>
-				<th>Pago Online</th>
+				<th>Drivetru</th>
 				<th>Data do Pedido</th>
-				<th>Quantidade de Itens</th>
 				<th>Valor da Venda</th>
+				<th>Quantidade de Itens</th>
 			</tr>
 		</tfoot>
 	</table>

@@ -145,13 +145,29 @@ class options_page {
 		if( $vendas->total_found() > 0 ):
 			foreach( $vendas->data() as $key => $pt ):
 
+				//Get Clientes
+				$cliente = get_user_by( 'id', $pt->pd_users_id );
+				$cl = "{$cliente->first_name} {$cliente->last_name}";
+
+
+				//Get Address
+				$ventrega = pods('vendaentrega', array(
+					'where' => "vendaid = {$pt->id}"
+				));
+				$ve = (object)$ventrega->fetch();
+				$endereco = "{$ve->rua}, {$ve->numero} - <br>{$ve->bairro}, {$ve->cidade}";
+
+
+				$vendas = pods('item', array('where' => "t.venda_id = {$pt->id}"));
+
+
 				$data[$key]['id'] = "<a href='#'>#".str_pad($pt->id, 10, '0', STR_PAD_LEFT) ."</a>"; 
-				$data[$key]['cliente'] = $pt->pd_users_id; 
-				$data[$key]['endereco'] = $pt->id; 
-				$data[$key]['pago'] = $pt->id; 
-				$data[$key]['datapedido'] = $pt->id; 
+				$data[$key]['cliente'] = $cl; 
+				$data[$key]['endereco'] = $endereco; 
+				$data[$key]['pago'] = ( $pt->product_type == 'home' )? 'Não' : 'Sim';
+				$data[$key]['datapedido'] = date( 'd-m-Y', strtotime($pt->created) ); 
 				$data[$key]['valortotal'] = "R$ ".number_format($pt->preco_total, 2, ',', '.'); 
-				$data[$key]['itens'] = $pt->id; 
+				$data[$key]['itens'] = $vendas->total_found(); 
 
 			endforeach;
 		endif;
