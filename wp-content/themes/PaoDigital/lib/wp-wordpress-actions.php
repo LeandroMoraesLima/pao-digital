@@ -217,7 +217,7 @@
 				'venda_id'		=> $vid
 			);
 
-			var_dump($datP);
+			//var_dump($datP);
 			$newIten->add( $datP );
 
 		endif;
