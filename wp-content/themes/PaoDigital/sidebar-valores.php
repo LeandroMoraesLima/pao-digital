@@ -47,7 +47,8 @@
 			</ul>
 		</div>
 <?php 
-	if( $tpl !== "lib/template-metodo-pagamento.php" ):
+
+	if( $tpl !== "lib/template-metodo-pagamento.php"):
 ?>
 
 		<?php $mycp = (isset($_SESSION['paodigital']['cupom']))? $_SESSION['paodigital']['cupom'] : ''; ?>
@@ -63,22 +64,24 @@
 				</p>
 			</div>
 		</div>
-		<div class="menu-order">
-			<div id="msgcup"></div>
-			<?php
+		<?php if( $tpl != 'lib/template-detalhes-pedido.php'  ): ?>
 
-				if( $tpl == "template-cardapio.php" ):
-					$url = get_bloginfo('url') . "/detalhes-do-seu-pedido";
-				elseif( $tpl == "lib/template-detalhes-pedido.php"):
-					$url = get_bloginfo('url') . "/formas-de-pagamento";
-				endif;
+			<div class="menu-order">
+				<div id="msgcup"></div>
+				<?php
+
+					if( $tpl == "template-cardapio.php" ):
+						$url = get_bloginfo('url') . "/detalhes-do-seu-pedido";
+					endif;
 
 
-			?>
-			<a href="<?php echo $url; ?>" class="menu-order-confirm" >
-				Dados para entrega
-			</a>
-		</div>
+				?>
+				<a href="<?php echo $url; ?>" class="menu-order-confirm" >
+					Dados para entrega
+				</a>
+			</div>
+
+		<?php endif; ?>
 
 <?php endif; ?>
 

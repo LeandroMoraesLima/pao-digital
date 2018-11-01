@@ -104,7 +104,7 @@
 	function my_custom_fonts() { ?>
 	  <style>
 		#wp-admin-bar-comments, #wp-admin-bar-new-content, #wpfooter, #wp-admin-bar-wp-logo, #screen-meta-links, #navigatediv { display: none; }
-	  </style>';
+	  </style>
 	<?php }
 
 

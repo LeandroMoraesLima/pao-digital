@@ -98,14 +98,12 @@ Metodo Pagamento
 								</div>
 								<div class="form-group">
 									<label>Nome *</label>
-									<input type="text" class="form-control" id="name_card_order" name="card_name" placeholder="Como esta escrito no cartão">
-									<span>qualquer nome</span>
+									<input type="text" class="form-control" id="name_card_order" name="card_name" placeholder="Como esta escrito no cartão" required >
 								</div>
 								<div class="form-group">
 									<label>Número do cartão *</label>
-									<input type="text" id="card_number" name="card_number" class="form-control" placeholder="0000 0000 0000 0000">
-									<span>use: 5155901222280001 p/ autorizado <br>
-											use: 5155901222270002 p/ nao autorizado</span>
+									<input type="text" id="card_number" name="card_number" class="form-control" required placeholder="0000 0000 0000 0000">
+									
 								</div>
 								<div class="row">
 									<div class="col-md-5 form-group">
@@ -113,14 +111,12 @@ Metodo Pagamento
 										<div class="row">
 											<div class="col-md-6 col-sm-6">
 												<div class="form-group">
-													<input type="text" id="expire_month" name="expire_month" class="form-control" placeholder="MM" max="12">
-													<span>acima de 10</span>
+													<input type="text" id="expire_month" name="expire_month" class="form-control" placeholder="MM" max="12" required >
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="form-group">
-													<input type="text" id="expire_year" name="expire_year" class="form-control" placeholder="AA" max="<?php echo ( date('y') + 7 ); ?>">
-													<span>acima de 18</span>
+													<input type="text" id="expire_year" name="expire_year" class="form-control" placeholder="AA" max="<?php echo ( date('y') + 7 ); ?>" required >
 												</div>
 											</div>
 										</div>
@@ -131,8 +127,7 @@ Metodo Pagamento
 											<div class="row">
 												<div class="col-md-4 col-sm-6">
 													<div class="form-group">
-														<input type="text" id="ccv" max="3" name="ccv" class="form-control" placeholder="CCV" maxlength="3">
-														<span>quaisquer 3 digitos</span>
+														<input type="text" id="ccv" max="3" name="ccv" class="form-control" placeholder="CCV" maxlength="3" required >
 													</div>
 												</div>
 												<div class="col-md-8 col-sm-6">

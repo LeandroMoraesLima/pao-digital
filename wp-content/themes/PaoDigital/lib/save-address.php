@@ -40,10 +40,24 @@
 			endif;
 
 
+			$error = false;
+			$entrega = false;
 			if( isset($_POST['save-address']) ):
 				
 				if( count( $_POST['address'] ) > 0 ):
 					foreach ( $_POST['address'] as $key => $add ):
+
+
+//check address
+if( empty($add['cep']) || empty($add['address']) || empty($add['bairro']) || empty($add['city']) || empty($add['state']) ):
+	$error = true;
+endif;
+
+
+						//check entrega
+						if( isset( $add['entrega'] ) ):
+							$entrega = true;
+						endif;
 
 						$id = $add['house'];
 						
@@ -101,9 +115,34 @@
 
 			endif;
 
-			$_SESSION['paodigital']['msgAddress'] = "Endereço salvo com sucesso!";
-			$_SESSION['paodigital']['msgAddressType'] = "success";
-			wp_redirect( get_bloginfo('url') . "/detalhes-do-seu-pedido/" );
+
+
+			/*
+				Verificacao quanto ao dados dos endereços
+			*/
+			if( $error == true ):
+
+				$_SESSION['paodigital']['msgAddress'] = "Preencha corretamente todos os endereços criados";
+				$_SESSION['paodigital']['msgAddressType'] = "danger";
+				wp_redirect( get_bloginfo('url') . "/detalhes-do-seu-pedido/" );
+
+			else:
+
+				if( $entrega == false ):
+
+					$_SESSION['paodigital']['msgAddress'] = "Escolha um endereço padrão.";
+					$_SESSION['paodigital']['msgAddressType'] = "danger";
+					wp_redirect( get_bloginfo('url') . "/detalhes-do-seu-pedido/" );
+
+				else :
+
+					$_SESSION['paodigital']['msgAddress'] = "Endereço salvo com sucesso!";
+					$_SESSION['paodigital']['msgAddressType'] = "success";
+					wp_redirect( get_bloginfo('url') . "/formas-de-pagamento" );
+
+				endif;
+
+			endif;
 			
 		} catch (Exception $e) {
 			

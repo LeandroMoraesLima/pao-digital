@@ -80,7 +80,7 @@ Header
 							$num = 0;
 						endif;
 						
-							if( $num == 0 ):
+							if( $num > 0 ):
 					?>
 					<li>
 						<a href="/cardapio" style="padding: 0px;">

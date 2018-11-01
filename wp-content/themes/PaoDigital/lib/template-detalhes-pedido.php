@@ -202,7 +202,7 @@ Detalhes do seu pedido
 										<div class="form-check">
 											<label class="form-check-label">
 											<input class="form-check-input" name="address[1][entrega]" checked="true" type="checkbox" value="1">
-												Escolher este como endereço de entrega
+												Endereço dessa compra?
 											</label>
 										</div>
 									</fieldset>
@@ -230,7 +230,7 @@ Detalhes do seu pedido
 								</div>
 								<div class="menu-order">
 									<input type="hidden" name="saveme" value="tasalvo" />
-									<input type="submit" name="save-address" value="Salvar Endereços" class="address-confirm" id="saveAddress"/>
+									<input type="submit" name="save-address" value="CONTINUAR PARA O PAGAMENTO" class="address-confirm" id="saveAddress"/>
 								</div>
 							</div>
 						</form>
