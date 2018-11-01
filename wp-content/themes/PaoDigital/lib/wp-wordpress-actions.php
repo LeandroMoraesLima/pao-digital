@@ -209,7 +209,7 @@
 			$datP = array( 
 				'nome'			=> $item['nome'],
 				'quantidade'	=> 1,
-				'valor_no_ato'	=> (Float)$item['valor_venda'],
+				'valor_no_ato'	=> $item['valor_venda'],
 				'produto_id'	=> $item['id'],
 				'venda_id'		=> $vid
 			);
