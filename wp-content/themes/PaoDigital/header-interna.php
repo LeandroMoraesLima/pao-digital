@@ -82,7 +82,9 @@ Header
 						else: 
 							$num = 0;
 						endif;
-						if( $num > 0 ):
+
+
+						if( $num !== 0 && !is_null($num->qt) ):
 					?>
 					<li>
 						<a href="/cardapio" style="padding: 0px;">

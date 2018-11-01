@@ -41,7 +41,8 @@ class GetPayment
 
 		$_SESSION['paodigital']['errorsVenda'] = $this->error;
 
-		unset( $_SESSION['paodigital']['venda'] );
+		//die();
+		unset( $_SESSION['paodigital'] );
 		unset( $_POST );
 
 		return $this->venda;
@@ -67,14 +68,15 @@ class GetPayment
 				$this->verification();
 		
 				$st = $this->verificado['status'];
+				// var_dump($this->verificado); die();
 
 				if( $this->httpcode == 200 && isset( $st ) && $st == 'VERIFIED' ):
 
 					$this->get_payment();
 					$cp = $this->comprado['status'];
+					//var_dump($this->comprado); die();
 	
-					//if( $this->httpcode == 200 && isset( $cp ) && $cp == 'APPROVED' ):
-					if( $this->httpcode == 200 && isset( $cp ) ):
+					if( $this->httpcode == 200 && isset( $cp ) && $cp == 'APPROVED' ):
 						
 						$this->compra = true;
 						$this->close_itens();
@@ -85,6 +87,7 @@ class GetPayment
 					endif;
 
 				else:
+
 					$this->error = "A verificação dos dados do cartão Falhou!";
 					$this->compra = false;
 				endif;
@@ -280,6 +283,10 @@ class GetPayment
 			),
 		);
 
+		// var_dump($jsonArray);
+		// var_dump($this->auth['access_token']);
+		
+
 		$cr = curl_init();
 		curl_setopt($cr, CURLOPT_URL, "https://api-homologacao.getnet.com.br/v1/payments/credit"); 
 		curl_setopt($cr,CURLOPT_HTTPHEADER, array(
@@ -295,6 +302,8 @@ class GetPayment
 		$this->httpcode = curl_getinfo($cr, CURLINFO_HTTP_CODE);
 		curl_close($cr);
 
+		// var_dump($this->comprado);
+		// var_dump($this->httpcode);
 
 	}
 
