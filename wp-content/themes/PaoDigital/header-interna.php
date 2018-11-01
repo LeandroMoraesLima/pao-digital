@@ -3,7 +3,15 @@
 <head>
 
 	<meta charset="utf-8">
-	<title>Avilon Bootstrap Template</title>
+	<title>
+		<?php 
+			if(is_front_page() || is_home()):
+				echo get_bloginfo('name');
+			else:
+				echo wp_title('');
+			endif;
+		?>
+	</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<meta content="" name="keywords">
 	<meta content="" name="description">
@@ -88,3 +96,43 @@ Header
 		</nav><!-- #nav-menu-container -->
 	</div>
 </header><!-- #header -->
+
+<div class="container">
+	
+	<?php 
+	
+		$link = false;
+
+		global $post;
+		$pagina =  get_page_template_slug( $post->ID );
+
+		if( $pagina == 'template-parceiros.php' ){
+			$link = '/';
+		} elseif( $pagina == 'template-cardapio.php' ){
+			$link = '/parceiros';
+		} elseif( $pagina == 'lib/template-detalhes-pedido.php' ){
+			$link = '/cardapio';
+		} elseif( $pagina == 'lib/template-metodo-pagamento.php' ){
+			$link = '/detalhes-do-seu-pedido';
+		}
+
+		if( $link !== false ):
+
+	?>
+
+
+	<br>
+	<a href="<?php echo $link; ?>" class="btn btn-outline-info">
+		<span class="dashicons dashicons-undo"></span>
+		Voltar
+	</a>
+
+	<?php endif; ?>
+
+</div>
+
+
+
+
+
+
