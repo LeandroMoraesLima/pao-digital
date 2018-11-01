@@ -206,16 +206,18 @@
 			$item = $pod->row();
 
 			//var_dump($item);
-			//die();
+			//die( $item['valor_venda'] );
 
 			$newIten = pods('item');
 			$datP = array( 
 				'nome'			=> $item['nome'],
 				'quantidade'	=> 1,
-				'valor_no_ato'	=> (float)$item['valor_venda'],
+				'valor_no_ato'	=> str_replace(".", ",", $item['valor_venda']),
 				'produto_id'	=> $item['id'],
 				'venda_id'		=> $vid
 			);
+
+			var_dump($datP);
 			$newIten->add( $datP );
 
 		endif;
