@@ -17,6 +17,7 @@ class LRM_Core {
         require_once LRM_PATH . '/includes/class-mailer.php';
         require_once LRM_PATH . '/includes/class-settings.php';
         require_once LRM_PATH . '/includes/class-ajax.php';
+        require_once LRM_PATH . '/includes/class-admin-menus.php';
 
         LRM_Settings::get();
 
@@ -29,7 +30,24 @@ class LRM_Core {
             add_action('lrm_lostpassword_form', array($this, 'form_fblogin__action'));
         }
 
-        add_action('wp_loaded', array($this, 'process_ajax'), 12);
+        if ( !empty($_REQUEST['lrm_action']) ) {
+//            $lrm_advanced_option = get_option('lrm_advanced');
+//
+//            if ($lrm_advanced_option && isset($lrm_advanced_option['troubleshooting']['hook'])) {
+//                $hook_to_use = $lrm_advanced_option['troubleshooting']['hook'];
+//            } else {
+//                $hook_to_use = ;
+//            }
+
+            add_filter( 'wp_redirect', array($this, 'wp_redirect__filter'), 9, 2 );
+
+            // Disable redirect after Login
+            add_filter( 'ws_plugin__s2member_login_redirect', '__return_false', 99 );
+            // Try to remove all actions from "wp_login" action to avoid redirects
+            remove_all_actions('wp_login');
+
+            add_action( 'wp_loaded', array($this, 'process_ajax'), 12 );
+        }
 
         // RUN PRO UPDATER
         if ( is_admin() && lrm_is_pro() ) {
@@ -48,6 +66,8 @@ class LRM_Core {
         //}
 
         add_filter('plugin_action_links_' . LRM_BASENAME, array($this, 'add_settings_link'));
+
+        new LRM_Admin_Menus();
     }
 
     /**
@@ -110,6 +130,25 @@ class LRM_Core {
     }
 
     /**
+     * Try to change Hook position to avoid redirect during login/registration
+     * Calls only once
+     *
+     * @param $location
+     * @param $status
+     * @since 1.36
+     *
+     * @return mixed
+     */
+    public function wp_redirect__filter($location, $status) {
+        wp_send_json_error(array(
+            'message' => sprintf(
+                __( 'Some plugin try to redirect during this action to the following url: %s. Please try to disable plugins related to the Security/User Profile/Membership and try again.', 'ajax-login-and-registration-modal-popup' ),
+                $location
+            )
+        ));
+    }
+
+    /**
      * Load FB login link from plugin:
      * https://wordpress.org/plugins/wp-facebook-login/
      *
@@ -126,9 +165,9 @@ class LRM_Core {
      * @param string    $function
      * @return mixed
      */
-    public function call_pro($function) {
+    public function call_pro($function, $param1 = false) {
         if ( class_exists('LRM_Pro') ) {
-            return LRM_Pro::get()->$function();
+            return LRM_Pro::get()->$function($param1);
         }
     }
 
@@ -154,9 +193,9 @@ class LRM_Core {
             return;
         }
 
-        wp_enqueue_script('lrm-modal', LRM_URL . '/assets/lrm-core.js', array('jquery'), LRM_ASSETS_VER, true);
+        wp_enqueue_script('lrm-modal', LRM_URL . 'assets/lrm-core.js', array('jquery'), LRM_ASSETS_VER, true);
 
-        wp_enqueue_style('lrm-modal', LRM_URL . '/assets/lrm-core.css', false, LRM_ASSETS_VER);
+        wp_enqueue_style('lrm-modal', LRM_URL . 'assets/lrm-core.css', false, LRM_ASSETS_VER);
 
         $script_params = array(
             'redirect_url'       => '',

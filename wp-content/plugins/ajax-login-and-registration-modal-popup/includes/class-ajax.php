@@ -10,10 +10,12 @@ class LRM_AJAX
 {
 
     public static function login() {
+        $start = microtime(true);
+
         // First check the nonce, if it fails the function will break
         self::_verify_nonce( 'security-login', 'ajax-login-nonce' );
 
-        LRM_Core::get()->call_pro('check_captcha');
+        LRM_Core::get()->call_pro('check_captcha', 'login');
 
         // Nonce is checked, get the POST data and sign user on
         $info = array();
@@ -81,7 +83,7 @@ class LRM_AJAX
         // Verify nonce
         self::_verify_nonce( 'security-signup', 'ajax-signup-nonce' );
 
-        LRM_Core::get()->call_pro('check_captcha');
+        LRM_Core::get()->call_pro('check_captcha', 'signup' );
 
         if ( !get_option('users_can_register') ) :
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/disabled')));
@@ -101,10 +103,10 @@ class LRM_AJAX
 
         if ( $display_first_and_last_name ) {
             $first_name = sanitize_text_field( $_POST['first-name'] );
-            $last_name  = sanitize_text_field( $_POST['last-name'] );
+            $last_name  = ! empty($_POST['last-name']) ? sanitize_text_field( $_POST['last-name'] ) : '';
         }
         
-        if ( isset( $_POST['password'] ) && LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ) {
+        if ( !empty( $_POST['password'] ) && LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ) {
             $password =  sanitize_text_field($_POST['password']);
 
             // Defined in: "\wp-includes\default-filters.php"
@@ -112,7 +114,6 @@ class LRM_AJAX
         } else {
             $password = wp_generate_password(10, true);
         }
-
 
         if ( !$user_login ) {
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/no_username'), 'for'=>'username'));
@@ -204,6 +205,72 @@ class LRM_AJAX
                 $mail_body = apply_filters("lrm/mails/registration/body", $mail_body, $user_login, $userdata);
 
                 $mail_sent = LRM_Mailer::send($email, $subject, $mail_body, 'registration');
+
+            }
+
+            if ( LRM_Settings::get()->setting('mails/admin_new_user/on') ) {
+
+                // The blogname option is escaped with esc_html on the way into the database in sanitize_option
+                // we want to reverse this for the plain text arena of emails.
+                $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
+
+                // Admin Notification
+                $switched_locale = switch_to_locale(get_locale());
+
+                $mail_body = str_replace(
+                    array(
+                        'YOUR BLOG NAME',
+                        '{{USERNAME}}',
+                        '{{EMAIL}}',
+                        '{{USER_ADMIN_URL}}',
+                    ),
+                    array(
+                        $blogname,
+                        $user_login,
+                        $email,
+                        admin_url( 'user-edit.php?user_id=' . $user_id ),
+                    ),
+                    LRM_Settings::get()->setting('mails/admin_new_user/body')
+                );
+
+                $wp_new_user_notification_email_admin = array(
+                    'to' => get_option('admin_email'),
+                    /* translators: Password change notification email subject. %s: Site title */
+                    'subject' => LRM_Settings::get()->setting('mails/admin_new_user/subject'),
+                    'message' => $mail_body,
+                    'headers' => '',
+                );
+
+                /**
+                 * Filters the contents of the new user notification email sent to the site admin.
+                 *
+                 * @since 4.9.0
+                 *
+                 * @param array $wp_new_user_notification_email {
+                 *     Used to build wp_mail().
+                 *
+                 * @type string $to The intended recipient - site admin email address.
+                 * @type string $subject The subject of the email.
+                 * @type string $message The body of the email.
+                 * @type string $headers The headers of the email.
+                 * }
+                 * @param WP_User $user User object for new user.
+                 * @param string $blogname The site title.
+                 */
+                $wp_new_user_notification_email_admin = apply_filters('wp_new_user_notification_email_admin', $wp_new_user_notification_email_admin, $user_id, $blogname);
+
+                LRM_Mailer::send(
+                    $wp_new_user_notification_email_admin['to'],
+                    wp_specialchars_decode($wp_new_user_notification_email_admin['subject']),
+                    $wp_new_user_notification_email_admin['message'],
+                    'registration_admin',
+                    $wp_new_user_notification_email_admin['headers']
+                );
+
+                if ($switched_locale) {
+                    restore_previous_locale();
+                }
+
             }
 
             if ( $user_signon && !is_wp_error($user_signon) ) {
@@ -236,7 +303,7 @@ class LRM_AJAX
 
         $account = sanitize_text_field( trim($_POST['user_login']) );
 
-        LRM_Core::get()->call_pro('check_captcha');
+        LRM_Core::get()->call_pro('check_captcha', 'lostpassword');
 
         if( empty( $account ) ) {
             $errors->add('invalid_email', LRM_Settings::get()->setting('messages/lost_password/invalid_email'));
