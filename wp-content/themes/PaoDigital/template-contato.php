@@ -27,7 +27,7 @@ Our Team Section
 						<hr class="line">
 						<span class="section-divider"></span>
 						<p class="section-description">
-							<?php echo get_the_content(); ?> 
+							<?php the_content(); ?> 
 						</p>
 					</div>
 				</div>
