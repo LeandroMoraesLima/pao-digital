@@ -662,7 +662,7 @@ class pointLocation {
 
 		$points_polygon = count($vertices_x) - 1;  // number vertices - zero-based array
 
-		if ($this->is_in_polygon($points_polygon, $vertices_x, $vertices_y, $point['x'], $point['y'] ))
+		if ( $this->is_in_polygon($points_polygon, $vertices_x, $vertices_y, $point['x'], $point['y'] ))
 		{
 			return "inside";
 		}
@@ -674,7 +674,8 @@ class pointLocation {
 	public function is_in_polygon($points_polygon, $vertices_x, $vertices_y, $longitude_x, $latitude_y)
 	{
 	  $i = $j = $c = 0;
-	  for ($i = 0, $j = $points_polygon ; $i < $points_polygon; $j = $i++) {
+	  for ($i = 0, $j = $points_polygon ; $i < $points_polygon; $j = $i++) 
+	  {
 	    if ( (($vertices_y[$i]  >  $latitude_y != ($vertices_y[$j] > $latitude_y)) &&
 	     ($longitude_x < ($vertices_x[$j] - $vertices_x[$i]) * ($latitude_y - $vertices_y[$i]) / ($vertices_y[$j] - $vertices_y[$i]) + $vertices_x[$i]) ) )
 	       $c = !$c;
@@ -693,10 +694,12 @@ class pointLocation {
  
     public function pointStringToCoordinates($pointString) {
         $coordinates = explode(" ", $pointString);
-        $zero = substr(str_replace("-", "", $coordinates[0]), 0, 10);
-        $unos = substr(str_replace("-", "", $coordinates[1]), 0, 10);
+        //$zero = substr(str_replace("-", "", $coordinates[0]), 0, 10);
+        //$unos = substr(str_replace("-", "", $coordinates[1]), 0, 10);
+		$zero = $coordinates[0];
+		$unos = $coordinates[1];
 
-        return array("x" =>  $zero, "y" => $unos );
+        return array("x" =>  $zero, "y" => $unos );return array("x" =>  $zero, "y" => $unos );
     }
  
 }
