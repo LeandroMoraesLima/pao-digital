@@ -526,6 +526,8 @@
 		$myAddress = $request['results'][0]['geometry']['location']['lat'] . ' ' . $request['results'][0]['geometry']['location']['lng'];
 
 
+
+
 		//get all 
 		$where = array( 
 			'limit' => -1,
@@ -558,6 +560,8 @@
 				
 				//var_dump($polygon);
 				//var_dump($myAddress);
+
+				
 
 				$pointLocation = new pointLocation();
 				$inside = $pointLocation->pointInPolygon($myAddress, $polygon);
@@ -594,7 +598,6 @@
 
 				// Create and find in one shot 
 				$parceiros = pods( 'parceiro', $params ); 
-				//var_dump($parceiros);
 				$i = 1;
 
 				//var_dump($parceiros->total());
@@ -640,7 +643,7 @@ class pointLocation {
     function pointLocation() {
     }
  
-    function pointInPolygon($point, $polygon, $pointOnVertex = true) {
+    public function pointInPolygon($point, $polygon, $pointOnVertex = true) {
 
     	$point = $this->pointStringToCoordinates($point);
         $vertices = array(); 
@@ -655,23 +658,12 @@ class pointLocation {
         }
 
 
-		function is_in_polygon($points_polygon, $vertices_x, $vertices_y, $longitude_x, $latitude_y)
-		{
-		  $i = $j = $c = 0;
-		  for ($i = 0, $j = $points_polygon ; $i < $points_polygon; $j = $i++) {
-		    if ( (($vertices_y[$i]  >  $latitude_y != ($vertices_y[$j] > $latitude_y)) &&
-		     ($longitude_x < ($vertices_x[$j] - $vertices_x[$i]) * ($latitude_y - $vertices_y[$i]) / ($vertices_y[$j] - $vertices_y[$i]) + $vertices_x[$i]) ) )
-		       $c = !$c;
-		  }
-		  return $c;
-		}
 
 
 		$points_polygon = count($vertices_x) - 1;  // number vertices - zero-based array
-		$longitude_x = $_GET["longitude"];  // x-coordinate of the point to test
-		$latitude_y = $_GET["latitude"];    // y-coordinate of the point to test
 
-		if (is_in_polygon($points_polygon, $vertices_x, $vertices_y, $point['x'], $point['y'] )){
+		if ($this->is_in_polygon($points_polygon, $vertices_x, $vertices_y, $point['x'], $point['y'] ))
+		{
 			return "inside";
 		}
 		return "outside";
@@ -679,7 +671,18 @@ class pointLocation {
 		
     }
  
-    function pointOnVertex($point, $vertices) {
+	public function is_in_polygon($points_polygon, $vertices_x, $vertices_y, $longitude_x, $latitude_y)
+	{
+	  $i = $j = $c = 0;
+	  for ($i = 0, $j = $points_polygon ; $i < $points_polygon; $j = $i++) {
+	    if ( (($vertices_y[$i]  >  $latitude_y != ($vertices_y[$j] > $latitude_y)) &&
+	     ($longitude_x < ($vertices_x[$j] - $vertices_x[$i]) * ($latitude_y - $vertices_y[$i]) / ($vertices_y[$j] - $vertices_y[$i]) + $vertices_x[$i]) ) )
+	       $c = !$c;
+	  }
+	  return $c;
+	}
+
+    public function pointOnVertex($point, $vertices) {
         foreach($vertices as $vertex) {
             if ($point == $vertex) {
                 return true;
@@ -688,7 +691,7 @@ class pointLocation {
  
     }
  
-    function pointStringToCoordinates($pointString) {
+    public function pointStringToCoordinates($pointString) {
         $coordinates = explode(" ", $pointString);
         $zero = substr(str_replace("-", "", $coordinates[0]), 0, 10);
         $unos = substr(str_replace("-", "", $coordinates[1]), 0, 10);
