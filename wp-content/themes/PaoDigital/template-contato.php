@@ -20,7 +20,7 @@ Our Team Section
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6 wow fadeInLeft">
-						<img src="<?php echo IMG; ?>/drive-thru-pao-digital.jpg" style="max-width: 100%;">
+						<img src="<?php echo get_field('imagem_destacada'); ?>" style="max-width: 100%;">
 					</div>	
 					<div class="text col-lg-6 content wow fadeInRight">
 						<h3 class="title"><?php the_title(); ?></h3>
