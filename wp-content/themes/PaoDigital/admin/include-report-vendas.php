@@ -80,33 +80,59 @@
 		<input type="text" autocomplete="off" id="from" />
 		<input type="text" autocomplete="off" id="to" />
 	</div>
+	<div class="data" style="padding-bottom: 30px;">
+		<?php 
+
+			$parcas = pods( 'parceiro', array('limit' => -1)); 
+			$html = "";
+			if( $parcas->total_found() > 0 ):
+				foreach ($parcas->data() as $key => $parca):
+					$html .= "<option value='{$parca->id}'>{$parca->nome}</option>";
+				endforeach;
+			endif;
+		?>
+		<strong>
+			Filtrar por Parceiro:
+		</strong>
+		<select name="" id="parceirinhos" style="min-width: 300px;">
+			<option value="0">Todos</option>
+			<?php echo $html; ?>
+		</select>
+	</div>
 	
 	<table id="example" class="display" style="width:100%; text-align: left;">
 		<thead>
 			<tr>
 				<th>#ID</th>
 				<th>Cliente</th>
+				<th>Parceiro</th>
 				<th>Endereço</th>
 				<th>Drivetru</th>
 				<th>Data do Pedido</th>
 				<th>Valor da Venda</th>
-				<th>Quantidade de Itens</th>
+				<th>Qtd Itens</th>
 			</tr>
 		</thead>
 		<tfoot>
 			<tr>
 				<th>#ID</th>
 				<th>Cliente</th>
+				<th>Parceiro</th>
 				<th>Endereço</th>
 				<th>Drivetru</th>
 				<th>Data do Pedido</th>
 				<th>Valor da Venda</th>
-				<th>Quantidade de Itens</th>
+				<th>Qtd Itens</th>
 			</tr>
 		</tfoot>
 	</table>
 </div>
 
+
+<div class="alert alert-info" role="alert">
+	informações:
+	pesquise por id, nome ou sobrenome, Endereço,
+</div>
 
 
 
@@ -126,7 +152,8 @@
 			"data": function(d) {
 				d.action = 'get_by_venda',
 				d.from = $("#from").val(),
-				d.to = $("#to").val()
+				d.to = $("#to").val(),
+				d.parca = $("#parceirinhos").val()
 			}
 		},
 		"aLengthMenu": [[10, 20, 50, 75, 100], [10, 20, 50, 75, 100]],
@@ -139,6 +166,7 @@
 		"columns": [
 			{ "data": "id", bSortable: false },
 			{ "data": "cliente", bSortable: false },
+			{ "data": "parceiro", bSortable: false },
 			{ "data": "endereco", bSortable: false },
 			{ "data": "pago", bSortable: false },
 			{ "data": "datapedido", bSortable: false },
@@ -174,10 +202,17 @@
 			oTable.draw();
 		});
 
+
+		$(document).on('change', "#parceirinhos", function(){
+			selectFilter = $("#parceirinhos").val();
+			oTable.draw();
+		});
+
 		// //
 		// //Date range filter
 		minDateFilter = "";
 		maxDateFilter = "";
+		selectFilter = "";
 
 		$.fn.dataTableExt.afnFiltering.push(
 		function(oSettings, aData, iDataIndex) {
@@ -199,6 +234,8 @@
 
 			return true;
 		});
+
+
 })(jQuery);
 
 

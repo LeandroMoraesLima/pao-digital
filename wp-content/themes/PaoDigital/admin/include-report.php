@@ -131,38 +131,110 @@ class options_page {
 	//Get relatorios by vendas
 	public function get_by_venda()
 	{
+		global $wpdb;
+		$pf = $wpdb->prefix;
+
+		//pagination
+		$start = $_POST['start'];
+		$offset = $_POST['length'];
+
+		//from date
+		if( isset($_POST['from']) && $_POST['from'] !== '' ): 
+			$init = date("Y-m-d", strtotime( str_replace("/", "-", $_POST['from']) ) );
+		else:
+			$init = "";
+		endif;
+
+		//to date
+		if( isset($_POST['to']) && $_POST['to'] !== '' ): 
+			$end = date("Y-m-d", strtotime( str_replace("/", "-", $_POST['to']) ) );
+		else:
+			$end = "";
+		endif;
+
+		$init = ( isset($init) && $init !== '' )? "AND t.created >= '{$init} 00:00:00'" : "";
+		$end = ( isset($end) && $end !== '' )? "AND t.created <= '{$end} 23:59:59'" : "";
+
+
+		//
+		if(isset($_POST['search']['value']) && $_POST['search']['value'] !== ''):
+			$search = $_POST['search']['value'];
+			$search = " AND ( um.meta_value LIKE '%{$search}%' OR umb.meta_value LIKE '%{$search}%' OR ve.numero LIKE '%{$search}%' OR ve.bairro LIKE '%{$search}%' OR ve.cidade LIKE '%{$search}%' OR ve.cep LIKE '%{$search}%' OR t.id LIKE '%{$search}%'  )";
+		else:
+			$search = "";
+		endif;
+
+
+		$parceiro = "";
+		if( isset($_POST['parca']) && intval($_POST['parca']) > 0 ):
+			$parceiro = "AND t.pd_parceiros_id = {$_POST['parca']}";
+		endif;
+
+		//datafile
 		$data = array();
 
-		$where = "pedido = 0 AND pagamento_status = 1";
 
-		$vendas = 	pods('venda', 
-						array(
-							'limit' => -1,
-							'where' => $where
-						)
-					);
+		//insert the joins
+		$join = "
+			INNER JOIN {$pf}users AS u ON u.ID = t.pd_users_id
+			INNER JOIN {$pf}usermeta AS um ON um.user_id = t.pd_users_id
+			INNER JOIN {$pf}usermeta AS umb ON umb.user_id = t.pd_users_id
+			INNER JOIN {$pf}pods_vendaentrega AS ve ON ve.vendaid = t.id
+		";
+
+		//insert the where
+		$where = "
+			t.pedido = 0 
+			AND t.pagamento_status = 1 
+			AND um.meta_key = 'first_name'
+			AND umb.meta_key = 'last_name'
+			{$parceiro}
+			{$search}
+			{$init} 
+			{$end}";
+
+		//create the real query
+		$query = array(
+			'limit' 			=> $offset,
+			'offset'			=> $start,
+			'join'				=> $join,
+			'where' 			=> $where,
+			'select'			=> 't.*, ve.rua, ve.numero, ve.bairro, ve.cidade, ve.cep, um.meta_value AS firstname, umb.meta_value AS lastname'
+		);
+
+		//var_dump($query);
+
+		//get all itens with filters
+		$vendas = pods('venda', $query); 
+
+
+		//create the query for all itens
+		$queryTp = array(
+			'join'				=> $join,
+			'where' 			=> $where,
+			'select'			=> 't.*, ve.rua, ve.numero, ve.bairro, ve.cidade, ve.cep, um.meta_value AS firstname, umb.meta_value AS lastname'
+		);
+		
+		//get all itens without filters
+		$toptal = pods( 'venda', $queryTp );
+
+
 
 		if( $vendas->total_found() > 0 ):
 			foreach( $vendas->data() as $key => $pt ):
 
-				//Get Clientes
-				$cliente = get_user_by( 'id', $pt->pd_users_id );
-				$cl = "{$cliente->first_name} {$cliente->last_name}";
+				$cl = "{$pt->firstname} {$pt->lastname}";
+				$endereco = "{$pt->rua}, {$pt->numero} - <br>{$pt->bairro}, {$pt->cidade}, {$pt->cep}";
 
-
-				//Get Address
-				$ventrega = pods('vendaentrega', array(
-					'where' => "vendaid = {$pt->id}"
-				));
-				$ve = (object)$ventrega->fetch();
-				$endereco = "{$ve->rua}, {$ve->numero} - <br>{$ve->bairro}, {$ve->cidade}";
-
-
+				//get valor total e quantidade de itens
 				$vendas = pods('item', array('where' => "t.venda_id = {$pt->id}"));
 
+				$pcr = pods('parceiro', $pt->pd_parceiros_id);
+				$pcr = (object)$pcr->row();
 
 				$data[$key]['id'] = "<a href='#'>#".str_pad($pt->id, 10, '0', STR_PAD_LEFT) ."</a>"; 
 				$data[$key]['cliente'] = $cl; 
+				$data[$key]['parceiro'] = $pcr->nome; 
 				$data[$key]['endereco'] = $endereco; 
 				$data[$key]['pago'] = ( $pt->product_type == 'home' )? 'Não' : 'Sim';
 				$data[$key]['datapedido'] = date( 'd-m-Y', strtotime($pt->created) ); 
@@ -173,10 +245,11 @@ class options_page {
 		endif;
 
 
+
 		$response = [
 			"draw" =>  $_POST['draw'],
-			"recordsFiltered" =>  $vendas->total(),
-			"recordsTotal" => $vendas->total_found(),
+			"recordsFiltered" =>  (int)$toptal->total_found(),
+			"recordsTotal" => (int)$vendas->total(),
 			"data" => $data,
 		];
 
