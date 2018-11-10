@@ -1,7 +1,7 @@
 <li>
 	<div class="image-holder" style="background-image: url('<?php echo $cardapios->display('imagem'); ?>');">
 		<a href="#" rel="prettyPhoto">
-			<img src="<?php echo IMG; ?>/coffee.png" />
+			<img src="<?php echo $cardapios->display('imagem'); ?>" />
 		</a>
 	</div>
 	<div class="text-holder">
