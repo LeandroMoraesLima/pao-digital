@@ -2121,11 +2121,11 @@ body button[type=submit] {
   display: inline-block;
   vertical-align: top;
   float: left;
-}
-/* line 92, ../sass/app.scss */
-#menu .accordion .collapse-show .card-body ul li .image-holder img {
   background-repeat: no-repeat;
   background-size: contain;
+}
+/* line 94, ../sass/app.scss */
+#menu .accordion .collapse-show .card-body ul li .image-holder img {
   opacity: 0;
 }
 /* line 98, ../sass/app.scss */

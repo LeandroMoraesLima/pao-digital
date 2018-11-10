@@ -89,9 +89,9 @@ $white: #FFF;
 							display: inline-block;
 						    vertical-align: top;
 							float: left;
+							background-repeat: no-repeat;
+						    background-size: contain;
 							img{
-								background-repeat: no-repeat;
-							    background-size: contain;
 							    opacity: 0;
 							}						 
 						}
