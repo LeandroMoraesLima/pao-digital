@@ -172,7 +172,11 @@
 			{ "data": "datapedido", bSortable: false },
 			{ "data": "valortotal", bSortable: false },
 			{ "data": "itens", bSortable: false }
-		]
+		],
+		dom: 'Bafrtlip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
 	});
 
 

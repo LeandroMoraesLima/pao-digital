@@ -80,6 +80,25 @@
 		<input type="text" autocomplete="off" id="from" />
 		<input type="text" autocomplete="off" id="to" />
 	</div>
+	<div class="data" style="padding-bottom: 30px;">
+		<?php 
+
+			$parcas = pods( 'parceiro', array('limit' => -1)); 
+			$html = "";
+			if( $parcas->total_found() > 0 ):
+				foreach ($parcas->data() as $key => $parca):
+					$html .= "<option value='{$parca->id}'>{$parca->nome}</option>";
+				endforeach;
+			endif;
+		?>
+		<strong>
+			Filtrar por Parceiro:
+		</strong>
+		<select name="" id="parceirinhos" style="min-width: 300px;">
+			<option value="0">Todos</option>
+			<?php echo $html; ?>
+		</select>
+	</div>
 	
 	<table id="example" class="display" style="width:100%; text-align: left;">
 		<thead>
@@ -106,6 +125,10 @@
 		</tfoot>
 	</table>
 </div>
+<div class="alert alert-info" role="alert">
+	informações:
+	pesquise por id, nome do cupom e tag do cupom,
+</div>
 
 
 
@@ -126,7 +149,9 @@
 			"data": function(d) {
 				d.action = 'get_by_cupons',
 				d.from = $("#from").val(),
-				d.to = $("#to").val()
+				d.to = $("#to").val(),
+				d.parca = $("#parceirinhos").val()
+
 			}
 		},
 		"aLengthMenu": [[10, 20, 50, 75, 100], [10, 20, 50, 75, 100]],
@@ -144,7 +169,11 @@
 			{ "data": "desconto", bSortable: false },
 			{ "data": "ativo", bSortable: false },
 			{ "data": "usado", bSortable: false }
-		]
+		],
+		dom: 'Bafrtlip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
 	});
 
 
@@ -174,10 +203,19 @@
 			oTable.draw();
 		});
 
+
+		$(document).on('change', "#parceirinhos", function(){
+			selectFilter = $("#parceirinhos").val();
+			oTable.draw();
+		});
+
+
+
 		// //
 		// //Date range filter
 		minDateFilter = "";
 		maxDateFilter = "";
+		selectFilter = "";
 
 		$.fn.dataTableExt.afnFiltering.push(
 		function(oSettings, aData, iDataIndex) {
